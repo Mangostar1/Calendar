@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario</title>
+    <link rel="stylesheet" href="./calendar.css">
+    <link rel="stylesheet" href="./footer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100&family=Roboto:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="icons/webpagehome_85808.ico">
+    <meta name="description" content="Este es mi calendario web">
+</head>
+
+<body>
+    <div class="contaienr">
+        <div class="calendar">
+            <div id="buttons">
+  
+                <input type="radio" name="btn" id="radio-day">
+                <label for="radio-day" id="btn-day">Día</label>
+                <input type="radio" name="btn" id="radio-week">
+                <label for="radio-week" id="btn-week">Semana</label>
+                <input type="radio" name="btn" id="radio-month" checked>
+                <label for="radio-month" id="btn-month">Mes</label>
+                <input type="radio" name="btn" id="radio-year">
+                <label for="radio-year" id="btn-year">Año</label>
+              </div>
+              <!-- day -->
+              <div id="container-Day" class="">
+                <div id="dates-control-day" class="dates-control">
+                  <button id="prev-day" class="prev"> &#10094; </button>
+                  <h1 id="fecha-day" class="fecha">Diciembre de 2021</h1>
+                  <button id="next-day" class="next"> &#10095; </button>
+                </div>
+                <hr>
+                <h2 id="cambia-dia"></h2>
+              </div>
+              <!-- week -->
+              <div id="container-week" class="">
+                <div id="dates-control-week" class="dates-control">
+                  <button id="prev-week" class="prev">&#10094;</button>
+                  <h1 id="fecha-week" class="fecha">Diciembre de 2021</h1>
+                  <button id="next-week" class="next">&#10095;</button>
+                </div>
+                <div id="days-of-week">
+                  <div class="grid-days">
+                    <p class="diaa-week">Lun</p>
+                    <p class="diaa-week diasNumber"></p>
+                  </div>
+          
+                  <div class="grid-days">
+                    <p class="diaa-week">Mar</p>
+                    <p class="diaa-week diasNumber"></p>
+                  </div>
+          
+                  <div class="grid-days">
+                    <p class="diaa-week">Mié</p>
+                    <p class="diaa-week diasNumber"></p>
+                  </div>
+          
+                  <div class="grid-days">
+                    <p class="diaa-week">Jue</p>
+                    <p class="diaa-week diasNumber"></p>
+                  </div>
+          
+                  <div class="grid-days">
+                    <p class="diaa-week">Vie</p>
+                    <p class="diaa-week diasNumber"></p>
+                  </div>
+          
+                  <div class="grid-days">
+                    <p class="diaa-week">Sáb</p>
+                    <p class="diaa-week diasNumber"></p>
+                  </div>
+          
+                  <div class="grid-days">
+                    <p class="diaa-week">Dom</p>
+                    <p class="diaa-week diasNumber"></p>
+                  </div>
+                  <div id="grid-hour"></div>
+                </div>
+              </div>
+              <!-- month -->
+              <div id="container-month" class="wrapper">
+                <div id="dates-control-month" class="dates-control">
+                  <button id="prev-month" class="prev">&#10094;</button>
+                  <h1 id="fecha-month" class="fecha">Diciembre de 2021</h1>
+                  <button id="next-month" class="next">&#10095;</button>
+                </div>
+                <div id="todayBtn-month">
+                  <button class="today" id="">Hoy</button>
+                </div>
+                <div id="days-of-month"></div>
+              </div>
+              <!-- year -->
+              <div id="container-Year" class="">
+                <div id="dates-control-year" class="dates-control">
+                  <button id="prev-year" class="prev">&#10094;</button>
+                  <h1 id="fecha-year" class="fecha">Diciembre de 2021</h1>
+                  <button id="next-year" class="next">&#10095;</button>
+                </div>
+                <div id="days-of-year">
+                  <div class="meses">
+                    <h2 class="tittle">Enero</h2>
+                    <div class="calendar">
+                      <div id="day-name-ene" class="day-name-div"></div>
+                      <div id="day-div-ene" class="day-div"></div>
+                    </div>
+                  </div>
+          
+                  <div class="meses">
+                    <h2 class="tittle">Febrero</h2>
+                    <div class="calendar">
+                      <div id="day-name-feb" class="day-name-div"></div>
+                      <div id="day-div-feb" class="day-div"></div>
+                    </div>
+                  </div>
+          
+                  <div class="meses">
+                    <h2 class="tittle">Marzo</h2>
+                    <div class="calendar">
+                      <div id="day-name-mar" class="day-name-div"></div>
+                      <div id="day-div-mar" class="day-div"></div>
+                    </div>
+                  </div>
+          
+                  <div class="meses">
+                    <h2 class="tittle">Abril</h2>
+                    <div class="calendar">
+                      <div id="day-name-abr" class="day-name-div"></div>
+                      <div id="day-div-abr" class="day-div"></div>
+                    </div>
+                  </div>
+          
+                  <div class="meses">
+                    <h2 class="tittle">Mayo</h2>
+                    <div class="calendar">
+                      <div id="day-name-may" class="day-name-div"></div>
+                      <div id="day-div-may" class="day-div"></div>
+                    </div>
+                  </div>
+          
+                  <div class="meses">
+                    <h2 class="tittle">Junio</h2>
+                    <div class="calendar">
+                      <div id="day-name-jun" class="day-name-div"></div>
+                      <div id="day-div-jun" class="day-div"></div>
+                    </div>
+                  </div>
+          
+                  <div class="meses">
+                    <h2 class="tittle">Julio</h2>
+                    <div class="calendar">
+                      <div id="day-name-jul" class="day-name-div"></div>
+                      <div id="day-div-jul" class="day-div"></div>
+                    </div>
+                  </div>
+          
+                  <div class="meses">
+                    <h2 class="tittle">Agosto</h2>
+                    <div class="calendar">
+                      <div id="day-name-ago" class="day-name-div"></div>
+                      <div id="day-div-ago" class="day-div"></div>
+                    </div>
+                  </div>
+          
+                  <div class="meses">
+                    <h2 class="tittle">Septiembre</h2>
+                    <div class="calendar">
+                      <div id="day-name-sep" class="day-name-div"></div>
+                      <div id="day-div-sep" class="day-div"></div>
+                    </div>
+                  </div>
+          
+                  <div class="meses">
+                    <h2 class="tittle">Octubre</h2>
+                    <div class="calendar">
+                      <div id="day-name-oct" class="day-name-div"></div>
+                      <div id="day-div-oct" class="day-div"></div>
+                    </div>
+                  </div>
+          
+                  <div class="meses">
+                    <h2 class="tittle">Noviembre</h2>
+                    <div class="calendar">
+                      <div id="day-name-nov" class="day-name-div"></div>
+                      <div id="day-div-nov" class="day-div"></div>
+                    </div>
+                  </div>
+          
+                  <div class="meses">
+                    <h2 class="tittle">Diciembre</h2>
+                    <div class="calendar">
+                      <div id="day-name-dic" class="day-name-div"></div>
+                      <div id="day-div-dic" class="day-div"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <footer>
+              <p>
+                  <a id="personalLink" class="personalLinks" href="https://github.com/Mangostar1" target="_blank">
+                    <img src="./icons/github-svgrepo-com.svg" class="icons" id="git">
+                  </a>
+              </p>
+              <p>
+                  <a href="https://www.linkedin.com/in/omar-zavala-ugarte-7b5036149/" class="personalLinks" target="_blank">
+                    <img src="./icons/linkedin-svgrepo-com.svg" class="icons" id="linkedin">
+                  </a>
+              </p>
+              <p id="email-content-footer">
+                  <a href="mailto:influencia.x.94@gmail.com" class="personalLinks" target="_blank">
+                    <img src="/icons/email-svgrepo-com.svg" class="icons" id="email">
+                  </a>
+              </p>
+          </footer>
+        </div>
+    </div>
+</body>
+<script src="calendar.js" type="text/javascript"></script>
+</html>
