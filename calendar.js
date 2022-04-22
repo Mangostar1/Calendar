@@ -290,7 +290,7 @@ function writeMonth(month) {
   let eventMonth = document.getElementById(`evento-${diames}`);
   
   async function eventoMonth() {
-    const basicMonth = await fetch("http://127.0.0.1:5500/works/Ejercicios_propios/calendar/basicStructure.json");
+    const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
     let primerEventoMonth = await basicMonth.json();
   
 
@@ -806,7 +806,7 @@ let eventMonth = document.getElementById("evento-8");// el - 8 es equivalente al
 let eventWekk = document.getElementsByClassName("eventWeek");
 
 async function inicioEventoDia() { 
-  const basicStruc = await fetch("http://127.0.0.1:5500/works/Ejercicios_propios/calendar/basicStructure.json");
+  const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
   let primerEvento = await basicStruc.json();
   
 
