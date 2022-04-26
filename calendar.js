@@ -48,54 +48,31 @@ function startDayYear(month) {
 const nameDay = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
 let containerDay = document.getElementById("container-Day");
 let hourDay = [{
-  hour: "00:00 hrs"
-}, {
-  hour: "01:00 hrs"
-}, {
-  hour: "02:00 hrs"
-}, {
-  hour: "03:00 hrs"
-}, {
-  hour: "04:00 hrs"
-}, {
-  hour: "05:00 hrs"
-}, {
-  hour: "06:00 hrs"
-}, {
-  hour: "07:00 hrs"
-}, {
-  hour: "08:00 hrs"
-}, {
-  hour: "09:00 hrs"
-}, {
-  hour: "10:00 hrs"
-}, {
-  hour: "11:00 hrs"
-}, {
-  hour: "12:00 hrs"
-}, {
-  hour: "13:00 hrs"
-}, {
-  hour: "14:00 hrs"
-}, {
-  hour: "15:00 hrs"
-}, {
-  hour: "16:00 hrs"
-}, {
-  hour: "17:00 hrs"
-}, {
-  hour: "18:00 hrs"
-}, {
-  hour: "19:00 hrs"
-}, {
-  hour: "20:00 hrs"
-}, {
-  hour: "21:00 hrs"
-}, {
-  hour: "22:00 hrs"
-}, {
-  hour: "23:00 hrs"
-}]
+  hour: "00:00 hrs"}, 
+  {hour: "01:00 hrs"}, 
+  {hour: "02:00 hrs"}, 
+  {hour: "03:00 hrs"}, 
+  {hour: "04:00 hrs"}, 
+  {hour: "05:00 hrs"}, 
+  {hour: "06:00 hrs"}, 
+  {hour: "07:00 hrs"}, 
+  {hour: "08:00 hrs"}, 
+  {hour: "09:00 hrs"}, 
+  {hour: "10:00 hrs"}, 
+  {hour: "11:00 hrs"}, 
+  {hour: "12:00 hrs"}, 
+  {hour: "13:00 hrs"}, 
+  {hour: "14:00 hrs"}, 
+  {hour: "15:00 hrs"}, 
+  {hour: "16:00 hrs"}, 
+  {hour: "17:00 hrs"}, 
+  {hour: "18:00 hrs"}, 
+  {hour: "19:00 hrs"}, 
+  {hour: "20:00 hrs"}, 
+  {hour: "21:00 hrs"}, 
+  {hour: "22:00 hrs"}, 
+  {hour: "23:00 hrs"}
+];
 
 hourDay.forEach((item) => {
   containerDay.innerHTML += '<div class="diario">' + '<p class="hora">' + item.hour + '</p>' +
@@ -110,56 +87,32 @@ let containerWeek = document.getElementById("container-week");
 let weekContent = document.getElementById("days-of-week");
 let weekDiasDeSemana = document.getElementsByClassName("diaa-week");
 const hourDayWeek = [{
-  hour: "Horas"
-}, {
-  hour: "00:00 hrs"
-}, {
-  hour: "01:00 hrs"
-}, {
-  hour: "02:00 hrs"
-}, {
-  hour: "03:00 hrs"
-}, {
-  hour: "04:00 hrs"
-}, {
-  hour: "05:00 hrs"
-}, {
-  hour: "06:00 hrs"
-}, {
-  hour: "07:00 hrs"
-}, {
-  hour: "08:00 hrs"
-}, {
-  hour: "09:00 hrs"
-}, {
-  hour: "10:00 hrs"
-}, {
-  hour: "11:00 hrs"
-}, {
-  hour: "12:00 hrs"
-}, {
-  hour: "13:00 hrs"
-}, {
-  hour: "14:00 hrs"
-}, {
-  hour: "15:00 hrs"
-}, {
-  hour: "16:00 hrs"
-}, {
-  hour: "17:00 hrs"
-}, {
-  hour: "18:00 hrs"
-}, {
-  hour: "19:00 hrs"
-}, {
-  hour: "20:00 hrs"
-}, {
-  hour: "21:00 hrs"
-}, {
-  hour: "22:00 hrs"
-}, {
-  hour: "23:00 hrs"
-}]
+  hour: "Horas"}, 
+  {hour: "00:00 hrs"}, 
+  {hour: "01:00 hrs"}, 
+  {hour: "02:00 hrs"}, 
+  {hour: "03:00 hrs"}, 
+  {hour: "04:00 hrs"}, 
+  {hour: "05:00 hrs"}, 
+  {hour: "06:00 hrs"}, 
+  {hour: "07:00 hrs"}, 
+  {hour: "08:00 hrs"}, 
+  {hour: "09:00 hrs"}, 
+  {hour: "10:00 hrs"}, 
+  {hour: "11:00 hrs"}, 
+  {hour: "12:00 hrs"}, 
+  {hour: "13:00 hrs"}, 
+  {hour: "14:00 hrs"}, 
+  {hour: "15:00 hrs"}, 
+  {hour: "16:00 hrs"}, 
+  {hour: "17:00 hrs"}, 
+  {hour: "18:00 hrs"}, 
+  {hour: "19:00 hrs"}, 
+  {hour: "20:00 hrs"}, 
+  {hour: "21:00 hrs"}, 
+  {hour: "22:00 hrs"}, 
+  {hour: "23:00 hrs"}
+];
 
 let cont = 1;
 let day = 1;
@@ -239,21 +192,9 @@ for (var i = 0; i < 7; i++) {
 
 let wrapper = document.getElementById('days-of-month');
 let containerMonth = document.getElementById('container-month');
-const daysOfWeek = [{
-  day: 'Lun'
-}, {
-  day: 'Mar'
-}, {
-  day: 'Mié'
-}, {
-  day: 'Jue'
-}, {
-  day: 'Vie'
-}, {
-  day: 'Sáb'
-}, {
-  day: 'Dom'
-}];
+const daysOfWeek = [
+  {day: 'Lun'}, {day: 'Mar'}, {day: 'Mié'}, {day: 'Jue'}, {day: 'Vie'}, {day: 'Sáb'}, {day: 'Dom'}
+];
 
 writeMonth(currentMonth);
 
@@ -285,19 +226,22 @@ function writeMonth(month) {
     }
   }
   
-  /* en testeo: funcionando bien */
-  let diames = eventTest.getDate();
-  let eventMonth = document.getElementById(`evento-${diames}`);
-  
   async function eventoMonth() {
     const basicMonth = await fetch("/basicStructure.json");
     const basicMonthJson = await basicMonth.json();
+
+    const datesJSON = basicMonthJson.events[0].dateStartEvent;
+    const datesSplit = datesJSON.split('-');
+
+    let dateMonth = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
+    let diames = dateMonth.getDate();
+    let eventMonth = document.getElementById(`evento-${diames}`);
 
     let horaInicialAA = basicMonthJson.events[0].hourStart;
     let horafinalAA = basicMonthJson.events[0].hourFinish;
     let tituloEventoAA = basicMonthJson.events[0].title;
 
-    if (eventTest.getMonth() === currentMonth && eventTest.getFullYear() === currentYear) {
+    if (dateMonth.getMonth() === currentMonth && dateMonth.getFullYear() === currentYear) {
       eventMonth.innerHTML = '<button class="btn-item" onclick="handleBtn()"><span class="sp-hour">'+ horaInicialAA +" - " + horafinalAA +'</span>'+ '<br>' +'<span class="sp-title">'+ tituloEventoAA +'</span></button>';
     } else {
       eventMonth.innerHTML = '<li class="event"></li>';
@@ -306,7 +250,6 @@ function writeMonth(month) {
   
   eventoMonth();
 }
-
 
 /* funcion evento */
 function handleBtn() {
@@ -318,21 +261,9 @@ function handleBtn() {
 let containerYear = document.getElementById("container-Year");
 let dayNameYear = document.getElementsByClassName("day-name-div");
 let daysMonthYear = document.getElementsByClassName("day-div");
-const nameWeeck = [{
-  day: 'L'
-}, {
-  day: 'M'
-}, {
-  day: 'M'
-}, {
-  day: 'J'
-}, {
-  day: 'V'
-}, {
-  day: 'S'
-}, {
-  day: 'D'
-}];
+const nameWeeck = [
+  {day: 'L'}, {day: 'M'}, {day: 'M'}, {day: 'J'}, {day: 'V'}, {day: 'S'}, {day: 'D'}
+];
 
 nameWeeck.forEach((item) => {
   for (let i = 0; i < 12; i++) {
@@ -792,60 +723,64 @@ let eventWekk = document.getElementsByClassName("eventWeek");
 
 async function inicioEventoDia() { 
   const basicStruc = await fetch("/basicStructure.json");
-  let primerEvento = await basicStruc.json();
+  const primerEvento = await basicStruc.json();
   
+  const datesJSON = primerEvento.events[0].dateStartEvent;
+  const datesSplit = datesJSON.split("-");
+
+  let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
 
   let horaInicial = primerEvento.events[0].hourStart;
   let horafinal = primerEvento.events[0].hourFinish;
   let tituloEvento = primerEvento.events[0].title;
 
   /* Day */
-  if (eventTest.getDate() === currentWeek && eventTest.getDay() === currentDayName && eventTest.getFullYear() === currentYear) {
+  if (fechaEvento.getDate() === currentWeek && fechaEvento.getDay() === currentDayName && fechaEvento.getFullYear() === currentYear) {
     eventoLi[4].innerHTML = '<button class="btn-item" onclick="handleBtn()"><span class="sp-hour">'+ horaInicial +'</span> - <span class="sp-title">'+ tituloEvento +'</span></button>';
   } else {
     eventoLi[4].innerHTML = '<li class="event">Test 1</li>';
   }
 
   /* Week */
-  if (eventTest.getMonth() === currentMonth && eventTest.getFullYear() === currentYear){
+  if (fechaEvento.getMonth() === currentMonth && fechaEvento.getFullYear() === currentYear){
     if (currentDayName === 1) {//si hoy es lunes aplica este if
-      if (eventTest.getDate() === currentWeek || eventTest.getDate() === currentWeek + 1 || eventTest.getDate() === currentWeek + 2 || eventTest.getDate() === currentWeek + 3 || eventTest.getDate() === currentWeek + 4 || eventTest.getDate() === currentWeek + 5 || eventTest.getDate() === currentWeek + 6) {
+      if (fechaEvento.getDate() === currentWeek || fechaEvento.getDate() === currentWeek + 1 || fechaEvento.getDate() === currentWeek + 2 || fechaEvento.getDate() === currentWeek + 3 || fechaEvento.getDate() === currentWeek + 4 || fechaEvento.getDate() === currentWeek + 5 || fechaEvento.getDate() === currentWeek + 6) {
         eventWekk[29].innerHTML = '<button class="btn-item" onclick="handleBtn()"><span class="sp-hour">'+ horaInicial + '</span> - <span class="sp-title">'+ tituloEvento +'</span></button>';
       } else {
         eventWekk[29].innerHTML = '<li class="event"></li>';
       }
     } else if(currentDayName === 2){//si hoy es martes aplica este if
-      if (eventTest.getDate() === currentWeek - 1 || eventTest.getDate() === currentWeek || eventTest.getDate() === currentWeek + 1 || eventTest.getDate() === currentWeek + 2 || eventTest.getDate() === currentWeek + 3 || eventTest.getDate() === currentWeek + 4 || eventTest.getDate() === currentWeek + 5) {
+      if (fechaEvento.getDate() === currentWeek - 1 || fechaEvento.getDate() === currentWeek || fechaEvento.getDate() === currentWeek + 1 || fechaEvento.getDate() === currentWeek + 2 || fechaEvento.getDate() === currentWeek + 3 || fechaEvento.getDate() === currentWeek + 4 || fechaEvento.getDate() === currentWeek + 5) {
         eventWekk[29].innerHTML = '<button class="btn-item" onclick="handleBtn()"><span class="sp-hour">'+ horaInicial + '</span> - <span class="sp-title">'+ tituloEvento +'</span></button>';
       } else {
         eventWekk[29].innerHTML = '<li class="event"></li>';
       }
     } else if(currentDayName === 3){//si hoy es miercoles aplica este if
-      if (eventTest.getDate() === currentWeek - 2 || eventTest.getDate() === currentWeek - 1 || eventTest.getDate() === currentWeek || eventTest.getDate() === currentWeek + 1 || eventTest.getDate() === currentWeek + 2 || eventTest.getDate() === currentWeek + 3 || eventTest.getDate() === currentWeek + 4) {
+      if (fechaEvento.getDate() === currentWeek - 2 || fechaEvento.getDate() === currentWeek - 1 || fechaEvento.getDate() === currentWeek || fechaEvento.getDate() === currentWeek + 1 || fechaEvento.getDate() === currentWeek + 2 || fechaEvento.getDate() === currentWeek + 3 || fechaEvento.getDate() === currentWeek + 4) {
         eventWekk[29].innerHTML = '<button class="btn-item" onclick="handleBtn()"><span class="sp-hour">'+ horaInicial + '</span> - <span class="sp-title">'+ tituloEvento +'</span></button>';
       } else{
         eventWekk[29].innerHTML = '<li class="event"></li>';
       }
     } else if(currentDayName === 4){//si hoy es jueves aplica este if
-      if (eventTest.getDate() === currentWeek - 3 || eventTest.getDate() === currentWeek - 2 || eventTest.getDate() === currentWeek - 1 || eventTest.getDate() === currentWeek || eventTest.getDate() === currentWeek + 1 || eventTest.getDate() === currentWeek + 2 || eventTest.getDate() === currentWeek + 3) {
+      if (fechaEvento.getDate() === currentWeek - 3 || fechaEvento.getDate() === currentWeek - 2 || fechaEvento.getDate() === currentWeek - 1 || fechaEvento.getDate() === currentWeek || fechaEvento.getDate() === currentWeek + 1 || fechaEvento.getDate() === currentWeek + 2 || fechaEvento.getDate() === currentWeek + 3) {
         eventWekk[29].innerHTML = '<button class="btn-item" onclick="handleBtn()"><span class="sp-hour">'+ horaInicial + '</span> - <span class="sp-title">'+ tituloEvento +'</span></button>';
       } else {
         eventWekk[29].innerHTML = '<li class="event"></li>';
       }
     } else if(currentDayName === 5){//si hoy es viernes aplica este if
-      if (eventTest.getDate() === currentWeek - 4 || eventTest.getDate() === currentWeek - 3 || eventTest.getDate() === currentWeek - 2 || eventTest.getDate() === currentWeek - 1 || eventTest.getDate() === currentWeek || eventTest.getDate() === currentWeek + 1 || eventTest.getDate() === currentWeek + 2) {
+      if (fechaEvento.getDate() === currentWeek - 4 || fechaEvento.getDate() === currentWeek - 3 || fechaEvento.getDate() === currentWeek - 2 || fechaEvento.getDate() === currentWeek - 1 || fechaEvento.getDate() === currentWeek || fechaEvento.getDate() === currentWeek + 1 || fechaEvento.getDate() === currentWeek + 2) {
         eventWekk[29].innerHTML = '<button class="btn-item" onclick="handleBtn()"><span class="sp-hour">'+ horaInicial + '</span> - <span class="sp-title">'+ tituloEvento +'</span></button>';
       } else {
         eventWekk[29].innerHTML = '<li class="event"></li>';
       }
     } else if(currentDayName === 6){//si hoy es sabado aplica este if
-      if (eventTest.getDate() === currentWeek - 5|| eventTest.getDate() === currentWeek - 4 || eventTest.getDate() === currentWeek - 3 || eventTest.getDate() === currentWeek - 2 || eventTest.getDate() === currentWeek - 1 || eventTest.getDate() === currentWeek || eventTest.getDate() === currentWeek + 1) {
+      if (fechaEvento.getDate() === currentWeek - 5|| fechaEvento.getDate() === currentWeek - 4 || fechaEvento.getDate() === currentWeek - 3 || fechaEvento.getDate() === currentWeek - 2 || fechaEvento.getDate() === currentWeek - 1 || fechaEvento.getDate() === currentWeek || fechaEvento.getDate() === currentWeek + 1) {
         eventWekk[29].innerHTML = '<button class="btn-item" onclick="handleBtn()"><span class="sp-hour">'+ horaInicial + '</span> - <span class="sp-title">'+ tituloEvento +'</span></button>';
       } else {
         eventWekk[29].innerHTML = '<li class="event"></li>';
       }
     } else if(currentDayName === 0){//si hoy es domingo aplica este if
-      if (eventTest.getDate() === currentWeek - 6 || eventTest.getDate() === currentWeek - 5 || eventTest.getDate() === currentWeek - 4 || eventTest.getDate() === currentWeek - 3 || eventTest.getDate() === currentWeek - 2 || eventTest.getDate() === currentWeek - 1 || eventTest.getDate() === currentWeek) {
+      if (fechaEvento.getDate() === currentWeek - 6 || fechaEvento.getDate() === currentWeek - 5 || fechaEvento.getDate() === currentWeek - 4 || fechaEvento.getDate() === currentWeek - 3 || fechaEvento.getDate() === currentWeek - 2 || fechaEvento.getDate() === currentWeek - 1 || fechaEvento.getDate() === currentWeek) {
         eventWekk[29].innerHTML = '<button class="btn-item" onclick="handleBtn()"><span class="sp-hour">'+ horaInicial + '</span> - <span class="sp-title">'+ tituloEvento +'</span></button>';
       } else {
         eventWekk[29].innerHTML = '<li class="event"></li>';
