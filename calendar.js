@@ -231,21 +231,24 @@ function writeMonth(month) {
     const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
     const basicMonthJson = await basicMonth.json();
 
-    const datesJSON = basicMonthJson.events[0].dateStartEvent;
-    const datesSplit = datesJSON.split('-');
+    for (let i = 0; i < 3; i++) {
+      let datesJSON = basicMonthJson.events[i].dateStartEvent;
 
-    let dateMonth = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
-    let diames = dateMonth.getDate();
-    let eventMonth = document.getElementById(`evento-${diames}`);
+      const datesSplit = datesJSON.split('-');
 
-    let horaInicialAA = basicMonthJson.events[0].hourStart;
-    let horafinalAA = basicMonthJson.events[0].hourFinish;
-    let tituloEventoAA = basicMonthJson.events[0].title;
+      let dateMonth = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
+      let diames = dateMonth.getDate();
+      let eventMonth = document.getElementById(`evento-${diames}`);
 
-    if (dateMonth.getMonth() === currentMonth && dateMonth.getFullYear() === currentYear) {
-      eventMonth.innerHTML = '<button class="btn-item" onclick="handleBtn()"><span class="sp-hour">'+ horaInicialAA +" - " + horafinalAA +'</span>'+ '<br>' +'<span class="sp-title">'+ tituloEventoAA +'</span></button>';
-    } else {
-      eventMonth.innerHTML = '<li class="event"></li>';
+      let horaInicialAA = basicMonthJson.events[i].hourStart;
+      let horafinalAA = basicMonthJson.events[i].hourFinish;
+      let tituloEventoAA = basicMonthJson.events[i].title;
+
+      if (dateMonth.getMonth() === currentMonth && dateMonth.getFullYear() === currentYear) {
+        eventMonth.innerHTML = '<button class="btn-item" onclick="handleBtn()"><span class="sp-hour">'+ horaInicialAA +" - " + horafinalAA +'</span>'+ '<br>' +'<span class="sp-title">'+ tituloEventoAA +'</span></button>';
+      } else {
+        eventMonth.innerHTML = '<li class="event"></li>';
+      }
     }
   }
   
