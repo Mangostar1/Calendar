@@ -168,6 +168,10 @@ ul{/* month */
   border-radius: 6.5px;
   cursor: pointer;
 }
+.btn-item:hover{
+  background-color: var(--colorTwo);
+  color: var(--neutralWhite);
+}
 
 #container-week .btn-item{
   margin-left: 15px;
