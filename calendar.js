@@ -1,14 +1,14 @@
 /* Eventos en Date() */
 
-let eventTest = new Date(2022, 1, 20, 4);
+let eventTest = new Date(2022, 1, 12, 4);
 
 /* Dates */
 let fecha = new Date();
 
-let currentDayName = fecha.getDay(); /* muestra el nombre del dia en el que estamos si se suma al nameDay */
-let currentWeek = fecha.getDate(); /* muestra el dia del mes en el que estamos */
-let currentMonth = fecha.getMonth(); /* muestra mes  */
-let currentYear = fecha.getFullYear(); /* muestra año */
+let currentDayName = fecha.getDay();
+let currentWeek = fecha.getDate();
+let currentMonth = fecha.getMonth();
+let currentYear = fecha.getFullYear();
 
 
 const nameMonth = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
@@ -108,7 +108,7 @@ hourDay.forEach((item) => {
 /* week */
 let containerWeek = document.getElementById("container-week");
 let weekContent = document.getElementById("days-of-week");
-let weekDiasDeSemana = document.getElementsByClassName("diaa-week"); /* En fase de prueba */
+let weekDiasDeSemana = document.getElementsByClassName("diaa-week");
 const hourDayWeek = [{
   hour: "Horas"
 }, {
@@ -290,13 +290,12 @@ function writeMonth(month) {
   let eventMonth = document.getElementById(`evento-${diames}`);
   
   async function eventoMonth() {
-    const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
-    let primerEventoMonth = await basicMonth.json();
-  
+    const basicMonth = await fetch("/basicStructure.json");
+    const basicMonthJson = await basicMonth.json();
 
-    let horaInicialAA = primerEventoMonth.events[0].hourStart;
-    let horafinalAA = primerEventoMonth.events[0].hourFinish;
-    let tituloEventoAA = primerEventoMonth.events[0].title;
+    let horaInicialAA = basicMonthJson.events[0].hourStart;
+    let horafinalAA = basicMonthJson.events[0].hourFinish;
+    let tituloEventoAA = basicMonthJson.events[0].title;
 
     if (eventTest.getMonth() === currentMonth && eventTest.getFullYear() === currentYear) {
       eventMonth.innerHTML = '<button class="btn-item" onclick="handleBtn()"><span class="sp-hour">'+ horaInicialAA +" - " + horafinalAA +'</span>'+ '<br>' +'<span class="sp-title">'+ tituloEventoAA +'</span></button>';
@@ -308,18 +307,6 @@ function writeMonth(month) {
   eventoMonth();
 }
 
-/* 
-// Boton today, hace que se vuelva a la fecha actual asi no se recarga pagina para volver
-let todayMonth = document.getElementsByClassName("today");
-
-todayMonth[0].onclick = () => {
-  let d = new Date();
-  d.getMonth();
-
-  document.getElementById("fecha-month").innerHTML = nameMonth[d.getMonth()] + " de " + d.getFullYear();
-  wrapper.innerHTML = " "
-  writeMonth(d.getMonth());
-} */
 
 /* funcion evento */
 function handleBtn() {
@@ -720,7 +707,6 @@ function prevMonth() {
     currentMonth = 11;
     currentYear--;
   }
-  //inicioEventoDia();
   setNewDateMonth();
 }
 
@@ -731,7 +717,6 @@ function nextMonth() {
     currentMonth = 0;
     currentYear++;
   }
-  //inicioEventoDia();
   setNewDateMonth();
 }
 
@@ -806,7 +791,7 @@ let eventMonth = document.getElementById("evento-8");// el - 8 es equivalente al
 let eventWekk = document.getElementsByClassName("eventWeek");
 
 async function inicioEventoDia() { 
-  const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
+  const basicStruc = await fetch("/basicStructure.json");
   let primerEvento = await basicStruc.json();
   
 
