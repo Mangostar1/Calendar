@@ -1,0 +1,35 @@
+.modal{
+    max-width: 330px;
+    border: 1px solid red;
+    background-color: var(--neutralGray);
+    padding: 10px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* transform: translate(-50%, -50%); */
+    z-index: 10;
+}
+.modal input:first-of-type{
+    width: 100%;
+}
+.modal-close-content{
+    /* background-color: #ff8383; */
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.closeModal{
+    width:25px;
+    cursor: pointer;
+}
+.closeModal:hover{
+    filter: invert(95%);
+}
+#probando{
+    color: var(--neutralWhite);
+}
+.modal-submit-content{
+    display: flex;
+    flex-direction: row-reverse;
+}

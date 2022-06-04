@@ -1,3 +1,5 @@
+import { NewModalEvent } from "./EventoModal.js";
+
 /* Dates */
 let fecha = new Date();
 
@@ -186,7 +188,7 @@ for (var i = 0; i < 7; i++) {
 
 /* month */
 
-let wrapper = document.getElementById('days-of-month');
+export let wrapper = document.getElementById('days-of-month');
 let containerMonth = document.getElementById('container-month');
 const daysOfWeek = [
   {day: 'Lun'}, {day: 'Mar'}, {day: 'Mié'}, {day: 'Jue'}, {day: 'Vie'}, {day: 'Sáb'}, {day: 'Dom'}
@@ -208,13 +210,13 @@ function writeMonth(month) {
   }
   for (let i = 1; i <= getTotalDays(month); i++) {
     if (i == currentWeek && month == 0) {
-      wrapper.innerHTML += '<div class="grid-item"><p class="day-number day-month-active">' + i + '</p>' +
+      wrapper.innerHTML += `<div class="grid-item"><p class="day-number day-month-active">` + i + '</p>' +
         '<ul>' +
         `<li class="event" id="evento-${i}"></li>` +
         '</ul>' +
         '</div>';
     } else {
-      wrapper.innerHTML += '<div class="grid-item"><p class="day-number">' + i + '</p>' +
+      wrapper.innerHTML += `<div class="grid-item"><p class="day-number">` + i + '</p>' +
         '<ul>' +
         `<li class="event" id="evento-${i}"></li>` +
         '</ul>' +
@@ -241,7 +243,9 @@ function writeMonth(month) {
       let tituloEventoAA = basicMonthJson.events[i].title;
 
       if (dateMonth.getMonth() === currentMonth && dateMonth.getFullYear() === currentYear) {
-        eventMonth.innerHTML = '<button class="btn-item" onclick="handleBtn()"><span class="sp-hour">'+ horaInicialAA +" - " + horafinalAA +'</span>'+ '<br>' +'<span class="sp-title">'+ tituloEventoAA +'</span></button>';
+        eventMonth.innerHTML = `<button class="btn-item" id="btn-event-${i}"><span class="sp-hour">`+ horaInicialAA +" - " + horafinalAA +'</span>'+ '<br>' +'<span class="sp-title">'+ tituloEventoAA +'</span></button>';
+        var btn = document.getElementsByClassName('btn-item')[i];
+        btn.onclick = () => {NewModalEvent()}
       } else {
         eventMonth.innerHTML = '<li class="event"></li>';
       }
@@ -250,7 +254,6 @@ function writeMonth(month) {
   
   eventoMonth();
 }
-
 /* funcion evento */
 function handleBtn() {
   alert("hola");
@@ -801,7 +804,6 @@ let dinamico = document.getElementsByClassName("horas");
 if (semanal[0].style = "height: 61px;") {
   dinamico[1].style = "padding-bottom: 2.1px;"
 }
-
 /* Zona de pruebas */
 
 
