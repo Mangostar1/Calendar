@@ -254,7 +254,6 @@ function writeMonth(month) {
       if (!document.body.contains(document.querySelector('div.modal'))) {
         NewModalEvent(Dias[i]);
       }
-      /* NewModalEvent(Dias[i]); */
     }
   }
   eventoMonth();
