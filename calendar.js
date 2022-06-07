@@ -254,9 +254,10 @@ function writeMonth(month) {
     Dias[i].onclick = () => {
       if (!document.body.contains(document.querySelector('div.modal'))) {
         NewModalEvent(Dias[i], i);
-      } else {
+      } 
+      if (document.body.contains(document.querySelector('div.modal'))) {
         closeModalDiv = document.getElementById('closeModalID');
-        closeModalDiv.onclick = closeModal();
+        closeModalDiv.addEventListener('click', closeModal());
       }
     }
   }
