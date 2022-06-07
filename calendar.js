@@ -251,7 +251,10 @@ function writeMonth(month) {
   }
   for (let i = 1; i <= getTotalDays(month); i++) {
     Dias[i].onclick = () => {
-      NewModalEvent(Dias[i]);
+      if (!document.body.contains(document.querySelector('div.modal'))) {
+        NewModalEvent(Dias[i]);
+      }
+      /* NewModalEvent(Dias[i]); */
     }
   }
   eventoMonth();
@@ -260,7 +263,6 @@ function writeMonth(month) {
 function handleBtn() {
   alert("hola");
 }
-
 /* year */
 
 let containerYear = document.getElementById("container-Year");

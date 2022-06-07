@@ -26,17 +26,19 @@ export function NewModalEvent(element) {
     element.appendChild(newDiv);
 
     let closeModal = document.getElementsByClassName('closeModal');
-    closeModal[0].addEventListener('click', (element) => {
+    /* closeModal[0].addEventListener('click', (element) => {
+        console.log('cerrando modal');
         element.removeChild(newDiv);
-    });
+    }); */
 
-    /* closeModal.onclick = (element) => {
-        console.log('hola');
+    closeModal[0].onclick = () => {
+        console.log('cerrando modal');
+        
         element.removeChild(newDiv);
-    } */
+    }
 
-    let buttonModal = document.querySelector('.buttonModa');
-    buttonModal.onclick = () => {
+    let buttonModal = document.getElementsByClassName('buttonModa');
+    buttonModal[0].onclick = () => {
         console.log('hola desde boton aceptar');
     }
 }
