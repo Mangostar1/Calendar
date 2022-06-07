@@ -25,20 +25,20 @@ export function NewModalEvent(element) {
 
     element.appendChild(newDiv);
 
-    let closeModal = document.getElementsByClassName('closeModal');
-    /* closeModal[0].addEventListener('click', (element) => {
-        console.log('cerrando modal');
-        element.removeChild(newDiv);
-    }); */
-
-    closeModal[0].onclick = () => {
-        console.log('cerrando modal');
-        
-        element.removeChild(newDiv);
-    }
-
     let buttonModal = document.getElementsByClassName('buttonModa');
     buttonModal[0].onclick = () => {
         console.log('hola desde boton aceptar');
+        let title = document.getElementById('titleEvent').value;
+        let date = document.getElementById('dateInput').value;
+        let time = document.getElementById('timeInput').value;
+        console.log(title, date, time);
     }
+}
+
+export function closeModal(element) {
+    console.log('cerrando modal');
+    console.log(document.querySelector('div.modal'));
+    console.log(element);
+    element.removeChild(document.getElementsByClassName('modal')[0]);
+    console.log(document.querySelector('div.modal'));
 }

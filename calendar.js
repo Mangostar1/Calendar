@@ -1,4 +1,4 @@
-import { NewModalEvent } from "./EventoModal.js";
+import { NewModalEvent, closeModal } from "./EventoModal.js";
 
 /* Dates */
 export let fecha = new Date();
@@ -189,6 +189,7 @@ for (var i = 0; i < 7; i++) {
 export let wrapper = document.getElementById('days-of-month');
 let containerMonth = document.getElementById('container-month');
 var Dias;
+var closeModalDiv;
 const daysOfWeek = [
   {day: 'Lun'}, {day: 'Mar'}, {day: 'Mié'}, {day: 'Jue'}, {day: 'Vie'}, {day: 'Sáb'}, {day: 'Dom'}
 ];
@@ -253,15 +254,21 @@ function writeMonth(month) {
     Dias[i].onclick = () => {
       if (!document.body.contains(document.querySelector('div.modal'))) {
         NewModalEvent(Dias[i]);
+        closeModalDiv = document.getElementById('closeModalID');
+        /* closeModalDiv.onclick = () => {
+          document.getElementsByClassName('modal')[0].remove();
+          console.log(document.getElementsByClassName('modal')[0]);
+        } */
       }
+    }
+    closeModalDiv.onclick = () => {
+      document.getElementsByClassName('modal')[0].remove();
+      console.log(document.getElementsByClassName('modal')[0]);
     }
   }
   eventoMonth();
 }
 /* funcion evento */
-function handleBtn() {
-  alert("hola");
-}
 /* year */
 
 let containerYear = document.getElementById("container-Year");
