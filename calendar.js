@@ -1,12 +1,12 @@
 import { NewModalEvent } from "./EventoModal.js";
 
 /* Dates */
-let fecha = new Date();
+export let fecha = new Date();
 
-let currentDayName = fecha.getDay();
-let currentWeek = fecha.getDate();
-let currentMonth = fecha.getMonth();
-let currentYear = fecha.getFullYear();
+export let currentDayName = fecha.getDay();
+export let currentWeek = fecha.getDate();
+export let currentMonth = fecha.getMonth();
+export let currentYear = fecha.getFullYear();
 
 
 const nameMonth = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
@@ -118,8 +118,6 @@ let horas = 0;
 let tmpEventDayWeek = 3; // dynamic
 let tmpHourDayWeek = 4; ; // dynamic
 
-let daysOfWeekfooo = document.getElementById('days-of-week');
-console.log('daysOfWee', daysOfWeekfooo);
 for (let w = 1; w < 169; w++) {
 
   if(horas == tmpHourDayWeek && tmpEventDayWeek == day){
@@ -190,6 +188,7 @@ for (var i = 0; i < 7; i++) {
 
 export let wrapper = document.getElementById('days-of-month');
 let containerMonth = document.getElementById('container-month');
+var Dias;
 const daysOfWeek = [
   {day: 'Lun'}, {day: 'Mar'}, {day: 'Mié'}, {day: 'Jue'}, {day: 'Vie'}, {day: 'Sáb'}, {day: 'Dom'}
 ];
@@ -208,6 +207,7 @@ function writeMonth(month) {
       '</ul>' +
       '</div>';
   }
+  
   for (let i = 1; i <= getTotalDays(month); i++) {
     if (i == currentWeek && month == 0) {
       wrapper.innerHTML += `<div class="grid-item"><p class="day-number day-month-active">` + i + '</p>' +
@@ -223,9 +223,9 @@ function writeMonth(month) {
         '</div>';
     }
   }
-  
+  Dias = document.getElementsByClassName('grid-item');
   async function eventoMonth() {
-    /* const basicMonth = await fetch("/basicStructure.json"); */
+    /* const basicMonth = await fetch("/basicStructure.json"); */ //trabajar con el json de manera local en liveServer
     const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
     const basicMonthJson = await basicMonth.json();
 
@@ -244,14 +244,16 @@ function writeMonth(month) {
 
       if (dateMonth.getMonth() === currentMonth && dateMonth.getFullYear() === currentYear) {
         eventMonth.innerHTML = `<button class="btn-item" id="btn-event-${i}"><span class="sp-hour">`+ horaInicialAA +" - " + horafinalAA +'</span>'+ '<br>' +'<span class="sp-title">'+ tituloEventoAA +'</span></button>';
-        var btn = document.getElementsByClassName('btn-item')[i];
-        btn.onclick = () => {NewModalEvent()}
       } else {
         eventMonth.innerHTML = '<li class="event"></li>';
       }
     }
   }
-  
+  for (let i = 1; i <= getTotalDays(month); i++) {
+    Dias[i].onclick = () => {
+      NewModalEvent(Dias[i]);
+    }
+  }
   eventoMonth();
 }
 /* funcion evento */
@@ -409,6 +411,7 @@ function writeYearMonthDec() {
     daysMonthYear[11].innerHTML += '<li class="day">' + i + '</li>';
   }
 }
+
 /* evento click year */
 
 let eventoYear = document.getElementById("day-year-event");

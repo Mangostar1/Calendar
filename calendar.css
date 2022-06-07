@@ -60,6 +60,7 @@ h1{
   border-width: 0.5px;
   border-radius: 0px;
   min-height: 80px;
+  position: relative;
 }
 
 #days-of-month .grid-item:nth-child(7n+1){
