@@ -253,22 +253,15 @@ function writeMonth(month) {
   for (let i = 1; i <= getTotalDays(month); i++) {
     Dias[i].onclick = () => {
       if (!document.body.contains(document.querySelector('div.modal'))) {
-        NewModalEvent(Dias[i]);
+        NewModalEvent(Dias[i], i);
+      } else {
         closeModalDiv = document.getElementById('closeModalID');
-        /* closeModalDiv.onclick = () => {
-          document.getElementsByClassName('modal')[0].remove();
-          console.log(document.getElementsByClassName('modal')[0]);
-        } */
+        closeModalDiv.onclick = closeModal();
       }
-    }
-    closeModalDiv.onclick = () => {
-      document.getElementsByClassName('modal')[0].remove();
-      console.log(document.getElementsByClassName('modal')[0]);
     }
   }
   eventoMonth();
 }
-/* funcion evento */
 /* year */
 
 let containerYear = document.getElementById("container-Year");

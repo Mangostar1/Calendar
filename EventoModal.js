@@ -1,13 +1,15 @@
 import {wrapper} from './calendar.js';
 
-export function NewModalEvent(element) {
+export function NewModalEvent(element, num) {
     let newDiv = document.createElement('div');
 
     newDiv.classList.add('modal');
 
     newDiv.innerHTML = 
-    '<div class="modal-close-content">' +
-    `<img src="./icons/close-svgrepo-com.svg" class="closeModal" id="closeModalID">`+
+    '<div class="modal-close-content" id="closeModalID">' +
+        `<button>` +
+            `<img src="./icons/close-svgrepo-com.svg" class="closeModal">`+
+        `</button>` +
     '</div>' +
 
     `<input type='text' id='titleEvent' placeholder="Añade un titulo"></input>` +
@@ -19,7 +21,7 @@ export function NewModalEvent(element) {
     `<input type='time' id='timeInput'></input>` +
 
     '<div class="modal-submit-content">' +
-    `<button class="buttonModa" id='buttonModalID'>Aceptar</button>` +
+        `<button class="buttonModa" id='buttonModalID'>Aceptar</button>` +
     '</div>'
     ;
 
@@ -36,9 +38,9 @@ export function NewModalEvent(element) {
 }
 
 export function closeModal(element) {
-    console.log('cerrando modal');
-    console.log(document.querySelector('div.modal'));
-    console.log(element);
-    element.removeChild(document.getElementsByClassName('modal')[0]);
-    console.log(document.querySelector('div.modal'));
+    console.log('hola desde closeModal');
+    const elements = document.getElementsByClassName("modal");
+    while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+    }
 }
