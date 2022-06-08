@@ -186,10 +186,9 @@ for (var i = 0; i < 7; i++) {
 
 /* month */
 
-export let wrapper = document.getElementById('days-of-month');
+let wrapper = document.getElementById('days-of-month');
 let containerMonth = document.getElementById('container-month');
-var Dias;
-var closeModalDiv;
+export let  Dias = document.getElementsByClassName('grid-item');
 const daysOfWeek = [
   {day: 'Lun'}, {day: 'Mar'}, {day: 'Mié'}, {day: 'Jue'}, {day: 'Vie'}, {day: 'Sáb'}, {day: 'Dom'}
 ];
@@ -224,7 +223,6 @@ function writeMonth(month) {
         '</div>';
     }
   }
-  Dias = document.getElementsByClassName('grid-item');
   async function eventoMonth() {
     /* const basicMonth = await fetch("/basicStructure.json"); */ //trabajar con el json de manera local en liveServer
     const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
@@ -254,9 +252,6 @@ function writeMonth(month) {
     Dias[i].onclick = () => {
       if (!document.body.contains(document.getElementsByClassName('modal')[0])) {
         NewModalEvent(Dias[i], i);
-      } else {
-        closeModalDiv = document.getElementById('closeModalID');
-        closeModalDiv.addEventListener('click', closeModal());
       }
     }
   }
