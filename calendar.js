@@ -252,10 +252,9 @@ function writeMonth(month) {
   }
   for (let i = 1; i <= getTotalDays(month); i++) {
     Dias[i].onclick = () => {
-      if (!document.body.contains(document.querySelector('div.modal'))) {
+      if (!document.body.contains(document.getElementsByClassName('modal')[0])) {
         NewModalEvent(Dias[i], i);
-      } 
-      if (document.body.contains(document.querySelector('div.modal'))) {
+      } else {
         closeModalDiv = document.getElementById('closeModalID');
         closeModalDiv.addEventListener('click', closeModal());
       }

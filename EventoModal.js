@@ -7,22 +7,27 @@ export function NewModalEvent(element, num) {
 
     newDiv.innerHTML = 
     '<div class="modal-close-content" id="closeModalID">' +
-        `<button>` +
+        `<button class="btn-close-modal">` +
             `<img src="./icons/close-svgrepo-com.svg" class="closeModal">`+
         `</button>` +
     '</div>' +
+    '<div class="modal-content-info">' +
+        `<input type='text' id='titleEvent' placeholder="Añade un titulo"></input>` +
 
-    `<input type='text' id='titleEvent' placeholder="Añade un titulo"></input>` +
+        `<div class="inputs-content">` +
+            '<label for="dateInput" class="labels-modal">Fecha de inicio</label>' +
+            `<input type='date' id='dateInput'></input>` +
+        `</div>` +
 
-    '<label for="dateInput">Date Imput</label>' +
-    `<input type='date' id='dateInput'></input>` +
+        `<div class="inputs-content">` +
+            '<label for="timeInput" class="labels-modal">Hora de inicio</label>' +
+            `<input type='time' id='timeInput'></input>` +
+        `</div>` +
 
-    '<label for="timeInput">Hour Imput</label>' +
-    `<input type='time' id='timeInput'></input>` +
-
-    '<div class="modal-submit-content">' +
-        `<button class="buttonModa" id='buttonModalID'>Aceptar</button>` +
-    '</div>'
+        '<div class="modal-submit-content">' +
+            `<button class="buttonModa" id='buttonModalID'>Aceptar</button>` +
+        '</div>' +
+    '</div>';
     ;
 
     element.appendChild(newDiv);
