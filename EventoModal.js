@@ -9,7 +9,7 @@ export function NewModalEvent(element, num) {
     newDiv.innerHTML = 
     `<div class="modal-close-content" id="closeModalID">
         <button class="btn-close-modal" id="btn-close-modal-ID">
-            <img src="./icons/close-svgrepo-com.svg" class="closeModal">
+            <img src="./icons/close-svgrepo-com.svg" class="closeModal" id="closeModal-ID">
         </button>
     </div>
     <div class="modal-content-info">
@@ -33,12 +33,14 @@ export function NewModalEvent(element, num) {
 
     element.appendChild(newDiv);
 
-    let btnClose = document.getElementById('btn-close-modal-ID');
+    /* let btnClose = document.getElementById('btn-close-modal-ID');
 
     btnClose.onclick = () => {
         let modal = document.getElementById('modal-id');
+        modal.parentNode.removeChild(modal);
         console.log(modal);
-    }
+        console.log(modal.parentNode.removeChild(modal));
+    } */
 
     let buttonModal = document.getElementsByClassName('buttonModa');
     buttonModal[0].onclick = () => {
@@ -56,8 +58,4 @@ export function closeModal() {
         elements[0].parentNode.removeChild(elements[0]);
         console.log('se ejecuta el while');
     }
-}
-
-function test() {
-    console.log('hola desde test');
 }

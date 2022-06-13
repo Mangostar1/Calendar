@@ -257,6 +257,14 @@ function writeMonth(month) {
   }
   eventoMonth();
 }
+
+document.addEventListener('click', (e) => {
+  console.log('click en', e.target);
+  if (e.target.matches("#closeModal-ID")) {
+    console.log('click en la imagen para cerrar la ventana modal');
+    closeModal();
+  }
+});
 /* year */
 
 let containerYear = document.getElementById("container-Year");
