@@ -1,12 +1,12 @@
 import { NewModalEvent, closeModal } from "./EventoModal.js";
 
 /* Dates */
-export let fecha = new Date();
+let fecha = new Date();
 
-export let currentDayName = fecha.getDay();
-export let currentWeek = fecha.getDate();
-export let currentMonth = fecha.getMonth();
-export let currentYear = fecha.getFullYear();
+let currentDayName = fecha.getDay();
+let currentWeek = fecha.getDate();
+let currentMonth = fecha.getMonth();
+let currentYear = fecha.getFullYear();
 
 
 const nameMonth = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
@@ -258,10 +258,8 @@ function writeMonth(month) {
   eventoMonth();
 }
 
-document.addEventListener('click', (e) => {
-  console.log('click en', e.target);
+document.addEventListener('click', (e) => {//detecta los eventos de click en el documento, util para delegar eventos de click a elementos que no son hijos directos
   if (e.target.matches("#closeModal-ID")) {
-    console.log('click en la imagen para cerrar la ventana modal');
     closeModal();
   }
 });

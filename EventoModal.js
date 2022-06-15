@@ -1,6 +1,4 @@
-import {Dias} from './calendar.js';
-
-export function NewModalEvent(element, num) {
+export function NewModalEvent(element, num) {//ventana modal para ingresar eventos al calendario
     let newDiv = document.createElement('div');
 
     newDiv.classList.add('modal');
@@ -33,15 +31,6 @@ export function NewModalEvent(element, num) {
 
     element.appendChild(newDiv);
 
-    /* let btnClose = document.getElementById('btn-close-modal-ID');
-
-    btnClose.onclick = () => {
-        let modal = document.getElementById('modal-id');
-        modal.parentNode.removeChild(modal);
-        console.log(modal);
-        console.log(modal.parentNode.removeChild(modal));
-    } */
-
     let buttonModal = document.getElementsByClassName('buttonModa');
     buttonModal[0].onclick = () => {
         console.log('hola desde boton aceptar');
@@ -49,13 +38,13 @@ export function NewModalEvent(element, num) {
         let date = document.getElementById('dateInput').value;
         let time = document.getElementById('timeInput').value;
         console.log(title, date, time);
+        alert(title, date, time);
     }
 }
 
-export function closeModal() {
+export function closeModal() {//elimina la ventana modal del DOM.
     let elements = document.getElementsByClassName("modal");
     while(elements.length > 0){
         elements[0].parentNode.removeChild(elements[0]);
-        console.log('se ejecuta el while');
     }
 }
