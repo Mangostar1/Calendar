@@ -61,15 +61,17 @@
 #titleEvent{
     width: 100%;
     height: 30px;
-
-    /* border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 1px solid var(--neutralGray); */
 }
 #titleEvent::placeholder{
     text-align: center;
     font-size: 16px;
+}
+#titleEvent:focus{
+    outline: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid var(--colorOne);
 }
 
 .inputs-content{
@@ -87,4 +89,21 @@
     margin-top: 10px;
     display: flex;
     flex-direction: column;
+}
+
+.buttonModa{
+    width: 100%;
+    height: 35px;
+    border: none;
+    
+    font-size: 16px;
+
+    transition: all .2s ease-in-out;
+}
+.buttonModa:hover{
+    background-color: var(--colorOne);
+    border: none;
+
+    color: var(--neutralWhite);
+    letter-spacing: 2px;
 }

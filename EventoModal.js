@@ -33,7 +33,6 @@ export function NewModalEvent(element, num) {//ventana modal para ingresar event
 
     let buttonModal = document.getElementsByClassName('buttonModa');
     buttonModal[0].onclick = () => {
-        console.log('hola desde boton aceptar');
         let title = document.getElementById('titleEvent').value;
         let date = document.getElementById('dateInput').value;
         let time = document.getElementById('timeInput').value;

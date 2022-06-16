@@ -45,7 +45,7 @@ function startDayYear(month) {//corregir el dia en que comienza el mes en el añ
 /* Delegacion de eventos */
 /*-----------------------*/
 document.addEventListener('click', (e) => {//detecta los eventos de click en el documento, util para delegar eventos de click a elementos que no son hijos directos
-  console.log(e.target);
+  /* console.log(e.target); */
   //modals
   if (e.target.matches('.grid-item')) {
     NewModalEvent(e.target);
@@ -222,7 +222,7 @@ function writeMonth(month) {
   for (let i = startDay(); i > 0; i--) {
     wrapper.innerHTML += `<div class="grid-item"><p class="day-number lastMonth"> ${getTotalDays(currentMonth - 1)-(i - 1)} </p>` +
       '<ul>' +
-      `<li class="event"> 3</li>` +
+      `<li class="event"></li>` +
       '</ul>' +
       '</div>';
   }
@@ -812,12 +812,3 @@ async function inicioEventoDia() {
   }
 }
 inicioEventoDia();
-
-
-/* Cambio de altura de horas en semanal - Estilos css */
-let semanal = document.getElementsByClassName("semanal");
-let dinamico = document.getElementsByClassName("horas");
-
-if (semanal[0].style = "height: 61px;") {
-  dinamico[1].style = "padding-bottom: 2.1px;"
-}

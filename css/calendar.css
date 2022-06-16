@@ -42,7 +42,7 @@ h1{
 }
 #days-of-month{
   display: grid;
-  grid-template-columns: repeat(7, auto);
+  grid-template-columns: repeat(7, 1fr);
   background-color: transparent;
   margin-top: 10px;
   grid-column-end: 9;
@@ -54,12 +54,15 @@ h1{
   background-color: var(--colorbg);
   border-bottom: 1px solid var(--neutralGray);
   border-right: 1px solid var(--neutralGray);
-  padding: 15px;
-  font-size: 20px;
-  text-align: center;
   border-width: 0.5px;
   border-radius: 0px;
+
+  font-size: 20px;
+  text-align: center;
+
+  padding: 15px;
   min-height: 80px;
+
   position: relative;
 }
 
@@ -74,9 +77,11 @@ h1{
 .grid-days {
   background-color: var(--colorOne);
   color: var(--neutralWhite);
-  padding: auto;
+
   font-size: 30px;
   text-align: right;
+
+  padding: auto;
   box-sizing: border-box;
 }
 
@@ -496,27 +501,6 @@ hr{
   padding: 4px;
   border-radius: 50%;
   color: var(--neutralWhite);
-}
-
-/* boton today */
-
-.today{
-  display: none;
-
-  background-color: var(--colorOne);
-  color: var(--neutralWhite);
-  border: none;
-  font-size: 1.5em;
-  border-radius: 10px;
-  padding: 4px 10px;
-  transition: ease 0.2s;
-  cursor: pointer;
-}
-.today:hover{
-  background-color: #007785;
-}
-.today:active{
-  background-color: #0e1e36;
 }
 
 /* last Month days */
