@@ -12,13 +12,11 @@ let currentYear = fecha.getFullYear();
 const nameMonth = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 let weekDays = document.getElementsByClassName("diasNumber");
 
-function isLeap() {
-  /* comprueba si el año es biciesto | funcionando */
+function isLeap() {/* comprueba si el año es biciesto | funcionando */
   return ((currentYear % 100 !== 0) && (currentYear % 4 === 0) || (currentYear % 400 === 0))
 }
 
-function getTotalDays(month) {
-  /* para determinar la cantidad de dias del mes al que se consulte */
+function getTotalDays(month) {/* para determinar la cantidad de dias del mes al que se consulte */
   if (month === -1) month = 11;
 
   if (month == 0 || month == 2 || month == 4 || month == 6 || month == 7 || month == 9 || month == 11) {
@@ -248,17 +246,14 @@ function writeMonth(month) {
       }
     }
   }
-  for (let i = 1; i <= getTotalDays(month); i++) {
-    Dias[i].onclick = () => {
-      if (!document.body.contains(document.getElementsByClassName('modal')[0])) {
-        NewModalEvent(Dias[i], i);
-      }
-    }
-  }
   eventoMonth();
 }
 
 document.addEventListener('click', (e) => {//detecta los eventos de click en el documento, util para delegar eventos de click a elementos que no son hijos directos
+  console.log(e.target);
+  if (e.target.matches('.grid-item')) {
+    NewModalEvent(e.target);
+  }
   if (e.target.matches("#closeModal-ID")) {
     closeModal();
   }

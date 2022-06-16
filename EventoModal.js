@@ -38,7 +38,6 @@ export function NewModalEvent(element, num) {//ventana modal para ingresar event
         let date = document.getElementById('dateInput').value;
         let time = document.getElementById('timeInput').value;
         console.log(title, date, time);
-        alert(title, date, time);
     }
 }
 
