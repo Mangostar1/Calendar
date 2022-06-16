@@ -39,6 +39,19 @@ function startDayYear(month) {
   return ((start.getDay() - 1) === -1) ? 6 : start.getDay() - 1;
 }
 
+/*                       */
+/* Delegacion de eventos */
+/*                       */
+document.addEventListener('click', (e) => {//detecta los eventos de click en el documento, util para delegar eventos de click a elementos que no son hijos directos
+  console.log(e.target);
+  if (e.target.matches('.grid-item')) {
+    NewModalEvent(e.target);
+  }
+  if (e.target.matches("#closeModal-ID")) {
+    closeModal();
+  }
+});
+
 /* day */
 
 const nameDay = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
@@ -249,15 +262,6 @@ function writeMonth(month) {
   eventoMonth();
 }
 
-document.addEventListener('click', (e) => {//detecta los eventos de click en el documento, util para delegar eventos de click a elementos que no son hijos directos
-  console.log(e.target);
-  if (e.target.matches('.grid-item')) {
-    NewModalEvent(e.target);
-  }
-  if (e.target.matches("#closeModal-ID")) {
-    closeModal();
-  }
-});
 /* year */
 
 let containerYear = document.getElementById("container-Year");
