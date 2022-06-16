@@ -1,6 +1,8 @@
 import { NewModalEvent, closeModal } from "./EventoModal.js";
 
+/*       */
 /* Dates */
+/*       */
 let fecha = new Date();
 
 let currentDayName = fecha.getDay();
@@ -12,11 +14,11 @@ let currentYear = fecha.getFullYear();
 const nameMonth = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 let weekDays = document.getElementsByClassName("diasNumber");
 
-function isLeap() {/* comprueba si el año es biciesto | funcionando */
+function isLeap() {// comprueba si el año es biciesto | funcionando
   return ((currentYear % 100 !== 0) && (currentYear % 4 === 0) || (currentYear % 400 === 0))
 }
 
-function getTotalDays(month) {/* para determinar la cantidad de dias del mes al que se consulte */
+function getTotalDays(month) {// para determinar la cantidad de dias del mes al que se consulte
   if (month === -1) month = 11;
 
   if (month == 0 || month == 2 || month == 4 || month == 6 || month == 7 || month == 9 || month == 11) {
@@ -34,7 +36,7 @@ function startDay() {
   return ((start.getDay() - 1) === -1) ? 6 : start.getDay() - 1;
 }
 
-function startDayYear(month) {
+function startDayYear(month) {//corregir el dia en que comienza el mes en el año
   let start = new Date(currentYear, month, 1);
   return ((start.getDay() - 1) === -1) ? 6 : start.getDay() - 1;
 }
@@ -44,16 +46,19 @@ function startDayYear(month) {
 /*                       */
 document.addEventListener('click', (e) => {//detecta los eventos de click en el documento, util para delegar eventos de click a elementos que no son hijos directos
   console.log(e.target);
+  //modals
   if (e.target.matches('.grid-item')) {
     NewModalEvent(e.target);
   }
   if (e.target.matches("#closeModal-ID")) {
     closeModal();
   }
+  //others
 });
 
+/*     */
 /* day */
-
+/*     */
 const nameDay = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
 let containerDay = document.getElementById("container-Day");
 let hourDay = [{
@@ -91,7 +96,9 @@ hourDay.forEach((item) => {
     '</div>';
 });
 
+/*      */
 /* week */
+/*      */
 let containerWeek = document.getElementById("container-week");
 let weekContent = document.getElementById("days-of-week");
 let weekDiasDeSemana = document.getElementsByClassName("diaa-week");
@@ -195,8 +202,9 @@ for (var i = 0; i < 7; i++) {
   }
 }
 
+/*       */
 /* month */
-
+/*       */
 let wrapper = document.getElementById('days-of-month');
 let containerMonth = document.getElementById('container-month');
 export let  Dias = document.getElementsByClassName('grid-item');
@@ -262,8 +270,9 @@ function writeMonth(month) {
   eventoMonth();
 }
 
+/*      */
 /* year */
-
+/*      */
 let containerYear = document.getElementById("container-Year");
 let dayNameYear = document.getElementsByClassName("day-name-div");
 let daysMonthYear = document.getElementsByClassName("day-div");
@@ -413,8 +422,9 @@ function writeYearMonthDec() {
   }
 }
 
+/*                   */
 /* evento click year */
-
+/*                   */
 let eventoYear = document.getElementById("day-year-event");
 
 eventoYear.onclick = () => { //boton clickeable dentro del circulo rojo
@@ -428,9 +438,9 @@ eventoYear.onclick = () => { //boton clickeable dentro del circulo rojo
   document.getElementById('cambia-dia').innerHTML = nameDay[currentDayName] + " " + currentWeek;
 }
 
-
+/*               */
 /* dates buttons */
-
+/*               */
 let dayRadio = document.getElementById('radio-day');
 let weekRadio = document.getElementById('radio-week');
 let monthRadio = document.getElementById('radio-month');
@@ -487,9 +497,11 @@ yearRadio.onclick = function añoCambia() {
   document.getElementById("fecha-year").innerHTML = currentYear;
 }
 
+/*               */
 /* dates control */
+/*               */
 
-/* botones day */
+// botones day
 let prevButtonDay = document.getElementById('prev-day');
 let nextButtonDay = document.getElementById('next-day');
 
@@ -548,7 +560,7 @@ function setNewDateDay() {
   document.getElementById("cambia-dia").innerHTML = nameDay[currentDayName] + " " + currentWeek;
 }
 
-/* botones week */
+// botones week
 let prevButtonWeek = document.getElementById('prev-week');
 let nextButtonWeek = document.getElementById('next-week');
 
@@ -626,7 +638,7 @@ function setNewDateWeek() {
   }
 }
 
-/* month */
+// month
 
 let prevButtonMonth = document.getElementById('prev-month');
 let nextButtonMonth = document.getElementById('next-month');
@@ -666,7 +678,7 @@ function setNewDateMonth() {
   writeMonth(currentMonth);
 }
 
-/* year */
+// year
 
 let prevButtonYear = document.getElementById('prev-year');
 let nextButtonYear = document.getElementById('next-year');
@@ -717,9 +729,9 @@ function setNewDateYear() {
   writeYearMonthDec();
 }
 
-
+/*              */
 /* json eventos */
-
+/*              */
 let horaEvento = document.getElementsByClassName("sp-hour");
 let tituloEvento = document.getElementsByClassName("sp-title");
 let btnEvento = document.getElementsByClassName("btn-item");
@@ -743,14 +755,14 @@ async function inicioEventoDia() {
   let horafinal = primerEvento.events[0].hourFinish;
   let tituloEvento = primerEvento.events[0].title;
 
-  /* Day */
+  // Day
   if (fechaEvento.getDate() === currentWeek && fechaEvento.getDay() === currentDayName && fechaEvento.getFullYear() === currentYear) {
     eventoLi[4].innerHTML = '<button class="btn-item" onclick="handleBtn()"><span class="sp-hour">'+ horaInicial +'</span> - <span class="sp-title">'+ tituloEvento +'</span></button>';
   } else {
     eventoLi[4].innerHTML = '<li class="event">Test 1</li>';
   }
 
-  /* Week */
+  // Week
   if (fechaEvento.getMonth() === currentMonth && fechaEvento.getFullYear() === currentYear){
     if (currentDayName === 1) {//si hoy es lunes aplica este if
       if (fechaEvento.getDate() === currentWeek || fechaEvento.getDate() === currentWeek + 1 || fechaEvento.getDate() === currentWeek + 2 || fechaEvento.getDate() === currentWeek + 3 || fechaEvento.getDate() === currentWeek + 4 || fechaEvento.getDate() === currentWeek + 5 || fechaEvento.getDate() === currentWeek + 6) {
@@ -808,39 +820,3 @@ let dinamico = document.getElementsByClassName("horas");
 if (semanal[0].style = "height: 61px;") {
   dinamico[1].style = "padding-bottom: 2.1px;"
 }
-/* Zona de pruebas */
-
-
-/* function testYear(mes, dia) {
-  
-  
-
-  if (mes === 0) {
-    daysMonthYear[0]
-  } else if (mes === 1) {
-    daysMonthYear[1]
-  } else if(mes === 2) {
-    daysMonthYear[2]
-  } else if(mes === 3) {
-    daysMonthYear[3]
-  } else if(mes === 4) {
-    daysMonthYear[4]
-  } else if(mes === 5) {
-    daysMonthYear[5]
-  } else if(mes === 6) {
-    daysMonthYear[6]
-  } else if(mes === 7) {
-    daysMonthYear[7]
-  } else if(mes === 8) {
-    daysMonthYear[8]
-  } else if(mes === 9) {
-    daysMonthYear[9]
-  } else if(mes === 10) {
-    daysMonthYear[10]
-  } else if(mes === 11) {
-    daysMonthYear[11]
-  }
-} */
-
-//daysMonthYear[0].innerHTML += '<li class="day day-year-active">' + '<a id="day-year-event">' + i + '</a>' + '</li>';
-
