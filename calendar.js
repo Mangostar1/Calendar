@@ -1,8 +1,8 @@
 import { NewModalEvent, closeModal } from "./EventoModal.js";
 
-/*       */
+/*-------*/
 /* Dates */
-/*       */
+/*-------*/
 let fecha = new Date();
 
 let currentDayName = fecha.getDay();
@@ -41,9 +41,9 @@ function startDayYear(month) {//corregir el dia en que comienza el mes en el añ
   return ((start.getDay() - 1) === -1) ? 6 : start.getDay() - 1;
 }
 
-/*                       */
+/*-----------------------*/
 /* Delegacion de eventos */
-/*                       */
+/*-----------------------*/
 document.addEventListener('click', (e) => {//detecta los eventos de click en el documento, util para delegar eventos de click a elementos que no son hijos directos
   console.log(e.target);
   //modals
@@ -56,9 +56,9 @@ document.addEventListener('click', (e) => {//detecta los eventos de click en el 
   //others
 });
 
-/*     */
+/*-----*/
 /* day */
-/*     */
+/*-----*/
 const nameDay = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
 let containerDay = document.getElementById("container-Day");
 let hourDay = [{
@@ -96,9 +96,9 @@ hourDay.forEach((item) => {
     '</div>';
 });
 
-/*      */
+/*------*/
 /* week */
-/*      */
+/*------*/
 let containerWeek = document.getElementById("container-week");
 let weekContent = document.getElementById("days-of-week");
 let weekDiasDeSemana = document.getElementsByClassName("diaa-week");
@@ -202,9 +202,9 @@ for (var i = 0; i < 7; i++) {
   }
 }
 
-/*       */
+/*-------*/
 /* month */
-/*       */
+/*-------*/
 let wrapper = document.getElementById('days-of-month');
 let containerMonth = document.getElementById('container-month');
 export let  Dias = document.getElementsByClassName('grid-item');
@@ -270,9 +270,9 @@ function writeMonth(month) {
   eventoMonth();
 }
 
-/*      */
+/*------*/
 /* year */
-/*      */
+/*------*/
 let containerYear = document.getElementById("container-Year");
 let dayNameYear = document.getElementsByClassName("day-name-div");
 let daysMonthYear = document.getElementsByClassName("day-div");
@@ -422,9 +422,9 @@ function writeYearMonthDec() {
   }
 }
 
-/*                   */
+/*-------------------*/
 /* evento click year */
-/*                   */
+/*-------------------*/
 let eventoYear = document.getElementById("day-year-event");
 
 eventoYear.onclick = () => { //boton clickeable dentro del circulo rojo
@@ -438,9 +438,9 @@ eventoYear.onclick = () => { //boton clickeable dentro del circulo rojo
   document.getElementById('cambia-dia').innerHTML = nameDay[currentDayName] + " " + currentWeek;
 }
 
-/*               */
+/*---------------*/
 /* dates buttons */
-/*               */
+/*---------------*/
 let dayRadio = document.getElementById('radio-day');
 let weekRadio = document.getElementById('radio-week');
 let monthRadio = document.getElementById('radio-month');
@@ -497,9 +497,9 @@ yearRadio.onclick = function añoCambia() {
   document.getElementById("fecha-year").innerHTML = currentYear;
 }
 
-/*               */
+/*---------------*/
 /* dates control */
-/*               */
+/*---------------*/
 
 // botones day
 let prevButtonDay = document.getElementById('prev-day');
@@ -729,9 +729,9 @@ function setNewDateYear() {
   writeYearMonthDec();
 }
 
-/*              */
+/*--------------*/
 /* json eventos */
-/*              */
+/*--------------*/
 let horaEvento = document.getElementsByClassName("sp-hour");
 let tituloEvento = document.getElementsByClassName("sp-title");
 let btnEvento = document.getElementsByClassName("btn-item");
@@ -812,6 +812,7 @@ async function inicioEventoDia() {
   }
 }
 inicioEventoDia();
+
 
 /* Cambio de altura de horas en semanal - Estilos css */
 let semanal = document.getElementsByClassName("semanal");
