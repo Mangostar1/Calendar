@@ -53,11 +53,9 @@ document.addEventListener('click', (e) => {//detecta los eventos de click en el 
   if (e.target.matches("#closeModal-ID")) {
     closeModal();
   }
-  //others
-  /* if (e.target.matches("#btn-month")) {//remueve el contenedor de mes
-    console.log('hola');
-    document.getElementById('container-month').remove();
-  } */
+  if (e.target.matches('.btn-item')) {
+    consle.log('algo');
+  }
 });
 
 /*-----*/
