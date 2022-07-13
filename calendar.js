@@ -45,7 +45,7 @@ function startDayYear(month) {//corregir el dia en que comienza el mes en el añ
 /* Delegacion de eventos */
 /*-----------------------*/
 document.addEventListener('click', (e) => {//detecta los eventos de click en el documento, util para delegar eventos de click a elementos que no son hijos directos
-  /* console.log(e.target); */
+  console.log(e.target);
   //modals
   if (e.target.matches('.grid-item')) {
     NewModalEvent(e.target);
@@ -54,6 +54,10 @@ document.addEventListener('click', (e) => {//detecta los eventos de click en el 
     closeModal();
   }
   //others
+  /* if (e.target.matches("#btn-month")) {//remueve el contenedor de mes
+    console.log('hola');
+    document.getElementById('container-month').remove();
+  } */
 });
 
 /*-----*/
@@ -427,7 +431,7 @@ function writeYearMonthDec() {
 /*-------------------*/
 let eventoYear = document.getElementById("day-year-event");
 
-eventoYear.onclick = () => { //boton clickeable dentro del circulo rojo
+eventoYear.onclick = () => { //boton clickeable dentro del circulo rojo, falta aun programarlo bien
   dayRadio.checked = true;
   //wrapper.style = "display: none";
   //containerWeek.style = "display: none";
