@@ -44,7 +44,7 @@ function startDayYear(month) {//corregir el dia en que comienza el mes en el añ
 /*-----------------------*/
 /* Delegacion de eventos */
 /*-----------------------*/
-document.addEventListener('click', (e) => {//detecta los eventos de click en el documento, util para delegar eventos de click a elementos que no son hijos directos
+document.addEventListener('click', (e) => {
   console.log(e.target);
   //modals
   if (e.target.matches('.grid-item')) {
@@ -53,7 +53,7 @@ document.addEventListener('click', (e) => {//detecta los eventos de click en el 
   if (e.target.matches("#closeModal-ID")) {
     closeModal();
   }
-  //otros eventos
+  //control de fechas
   if (e.target.matches('#prev-day')) {
     prevDay();
   }
@@ -77,6 +77,19 @@ document.addEventListener('click', (e) => {//detecta los eventos de click en el 
   }
   if (e.target.matches('#next-year')) {
     nextYear();
+  }
+  //control de componentes
+  if (e.target.matches('#radio-day')) {
+    console.log('algo');
+  }
+  if (e.target.matches('#radio-week')) {
+    console.log('algo');
+  }
+  if (e.target.matches('#radio-month')) {
+    console.log('algo');
+  }
+  if (e.target.matches('#radio-year')) {
+    console.log('algo');
   }
 });
 

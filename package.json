@@ -1,0 +1,22 @@
+{
+  "name": "calendar",
+  "version": "1.0.0",
+  "description": "Web calendar",
+  "main": "calendar.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mangostar1/Calendar.git"
+  },
+  "author": "Omar Zavala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mangostar1/Calendar/issues"
+  },
+  "homepage": "https://github.com/Mangostar1/Calendar#readme",
+  "devDependencies": {
+    "jest": "^28.1.3"
+  }
+}
