@@ -734,7 +734,7 @@ async function inicioEventoDia() {
 
   // Day
   if (fechaEvento.getDate() === currentWeek && fechaEvento.getDay() === currentDayName && fechaEvento.getFullYear() === currentYear) {
-    eventoLi[4].innerHTML = '<button class="btn-item" onclick="handleBtn()"><span class="sp-hour">'+ horaInicial +'</span> - <span class="sp-title">'+ tituloEvento +'</span></button>';
+    eventoLi[4].innerHTML = `<button class="btn-item" onclick="handleBtn()"><span class="sp-hour"> ${horaInicial} </span> - <span class="sp-title"> ${tituloEvento} </span></button>`;
   } else {
     eventoLi[4].innerHTML = '<li class="event">Test 1</li>';
   }
@@ -743,43 +743,43 @@ async function inicioEventoDia() {
   if (fechaEvento.getMonth() === currentMonth && fechaEvento.getFullYear() === currentYear){
     if (currentDayName === 1) {//si hoy es lunes aplica este if
       if (fechaEvento.getDate() === currentWeek || fechaEvento.getDate() === currentWeek + 1 || fechaEvento.getDate() === currentWeek + 2 || fechaEvento.getDate() === currentWeek + 3 || fechaEvento.getDate() === currentWeek + 4 || fechaEvento.getDate() === currentWeek + 5 || fechaEvento.getDate() === currentWeek + 6) {
-        eventWekk[29].innerHTML = '<button class="btn-item" onclick="handleBtn()"><span class="sp-hour">'+ horaInicial + '</span> - <span class="sp-title">'+ tituloEvento +'</span></button>';
+        eventWekk[29].innerHTML = `<button class="btn-item" onclick="handleBtn()"><span class="sp-hour"> ${horaInicial} </span> - <span class="sp-title"> ${tituloEvento} </span></button>`;
       } else {
         eventWekk[29].innerHTML = '<li class="event"></li>';
       }
     } else if(currentDayName === 2){//si hoy es martes aplica este if
       if (fechaEvento.getDate() === currentWeek - 1 || fechaEvento.getDate() === currentWeek || fechaEvento.getDate() === currentWeek + 1 || fechaEvento.getDate() === currentWeek + 2 || fechaEvento.getDate() === currentWeek + 3 || fechaEvento.getDate() === currentWeek + 4 || fechaEvento.getDate() === currentWeek + 5) {
-        eventWekk[29].innerHTML = '<button class="btn-item" onclick="handleBtn()"><span class="sp-hour">'+ horaInicial + '</span> - <span class="sp-title">'+ tituloEvento +'</span></button>';
+        eventWekk[29].innerHTML = `<button class="btn-item" onclick="handleBtn()"><span class="sp-hour"> ${horaInicial} </span> - <span class="sp-title"> ${tituloEvento} </span></button>`;
       } else {
         eventWekk[29].innerHTML = '<li class="event"></li>';
       }
     } else if(currentDayName === 3){//si hoy es miercoles aplica este if
       if (fechaEvento.getDate() === currentWeek - 2 || fechaEvento.getDate() === currentWeek - 1 || fechaEvento.getDate() === currentWeek || fechaEvento.getDate() === currentWeek + 1 || fechaEvento.getDate() === currentWeek + 2 || fechaEvento.getDate() === currentWeek + 3 || fechaEvento.getDate() === currentWeek + 4) {
-        eventWekk[29].innerHTML = '<button class="btn-item" onclick="handleBtn()"><span class="sp-hour">'+ horaInicial + '</span> - <span class="sp-title">'+ tituloEvento +'</span></button>';
+        eventWekk[29].innerHTML = `<button class="btn-item" onclick="handleBtn()"><span class="sp-hour"> ${horaInicial} </span> - <span class="sp-title"> ${tituloEvento} </span></button>`;
       } else{
         eventWekk[29].innerHTML = '<li class="event"></li>';
       }
     } else if(currentDayName === 4){//si hoy es jueves aplica este if
       if (fechaEvento.getDate() === currentWeek - 3 || fechaEvento.getDate() === currentWeek - 2 || fechaEvento.getDate() === currentWeek - 1 || fechaEvento.getDate() === currentWeek || fechaEvento.getDate() === currentWeek + 1 || fechaEvento.getDate() === currentWeek + 2 || fechaEvento.getDate() === currentWeek + 3) {
-        eventWekk[29].innerHTML = '<button class="btn-item" onclick="handleBtn()"><span class="sp-hour">'+ horaInicial + '</span> - <span class="sp-title">'+ tituloEvento +'</span></button>';
+        eventWekk[29].innerHTML = `<button class="btn-item" onclick="handleBtn()"><span class="sp-hour"> ${horaInicial} </span> - <span class="sp-title"> ${tituloEvento} </span></button>`;
       } else {
         eventWekk[29].innerHTML = '<li class="event"></li>';
       }
     } else if(currentDayName === 5){//si hoy es viernes aplica este if
       if (fechaEvento.getDate() === currentWeek - 4 || fechaEvento.getDate() === currentWeek - 3 || fechaEvento.getDate() === currentWeek - 2 || fechaEvento.getDate() === currentWeek - 1 || fechaEvento.getDate() === currentWeek || fechaEvento.getDate() === currentWeek + 1 || fechaEvento.getDate() === currentWeek + 2) {
-        eventWekk[29].innerHTML = '<button class="btn-item" onclick="handleBtn()"><span class="sp-hour">'+ horaInicial + '</span> - <span class="sp-title">'+ tituloEvento +'</span></button>';
+        eventWekk[29].innerHTML = `<button class="btn-item" onclick="handleBtn()"><span class="sp-hour"> ${horaInicial} </span> - <span class="sp-title"> ${tituloEvento} </span></button>`;
       } else {
         eventWekk[29].innerHTML = '<li class="event"></li>';
       }
     } else if(currentDayName === 6){//si hoy es sabado aplica este if
       if (fechaEvento.getDate() === currentWeek - 5|| fechaEvento.getDate() === currentWeek - 4 || fechaEvento.getDate() === currentWeek - 3 || fechaEvento.getDate() === currentWeek - 2 || fechaEvento.getDate() === currentWeek - 1 || fechaEvento.getDate() === currentWeek || fechaEvento.getDate() === currentWeek + 1) {
-        eventWekk[29].innerHTML = '<button class="btn-item" onclick="handleBtn()"><span class="sp-hour">'+ horaInicial + '</span> - <span class="sp-title">'+ tituloEvento +'</span></button>';
+        eventWekk[29].innerHTML = `<button class="btn-item" onclick="handleBtn()"><span class="sp-hour"> ${horaInicial} </span> - <span class="sp-title"> ${tituloEvento} </span></button>`;
       } else {
         eventWekk[29].innerHTML = '<li class="event"></li>';
       }
     } else if(currentDayName === 0){//si hoy es domingo aplica este if
       if (fechaEvento.getDate() === currentWeek - 6 || fechaEvento.getDate() === currentWeek - 5 || fechaEvento.getDate() === currentWeek - 4 || fechaEvento.getDate() === currentWeek - 3 || fechaEvento.getDate() === currentWeek - 2 || fechaEvento.getDate() === currentWeek - 1 || fechaEvento.getDate() === currentWeek) {
-        eventWekk[29].innerHTML = '<button class="btn-item" onclick="handleBtn()"><span class="sp-hour">'+ horaInicial + '</span> - <span class="sp-title">'+ tituloEvento +'</span></button>';
+        eventWekk[29].innerHTML = `<button class="btn-item" onclick="handleBtn()"><span class="sp-hour"> ${horaInicial} </span> - <span class="sp-title"> ${tituloEvento} </span></button>`;
       } else {
         eventWekk[29].innerHTML = '<li class="event"></li>';
       }
