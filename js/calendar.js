@@ -149,11 +149,13 @@ let hourDay = [{
 ];
 
 hourDay.forEach((item) => {
-  containerDay.innerHTML += '<div class="diario">' + '<p class="hora">' + item.hour + '</p>' +
-    '<ul>' +
-    '<li class="event">Test 1</li>' +
-    '</ul>' +
-    '</div>';
+  containerDay.innerHTML += 
+    `<div class="diario">
+      <p class="hora">  ${item.hour} </p>
+      <ul>
+        <li class="event">Test</li>
+      </ul>
+    </div>`;
 });
 
 /*------*/
@@ -205,11 +207,12 @@ for (let w = 1; w < 169; w++) {
       '</ul>' +
       '</div>';
   }else{
-    weekContent.innerHTML += '<div class="semanal">' +
-      '<ul>' +
-      '<li class="event eventWeek"></li>' +
-      '</ul>' +
-      '</div>';
+    weekContent.innerHTML += 
+      `<div class="semanal">
+        <ul>
+          <li class="event eventWeek"></li>
+        </ul>
+      </div>`;
   }
 
   if(w % 7 == 0){
@@ -280,26 +283,31 @@ function writeMonth(month) {
   });
 
   for (let i = startDay(); i > 0; i--) {
-    wrapper.innerHTML += `<div class="grid-item"><p class="day-number lastMonth"> ${getTotalDays(currentMonth - 1)-(i - 1)} </p>` +
-      '<ul>' +
-      `<li class="event"></li>` +
-      '</ul>' +
-      '</div>';
+    wrapper.innerHTML += 
+      `<div class="grid-item"><p class="day-number lastMonth"> ${getTotalDays(currentMonth - 1)-(i - 1)} </p>
+        <ul>
+          <li class="event"></li>
+        </ul>
+      </div>`;
   }
   
   for (let i = 1; i <= getTotalDays(month); i++) {
     if (i == currentWeek && month == 0) {
-      wrapper.innerHTML += `<div class="grid-item"><p class="day-number day-month-active">` + i + '</p>' +
-        '<ul>' +
-        `<li class="event" id="evento-${i}"></li>` +
-        '</ul>' +
-        '</div>';
+      wrapper.innerHTML += 
+        `<div class="grid-item">
+          <p class="day-number day-month-active"> ${i} </p>
+          <ul>
+            <li class="event" id="evento-${i}"></li>
+          </ul>
+        </div>`;
     } else {
-      wrapper.innerHTML += `<div class="grid-item"><p class="day-number">` + i + '</p>' +
-        '<ul>' +
-        `<li class="event" id="evento-${i}"></li>` +
-        '</ul>' +
-        '</div>';
+      wrapper.innerHTML += 
+        `<div class="grid-item">
+          <p class="day-number"> ${i} </p>
+          <ul>
+            <li class="event" id="evento-${i}"></li>
+          </ul>
+        </div>`;
     }
   }
   async function eventoMonth() {
@@ -321,9 +329,9 @@ function writeMonth(month) {
       let tituloEventoAA = basicMonthJson.events[i].title;
 
       if (dateMonth.getMonth() === currentMonth && dateMonth.getFullYear() === currentYear) {
-        eventMonth.innerHTML = `<button class="btn-item" id="btn-event-${i}"><span class="sp-hour">`+ horaInicialAA +" - " + horafinalAA +'</span>'+ '<br>' +'<span class="sp-title">'+ tituloEventoAA +'</span></button>';
+        eventMonth.innerHTML = `<button class="btn-item" id="btn-event-${i}"><span class="sp-hour"> ${horaInicialAA} - ${horafinalAA} </span> <br> <span class="sp-title"> ${tituloEventoAA} </span></button>`;
       } else {
-        eventMonth.innerHTML = '<li class="event"></li>';
+        eventMonth.innerHTML = `<li class="event"></li>`;
       }
     }
   }
@@ -342,7 +350,7 @@ const nameWeeck = [
 
 nameWeeck.forEach((item) => {
   for (let i = 0; i < 12; i++) {
-    dayNameYear[i].innerHTML += '<li class="day-name">' + item.day + '</li>';
+    dayNameYear[i].innerHTML += `<li class="day-name"> ${item.day} </li>`;
   }
 });
 
@@ -355,9 +363,9 @@ function writeYearMonthJan() {
   }
   for (let i = 1; i <= getTotalDays(0); i++) {
     if (i === 26) {
-      daysMonthYear[0].innerHTML += '<li class="day day-year-active">' + '<a id="day-year-event">' + i + '</a>' + '</li>';
+      daysMonthYear[0].innerHTML += `<li class="day day-year-active"> <a id="day-year-event"> ${i} </a> </li>`;
     } else {
-      daysMonthYear[0].innerHTML += '<li class="day">' + i + '</li>';
+      daysMonthYear[0].innerHTML += `<li class="day"> ${i} </li>`;
     }
   }
 }
@@ -368,7 +376,7 @@ function writeYearMonthFeb() {
     daysMonthYear[1].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
   for (let i = 1; i <= getTotalDays(1); i++) {
-    daysMonthYear[1].innerHTML += '<li class="day">' + i + '</li>';
+    daysMonthYear[1].innerHTML += `<li class="day"> ${i} </li>`;
   }
 }
 
@@ -379,7 +387,7 @@ function writeYearMonthMar() {
     daysMonthYear[2].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
   for (let i = 1; i <= getTotalDays(2); i++) {
-    daysMonthYear[2].innerHTML += '<li class="day">' + i + '</li>';
+    daysMonthYear[2].innerHTML += `<li class="day"> ${i} </li>`;
   }
 }
 
@@ -390,7 +398,7 @@ function writeYearMonthApr() {
     daysMonthYear[3].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
   for (let i = 1; i <= getTotalDays(3); i++) {
-    daysMonthYear[3].innerHTML += '<li class="day">' + i + '</li>';
+    daysMonthYear[3].innerHTML += `<li class="day"> ${i} </li>`;
   }
 }
 
@@ -401,7 +409,7 @@ function writeYearMonthMay() {
     daysMonthYear[4].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
   for (let i = 1; i <= getTotalDays(4); i++) {
-    daysMonthYear[4].innerHTML += '<li class="day">' + i + '</li>';
+    daysMonthYear[4].innerHTML += `<li class="day"> ${i} </li>`;
   }
 }
 
@@ -412,7 +420,7 @@ function writeYearMonthJun() {
     daysMonthYear[5].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
   for (let i = 1; i <= getTotalDays(5); i++) {
-    daysMonthYear[5].innerHTML += '<li class="day">' + i + '</li>';
+    daysMonthYear[5].innerHTML += `<li class="day"> ${i} </li>`;
   }
 }
 
@@ -423,7 +431,7 @@ function writeYearMonthJul() {
     daysMonthYear[6].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
   for (let i = 1; i <= getTotalDays(6); i++) {
-    daysMonthYear[6].innerHTML += '<li class="day">' + i + '</li>';
+    daysMonthYear[6].innerHTML += `<li class="day"> ${i} </li>`;
   }
 }
 
@@ -434,7 +442,7 @@ function writeYearMonthAug() {
     daysMonthYear[7].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
   for (let i = 1; i <= getTotalDays(7); i++) {
-    daysMonthYear[7].innerHTML += '<li class="day">' + i + '</li>';
+    daysMonthYear[7].innerHTML += `<li class="day"> ${i} </li>`;
   }
 }
 
@@ -445,7 +453,7 @@ function writeYearMonthSep() {
     daysMonthYear[8].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
   for (let i = 1; i <= getTotalDays(8); i++) {
-    daysMonthYear[8].innerHTML += '<li class="day">' + i + '</li>';
+    daysMonthYear[8].innerHTML += `<li class="day"> ${i} </li>`;
   }
 }
 
@@ -456,7 +464,7 @@ function writeYearMonthOct() {
     daysMonthYear[9].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
   for (let i = 1; i <= getTotalDays(9); i++) {
-    daysMonthYear[9].innerHTML += '<li class="day">' + i + '</li>';
+    daysMonthYear[9].innerHTML += `<li class="day"> ${i} </li>`;
   }
 }
 
@@ -467,7 +475,7 @@ function writeYearMonthNov() {
     daysMonthYear[10].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
   for (let i = 1; i <= getTotalDays(10); i++) {
-    daysMonthYear[10].innerHTML += '<li class="day">' + i + '</li>';
+    daysMonthYear[10].innerHTML += `<li class="day"> ${i} </li>`;
   }
 }
 
@@ -478,7 +486,7 @@ function writeYearMonthDec() {
     daysMonthYear[11].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
   for (let i = 1; i <= getTotalDays(11); i++) {
-    daysMonthYear[11].innerHTML += '<li class="day">' + i + '</li>';
+    daysMonthYear[11].innerHTML += `<li class="day"> ${i} </li>`;
   }
 }
 
