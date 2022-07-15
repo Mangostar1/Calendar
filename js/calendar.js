@@ -623,9 +623,6 @@ function setNewDateWeek() {
     if (weekDays[i].innerHTML > getTotalDays(currentMonth)) {
       fecha.setDate(1 + countCurrentMonth++);
       weekDays[i].innerHTML = fecha.getDate();
-      //let d = new Date();
-      //d.setDate(1 + countCurrentMonth++);
-      //weekDays[i].innerHTML = d.getDate();
     }
   }
 }
