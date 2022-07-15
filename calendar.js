@@ -53,8 +53,30 @@ document.addEventListener('click', (e) => {//detecta los eventos de click en el 
   if (e.target.matches("#closeModal-ID")) {
     closeModal();
   }
-  if (e.target.matches('.btn-item')) {
-    consle.log('algo');
+  //otros eventos
+  if (e.target.matches('#prev-day')) {
+    prevDay();
+  }
+  if (e.target.matches('#next-day')) {
+    nextDay();
+  }
+  if (e.target.matches('#prev-week')) {
+    prevWeek();
+  }
+  if (e.target.matches('#next-week')) {
+    nextWeek();
+  }
+  if (e.target.matches('#prev-month')) {
+    prevMonth();
+  }
+  if (e.target.matches('#next-month')) {
+    nextMonth();
+  }
+  if (e.target.matches('#prev-year')) {
+    prevYear();
+  }
+  if (e.target.matches('#next-year')) {
+    nextYear();
   }
 });
 
@@ -504,16 +526,6 @@ yearRadio.onclick = function añoCambia() {
 /*---------------*/
 
 // botones day
-let prevButtonDay = document.getElementById('prev-day');
-let nextButtonDay = document.getElementById('next-day');
-
-prevButtonDay.onclick = () => {
-  prevDay()
-};
-nextButtonDay.onclick = () => {
-  nextDay()
-};
-
 function prevDay() {
   if (currentWeek !== 1) {
     currentWeek--;
@@ -563,15 +575,6 @@ function setNewDateDay() {
 }
 
 // botones week
-let prevButtonWeek = document.getElementById('prev-week');
-let nextButtonWeek = document.getElementById('next-week');
-
-prevButtonWeek.onclick = () => {
-  prevWeek()
-};
-nextButtonWeek.onclick = () => {
-  nextWeek()
-};
 
 function prevWeek() {
   if (currentWeek !== 1) {
@@ -642,16 +645,6 @@ function setNewDateWeek() {
 
 // month
 
-let prevButtonMonth = document.getElementById('prev-month');
-let nextButtonMonth = document.getElementById('next-month');
-
-prevButtonMonth.onclick = () => {
-  prevMonth()
-};
-nextButtonMonth.onclick = () => {
-  nextMonth()
-};
-
 function prevMonth() {
   if (currentMonth !== 0) {
     currentMonth--;
@@ -681,16 +674,6 @@ function setNewDateMonth() {
 }
 
 // year
-
-let prevButtonYear = document.getElementById('prev-year');
-let nextButtonYear = document.getElementById('next-year');
-
-prevButtonYear.onclick = () => {
-  prevYear()
-};
-nextButtonYear.onclick = () => {
-  nextYear()
-};
 
 function prevYear() {
   if (currentYear !== 0) {
