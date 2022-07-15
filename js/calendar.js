@@ -362,11 +362,7 @@ function writeYearMonthJan() {
     daysMonthYear[0].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
   for (let i = 1; i <= getTotalDays(0); i++) {
-    if (i === 26) {
-      daysMonthYear[0].innerHTML += `<li class="day day-year-active"> <a id="day-year-event"> ${i} </a> </li>`;
-    } else {
-      daysMonthYear[0].innerHTML += `<li class="day"> ${i} </li>`;
-    }
+    daysMonthYear[0].innerHTML += `<li class="day"> ${i} </li>`;
   }
 }
 
@@ -488,22 +484,6 @@ function writeYearMonthDec() {
   for (let i = 1; i <= getTotalDays(11); i++) {
     daysMonthYear[11].innerHTML += `<li class="day"> ${i} </li>`;
   }
-}
-
-/*-------------------*/
-/* evento click year */
-/*-------------------*/
-let eventoYear = document.getElementById("day-year-event");
-
-eventoYear.onclick = () => { //boton clickeable dentro del circulo rojo, falta aun programarlo bien
-  dayRadio.checked = true;
-  //wrapper.style = "display: none";
-  //containerWeek.style = "display: none";
-  //containerMonth.style = "display: none";
-  containerYear.style = "display: none";
-  containerDay.style = "display: grid";
-  document.getElementById("fecha-day").innerHTML = currentWeek + " de " + nameMonth[currentMonth] + " del " + currentYear;
-  document.getElementById('cambia-dia').innerHTML = nameDay[currentDayName] + " " + currentWeek;
 }
 
 /*---------------*/

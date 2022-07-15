@@ -496,13 +496,6 @@ hr{
   border-style: solid;
 }
 
-.day-year-active{
-  background-color: red;
-  padding: 4px;
-  border-radius: 50%;
-  color: var(--neutralWhite);
-}
-
 /* last Month days */
 .lastMonth{
   color: var(--neutralGray);
