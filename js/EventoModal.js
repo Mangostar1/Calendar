@@ -27,17 +27,9 @@ export function NewModalEvent(element, num) {//ventana modal para ingresar event
             <button class="buttonModa" id='buttonModalID'>Aceptar</button>
         </div>
     </div>`;
-    ;
 
     element.appendChild(newDiv);
 
-    let buttonModal = document.getElementsByClassName('buttonModa');
-    buttonModal[0].onclick = () => {
-        let title = document.getElementById('titleEvent').value;
-        let date = document.getElementById('dateInput').value;
-        let time = document.getElementById('timeInput').value;
-        console.log(title, date, time);
-    }
 }
 
 export function closeModal() {//elimina la ventana modal del DOM.
@@ -46,3 +38,16 @@ export function closeModal() {//elimina la ventana modal del DOM.
         elements[0].parentNode.removeChild(elements[0]);
     }
 }
+
+/*                  */
+/* Datos formulario */
+/*                  */
+
+document.addEventListener('click', (e) => {
+    if(e.target.matches('#buttonModalID') === true){
+        let title = document.getElementById('titleEvent').value;
+        let date = document.getElementById('dateInput').value;
+        let time = document.getElementById('timeInput').value;
+        console.log(title, date, time);
+    }
+});
