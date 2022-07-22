@@ -201,11 +201,12 @@ let tmpHourDayWeek = 4; ; // dynamic
 for (let w = 1; w < 169; w++) {
 
   if(horas == tmpHourDayWeek && tmpEventDayWeek == day){
-    weekContent.innerHTML += '<div class="semanal">' +
-      '<ul>' +
-      '<li class="event eventWeek"> Hora '+horas+' Day '+day+'</li>' +
-      '</ul>' +
-      '</div>';
+    weekContent.innerHTML += 
+      `<div class="semanal">
+        <ul>
+          <li class="event eventWeek"> Hora ${horas} Day ${day}</li>
+        </ul>
+      </div>`;
   }else{
     weekContent.innerHTML += 
       `<div class="semanal">
@@ -224,7 +225,7 @@ for (let w = 1; w < 169; w++) {
 }
 
 hourDayWeek.forEach((item) => {
-  document.getElementById("grid-hour").innerHTML += '<div class="horas">' + item.hour + '</div>'
+  document.getElementById("grid-hour").innerHTML += `<div class="horas"> ${item.hour} </div>`
 });
 
 let countStartMon = 0; //lunes
@@ -235,7 +236,7 @@ let countStartFre = -4; //viernes
 let countStartSat = -5; //sabado
 let countStartSun = -6; //domingo
 
-for (var i = 0; i < 7; i++) {
+for (var i = 0; i < 7; i++) {//Corregir este for o pasar por testeo
   if (currentDayName === 1) {
     weekDays[i].innerHTML = currentWeek + countStartMon++;
   } else if (currentDayName === 2) {
@@ -279,7 +280,7 @@ writeMonth(currentMonth);
 
 function writeMonth(month) {
   daysOfWeek.forEach((item) => {
-    wrapper.innerHTML += '<div class="grid-days">' + item.day + '</div>';
+    wrapper.innerHTML += `<div class="grid-days"> ${item.day} </div>`;
   });
 
   for (let i = startDay(); i > 0; i--) {
@@ -311,7 +312,7 @@ function writeMonth(month) {
     }
   }
   async function eventoMonth() {
-    /* const basicMonth = await fetch("/basicStructure.json"); */ //trabajar con el json de manera local en liveServer
+    /* const basicMonth = await fetch("/basicStructure.json"); */ //json de manera local en liveServer
     const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
     const basicMonthJson = await basicMonth.json();
 
