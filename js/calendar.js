@@ -45,7 +45,7 @@ function startDayYear(month) {//corregir el dia en que comienza el mes en el añ
 /* Delegacion de eventos */
 /*-----------------------*/
 document.addEventListener('click', (e) => {
-  console.log(e.target);
+
   //modals
   if (e.target.matches('.grid-item')) {
     NewModalEvent(e.target);
@@ -53,6 +53,7 @@ document.addEventListener('click', (e) => {
   if (e.target.matches("#closeModal-ID")) {
     closeModal();
   }
+
   //control de fechas
   if (e.target.matches('#prev-day')) {
     prevDay();
