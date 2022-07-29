@@ -164,7 +164,6 @@ hourDay.forEach((item) => {
 /*------*/
 let containerWeek = document.getElementById("container-week");
 let weekContent = document.getElementById("days-of-week");
-let weekDiasDeSemana = document.getElementsByClassName("diaa-week");
 const hourDayWeek = [{
   hour: "Horas"}, 
   {hour: "00:00 hrs"}, 
@@ -506,13 +505,15 @@ document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " d
 function prevDay() {
   if (currentWeek !== 1) {
     currentWeek--;
-    nameDay[currentDayName--];
+    currentDayName--;
+    /* nameDay[currentDayName--]; */
     if (currentDayName === -1) {
       currentDayName = 6;
     }
   } else {
     currentMonth--;
     currentWeek = getTotalDays(currentMonth);
+    currentDayName--;
     if (currentMonth === -1) {
       currentMonth = 11;
       currentYear--;
@@ -531,6 +532,7 @@ function nextDay() {
     }
   } else {
     currentWeek = 1;
+    currentDayName++;
     currentMonth++;
     if (currentMonth === 12) {
       currentMonth = 0;
@@ -691,12 +693,8 @@ function setNewDateYear() {
 /*--------------*/
 /* json eventos */
 /*--------------*/
-let horaEvento = document.getElementsByClassName("sp-hour");
-let tituloEvento = document.getElementsByClassName("sp-title");
-let btnEvento = document.getElementsByClassName("btn-item");
 
 let eventoLi = document.getElementsByClassName("event");
-let eventMonth = document.getElementById("evento-8");// el - 8 es equivalente al dia del mes en el componente month si se cambia por 9 u otro dia del mes se imprimira alli
 let eventWekk = document.getElementsByClassName("eventWeek");
 
 async function inicioEventoDia() { 

@@ -1,4 +1,4 @@
-export function NewModalEvent(element, num) {//ventana modal para ingresar eventos al calendario
+export function NewModalEvent(element) {
     let newDiv = document.createElement('div');
 
     newDiv.classList.add('modal');
@@ -29,15 +29,15 @@ export function NewModalEvent(element, num) {//ventana modal para ingresar event
     </div>`;
 
     element.appendChild(newDiv);
-
 }
 
-export function closeModal() {//elimina la ventana modal del DOM.
+export function closeModal() {
     let elements = document.getElementsByClassName("modal");
     while(elements.length > 0){
         elements[0].parentNode.removeChild(elements[0]);
     }
 }
+
 
 /*                  */
 /* Datos formulario */
