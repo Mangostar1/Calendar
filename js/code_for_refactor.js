@@ -1,4 +1,13 @@
-export function WeekComponent(element) {
+let test = document.getElementById('test-calendar');
+let DateTest = new Date().getDate();
+
+console.log(DateTest);
+
+
+WeekComponent(test);
+hourWeekComponent(DateTest);
+
+function WeekComponent(element) {
     let WeekContent = document.createElement('div');
     WeekContent.classList.add('container-week');
     WeekContent.id = "container-week";
@@ -50,7 +59,7 @@ export function WeekComponent(element) {
     element.appendChild(WeekContent);
 }
 
-export function hourWeekComponent(getDay) {
+function hourWeekComponent(getDay) {
     let containerWeek = document.getElementById("container-week");
     let weekContent = document.getElementById("days-of-week");
     const nameMonth = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];

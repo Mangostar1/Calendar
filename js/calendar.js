@@ -207,7 +207,7 @@ let countStartFre = -4; //viernes
 let countStartSat = -5; //sabado
 let countStartSun = -6; //domingo
 
-/* for (var i = 0; i < 7; i++) {//Corregir este for o pasar por testeo
+for (var i = 0; i < 7; i++) {//Corregir este for o pasar por testeo
   if (currentDayName === 1) {
     weekDays[i].innerHTML = currentWeek + countStartMon++;
   } else if (currentDayName === 2) {
@@ -235,7 +235,7 @@ let countStartSun = -6; //domingo
     d.setDate(currentWeek + countStartSun++);
     weekDays[i].innerHTML = d.getDate();
   }
-} */
+}
 
 /*-------*/
 /* month */
@@ -462,7 +462,7 @@ function writeYearMonthDec() {
 /* dates buttons */
 /*---------------*/
 /* evita que se cargen los calendarios al mismo tiempo al abrir la pagina por primera vez */
-containerWeek.style = "display: none";
+/* containerWeek.style = "display: none"; */
 containerYear.style = "display: none";
 containerMonth.style = "display: flex";
 document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
