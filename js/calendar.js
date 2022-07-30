@@ -1,7 +1,7 @@
 import { NewModalEvent, closeModal } from "./EventoModal.js";
-import { DayComponent, hourDayComponent} from "./code_for_refactor.js";
+import { DayComponent, hourDayComponent} from "./DayComponent.js";
 
-/* let calendarContainer = document.getElementsByClassName("calendar-container")[0]; */
+let calendarContainer = document.getElementsByClassName("calendar-container")[0];
 
 /*-------*/
 /* Dates */
@@ -88,13 +88,14 @@ document.addEventListener('click', (e) => {
     containerWeek.style = "display: none";
     containerYear.style = "display: none";
     containerMonth.style = "display: none";
-    containerDay.style = "display: grid";//quitar para implementar el componente
+    DayComponent(calendarContainer);
+    hourDayComponent();
     document.getElementById("fecha-day").innerHTML = currentWeek + " de " + nameMonth[currentMonth] + " del " + currentYear;
     document.getElementById('cambia-dia').innerHTML = nameDay[currentDayName] + " " + currentWeek;
   }
   if (e.target.matches('#radio-week')) {
     wrapper.style = "display: none";
-    containerDay.style = "display: none";//quitar y reemplazar por un div vacio para eliminar los elementos invocados por el componente
+    /* containerDay.innerHTML = ""; */
     containerYear.style = "display: none";
     containerMonth.style = "display: none";
     containerWeek.style = "display: flex";
@@ -102,7 +103,7 @@ document.addEventListener('click', (e) => {
   }
   if (e.target.matches('#radio-month')) {
     containerWeek.style = "display: none";
-    containerDay.style = "display: none";//quitar y reemplazar por un div vacio para eliminar los elementos invocados por el componente
+    /* containerDay.innerHTML = ""; */
     containerYear.style = "display: none";
     wrapper.style = "display: grid";
     containerMonth.style = "display: flex"
@@ -112,7 +113,7 @@ document.addEventListener('click', (e) => {
   if (e.target.matches('#radio-year')) {
     wrapper.style = "display: none";
     containerWeek.style = "display: none";
-    containerDay.style = "display: none";//quitar y reemplazar por un div vacio para eliminar los elementos invocados por el componente
+    /* containerDay.innerHTML = ""; */
     containerMonth.style = "display: none";
     document.getElementById("dates-control-month").style = "display: none";
     containerYear.style = "display: flex";
@@ -125,43 +126,6 @@ document.addEventListener('click', (e) => {
 /*-----*/
 //este codigo se quedara obsoleto una vez implementado el componente dia
 const nameDay = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
-let containerDay = document.getElementById("container-Day");
-let hourDay = [{
-  hour: "00:00 hrs"}, 
-  {hour: "01:00 hrs"}, 
-  {hour: "02:00 hrs"}, 
-  {hour: "03:00 hrs"}, 
-  {hour: "04:00 hrs"}, 
-  {hour: "05:00 hrs"}, 
-  {hour: "06:00 hrs"}, 
-  {hour: "07:00 hrs"}, 
-  {hour: "08:00 hrs"}, 
-  {hour: "09:00 hrs"}, 
-  {hour: "10:00 hrs"}, 
-  {hour: "11:00 hrs"}, 
-  {hour: "12:00 hrs"}, 
-  {hour: "13:00 hrs"}, 
-  {hour: "14:00 hrs"}, 
-  {hour: "15:00 hrs"}, 
-  {hour: "16:00 hrs"}, 
-  {hour: "17:00 hrs"}, 
-  {hour: "18:00 hrs"}, 
-  {hour: "19:00 hrs"}, 
-  {hour: "20:00 hrs"}, 
-  {hour: "21:00 hrs"}, 
-  {hour: "22:00 hrs"}, 
-  {hour: "23:00 hrs"}
-];
-
-hourDay.forEach((item) => {
-  containerDay.innerHTML += 
-    `<div class="diario">
-      <p class="hora">  ${item.hour} </p>
-      <ul>
-        <li class="event">Test</li>
-      </ul>
-    </div>`;
-});
 
 /*------*/
 /* week */
@@ -496,7 +460,6 @@ function writeYearMonthDec() {
 /*---------------*/
 /* evita que se cargen los calendarios al mismo tiempo al abrir la pagina por primera vez */
 containerWeek.style = "display: none";
-containerDay.style = "display: none"; //quitar, ya que no se cargara el container Day al abrir la pagina por primera vez
 containerYear.style = "display: none";
 containerMonth.style = "display: flex";
 document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
