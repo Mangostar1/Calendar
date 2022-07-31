@@ -1,11 +1,8 @@
 let test = document.getElementById('test-calendar');
 let DateTest = new Date().getDate();
 
-console.log(DateTest);
-
-
 WeekComponent(test);
-hourWeekComponent(DateTest);
+hourWeekComponent();
 
 function WeekComponent(element) {
     let WeekContent = document.createElement('div');
@@ -59,7 +56,15 @@ function WeekComponent(element) {
     element.appendChild(WeekContent);
 }
 
-function hourWeekComponent(getDay) {
+function hourWeekComponent(getDay, getDate, getMonth, getFullYear) {
+
+    let fecha = new Date();
+
+    let currentDayName = fecha.getDay();
+    let currentWeek = fecha.getDate();
+    let currentMonth = fecha.getMonth();
+    let currentYear = fecha.getFullYear();
+
     let containerWeek = document.getElementById("container-week");
     let weekContent = document.getElementById("days-of-week");
     const nameMonth = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
@@ -136,30 +141,30 @@ function hourWeekComponent(getDay) {
     let countStartSat = -5; //sabado
     let countStartSun = -6; //domingo
 
-    for (var i = 0; i < 7; i++) {//Corregir este for o pasar por testeo
-        if (getDay === 1) {
+    for (var i = 0; i < 7; i++) {//Corregir este for o pasar por testeo | Este for imprime las fechas de la semana en pantalla
+        if (currentWeek === 1) {
             weekDays[i].innerHTML = currentWeek + countStartMon++;
-        } else if (getDay === 2) {
+        } else if (currentWeek === 2) {
             let d = new Date();
             d.setDate(currentWeek + countStartTue++);
             weekDays[i].innerHTML = d.getDate();
-        } else if (getDay === 3) {
+        } else if (currentWeek === 3) {
             let d = new Date();
             d.setDate(currentWeek + countStartWed++);
             weekDays[i].innerHTML = d.getDate();
-        } else if (getDay === 4) {
+        } else if (currentWeek === 4) {
             let d = new Date();
             d.setDate(currentWeek + countStartThr++);
             weekDays[i].innerHTML = d.getDate();
-        } else if (getDay === 5) {
+        } else if (currentWeek === 5) {
             let d = new Date();
             d.setDate(currentWeek + countStartFre++);
             weekDays[i].innerHTML = d.getDate();
-        } else if (getDay === 6) {
+        } else if (currentWeek === 6) {
             let d = new Date();
             d.setDate(currentWeek + countStartSat++);
             weekDays[i].innerHTML = d.getDate();
-        } else if (getDay === 0) {
+        } else if (currentWeek === 0) {
             let d = new Date();
             d.setDate(currentWeek + countStartSun++);
             weekDays[i].innerHTML = d.getDate();

@@ -1,6 +1,6 @@
 import { NewModalEvent, closeModal } from "./EventoModal.js";
 import { DayComponent, hourDayComponent} from "./DayComponent.js";
-import { WeekComponent, hourWeekComponent} from "./code_for_refactor.js";
+/* import { WeekComponent, hourWeekComponent} from "./code_for_refactor.js"; */
 
 let calendarContainer = document.getElementsByClassName("calendar-container")[0];
 
@@ -99,9 +99,9 @@ document.addEventListener('click', (e) => {
     calendarContainer.lastChild.remove();
     containerYear.style = "display: none";
     containerMonth.style = "display: none";
-    /* containerWeek.style = "display: flex"; */
-    WeekComponent(calendarContainer);
-    hourWeekComponent(currentDayName);
+    containerWeek.style = "display: flex";
+    /* WeekComponent(calendarContainer);
+    hourWeekComponent(currentDayName); */
     document.getElementById("fecha-week").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
   }
   if (e.target.matches('#radio-month')) {
@@ -169,7 +169,7 @@ let horas = 0;
 let tmpEventDayWeek = 3; // dynamic
 let tmpHourDayWeek = 4; ; // dynamic
 
-/* for (let w = 1; w < 169; w++) {
+for (let w = 1; w < 169; w++) {
 
   if(horas == tmpHourDayWeek && tmpEventDayWeek == day){
     weekContent.innerHTML += 
@@ -193,11 +193,11 @@ let tmpHourDayWeek = 4; ; // dynamic
   }
   day++;
   cont++;
-} */
+}
 
-/* hourDayWeek.forEach((item) => {
+hourDayWeek.forEach((item) => {
   document.getElementById("grid-hour").innerHTML += `<div class="horas"> ${item.hour} </div>`
-}); */
+});
 
 let countStartMon = 0; //lunes
 let countStartTue = -1; //martes
@@ -462,7 +462,7 @@ function writeYearMonthDec() {
 /* dates buttons */
 /*---------------*/
 /* evita que se cargen los calendarios al mismo tiempo al abrir la pagina por primera vez */
-/* containerWeek.style = "display: none"; */
+containerWeek.style = "display: none";
 containerYear.style = "display: none";
 containerMonth.style = "display: flex";
 document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
