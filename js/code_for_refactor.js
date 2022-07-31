@@ -142,29 +142,29 @@ function hourWeekComponent(getDay, getDate, getMonth, getFullYear) {
     let countStartSun = -6; //domingo
 
     for (var i = 0; i < 7; i++) {//Corregir este for o pasar por testeo | Este for imprime las fechas de la semana en pantalla
-        if (currentWeek === 1) {
+        if (currentDayName === 1) {
             weekDays[i].innerHTML = currentWeek + countStartMon++;
-        } else if (currentWeek === 2) {
+        } else if (currentDayName === 2) {
             let d = new Date();
             d.setDate(currentWeek + countStartTue++);
             weekDays[i].innerHTML = d.getDate();
-        } else if (currentWeek === 3) {
+        } else if (currentDayName === 3) {
             let d = new Date();
             d.setDate(currentWeek + countStartWed++);
             weekDays[i].innerHTML = d.getDate();
-        } else if (currentWeek === 4) {
+        } else if (currentDayName === 4) {
             let d = new Date();
             d.setDate(currentWeek + countStartThr++);
             weekDays[i].innerHTML = d.getDate();
-        } else if (currentWeek === 5) {
+        } else if (currentDayName === 5) {
             let d = new Date();
             d.setDate(currentWeek + countStartFre++);
             weekDays[i].innerHTML = d.getDate();
-        } else if (currentWeek === 6) {
+        } else if (currentDayName === 6) {
             let d = new Date();
             d.setDate(currentWeek + countStartSat++);
             weekDays[i].innerHTML = d.getDate();
-        } else if (currentWeek === 0) {
+        } else if (currentDayName === 0) {
             let d = new Date();
             d.setDate(currentWeek + countStartSun++);
             weekDays[i].innerHTML = d.getDate();
