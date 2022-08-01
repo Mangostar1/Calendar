@@ -1,6 +1,6 @@
 import { NewModalEvent, closeModal } from "./EventoModal.js";
 import { DayComponent, hourDayComponent} from "./DayComponent.js";
-/* import { WeekComponent, hourWeekComponent} from "./code_for_refactor.js"; */
+import { WeekComponent, hourWeekComponent} from "./WeekComponent.js";
 
 let calendarContainer = document.getElementsByClassName("calendar-container")[0];
 
@@ -84,9 +84,9 @@ document.addEventListener('click', (e) => {
     nextYear();
   }
   //control de componentes
-  if (e.target.matches('#radio-day')) {
+  if (e.target.matches('#radio-day')) {//dia
     wrapper.style = "display: none";
-    containerWeek.style = "display: none";
+    calendarContainer.lastChild.remove();
     containerYear.style = "display: none";
     containerMonth.style = "display: none";
     DayComponent(calendarContainer);
@@ -94,18 +94,16 @@ document.addEventListener('click', (e) => {
     document.getElementById("fecha-day").innerHTML = currentWeek + " de " + nameMonth[currentMonth] + " del " + currentYear;
     document.getElementById('cambia-dia').innerHTML = nameDay[currentDayName] + " " + currentWeek;
   }
-  if (e.target.matches('#radio-week')) {
+  if (e.target.matches('#radio-week')) {//semana
     wrapper.style = "display: none";
     calendarContainer.lastChild.remove();
     containerYear.style = "display: none";
     containerMonth.style = "display: none";
-    containerWeek.style = "display: flex";
-    /* WeekComponent(calendarContainer);
-    hourWeekComponent(currentDayName); */
+    WeekComponent(calendarContainer);
+    hourWeekComponent();
     document.getElementById("fecha-week").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
   }
-  if (e.target.matches('#radio-month')) {
-    containerWeek.style = "display: none";
+  if (e.target.matches('#radio-month')) {//mes
     calendarContainer.lastChild.remove();
     containerYear.style = "display: none";
     wrapper.style = "display: grid";
@@ -113,9 +111,8 @@ document.addEventListener('click', (e) => {
     document.getElementById("dates-control-month").style = "display: flex";
     document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
   }
-  if (e.target.matches('#radio-year')) {
+  if (e.target.matches('#radio-year')) {//año
     wrapper.style = "display: none";
-    containerWeek.style = "display: none";
     calendarContainer.lastChild.remove();
     containerMonth.style = "display: none";
     document.getElementById("dates-control-month").style = "display: none";
@@ -129,113 +126,6 @@ document.addEventListener('click', (e) => {
 /*-----*/
 //este codigo se quedara obsoleto una vez implementado el componente dia
 const nameDay = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
-
-/*------*/
-/* week */
-/*------*/
-let containerWeek = document.getElementById("container-week");
-let weekContent = document.getElementById("days-of-week");
-const hourDayWeek = [{
-  hour: "Horas"}, 
-  {hour: "00:00 hrs"}, 
-  {hour: "01:00 hrs"}, 
-  {hour: "02:00 hrs"}, 
-  {hour: "03:00 hrs"}, 
-  {hour: "04:00 hrs"}, 
-  {hour: "05:00 hrs"}, 
-  {hour: "06:00 hrs"}, 
-  {hour: "07:00 hrs"}, 
-  {hour: "08:00 hrs"}, 
-  {hour: "09:00 hrs"}, 
-  {hour: "10:00 hrs"}, 
-  {hour: "11:00 hrs"}, 
-  {hour: "12:00 hrs"}, 
-  {hour: "13:00 hrs"}, 
-  {hour: "14:00 hrs"}, 
-  {hour: "15:00 hrs"}, 
-  {hour: "16:00 hrs"}, 
-  {hour: "17:00 hrs"}, 
-  {hour: "18:00 hrs"}, 
-  {hour: "19:00 hrs"}, 
-  {hour: "20:00 hrs"}, 
-  {hour: "21:00 hrs"}, 
-  {hour: "22:00 hrs"}, 
-  {hour: "23:00 hrs"}
-];
-
-let cont = 1;
-let day = 1;
-let horas = 0;
-let tmpEventDayWeek = 3; // dynamic
-let tmpHourDayWeek = 4; ; // dynamic
-
-for (let w = 1; w < 169; w++) {
-
-  if(horas == tmpHourDayWeek && tmpEventDayWeek == day){
-    weekContent.innerHTML += 
-      `<div class="semanal">
-        <ul>
-          <li class="event eventWeek"> Hora ${horas} Day ${day}</li>
-        </ul>
-      </div>`;
-  }else{
-    weekContent.innerHTML += 
-      `<div class="semanal">
-        <ul>
-          <li class="event eventWeek"></li>
-        </ul>
-      </div>`;
-  }
-
-  if(w % 7 == 0){
-      horas++;
-      day = 0;
-  }
-  day++;
-  cont++;
-}
-
-hourDayWeek.forEach((item) => {
-  document.getElementById("grid-hour").innerHTML += `<div class="horas"> ${item.hour} </div>`
-});
-
-let countStartMon = 0; //lunes
-let countStartTue = -1; //martes
-let countStartWed = -2; //miercoles
-let countStartThr = -3; //jueves
-let countStartFre = -4; //viernes
-let countStartSat = -5; //sabado
-let countStartSun = -6; //domingo
-
-for (var i = 0; i < 7; i++) {//Corregir este for o pasar por testeo
-  if (currentDayName === 1) {
-    weekDays[i].innerHTML = currentWeek + countStartMon++;
-  } else if (currentDayName === 2) {
-    let d = new Date();
-    d.setDate(currentWeek + countStartTue++);
-    weekDays[i].innerHTML = d.getDate();
-  } else if (currentDayName === 3) {
-    let d = new Date();
-    d.setDate(currentWeek + countStartWed++);
-    weekDays[i].innerHTML = d.getDate();
-  } else if (currentDayName === 4) {
-    let d = new Date();
-    d.setDate(currentWeek + countStartThr++);
-    weekDays[i].innerHTML = d.getDate();
-  } else if (currentDayName === 5) {
-    let d = new Date();
-    d.setDate(currentWeek + countStartFre++);
-    weekDays[i].innerHTML = d.getDate();
-  } else if (currentDayName === 6) {
-    let d = new Date();
-    d.setDate(currentWeek + countStartSat++);
-    weekDays[i].innerHTML = d.getDate();
-  } else if (currentDayName === 0) {
-    let d = new Date();
-    d.setDate(currentWeek + countStartSun++);
-    weekDays[i].innerHTML = d.getDate();
-  }
-}
 
 /*-------*/
 /* month */
@@ -462,7 +352,6 @@ function writeYearMonthDec() {
 /* dates buttons */
 /*---------------*/
 /* evita que se cargen los calendarios al mismo tiempo al abrir la pagina por primera vez */
-containerWeek.style = "display: none";
 containerYear.style = "display: none";
 containerMonth.style = "display: flex";
 document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
