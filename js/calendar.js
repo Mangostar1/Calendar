@@ -1,7 +1,7 @@
 import { NewModalEvent, closeModal } from "./EventoModal.js";
 import { DayComponent, hourDayComponent} from "./DayComponent.js";
 import { WeekComponent, hourWeekComponent} from "./WeekComponent.js";
-//import { MonthComponent, DaysOfMonth} from "./MonthComponent.js";
+import { MonthComponent, DaysOfMonth} from "./MonthComponent.js";
 import { YearComponent} from "./YearComponent.js";
 
 let calendarContainer = document.getElementsByClassName("calendar-container")[0];
@@ -18,6 +18,7 @@ let currentYear = fecha.getFullYear();
 
 
 const nameMonth = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+const nameDay = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
 let weekDays = document.getElementsByClassName("diasNumber");
 
 function isLeap() {// comprueba si el año es biciesto | funcionando
@@ -125,12 +126,6 @@ document.addEventListener('click', (e) => {
     document.getElementById("fecha-year").innerHTML = currentYear;
   }
 });
-
-/*-----*/
-/* day */
-/*-----*/
-//este codigo se quedara obsoleto una vez implementado el componente dia
-const nameDay = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
 
 /*-------*/
 /* month */
@@ -562,7 +557,7 @@ let eventoLi = document.getElementsByClassName("event");
 let eventWekk = document.getElementsByClassName("eventWeek");
 
 async function inicioEventoDia() { 
-  /* const basicStruc = await fetch("/basicStructure.json"); */
+  // const basicStruc = await fetch("/basicStructure.json");
   const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
 
   const primerEvento = await basicStruc.json();
@@ -628,8 +623,8 @@ async function inicioEventoDia() {
         eventWekk[29].innerHTML = '<li class="event"></li>';
       }
     }
-  } /* else {
-    eventWekk[29].innerHTML = '<li class="event"></li>';
-  } */
+  } // else {
+    //eventWekk[29].innerHTML = '<li class="event"></li>';
+  //}
 }
 inicioEventoDia();

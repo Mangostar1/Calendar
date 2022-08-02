@@ -108,3 +108,7 @@ export function YearComponent(element) {
 
     element.appendChild(yearContent);
 }
+
+function test() {
+    
+}
