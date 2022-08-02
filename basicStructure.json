@@ -1,9 +1,9 @@
 {
   "events": [
     {
-      "dateStartEvent": "2022-06-18",
+      "dateStartEvent": "2022-08-18",
       "hourStart": "00:00:00",
-      "dateFinishEvent": "2022-06-18",
+      "dateFinishEvent": "2022-08-18",
       "hourFinish": "00:59:00",
       "title": "Ejemplo de titulo 1",
       "statusInformation": {
@@ -17,9 +17,9 @@
         "colorType": "white"
       }
   }, {
-      "dateStartEvent": "2022-06-19",
+      "dateStartEvent": "2022-08-19",
       "hourStart": "00:00:00",
-      "dateFinishEvent": "2022-06-19",
+      "dateFinishEvent": "2022-08-19",
       "hourFinish": "00:59:00",
       "title": "Ejemplo de titulo 2",
       "statusInformation": {
@@ -33,9 +33,9 @@
         "colorType": "white"
       }
   }, {
-      "dateStartEvent": "2022-06-20",
+      "dateStartEvent": "2022-08-20",
       "hourStart": "00:00:00",
-      "dateFinishEvent": "2022-06-20",
+      "dateFinishEvent": "2022-08-20",
       "hourFinish": "00:59:00",
       "title": "Ejemplo de titulo 3",
       "statusInformation": {

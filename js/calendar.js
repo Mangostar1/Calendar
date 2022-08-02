@@ -137,8 +137,6 @@ const daysOfWeek = [
   {day: 'Lun'}, {day: 'Mar'}, {day: 'Mié'}, {day: 'Jue'}, {day: 'Vie'}, {day: 'Sáb'}, {day: 'Dom'}
 ];
 
-writeMonth(currentMonth);
-
 function writeMonth(month) {
   daysOfWeek.forEach((item) => {
     wrapper.innerHTML += `<div class="grid-days"> ${item.day} </div>`;
@@ -172,33 +170,36 @@ function writeMonth(month) {
         </div>`;
     }
   }
-  async function eventoMonth() {
-    // const basicMonth = await fetch("/basicStructure.json"); | json de manera local en liveServer
-    const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
-    const basicMonthJson = await basicMonth.json();
-
-    for (let i = 0; i < 3; i++) {
-      let datesJSON = basicMonthJson.events[i].dateStartEvent;
-
-      const datesSplit = datesJSON.split('-');
-
-      let dateMonth = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
-      let diames = dateMonth.getDate();
-      let eventMonth = document.getElementById(`evento-${diames}`);
-
-      let horaInicialAA = basicMonthJson.events[i].hourStart;
-      let horafinalAA = basicMonthJson.events[i].hourFinish;
-      let tituloEventoAA = basicMonthJson.events[i].title;
-
-      if (dateMonth.getMonth() === currentMonth && dateMonth.getFullYear() === currentYear) {
-        eventMonth.innerHTML = `<button class="btn-item" id="btn-event-${i}"><span class="sp-hour"> ${horaInicialAA} - ${horafinalAA} </span> <br> <span class="sp-title"> ${tituloEventoAA} </span></button>`;
-      } else {
-        eventMonth.innerHTML = `<li class="event"></li>`;
-      }
-    }
-  }
   eventoMonth();
 }
+
+//eventos desde el json
+async function eventoMonth() {
+  // const basicMonth = await fetch("/basicStructure.json"); | json de manera local en liveServer
+  const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
+  const basicMonthJson = await basicMonth.json();
+
+  for (let i = 0; i < 3; i++) {
+    let datesJSON = basicMonthJson.events[i].dateStartEvent;
+
+    const datesSplit = datesJSON.split('-');
+
+    let dateMonth = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
+    let diames = dateMonth.getDate();
+    let eventMonth = document.getElementById(`evento-${diames}`);
+
+    let horaInicialAA = basicMonthJson.events[i].hourStart;
+    let horafinalAA = basicMonthJson.events[i].hourFinish;
+    let tituloEventoAA = basicMonthJson.events[i].title;
+
+    if (dateMonth.getMonth() === currentMonth && dateMonth.getFullYear() === currentYear) {
+      eventMonth.innerHTML = `<button class="btn-item" id="btn-event-${i}"><span class="sp-hour"> ${horaInicialAA} - ${horafinalAA} </span> <br> <span class="sp-title"> ${tituloEventoAA} </span></button>`;
+    } else {
+      eventMonth.innerHTML = `<li class="event"></li>`;
+    }
+  }
+}
+writeMonth(currentMonth);
 
 /*------*/
 /* year */
@@ -216,130 +217,87 @@ nameWeeck.forEach((item) => {
   }
 });
 
-writeYearMonthJan();
 
-function writeYearMonthJan() {
-
+writeYear();
+function writeYear() {
+  //Enero
   for (let i = startDayYear(0); i > 0; i--) {
     daysMonthYear[0].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
   for (let i = 1; i <= getTotalDays(0); i++) {
     daysMonthYear[0].innerHTML += `<li class="day"> ${i} </li>`;
   }
-}
-
-writeYearMonthFeb(); // escribe si febreto tiene 28 o 29 dias
-function writeYearMonthFeb() {
+  //Febrero
   for (let i = startDayYear(1); i > 0; i--) {
     daysMonthYear[1].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
   for (let i = 1; i <= getTotalDays(1); i++) {
     daysMonthYear[1].innerHTML += `<li class="day"> ${i} </li>`;
   }
-}
-
-writeYearMonthMar();
-
-function writeYearMonthMar() {
+  //Marzo
   for (let i = startDayYear(2); i > 0; i--) {
     daysMonthYear[2].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
   for (let i = 1; i <= getTotalDays(2); i++) {
     daysMonthYear[2].innerHTML += `<li class="day"> ${i} </li>`;
   }
-}
-
-writeYearMonthApr();
-
-function writeYearMonthApr() {
+  //Abril
   for (let i = startDayYear(3); i > 0; i--) {
     daysMonthYear[3].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
   for (let i = 1; i <= getTotalDays(3); i++) {
     daysMonthYear[3].innerHTML += `<li class="day"> ${i} </li>`;
   }
-}
-
-writeYearMonthMay();
-
-function writeYearMonthMay() {
+  //Mayo
   for (let i = startDayYear(4); i > 0; i--) {
     daysMonthYear[4].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
   for (let i = 1; i <= getTotalDays(4); i++) {
     daysMonthYear[4].innerHTML += `<li class="day"> ${i} </li>`;
   }
-}
-
-writeYearMonthJun();
-
-function writeYearMonthJun() {
+  //Junio
   for (let i = startDayYear(5); i > 0; i--) {
     daysMonthYear[5].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
   for (let i = 1; i <= getTotalDays(5); i++) {
     daysMonthYear[5].innerHTML += `<li class="day"> ${i} </li>`;
   }
-}
-
-writeYearMonthJul();
-
-function writeYearMonthJul() {
+  //Julio
   for (let i = startDayYear(6); i > 0; i--) {
     daysMonthYear[6].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
   for (let i = 1; i <= getTotalDays(6); i++) {
     daysMonthYear[6].innerHTML += `<li class="day"> ${i} </li>`;
   }
-}
-
-writeYearMonthAug();
-
-function writeYearMonthAug() {
+  //Agosto
   for (let i = startDayYear(7); i > 0; i--) {
     daysMonthYear[7].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
   for (let i = 1; i <= getTotalDays(7); i++) {
     daysMonthYear[7].innerHTML += `<li class="day"> ${i} </li>`;
   }
-}
-
-writeYearMonthSep();
-
-function writeYearMonthSep() {
+  //Septiembre
   for (let i = startDayYear(8); i > 0; i--) {
     daysMonthYear[8].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
   for (let i = 1; i <= getTotalDays(8); i++) {
     daysMonthYear[8].innerHTML += `<li class="day"> ${i} </li>`;
   }
-}
-
-writeYearMonthOct();
-
-function writeYearMonthOct() {
+  //Octubre
   for (let i = startDayYear(9); i > 0; i--) {
     daysMonthYear[9].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
   for (let i = 1; i <= getTotalDays(9); i++) {
     daysMonthYear[9].innerHTML += `<li class="day"> ${i} </li>`;
   }
-}
-
-writeYearMonthNov();
-
-function writeYearMonthNov() {
+  //Noviembre
   for (let i = startDayYear(10); i > 0; i--) {
     daysMonthYear[10].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
   for (let i = 1; i <= getTotalDays(10); i++) {
     daysMonthYear[10].innerHTML += `<li class="day"> ${i} </li>`;
   }
-}
-
-writeYearMonthDec();
-
-function writeYearMonthDec() {
+  //Diciembre
   for (let i = startDayYear(11); i > 0; i--) {
     daysMonthYear[11].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
   }
@@ -535,18 +493,7 @@ function setNewDateYear() {
   for (let y = 0; y < 12; y++) {
     daysMonthYear[y].innerHTML = " "
   }
-  writeYearMonthJan();
-  writeYearMonthFeb();
-  writeYearMonthMar();
-  writeYearMonthApr();
-  writeYearMonthMay();
-  writeYearMonthJun();
-  writeYearMonthJul();
-  writeYearMonthAug();
-  writeYearMonthSep();
-  writeYearMonthOct();
-  writeYearMonthNov();
-  writeYearMonthDec();
+  writeYear();
 }
 
 /*--------------*/
