@@ -38,7 +38,7 @@ export function getTotalDays(month) {// para determinar la cantidad de dias del 
 }
 
 //corregir el dia en que comienza el mes
-function startDay() {
+export function startDay() {
   let start = new Date(currentYear, currentMonth, 1);
   return ((start.getDay() - 1) === -1) ? 6 : start.getDay() - 1;
 }

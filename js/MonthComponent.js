@@ -1,3 +1,5 @@
+import { getTotalDays, startDay} from "./calendar.js";
+
 let fecha = new Date();//esta no se importa ni declara aca, sino que en calendar
 
 let currentWeek = fecha.getDate();
