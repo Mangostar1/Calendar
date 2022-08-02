@@ -2,7 +2,7 @@ import { NewModalEvent, closeModal } from "./EventoModal.js";
 import { DayComponent, hourDayComponent} from "./DayComponent.js";
 import { WeekComponent, hourWeekComponent} from "./WeekComponent.js";
 import { MonthComponent, DaysOfMonth} from "./MonthComponent.js";
-import { YearComponent} from "./YearComponent.js";
+import { YearComponent, writeYear} from "./YearComponent.js";
 
 let calendarContainer = document.getElementsByClassName("calendar-container")[0];
 
@@ -25,7 +25,7 @@ function isLeap() {// comprueba si el año es biciesto | funcionando
   return ((currentYear % 100 !== 0) && (currentYear % 4 === 0) || (currentYear % 400 === 0))
 }
 
-function getTotalDays(month) {// para determinar la cantidad de dias del mes al que se consulte
+export function getTotalDays(month) {// para determinar la cantidad de dias del mes al que se consulte
   if (month === -1) month = 11;
 
   if (month == 0 || month == 2 || month == 4 || month == 6 || month == 7 || month == 9 || month == 11) {
@@ -43,7 +43,7 @@ function startDay() {
   return ((start.getDay() - 1) === -1) ? 6 : start.getDay() - 1;
 }
 
-function startDayYear(month) {//corregir el dia en que comienza el mes en el año
+export function startDayYear(month) {//corregir el dia en que comienza el mes en el año
   let start = new Date(currentYear, month, 1);
   return ((start.getDay() - 1) === -1) ? 6 : start.getDay() - 1;
 }
@@ -90,7 +90,6 @@ document.addEventListener('click', (e) => {
   if (e.target.matches('#radio-day')) {//dia
     wrapper.style = "display: none";
     calendarContainer.lastChild.remove();
-    containerYear.style = "display: none";
     containerMonth.style = "display: none";
     DayComponent(calendarContainer);
     hourDayComponent();
@@ -100,7 +99,6 @@ document.addEventListener('click', (e) => {
   if (e.target.matches('#radio-week')) {//semana
     wrapper.style = "display: none";
     calendarContainer.lastChild.remove();
-    containerYear.style = "display: none";
     containerMonth.style = "display: none";
     WeekComponent(calendarContainer);
     hourWeekComponent();
@@ -108,7 +106,6 @@ document.addEventListener('click', (e) => {
   }
   if (e.target.matches('#radio-month')) {//mes
     calendarContainer.lastChild.remove();
-    containerYear.style = "display: none";
     //MonthComponent(calendarContainer);
     //DaysOfMonth(currentMonth);
     wrapper.style = "display: grid";
@@ -121,8 +118,8 @@ document.addEventListener('click', (e) => {
     calendarContainer.lastChild.remove();
     containerMonth.style = "display: none";
     document.getElementById("dates-control-month").style = "display: none";
-    containerYear.style = "display: flex";
-    //YearComponent(calendarContainer);
+    YearComponent(calendarContainer);
+    writeYear();
     document.getElementById("fecha-year").innerHTML = currentYear;
   }
 });
@@ -175,7 +172,6 @@ function writeMonth(month) {
 
 //eventos desde el json
 async function eventoMonth() {
-  // const basicMonth = await fetch("/basicStructure.json"); | json de manera local en liveServer
   const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
   const basicMonthJson = await basicMonth.json();
 
@@ -204,113 +200,13 @@ writeMonth(currentMonth);
 /*------*/
 /* year */
 /*------*/
-let containerYear = document.getElementById("container-Year");
-let dayNameYear = document.getElementsByClassName("day-name-div");
 let daysMonthYear = document.getElementsByClassName("day-div");
-const nameWeeck = [
-  {day: 'L'}, {day: 'M'}, {day: 'M'}, {day: 'J'}, {day: 'V'}, {day: 'S'}, {day: 'D'}
-];
-
-nameWeeck.forEach((item) => {
-  for (let i = 0; i < 12; i++) {
-    dayNameYear[i].innerHTML += `<li class="day-name"> ${item.day} </li>`;
-  }
-});
-
-
-writeYear();
-function writeYear() {
-  //Enero
-  for (let i = startDayYear(0); i > 0; i--) {
-    daysMonthYear[0].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
-  }
-  for (let i = 1; i <= getTotalDays(0); i++) {
-    daysMonthYear[0].innerHTML += `<li class="day"> ${i} </li>`;
-  }
-  //Febrero
-  for (let i = startDayYear(1); i > 0; i--) {
-    daysMonthYear[1].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
-  }
-  for (let i = 1; i <= getTotalDays(1); i++) {
-    daysMonthYear[1].innerHTML += `<li class="day"> ${i} </li>`;
-  }
-  //Marzo
-  for (let i = startDayYear(2); i > 0; i--) {
-    daysMonthYear[2].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
-  }
-  for (let i = 1; i <= getTotalDays(2); i++) {
-    daysMonthYear[2].innerHTML += `<li class="day"> ${i} </li>`;
-  }
-  //Abril
-  for (let i = startDayYear(3); i > 0; i--) {
-    daysMonthYear[3].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
-  }
-  for (let i = 1; i <= getTotalDays(3); i++) {
-    daysMonthYear[3].innerHTML += `<li class="day"> ${i} </li>`;
-  }
-  //Mayo
-  for (let i = startDayYear(4); i > 0; i--) {
-    daysMonthYear[4].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
-  }
-  for (let i = 1; i <= getTotalDays(4); i++) {
-    daysMonthYear[4].innerHTML += `<li class="day"> ${i} </li>`;
-  }
-  //Junio
-  for (let i = startDayYear(5); i > 0; i--) {
-    daysMonthYear[5].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
-  }
-  for (let i = 1; i <= getTotalDays(5); i++) {
-    daysMonthYear[5].innerHTML += `<li class="day"> ${i} </li>`;
-  }
-  //Julio
-  for (let i = startDayYear(6); i > 0; i--) {
-    daysMonthYear[6].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
-  }
-  for (let i = 1; i <= getTotalDays(6); i++) {
-    daysMonthYear[6].innerHTML += `<li class="day"> ${i} </li>`;
-  }
-  //Agosto
-  for (let i = startDayYear(7); i > 0; i--) {
-    daysMonthYear[7].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
-  }
-  for (let i = 1; i <= getTotalDays(7); i++) {
-    daysMonthYear[7].innerHTML += `<li class="day"> ${i} </li>`;
-  }
-  //Septiembre
-  for (let i = startDayYear(8); i > 0; i--) {
-    daysMonthYear[8].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
-  }
-  for (let i = 1; i <= getTotalDays(8); i++) {
-    daysMonthYear[8].innerHTML += `<li class="day"> ${i} </li>`;
-  }
-  //Octubre
-  for (let i = startDayYear(9); i > 0; i--) {
-    daysMonthYear[9].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
-  }
-  for (let i = 1; i <= getTotalDays(9); i++) {
-    daysMonthYear[9].innerHTML += `<li class="day"> ${i} </li>`;
-  }
-  //Noviembre
-  for (let i = startDayYear(10); i > 0; i--) {
-    daysMonthYear[10].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
-  }
-  for (let i = 1; i <= getTotalDays(10); i++) {
-    daysMonthYear[10].innerHTML += `<li class="day"> ${i} </li>`;
-  }
-  //Diciembre
-  for (let i = startDayYear(11); i > 0; i--) {
-    daysMonthYear[11].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
-  }
-  for (let i = 1; i <= getTotalDays(11); i++) {
-    daysMonthYear[11].innerHTML += `<li class="day"> ${i} </li>`;
-  }
-}
 
 /*---------------*/
 /* dates buttons */
 /*---------------*/
-/* evita que se cargen los calendarios al mismo tiempo al abrir la pagina por primera vez */
-containerYear.style = "display: none";
+
+// evita que se cargen los calendarios al mismo tiempo al abrir la pagina por primera vez
 containerMonth.style = "display: flex";
 document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
 
@@ -504,7 +400,6 @@ let eventoLi = document.getElementsByClassName("event");
 let eventWekk = document.getElementsByClassName("eventWeek");
 
 async function inicioEventoDia() { 
-  // const basicStruc = await fetch("/basicStructure.json");
   const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
 
   const primerEvento = await basicStruc.json();

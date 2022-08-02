@@ -10,7 +10,7 @@ let currentYear = fecha.getFullYear();
 
 
 MonthComponent(test);
-DaysOfMonth(currentMonth);
+DaysOfMonth(1);
 
 function isLeap() {//se importa desde calendar
     return ((currentYear % 100 !== 0) && (currentYear % 4 === 0) || (currentYear % 400 === 0))
@@ -26,12 +26,6 @@ function isLeap() {//se importa desde calendar
     } else {
         return isLeap() ? 29 : 28;
     }
-}
-
-  //corregir el dia en que comienza el mes
-function startDay() {
-    let start = new Date(currentYear, currentMonth, 1);
-    return ((start.getDay() - 1) === -1) ? 6 : start.getDay() - 1;
 }
 
 function MonthComponent(element) {
@@ -50,9 +44,12 @@ function MonthComponent(element) {
 }
 
 function DaysOfMonth(month) {
+      //corregir el dia en que comienza el mes
+    function startDay() {
+        let start = new Date(currentYear, currentMonth, 1);
+        return ((start.getDay() - 1) === -1) ? 6 : start.getDay() - 1;
+    }
     let wrapper = document.getElementById('days-of-month');
-    let containerMonth = document.getElementById('container-month');
-    let  Dias = document.getElementsByClassName('grid-item');
     const daysOfWeek = [
         {day: 'Lun'}, {day: 'Mar'}, {day: 'Mié'}, {day: 'Jue'}, {day: 'Vie'}, {day: 'Sáb'}, {day: 'Dom'}
     ];
@@ -89,7 +86,6 @@ function DaysOfMonth(month) {
         }
     }
         async function eventoMonth() {
-            /* const basicMonth = await fetch("/basicStructure.json"); */ //json de manera local en liveServer
             const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
             const basicMonthJson = await basicMonth.json();
     

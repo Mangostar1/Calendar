@@ -1,3 +1,12 @@
+import { getTotalDays, startDayYear} from "./calendar.js";
+
+let fecha = new Date();
+
+let currentDayName = fecha.getDay();
+let currentWeek = fecha.getDate();
+let currentMonth = fecha.getMonth();
+let currentYear = fecha.getFullYear();
+
 export function YearComponent(element) {
     let yearContent = document.createElement('div');
     yearContent.classList.add('year-content');
@@ -109,6 +118,101 @@ export function YearComponent(element) {
     element.appendChild(yearContent);
 }
 
-function test() {
-    
+export function writeYear() {
+    let containerYear = document.getElementById("container-Year");
+    let dayNameYear = document.getElementsByClassName("day-name-div");
+    let daysMonthYear = document.getElementsByClassName("day-div");
+    const nameWeeck = [
+        {day: 'L'}, {day: 'M'}, {day: 'M'}, {day: 'J'}, {day: 'V'}, {day: 'S'}, {day: 'D'}
+    ];
+
+    nameWeeck.forEach((item) => {
+        for (let i = 0; i < 12; i++) {
+            dayNameYear[i].innerHTML += `<li class="day-name"> ${item.day} </li>`;
+        }
+    });
+    //Enero
+    for (let i = startDayYear(0); i > 0; i--) {
+        daysMonthYear[0].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+    }
+    for (let i = 1; i <= getTotalDays(0); i++) {
+        daysMonthYear[0].innerHTML += `<li class="day"> ${i} </li>`;
+    }
+    //Febrero
+    for (let i = startDayYear(1); i > 0; i--) {
+        daysMonthYear[1].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+    }
+    for (let i = 1; i <= getTotalDays(1); i++) {
+        daysMonthYear[1].innerHTML += `<li class="day"> ${i} </li>`;
+    }
+    //Marzo
+    for (let i = startDayYear(2); i > 0; i--) {
+        daysMonthYear[2].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+    }
+    for (let i = 1; i <= getTotalDays(2); i++) {
+        daysMonthYear[2].innerHTML += `<li class="day"> ${i} </li>`;
+    }
+    //Abril
+    for (let i = startDayYear(3); i > 0; i--) {
+        daysMonthYear[3].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+    }
+    for (let i = 1; i <= getTotalDays(3); i++) {
+        daysMonthYear[3].innerHTML += `<li class="day"> ${i} </li>`;
+    }
+    //Mayo
+    for (let i = startDayYear(4); i > 0; i--) {
+        daysMonthYear[4].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+    }
+    for (let i = 1; i <= getTotalDays(4); i++) {
+        daysMonthYear[4].innerHTML += `<li class="day"> ${i} </li>`;
+    }
+    //Junio
+    for (let i = startDayYear(5); i > 0; i--) {
+        daysMonthYear[5].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+    }
+    for (let i = 1; i <= getTotalDays(5); i++) {
+        daysMonthYear[5].innerHTML += `<li class="day"> ${i} </li>`;
+    }
+    //Julio
+    for (let i = startDayYear(6); i > 0; i--) {
+        daysMonthYear[6].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+    }
+    for (let i = 1; i <= getTotalDays(6); i++) {
+        daysMonthYear[6].innerHTML += `<li class="day"> ${i} </li>`;
+    }
+    //Agosto
+    for (let i = startDayYear(7); i > 0; i--) {
+        daysMonthYear[7].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+    }
+    for (let i = 1; i <= getTotalDays(7); i++) {
+        daysMonthYear[7].innerHTML += `<li class="day"> ${i} </li>`;
+    }
+    //Septiembre
+    for (let i = startDayYear(8); i > 0; i--) {
+        daysMonthYear[8].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+    }
+    for (let i = 1; i <= getTotalDays(8); i++) {
+        daysMonthYear[8].innerHTML += `<li class="day"> ${i} </li>`;
+    }
+    //Octubre
+    for (let i = startDayYear(9); i > 0; i--) {
+        daysMonthYear[9].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+    }
+    for (let i = 1; i <= getTotalDays(9); i++) {
+        daysMonthYear[9].innerHTML += `<li class="day"> ${i} </li>`;
+    }
+    //Noviembre
+    for (let i = startDayYear(10); i > 0; i--) {
+        daysMonthYear[10].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+    }
+    for (let i = 1; i <= getTotalDays(10); i++) {
+        daysMonthYear[10].innerHTML += `<li class="day"> ${i} </li>`;
+    }
+    //Diciembre
+    for (let i = startDayYear(11); i > 0; i--) {
+        daysMonthYear[11].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+    }
+    for (let i = 1; i <= getTotalDays(11); i++) {
+        daysMonthYear[11].innerHTML += `<li class="day"> ${i} </li>`;
+    }
 }
