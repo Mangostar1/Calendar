@@ -2,177 +2,76 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendario</title>
-    <link rel="stylesheet" href="./css/calendar.css">
-    <link rel="stylesheet" href="./css/modal.css">
-    <link rel="stylesheet" href="./css/footer.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100&family=Roboto:wght@300;500;700;900&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="icons/calendar-svgrepo-com.svg">
-    <meta name="description" content="Calendario web">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendario</title>
+  <link rel="stylesheet" href="./css/calendar.css">
+  <link rel="stylesheet" href="./css/modal.css">
+  <link rel="stylesheet" href="./css/footer.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100&family=Roboto:wght@300;500;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="shortcut icon" href="icons/calendar-svgrepo-com.svg">
+  <meta name="description" content="Calendario web">
 </head>
 
 <body>
-    <div class="contaienr">
-        <div class="calendar-container">
-            <div id="buttons">
-              <input type="radio" name="btn" id="radio-day">
-              <label for="radio-day" id="btn-day">Día</label>
-              <input type="radio" name="btn" id="radio-week">
-              <label for="radio-week" id="btn-week">Semana</label>
-              <input type="radio" name="btn" id="radio-month" checked>
-              <label for="radio-month" id="btn-month">Mes</label>
-              <input type="radio" name="btn" id="radio-year">
-              <label for="radio-year" id="btn-year">Año</label>
-            </div>
-              <!-- month -->
-              <div id="container-month" class="wrapper">
-                <div id="dates-control-month" class="dates-control">
-                  <button id="prev-month" class="prev">&#10094;</button>
-                  <h1 id="fecha-month" class="fecha">Diciembre de 2021</h1>
-                  <button id="next-month" class="next">&#10095;</button>
-                </div>
-                <div id="days-of-month"></div>
-              </div>
-              <!-- year -->
-              <!-- <div id="container-Year" class="">
-                <div id="dates-control-year" class="dates-control">
-                  <button id="prev-year" class="prev">&#10094;</button>
-                  <h1 id="fecha-year" class="fecha">Diciembre de 2021</h1>
-                  <button id="next-year" class="next">&#10095;</button>
-                </div>
-                <div id="days-of-year">
-                  <div class="meses">
-                    <h2 class="tittle">Enero</h2>
-                    <div class="calendar">
-                      <div id="day-name-ene" class="day-name-div"></div>
-                      <div id="day-div-ene" class="day-div"></div>
-                    </div>
-                  </div>
-          
-                  <div class="meses">
-                    <h2 class="tittle">Febrero</h2>
-                    <div class="calendar">
-                      <div id="day-name-feb" class="day-name-div"></div>
-                      <div id="day-div-feb" class="day-div"></div>
-                    </div>
-                  </div>
-          
-                  <div class="meses">
-                    <h2 class="tittle">Marzo</h2>
-                    <div class="calendar">
-                      <div id="day-name-mar" class="day-name-div"></div>
-                      <div id="day-div-mar" class="day-div"></div>
-                    </div>
-                  </div>
-          
-                  <div class="meses">
-                    <h2 class="tittle">Abril</h2>
-                    <div class="calendar">
-                      <div id="day-name-abr" class="day-name-div"></div>
-                      <div id="day-div-abr" class="day-div"></div>
-                    </div>
-                  </div>
-          
-                  <div class="meses">
-                    <h2 class="tittle">Mayo</h2>
-                    <div class="calendar">
-                      <div id="day-name-may" class="day-name-div"></div>
-                      <div id="day-div-may" class="day-div"></div>
-                    </div>
-                  </div>
-          
-                  <div class="meses">
-                    <h2 class="tittle">Junio</h2>
-                    <div class="calendar">
-                      <div id="day-name-jun" class="day-name-div"></div>
-                      <div id="day-div-jun" class="day-div"></div>
-                    </div>
-                  </div>
-          
-                  <div class="meses">
-                    <h2 class="tittle">Julio</h2>
-                    <div class="calendar">
-                      <div id="day-name-jul" class="day-name-div"></div>
-                      <div id="day-div-jul" class="day-div"></div>
-                    </div>
-                  </div>
-          
-                  <div class="meses">
-                    <h2 class="tittle">Agosto</h2>
-                    <div class="calendar">
-                      <div id="day-name-ago" class="day-name-div"></div>
-                      <div id="day-div-ago" class="day-div"></div>
-                    </div>
-                  </div>
-          
-                  <div class="meses">
-                    <h2 class="tittle">Septiembre</h2>
-                    <div class="calendar">
-                      <div id="day-name-sep" class="day-name-div"></div>
-                      <div id="day-div-sep" class="day-div"></div>
-                    </div>
-                  </div>
-          
-                  <div class="meses">
-                    <h2 class="tittle">Octubre</h2>
-                    <div class="calendar">
-                      <div id="day-name-oct" class="day-name-div"></div>
-                      <div id="day-div-oct" class="day-div"></div>
-                    </div>
-                  </div>
-          
-                  <div class="meses">
-                    <h2 class="tittle">Noviembre</h2>
-                    <div class="calendar">
-                      <div id="day-name-nov" class="day-name-div"></div>
-                      <div id="day-div-nov" class="day-div"></div>
-                    </div>
-                  </div>
-          
-                  <div class="meses">
-                    <h2 class="tittle">Diciembre</h2>
-                    <div class="calendar">
-                      <div id="day-name-dic" class="day-name-div"></div>
-                      <div id="day-div-dic" class="day-div"></div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-            </div>
-            <footer>
-              <div>
-                  <a id="personalLink" class="personalLinks" href="https://github.com/Mangostar1" target="_blank">
-                    <img src="./icons/github-svgrepo-com.svg" class="icons" id="git">
-                  </a>
-              </div>
-              <div>
-                <a id="personalLink" class="personalLinks" href="https://omar-zavala.xyz/" target="_blank">
-                  <img src="./icons/web-svgrepo-com.svg" class="icons" id="miweb">
-                </a>
-            </div>
-              <div>
-                  <a href="https://www.linkedin.com/in/omar-zavala-ugarte-7b5036149/" class="personalLinks" target="_blank">
-                    <img src="./icons/linkedin-svgrepo-com.svg" class="icons" id="linkedin">
-                  </a>
-              </div>
-              <div id="email-content-footer">
-                  <a href="mailto:influencia.x.94@gmail.com" class="personalLinks" target="_blank">
-                    <img src="./icons/email-svgrepo-com.svg" class="icons" id="email">
-                  </a>
-              </div>
-          </footer>
+  <div class="contaienr">
+    <div class="calendar-container">
+      <div id="buttons">
+        <input type="radio" name="btn" id="radio-day">
+        <label for="radio-day" id="btn-day">Día</label>
+        <input type="radio" name="btn" id="radio-week">
+        <label for="radio-week" id="btn-week">Semana</label>
+        <input type="radio" name="btn" id="radio-month" checked>
+        <label for="radio-month" id="btn-month">Mes</label>
+        <input type="radio" name="btn" id="radio-year">
+        <label for="radio-year" id="btn-year">Año</label>
+      </div>
+      <!-- month -->
+      <div id="container-month" class="wrapper">
+        <div id="dates-control-month" class="dates-control">
+          <button id="prev-month" class="prev">&#10094;</button>
+          <h1 id="fecha-month" class="fecha">Diciembre de 2021</h1>
+          <button id="next-month" class="next">&#10095;</button>
         </div>
+        <div id="days-of-month"></div>
+      </div>
+
     </div>
-    <script src="./js/calendar.js" type="module"></script>
-    <script src="./js/EventoModal.js"  type="module"></script>
-    <script src="./js/DayComponent.js" type="module"></script>
-    <script src="./js/WeekComponent.js" type="module"></script>
-    <script src="./js/MonthComponent.js" type="module"></script>
-    <script src="./js/YearComponent.js" type="module"></script>
+    <footer>
+      <div>
+        <a id="personalLink" class="personalLinks" href="https://github.com/Mangostar1" target="_blank">
+          <img src="./icons/github-svgrepo-com.svg" class="icons" id="git">
+        </a>
+      </div>
+      <div>
+        <a id="personalLink" class="personalLinks" href="https://omar-zavala.xyz/" target="_blank">
+          <img src="./icons/web-svgrepo-com.svg" class="icons" id="miweb">
+        </a>
+      </div>
+      <div>
+        <a href="https://www.linkedin.com/in/omar-zavala-ugarte-7b5036149/" class="personalLinks" target="_blank">
+          <img src="./icons/linkedin-svgrepo-com.svg" class="icons" id="linkedin">
+        </a>
+      </div>
+      <div id="email-content-footer">
+        <a href="mailto:influencia.x.94@gmail.com" class="personalLinks" target="_blank">
+          <img src="./icons/email-svgrepo-com.svg" class="icons" id="email">
+        </a>
+      </div>
+    </footer>
+  </div>
+  </div>
+  <script src="./js/calendar.js" type="module"></script>
+  <script src="./js/EventoModal.js" type="module"></script>
+  <script src="./js/DayComponent.js" type="module"></script>
+  <script src="./js/WeekComponent.js" type="module"></script>
+  <script src="./js/MonthComponent.js" type="module"></script>
+  <script src="./js/YearComponent.js" type="module"></script>
 </body>
+
 </html>

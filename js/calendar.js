@@ -2,7 +2,7 @@ import { NewModalEvent, closeModal } from "./EventoModal.js";
 import { DayComponent, hourDayComponent} from "./DayComponent.js";
 import { WeekComponent, hourWeekComponent} from "./WeekComponent.js";
 import { MonthComponent, DaysOfMonth} from "./MonthComponent.js";
-import { YearComponent, writeYear} from "./YearComponent.js";
+import { YearComponent, writeYear, DaysOFYear} from "./YearComponent.js";
 
 let calendarContainer = document.getElementsByClassName("calendar-container")[0];
 
@@ -88,8 +88,8 @@ document.addEventListener('click', (e) => {
   }
   //control de componentes
   if (e.target.matches('#radio-day')) {//dia
-    wrapper.style = "display: none";
     calendarContainer.lastChild.remove();
+    wrapper.style = "display: none";
     containerMonth.style = "display: none";
     DayComponent(calendarContainer);
     hourDayComponent();
@@ -97,8 +97,8 @@ document.addEventListener('click', (e) => {
     document.getElementById('cambia-dia').innerHTML = nameDay[currentDayName] + " " + currentWeek;
   }
   if (e.target.matches('#radio-week')) {//semana
-    wrapper.style = "display: none";
     calendarContainer.lastChild.remove();
+    wrapper.style = "display: none";
     containerMonth.style = "display: none";
     WeekComponent(calendarContainer);
     hourWeekComponent();
@@ -114,11 +114,12 @@ document.addEventListener('click', (e) => {
     document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
   }
   if (e.target.matches('#radio-year')) {//año
-    wrapper.style = "display: none";
     calendarContainer.lastChild.remove();
+    wrapper.style = "display: none";
     containerMonth.style = "display: none";
     document.getElementById("dates-control-month").style = "display: none";
     YearComponent(calendarContainer);
+    DaysOFYear();
     writeYear();
     document.getElementById("fecha-year").innerHTML = currentYear;
   }
@@ -197,10 +198,7 @@ async function eventoMonth() {
 }
 writeMonth(currentMonth);
 
-/*------*/
-/* year */
-/*------*/
-let daysMonthYear = document.getElementsByClassName("day-div");
+
 
 /*---------------*/
 /* dates buttons */
@@ -383,6 +381,7 @@ function nextYear() {
 }
 
 function setNewDateYear() {
+  let daysMonthYear = document.getElementsByClassName("day-div");
   fecha.setFullYear(currentYear, currentMonth, currentWeek);
   document.getElementById("fecha-year").innerHTML = currentYear;
 

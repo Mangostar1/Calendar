@@ -118,10 +118,8 @@ export function YearComponent(element) {
     element.appendChild(yearContent);
 }
 
-export function writeYear() {
-    let containerYear = document.getElementById("container-Year");
+export function DaysOFYear() {
     let dayNameYear = document.getElementsByClassName("day-name-div");
-    let daysMonthYear = document.getElementsByClassName("day-div");
     const nameWeeck = [
         {day: 'L'}, {day: 'M'}, {day: 'M'}, {day: 'J'}, {day: 'V'}, {day: 'S'}, {day: 'D'}
     ];
@@ -131,6 +129,10 @@ export function writeYear() {
             dayNameYear[i].innerHTML += `<li class="day-name"> ${item.day} </li>`;
         }
     });
+}
+
+export function writeYear() {
+    let daysMonthYear = document.getElementsByClassName("day-div");
     //Enero
     for (let i = startDayYear(0); i > 0; i--) {
         daysMonthYear[0].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
