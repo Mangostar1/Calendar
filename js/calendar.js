@@ -1,6 +1,8 @@
 import { NewModalEvent, closeModal } from "./EventoModal.js";
 import { DayComponent, hourDayComponent} from "./DayComponent.js";
 import { WeekComponent, hourWeekComponent} from "./WeekComponent.js";
+//import { MonthComponent, DaysOfMonth} from "./MonthComponent.js";
+import { YearComponent} from "./YearComponent.js";
 
 let calendarContainer = document.getElementsByClassName("calendar-container")[0];
 
@@ -106,6 +108,8 @@ document.addEventListener('click', (e) => {
   if (e.target.matches('#radio-month')) {//mes
     calendarContainer.lastChild.remove();
     containerYear.style = "display: none";
+    //MonthComponent(calendarContainer);
+    //DaysOfMonth(currentMonth);
     wrapper.style = "display: grid";
     containerMonth.style = "display: flex"
     document.getElementById("dates-control-month").style = "display: flex";
@@ -117,6 +121,7 @@ document.addEventListener('click', (e) => {
     containerMonth.style = "display: none";
     document.getElementById("dates-control-month").style = "display: none";
     containerYear.style = "display: flex";
+    //YearComponent(calendarContainer);
     document.getElementById("fecha-year").innerHTML = currentYear;
   }
 });
@@ -173,7 +178,7 @@ function writeMonth(month) {
     }
   }
   async function eventoMonth() {
-    /* const basicMonth = await fetch("/basicStructure.json"); */ //json de manera local en liveServer
+    // const basicMonth = await fetch("/basicStructure.json"); | json de manera local en liveServer
     const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
     const basicMonthJson = await basicMonth.json();
 
