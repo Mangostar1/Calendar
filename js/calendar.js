@@ -9,17 +9,22 @@ let calendarContainer = document.getElementsByClassName("calendar-container")[0]
 /*-------*/
 /* Dates */
 /*-------*/
-let fecha = new Date();
+export let fecha = new Date();
 
-let currentDayName = fecha.getDay();
-let currentWeek = fecha.getDate();
-let currentMonth = fecha.getMonth();
-let currentYear = fecha.getFullYear();
+export let currentDayName = fecha.getDay();
+export let currentWeek = fecha.getDate();
+export let currentMonth = fecha.getMonth();
+export let currentYear = fecha.getFullYear();
 
 
 const nameMonth = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 const nameDay = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
 let weekDays = document.getElementsByClassName("diasNumber");
+
+
+/*------------------------------*/
+/* funciones para el calendario */
+/*------------------------------*/
 
 function isLeap() {// comprueba si el año es biciesto | funcionando
   return ((currentYear % 100 !== 0) && (currentYear % 4 === 0) || (currentYear % 400 === 0))
@@ -37,8 +42,7 @@ export function getTotalDays(month) {// para determinar la cantidad de dias del 
   }
 }
 
-//corregir el dia en que comienza el mes
-export function startDay() {
+export function startDay() {//corregir el dia en que comienza el mes
   let start = new Date(currentYear, currentMonth, 1);
   return ((start.getDay() - 1) === -1) ? 6 : start.getDay() - 1;
 }

@@ -1,3 +1,5 @@
+import { fecha, currentDayName, currentWeek, currentMonth, currentYear} from "./calendar.js";
+
 export function WeekComponent(element) {
     let WeekContent = document.createElement('div');
     WeekContent.classList.add('container-week');
@@ -52,14 +54,6 @@ export function WeekComponent(element) {
 
 export function hourWeekComponent(getDay, getDate, getMonth, getFullYear) {
 
-    let fecha = new Date();
-
-    let currentDayName = fecha.getDay();
-    let currentWeek = fecha.getDate();
-    let currentMonth = fecha.getMonth();
-    let currentYear = fecha.getFullYear();
-
-    let containerWeek = document.getElementById("container-week");
     let weekContent = document.getElementById("days-of-week");
     const nameMonth = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
     let weekDays = document.getElementsByClassName("diasNumber");

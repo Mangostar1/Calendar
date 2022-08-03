@@ -1,10 +1,4 @@
-import { getTotalDays, startDay} from "./calendar.js";
-
-let fecha = new Date();//esta no se importa ni declara aca, sino que en calendar
-
-let currentWeek = fecha.getDate();
-let currentMonth = fecha.getMonth();
-let currentYear = fecha.getFullYear();
+import { getTotalDays, startDay, fecha, currentDayName, currentWeek, currentMonth, currentYear} from "./calendar.js";
 
 export function MonthComponent(element) {
     let MonthContent = document.createElement('div');
