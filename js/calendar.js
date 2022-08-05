@@ -92,39 +92,39 @@ document.addEventListener('click', (e) => {
   }
   //control de componentes
   if (e.target.matches('#radio-day')) {//dia
+    //wrapper.style = "display: none";
+    //containerMonth.style = "display: none";
     calendarContainer.lastChild.remove();
-    wrapper.style = "display: none";
-    containerMonth.style = "display: none";
     DayComponent(calendarContainer);
     hourDayComponent();
     document.getElementById("fecha-day").innerHTML = currentWeek + " de " + nameMonth[currentMonth] + " del " + currentYear;
     document.getElementById('cambia-dia').innerHTML = nameDay[currentDayName] + " " + currentWeek;
   }
   if (e.target.matches('#radio-week')) {//semana
+    //containerMonth.style = "display: none";
+    //wrapper.style = "display: none";
     calendarContainer.lastChild.remove();
-    wrapper.style = "display: none";
-    containerMonth.style = "display: none";
     WeekComponent(calendarContainer);
     hourWeekComponent();
     document.getElementById("fecha-week").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
   }
   if (e.target.matches('#radio-month')) {//mes
     calendarContainer.lastChild.remove();
-    //MonthComponent(calendarContainer);
-    //DaysOfMonth(currentMonth);
-    wrapper.style = "display: grid";
-    containerMonth.style = "display: flex"
+    MonthComponent(calendarContainer);
+    DaysOfMonth(currentMonth);
+    //wrapper.style = "display: grid";
+    //containerMonth.style = "display: flex"
     document.getElementById("dates-control-month").style = "display: flex";
     document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
   }
   if (e.target.matches('#radio-year')) {//año
+    //containerMonth.style = "display: none";
+    //wrapper.style = "display: none";
     calendarContainer.lastChild.remove();
-    wrapper.style = "display: none";
-    containerMonth.style = "display: none";
-    document.getElementById("dates-control-month").style = "display: none";
     YearComponent(calendarContainer);
     DaysOFYear();
     writeYear();
+    document.getElementById("dates-control-month").style = "display: none";
     document.getElementById("fecha-year").innerHTML = currentYear;
   }
 });
@@ -139,7 +139,7 @@ const daysOfWeek = [
   {day: 'Lun'}, {day: 'Mar'}, {day: 'Mié'}, {day: 'Jue'}, {day: 'Vie'}, {day: 'Sáb'}, {day: 'Dom'}
 ];
 
-function writeMonth(month) {
+/* function writeMonth(month) {
   daysOfWeek.forEach((item) => {
     wrapper.innerHTML += `<div class="grid-days"> ${item.day} </div>`;
   });
@@ -173,10 +173,10 @@ function writeMonth(month) {
     }
   }
   eventoMonth();
-}
+} */
 
 //eventos desde el json
-async function eventoMonth() {
+/* async function eventoMonth() {
   const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
   const basicMonthJson = await basicMonth.json();
 
@@ -199,8 +199,8 @@ async function eventoMonth() {
       eventMonth.innerHTML = `<li class="event"></li>`;
     }
   }
-}
-writeMonth(currentMonth);
+} */
+//writeMonth(currentMonth);
 
 
 
@@ -209,8 +209,10 @@ writeMonth(currentMonth);
 /*---------------*/
 
 // evita que se cargen los calendarios al mismo tiempo al abrir la pagina por primera vez
-containerMonth.style = "display: flex";
-document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
+MonthComponent(calendarContainer);
+DaysOfMonth(currentMonth);
+/* containerMonth.style = "display: flex";
+document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear; */
 
 /*---------------*/
 /* dates control */
@@ -361,7 +363,8 @@ function setNewDateMonth() {
   document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
 
   wrapper.innerHTML = " ";
-  writeMonth(currentMonth);
+  //writeMonth(currentMonth);
+  DaysOfMonth(currentMonth);
 }
 
 // year
@@ -402,7 +405,7 @@ function setNewDateYear() {
 let eventoLi = document.getElementsByClassName("event");
 let eventWekk = document.getElementsByClassName("eventWeek");
 
-async function inicioEventoDia() { 
+/* async function inicioEventoDia() { 
   const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
 
   const primerEvento = await basicStruc.json();
@@ -472,4 +475,4 @@ async function inicioEventoDia() {
     //eventWekk[29].innerHTML = '<li class="event"></li>';
   //}
 }
-inicioEventoDia();
+inicioEventoDia(); */
