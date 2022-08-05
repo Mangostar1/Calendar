@@ -92,8 +92,6 @@ document.addEventListener('click', (e) => {
   }
   //control de componentes
   if (e.target.matches('#radio-day')) {//dia
-    //wrapper.style = "display: none";
-    //containerMonth.style = "display: none";
     calendarContainer.lastChild.remove();
     DayComponent(calendarContainer);
     hourDayComponent();
@@ -101,8 +99,6 @@ document.addEventListener('click', (e) => {
     document.getElementById('cambia-dia').innerHTML = nameDay[currentDayName] + " " + currentWeek;
   }
   if (e.target.matches('#radio-week')) {//semana
-    //containerMonth.style = "display: none";
-    //wrapper.style = "display: none";
     calendarContainer.lastChild.remove();
     WeekComponent(calendarContainer);
     hourWeekComponent();
@@ -112,14 +108,10 @@ document.addEventListener('click', (e) => {
     calendarContainer.lastChild.remove();
     MonthComponent(calendarContainer);
     DaysOfMonth(currentMonth);
-    //wrapper.style = "display: grid";
-    //containerMonth.style = "display: flex"
     document.getElementById("dates-control-month").style = "display: flex";
     document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
   }
   if (e.target.matches('#radio-year')) {//año
-    //containerMonth.style = "display: none";
-    //wrapper.style = "display: none";
     calendarContainer.lastChild.remove();
     YearComponent(calendarContainer);
     DaysOFYear();
@@ -139,71 +131,6 @@ const daysOfWeek = [
   {day: 'Lun'}, {day: 'Mar'}, {day: 'Mié'}, {day: 'Jue'}, {day: 'Vie'}, {day: 'Sáb'}, {day: 'Dom'}
 ];
 
-/* function writeMonth(month) {
-  daysOfWeek.forEach((item) => {
-    wrapper.innerHTML += `<div class="grid-days"> ${item.day} </div>`;
-  });
-
-  for (let i = startDay(); i > 0; i--) {
-    wrapper.innerHTML += 
-      `<div class="grid-item"><p class="day-number lastMonth"> ${getTotalDays(currentMonth - 1)-(i - 1)} </p>
-        <ul>
-          <li class="event"></li>
-        </ul>
-      </div>`;
-  }
-  
-  for (let i = 1; i <= getTotalDays(month); i++) {
-    if (i == currentWeek && month == 0) {
-      wrapper.innerHTML += 
-        `<div class="grid-item">
-          <p class="day-number day-month-active"> ${i} </p>
-          <ul>
-            <li class="event" id="evento-${i}"></li>
-          </ul>
-        </div>`;
-    } else {
-      wrapper.innerHTML += 
-        `<div class="grid-item">
-          <p class="day-number"> ${i} </p>
-          <ul>
-            <li class="event" id="evento-${i}"></li>
-          </ul>
-        </div>`;
-    }
-  }
-  eventoMonth();
-} */
-
-//eventos desde el json
-/* async function eventoMonth() {
-  const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
-  const basicMonthJson = await basicMonth.json();
-
-  for (let i = 0; i < 3; i++) {
-    let datesJSON = basicMonthJson.events[i].dateStartEvent;
-
-    const datesSplit = datesJSON.split('-');
-
-    let dateMonth = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
-    let diames = dateMonth.getDate();
-    let eventMonth = document.getElementById(`evento-${diames}`);
-
-    let horaInicialAA = basicMonthJson.events[i].hourStart;
-    let horafinalAA = basicMonthJson.events[i].hourFinish;
-    let tituloEventoAA = basicMonthJson.events[i].title;
-
-    if (dateMonth.getMonth() === currentMonth && dateMonth.getFullYear() === currentYear) {
-      eventMonth.innerHTML = `<button class="btn-item" id="btn-event-${i}"><span class="sp-hour"> ${horaInicialAA} - ${horafinalAA} </span> <br> <span class="sp-title"> ${tituloEventoAA} </span></button>`;
-    } else {
-      eventMonth.innerHTML = `<li class="event"></li>`;
-    }
-  }
-} */
-//writeMonth(currentMonth);
-
-
-
 /*---------------*/
 /* dates buttons */
 /*---------------*/
@@ -211,8 +138,7 @@ const daysOfWeek = [
 // evita que se cargen los calendarios al mismo tiempo al abrir la pagina por primera vez
 MonthComponent(calendarContainer);
 DaysOfMonth(currentMonth);
-/* containerMonth.style = "display: flex";
-document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear; */
+document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
 
 /*---------------*/
 /* dates control */
@@ -361,10 +287,12 @@ function nextMonth() {
 function setNewDateMonth() {
   fecha.setFullYear(currentYear, currentMonth, currentWeek);
   document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
-
-  wrapper.innerHTML = " ";
-  //writeMonth(currentMonth);
+  
+  calendarContainer.lastChild.remove();
+  MonthComponent(calendarContainer);
   DaysOfMonth(currentMonth);
+
+  //wrapper.innerHTML = " ";
 }
 
 // year
