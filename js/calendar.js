@@ -286,13 +286,11 @@ function nextMonth() {
 
 function setNewDateMonth() {
   fecha.setFullYear(currentYear, currentMonth, currentWeek);
-  document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
   
   calendarContainer.lastChild.remove();
   MonthComponent(calendarContainer);
+  document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
   DaysOfMonth(currentMonth);
-
-  //wrapper.innerHTML = " ";
 }
 
 // year
