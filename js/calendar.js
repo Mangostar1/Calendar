@@ -3,6 +3,8 @@ import { DayComponent, hourDayComponent} from "./DayComponent.js";
 import { WeekComponent, hourWeekComponent} from "./WeekComponent.js";
 import { MonthComponent, DaysOfMonth} from "./MonthComponent.js";
 import { YearComponent, writeYear, DaysOFYear} from "./YearComponent.js";
+import handlerBtn from "./Evento_Fetch.js";
+
 
 let calendarContainer = document.getElementsByClassName("calendar-container")[0];
 
@@ -71,6 +73,9 @@ document.addEventListener('click', (e) => {
   }
   if (e.target.matches("#closeModal-ID")) {
     closeModal();
+  }
+  if (e.target.matches(".btn-item")) {
+    handlerBtn();
   }
 
   //control de fechas
