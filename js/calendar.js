@@ -20,6 +20,7 @@ export let currentYear = fecha.getFullYear();
 const nameMonth = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 const nameDay = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
 let weekDays = document.getElementsByClassName("diasNumber");
+export let  Dias = document.getElementsByClassName('grid-item');
 
 
 /*------------------------------*/
@@ -51,6 +52,13 @@ export function startDayYear(month) {//corregir el dia en que comienza el mes en
   let start = new Date(currentYear, month, 1);
   return ((start.getDay() - 1) === -1) ? 6 : start.getDay() - 1;
 }
+
+/*------------------------*/
+/* Load Default Component */
+/*------------------------*/
+MonthComponent(calendarContainer);
+DaysOfMonth(currentMonth);
+document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
 
 /*-----------------------*/
 /* Delegacion de eventos */
@@ -120,25 +128,6 @@ document.addEventListener('click', (e) => {
     document.getElementById("fecha-year").innerHTML = currentYear;
   }
 });
-
-/*-------*/
-/* month */
-/*-------*/
-let wrapper = document.getElementById('days-of-month');
-let containerMonth = document.getElementById('container-month');
-export let  Dias = document.getElementsByClassName('grid-item');
-const daysOfWeek = [
-  {day: 'Lun'}, {day: 'Mar'}, {day: 'Mié'}, {day: 'Jue'}, {day: 'Vie'}, {day: 'Sáb'}, {day: 'Dom'}
-];
-
-/*---------------*/
-/* dates buttons */
-/*---------------*/
-
-// evita que se cargen los calendarios al mismo tiempo al abrir la pagina por primera vez
-MonthComponent(calendarContainer);
-DaysOfMonth(currentMonth);
-document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
 
 /*---------------*/
 /* dates control */
@@ -331,7 +320,7 @@ function setNewDateYear() {
 let eventoLi = document.getElementsByClassName("event");
 let eventWekk = document.getElementsByClassName("eventWeek");
 
-/* async function inicioEventoDia() { 
+async function inicioEventoDia() { 
   const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
 
   const primerEvento = await basicStruc.json();
@@ -397,8 +386,8 @@ let eventWekk = document.getElementsByClassName("eventWeek");
         eventWekk[29].innerHTML = '<li class="event"></li>';
       }
     }
-  } // else {
-    //eventWekk[29].innerHTML = '<li class="event"></li>';
-  //}
+  }  else {
+    eventWekk[29].innerHTML = '<li class="event"></li>';
+  }
 }
-inicioEventoDia(); */
+inicioEventoDia();
