@@ -14,6 +14,8 @@ export function NewModalEvent(element) {
     <div class="modal-content-info">
         <input type='text' id='titleEvent' placeholder="Añade un titulo"></input>
 
+        <textarea id='descriptionEvent' placeholder="Añade una descripcion"></textarea>
+
         <div class="inputs-content">
             <label for="dateInput" class="labels-modal">Fecha de inicio</label>
             <input type='date' id='dateInput'></input>
@@ -40,15 +42,16 @@ export function closeModal() {
 }
 
 
-/*                  */
+/*------------------*/
 /* Datos formulario */
-/*                  */
+/*------------------*/
 
 document.addEventListener('click', (e) => {
     if(e.target.matches('#buttonModalID') === true){
         let title = document.getElementById('titleEvent').value;
+        let description = document.getElementById('descriptionEvent').value;
         let date = document.getElementById('dateInput').value;
         let time = document.getElementById('timeInput').value;
-        console.log(title, date, time);
+        console.log(title, description, date, time);
     }
 });

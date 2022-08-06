@@ -6,6 +6,7 @@
       "dateFinishEvent": "2022-08-18",
       "hourFinish": "00:59:00",
       "title": "Ejemplo de titulo 1",
+      "description": "Ejemplo de descripcion 1",
       "statusInformation": {
           "statusCode": "001",
           "status": "activo",
@@ -22,6 +23,7 @@
       "dateFinishEvent": "2022-08-19",
       "hourFinish": "00:59:00",
       "title": "Ejemplo de titulo 2",
+      "description": "Ejemplo de descripcion 2",
       "statusInformation": {
           "statusCode": "001",
           "status": "activo",
@@ -38,6 +40,7 @@
       "dateFinishEvent": "2022-08-20",
       "hourFinish": "00:59:00",
       "title": "Ejemplo de titulo 3",
+      "description": "Ejemplo de descripcion 3",
       "statusInformation": {
           "statusCode": "001",
           "status": "activo",
