@@ -1,0 +1,56 @@
+#container-Year{
+    flex-flow: row wrap;
+    margin: 15px;
+}
+
+#days-of-year{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(3, auto);
+    gap: 10px;
+    width: 100%;
+    margin-top: 15px;
+}
+.meses{
+    border: 1px solid var(--neutralGray);
+    border-radius: 5px;
+    background-color: var(--colorbg);
+}
+.tittle{
+    text-align: center;
+    background-color: var(--colorOne);
+    color: var(--neutralWhite);
+    margin-top: 0px;
+    margin-bottom: 15px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.day-name-div, .day-div{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    justify-items: center;
+    padding-left: 0px;
+    padding-bottom: 15px;
+}
+
+.day{
+    list-style: none;
+    cursor: pointer;
+}
+
+.day-name{
+    color: var(--neutralBlack);
+    list-style: none;
+    font-weight: bold;
+}
+
+hr{
+    display: none; /* flex */
+    width: 100%;
+    border-color: #ff8383;
+    z-index: 1;
+    margin-top: 4px;
+    opacity: 0.50;
+    border-style: solid;
+}

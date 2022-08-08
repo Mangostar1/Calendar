@@ -1,4 +1,4 @@
-export function DayComponent(element, date) {
+export function DayComponent(element) {
     let DayContent = document.createElement('div');
     DayContent.classList.add('day-content');
     DayContent.id = "container-Day";

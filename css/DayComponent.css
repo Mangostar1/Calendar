@@ -1,0 +1,40 @@
+#container-Day{
+    grid-template-columns: auto;
+    grid-template-rows: repeat(24, auto);
+    margin: 15px;
+}
+
+#cambia-dia{
+    background-color: var(--colorOne);
+    color: var(--neutralWhite);
+    padding: 10px;
+    width: 6.5em;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+
+.hora{
+    text-align: left;
+    margin-left: 10px;
+}
+
+.diario{
+    border-bottom: 1px solid var(--neutralGray);
+    border-left: 1px solid var(--neutralGray);
+    border-right: 1px solid var(--neutralGray);
+    background-color: var(--colorbg);
+}
+
+#cambia-dia + .diario{
+    border-top: 1px solid var(--neutralGray);
+    border-top-left-radius: 0px;
+    border-top-right-radius: 10px;
+}
+
+.diario:last-child{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}

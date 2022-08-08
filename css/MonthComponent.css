@@ -1,0 +1,22 @@
+/* last Month days */
+.lastMonth{
+    color: var(--neutralGray);
+}
+
+.lastMonthYear{
+    color: var(--colorbg);
+    cursor: default;
+}
+
+#container-month{
+    margin: 15px;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#container-month .grid-days{
+    padding-right: 15px;
+    padding-top: 4px;
+    padding-bottom: 5px;
+}
