@@ -80,8 +80,27 @@
     text-align: center;
     font-size: 28px;
     color: var(--neutralWhite);
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 #container-week .grid-days{
     text-align: center;
+
+
+}
+
+#container-week ul{
+    list-style: none;
+    padding: 0px;
+
+    width: 84%;
+    margin-left: 0px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#container-week .btn-item{
+    margin-left: 15px;
+    margin-bottom: 5px;
 }

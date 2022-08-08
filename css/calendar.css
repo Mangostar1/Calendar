@@ -40,41 +40,8 @@
 h1{
   padding: 10px;
 }
-#days-of-month{
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  background-color: transparent;
-  margin-top: 10px;
-  grid-column-end: 9;
-  gap: 0px;
-  width: 100%;
-}
 
-.grid-item {
-  background-color: var(--colorbg);
-  border-bottom: 1px solid var(--neutralGray);
-  border-right: 1px solid var(--neutralGray);
-  border-width: 0.5px;
-  border-radius: 0px;
-
-  font-size: 20px;
-  text-align: center;
-
-  padding: 15px;
-  min-height: 80px;
-
-  position: relative;
-}
-
-#days-of-month .grid-item:nth-child(7n+1){
-  border-left: 1px solid var(--neutralGray);
-}
-
-#days-of-month .grid-item:nth-child(7n+14){
-  background-color: var(--neutralActive);
-}
-
-.grid-days {
+.grid-days { /* week and month */
   background-color: var(--colorOne);
   color: var(--neutralWhite);
 
@@ -85,34 +52,7 @@ h1{
   box-sizing: border-box;
 }
 
-#days-of-month .grid-days{
-  margin-top: 5px;
-  border-right: 0.5px solid var(--colorTwo);
-}
 
-#days-of-month .grid-days:first-child{
-  border-top-left-radius: 10px;
-}
-
-#days-of-month .grid-days:nth-child(7){
-  border-top-right-radius: 10px;
-  border-right: none;
-}
-
-.diaa-week{
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-
-.day-month{
-  text-align: right;
-}
-
-.day-number{
-  text-align: right;
-  margin-top: -10px;
-  margin-right: -10px;
-}
 
 ul{/* month */
   list-style: none;
@@ -120,47 +60,6 @@ ul{/* month */
   width: 100%; /* atencion */
 
   margin-left: -15px;
-}
-
-#days-of-month ul li{
-  position: relative;
-  padding-left: 12px;
-  margin-left: 10px;
-  margin-bottom: 5px;
-}
-
-#days-of-month ul li::before{/* pelotita de color en radio month */
-  /* content: ""; */
-
-  display: inline-block;
-
-  width: 6px;
-  height: 6px;
-
-  position: absolute;
-  left: 26px;
-  top: 10px;
-  margin-right: 15px;
-  background-color: var(--neutralWhite);
-  border-radius: 50%;
-}
-
-#container-Day ul{
-  list-style: none;
-  padding: 0px;
-
-  width: 99%;
-  margin-left: 0px;
-}
-
-#container-week ul{
-  list-style: none;
-  padding: 0px;
-
-  width: 84%;
-  margin-left: 0px;
-  margin-top: 15px;
-  margin-bottom: 15px;
 }
 
 .btn-item{
@@ -179,17 +78,10 @@ ul{/* month */
   color: var(--neutralWhite);
 }
 
-#container-week .btn-item{
-  margin-left: 15px;
-  margin-bottom: 5px;
-}
 
-#container-Day .btn-item{
-  margin-left: 15px;
-  margin-bottom: 5px;
-}
-
+/*-----------------------*/
 /* Buttons dates control */
+/*-----------------------*/
 
 .dates-control{
   display: flex;
@@ -240,7 +132,10 @@ ul{/* month */
   color: var(--neutralWhite);
 }
 
-/* dates buttons */
+
+/*-----------------------*/
+/* dates buttons control */
+/*-----------------------*/
 
 #buttons{
   display: flex;
