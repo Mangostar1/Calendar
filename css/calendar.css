@@ -37,10 +37,6 @@
   min-height: calc(100vh - 125px);
 }
 
-h1{
-  padding: 10px;
-}
-
 .grid-days { /* week and month */
   background-color: var(--colorOne);
   color: var(--neutralWhite);
@@ -50,16 +46,6 @@ h1{
 
   padding: auto;
   box-sizing: border-box;
-}
-
-
-
-ul{/* month */
-  list-style: none;
-  padding: 0px;
-  width: 100%; /* atencion */
-
-  margin-left: -15px;
 }
 
 .btn-item{
@@ -79,9 +65,9 @@ ul{/* month */
 }
 
 
-/*-----------------------*/
-/* Buttons dates control */
-/*-----------------------*/
+/*----------------------------------*/
+/* Buttons Control Dates Components */
+/*----------------------------------*/
 
 .dates-control{
   display: flex;
@@ -136,6 +122,10 @@ ul{/* month */
 /*-----------------------*/
 /* dates buttons control */
 /*-----------------------*/
+
+h1{
+  padding: 10px;
+}
 
 #buttons{
   display: flex;
