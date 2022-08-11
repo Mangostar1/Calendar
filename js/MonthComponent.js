@@ -52,7 +52,11 @@ export function DaysOfMonth(month) {
                 </div>`;
         }
     }
-    eventoMonth();
+    if (screen.width < 768) {
+        eventoMonthMobile();
+    } else {
+        eventoMonth();
+    }
 }
 
 //Eventos del mes
@@ -74,7 +78,39 @@ async function eventoMonth() {
         let tituloEventoAA = basicMonthJson.events[i].title;
 
         if (dateMonth.getMonth() === currentMonth && dateMonth.getFullYear() === currentYear) {
-            eventMonth.innerHTML = `<button class="btn-item" id="btn-event-${i}"><span class="sp-hour"> ${horaInicialAA} - ${horafinalAA} </span> <br> <span class="sp-title"> ${tituloEventoAA} </span></button>`;
+            eventMonth.innerHTML = 
+                `<button class="btn-item" id="btn-event-${i}">
+                    <span class="sp-hour"> ${horaInicialAA} - ${horafinalAA} </span> 
+                    <br> 
+                    <span class="sp-title"> ${tituloEventoAA} </span>
+                </button>`;
+        } else {
+            eventMonth.innerHTML = `<li class="event"></li>`;
+        }
+    }
+}
+
+async function eventoMonthMobile() {
+    const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
+    const basicMonthJson = await basicMonth.json();
+
+    for (let i = 0; i < 3; i++) {
+        let datesJSON = basicMonthJson.events[i].dateStartEvent;
+
+        const datesSplit = datesJSON.split('-');
+
+        let dateMonth = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
+        let diames = dateMonth.getDate();
+        let eventMonth = document.getElementById(`evento-${diames}`);
+
+        let horaInicialAA = basicMonthJson.events[i].hourStart;
+        let horafinalAA = basicMonthJson.events[i].hourFinish;
+        let tituloEventoAA = basicMonthJson.events[i].title;
+
+        if (dateMonth.getMonth() === currentMonth && dateMonth.getFullYear() === currentYear) {
+            eventMonth.innerHTML = 
+                `<button class="btn-item" id="btn-event-${i}">
+                </button>`;
         } else {
             eventMonth.innerHTML = `<li class="event"></li>`;
         }
