@@ -1,4 +1,41 @@
 @media screen and (max-width: 768px) {
+  /*------------------*/
+  /* Dates Components */
+  /*------------------*/
+  .calendar-container {
+    position: relative;
+    overflow: hidden;
+  }
+  .calendar-container .menu-img {
+    margin: 5px 10px 0 auto;
+    display: flex;
+    width: 50px;
+    height: auto;
+  }
+  .calendar-container .buttons {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    background-color: var(--colorOne);
+    position: absolute;
+    top: 4rem;
+    left: 2rem;
+    z-index: 1;
+  }
+  .calendar-container .buttons #btn-day, .calendar-container .buttons #btn-week, .calendar-container .buttons #btn-month, .calendar-container .buttons #btn-year {
+    background-color: var(--colorTwo);
+    color: var(--neutralWhite);
+    padding: 6px 20px;
+    border: 0px;
+    font-weight: 600;
+    border-radius: 0px;
+  }
+  .calendar-container .active {
+    display: flex;
+  }
   /*---------------*/
   /* dates control */
   /*---------------*/

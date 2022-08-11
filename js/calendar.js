@@ -29,11 +29,11 @@ export let  Dias = document.getElementsByClassName('grid-item');
 /* funciones para el calendario */
 /*------------------------------*/
 
-function isLeap() {// comprueba si el año es biciesto | funcionando
+function isLeap() {
   return ((currentYear % 100 !== 0) && (currentYear % 4 === 0) || (currentYear % 400 === 0))
 }
 
-export function getTotalDays(month) {// para determinar la cantidad de dias del mes al que se consulte
+export function getTotalDays(month) {
   if (month === -1) month = 11;
 
   if (month == 0 || month == 2 || month == 4 || month == 6 || month == 7 || month == 9 || month == 11) {
@@ -66,7 +66,10 @@ document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " d
 /* Delegacion de eventos */
 /*-----------------------*/
 document.addEventListener('click', (e) => {
-
+  //Mobile components control
+  if (e.target.matches('.menu-img')) {
+    document.querySelector('.buttons').classList.toggle('active');
+  }
   //modals
   if (e.target.matches('.grid-item')) {
     NewModalEvent(e.target);

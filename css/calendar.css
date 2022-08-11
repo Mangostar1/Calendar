@@ -125,7 +125,11 @@ h1{
 /* Buttons Control Dates Components */
 /*----------------------------------*/
 
-#buttons{
+.menu-img{
+  display: none;
+}
+
+.buttons{
   display: flex;
   justify-content: center;
   background-color: var(--colorOne);
@@ -158,7 +162,7 @@ h1{
   color: var(--colorTwo);
 }
 
-#buttons input[type="radio"]{
+.buttons input[type="radio"]{
   display: none;
 }
 
