@@ -15,7 +15,7 @@
   --colorbg: #f2f2f2; /* colo del bg de la clase horas */
   /* color de testeo */
   --red: red;
-} 
+}
 
 *{
   margin: 0;
@@ -50,7 +50,6 @@
 
 .btn-item{
   width: 99%;
-  color: black;
   background-color: var(--colorOne);
   color: var(--neutralWhite);
   border-style: none;
@@ -65,9 +64,9 @@
 }
 
 
-/*----------------------------------*/
-/* Buttons Control Dates Components */
-/*----------------------------------*/
+/*-----------------------*/
+/* dates buttons control */
+/*-----------------------*/
 
 .dates-control{
   display: flex;
@@ -79,6 +78,10 @@
   border-radius: 10px;
   background-color: var(--colorOne);
   color: var(--neutralWhite);
+}
+
+h1{
+  padding: 10px;
 }
 
 #dates-control-week{
@@ -118,14 +121,9 @@
   color: var(--neutralWhite);
 }
 
-
-/*-----------------------*/
-/* dates buttons control */
-/*-----------------------*/
-
-h1{
-  padding: 10px;
-}
+/*----------------------------------*/
+/* Buttons Control Dates Components */
+/*----------------------------------*/
 
 #buttons{
   display: flex;

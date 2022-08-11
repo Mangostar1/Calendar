@@ -1,6 +1,70 @@
 @media screen and (max-width: 768px) {
-  footer {
-    background-color: var(--red);
+  /*---------------*/
+  /* dates control */
+  /*---------------*/
+  .dates-control {
+    display: flex;
+    align-items: center;
+    margin: 0px;
+    width: 21rem;
+    height: 4em;
+    padding-left: 0.5em;
+    border-radius: 10px;
+  }
+  .dates-control h1 {
+    padding: 0.2rem;
+  }
+  .dates-control .fecha {
+    width: 260px;
+  }
+  /*-----------------*/
+  /* Week Component */
+  /*-----------------*/
+  #days-of-week .grid-days {
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .horas {
+    padding-top: 0px;
+    font-size: 15px;
+    text-align: center;
+  }
+  .diaa-week {
+    font-size: 15px;
+  }
+  /*-----------------*/
+  /* month component */
+  /*-----------------*/
+  .grid-item {
+    border-width: 0.5px;
+    border-radius: 0px;
+    font-size: 15px;
+    text-align: center;
+    padding: 5px;
+    min-height: 10px;
+    width: 100%;
+  }
+  .grid-item .day-number {
+    text-align: right;
+    margin-top: 0px;
+    margin-right: 0px;
+  }
+  .grid-days {
+    width: 100%;
+    font-size: 18px;
+    text-align: right;
+    padding: auto;
+    box-sizing: border-box;
+  }
+  /* btn evento in month */
+  .btn-item {
+    width: 100%;
+    height: 100%;
+    border-style: none;
+    font-size: 15px;
+    padding: 4px 4px;
+    border-radius: 6.5px;
   }
 }
 
