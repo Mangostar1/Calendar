@@ -144,6 +144,23 @@
     width: 100%;
     height: 100%;
   }
+  .modal #descriptionEvent {
+    width: 100%;
+    height: 80px;
+    min-height: 80px;
+    max-height: 80px;
+    resize: none;
+    margin-bottom: 10px;
+  }
+  .modal .inputs-content {
+    margin: 5px 0px;
+  }
+  .modal .inputs-content #dateInput {
+    padding: 5px 5px;
+  }
+  .modal .inputs-content #timeInput {
+    padding: 5px 5px;
+  }
 }
 
 /*# sourceMappingURL=mediaQ.css.map */
