@@ -74,6 +74,9 @@ document.addEventListener('click', (e) => {
   if (e.target.matches('.grid-item') && screen.width > 768) {
     NewModalEvent(e.target);
   }
+  if (e.target.matches("#new-event")) {
+    NewModalEvent(document.querySelector('.contaienr'));
+  }
   if (e.target.matches("#closeModal-ID")) {
     closeModal();
   }
