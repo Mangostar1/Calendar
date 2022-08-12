@@ -71,7 +71,7 @@ document.addEventListener('click', (e) => {
     document.querySelector('.buttons').classList.toggle('active');
   }
   //modals
-  if (e.target.matches('.grid-item')) {
+  if (e.target.matches('.grid-item') && screen.width > 768) {
     NewModalEvent(e.target);
   }
   if (e.target.matches("#closeModal-ID")) {
