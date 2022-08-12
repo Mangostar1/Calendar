@@ -353,7 +353,7 @@ async function inicioEventoDia() {
   if (fechaEvento.getDate() === currentWeek && fechaEvento.getDay() === currentDayName && fechaEvento.getFullYear() === currentYear) {
     eventoLi[4].innerHTML = `<button class="btn-item" onclick="handleBtn()"><span class="sp-hour"> ${horaInicial} </span> - <span class="sp-title"> ${tituloEvento} </span></button>`;
   } else {
-    eventoLi[4].innerHTML = '<li class="event">Test 1</li>';
+    eventoLi[4].innerHTML = '<li class="event"></li>';
   }
 
   // Week
