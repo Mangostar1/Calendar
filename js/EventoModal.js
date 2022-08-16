@@ -55,3 +55,12 @@ document.addEventListener('click', (e) => {
         console.log(title, description, date, time);
     }
 });
+
+//extra code for stylesheet
+let btnMobile = document.querySelector('.new-event');
+
+/* setInterval(() => {
+    if(window.innerWidth < 768){
+        btnMobile.style.cssText = 'position: absolute; bottom: 2rem; right: 1rem;';
+    }
+}, 1000); */
