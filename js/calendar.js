@@ -21,8 +21,7 @@ export let currentYear = fecha.getFullYear();
 
 const nameMonth = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 const nameDay = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
-let weekDays = document.getElementsByClassName("diasNumber");
-export let  Dias = document.getElementsByClassName('grid-item');
+const weekDays = document.getElementsByClassName("diasNumber");
 
 
 /*------------------------------*/
@@ -332,8 +331,8 @@ function setNewDateYear() {
 /* json eventos */
 /*--------------*/
 
-let eventoLi = document.getElementsByClassName("event");
-let eventWekk = document.getElementsByClassName("eventWeek");
+const eventoLi = document.getElementsByClassName("event");
+const eventWekk = document.getElementsByClassName("eventWeek");
 
 async function inicioEventoDia() { 
   const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");

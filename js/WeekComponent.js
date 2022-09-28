@@ -1,7 +1,7 @@
 import { fecha, currentDayName, currentWeek, currentMonth, currentYear} from "./calendar.js";
 
 export function WeekComponent(element) {
-    let WeekContent = document.createElement('div');
+    const WeekContent = document.createElement('div');
     WeekContent.classList.add('container-week');
     WeekContent.id = "container-week";
     
