@@ -25,6 +25,9 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.new-event{
+  display: none;
+}
 .contaienr{
   display: flex;
   flex-flow: row wrap;
