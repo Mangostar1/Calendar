@@ -10,11 +10,29 @@ export function handlerBtnMobile() {
 }
 
 //modal en construccion
-function ModalEventWeek(element) {
+async function ModalEventWeek(element) {
     let newDiv = document.createElement('div');
 
     newDiv.classList.add('modal');
     newDiv.id = 'modal-id';
+
+    //const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
+    const dateEvent = await fetch("http://localhost:5500/basicStructure.json");
+    const dateEventJson = await dateEvent.json();
+
+     //Dates yy - mm - dd for new Date()
+    const datesJSON = dateEventJson.events[0].dateStartEvent;
+    const datesSplit = datesJSON.split("-");
+
+    //Hours hour:minutes:secons for new Date()
+    const hoursJSON = dateEventJson.events[0].hourStart;
+    const hoursSplit = hoursJSON.split(":");
+
+    const titleEvent = dateEventJson.events[0].title;
+
+    const descriptionEvent = dateEventJson.events[0].description;
+
+    let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2] , hoursSplit[0], hoursSplit[1], hoursSplit[2]);
 
     newDiv.innerHTML = 
     `<div class="modal-close-content" id="closeModalID">
@@ -23,22 +41,16 @@ function ModalEventWeek(element) {
         </button>
     </div>
     <div class="modal-content-info">
-        <input type='text' id='titleEvent' placeholder="Añade un titulo"></input>
+        <h2 class="color-text">${titleEvent}</h2>
 
-        <textarea id='descriptionEvent' placeholder="Añade una descripcion"></textarea>
+        <p class="color-text">${descriptionEvent}</p>
 
         <div class="inputs-content">
-            <label for="dateInput" class="labels-modal">Fecha de inicio</label>
-            <input type='date' id='dateInput'></input>
+            <p class="color-text">el ${fechaEvento.toLocaleDateString()}</p>
         </div>
 
         <div class="inputs-content">
-            <label for="timeInput" class="labels-modal">Hora de inicio</label>
-            <input type='time' id='timeInput'></input>
-        </div>
-
-        <div class="modal-submit-content">
-            <button class="buttonModa" id='buttonModalID'>Aceptar</button>
+        <p class="color-text">${fechaEvento.toLocaleTimeString()} hrs</p>
         </div>
     </div>`;
 
