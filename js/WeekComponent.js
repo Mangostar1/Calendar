@@ -85,38 +85,6 @@ export function hourWeekComponent(getDay, getDate, getMonth, getFullYear) {
         {hour: "23:00 hrs"}
     ];
 
-    let cont = 1;
-    let day = 1;
-    let horas = 0;
-    let tmpEventDayWeek = 3; // dynamic
-    let tmpHourDayWeek = 4; ; // dynamic
-
-    for (let w = 1; w < 169; w++) {
-
-        if(horas == tmpHourDayWeek && tmpEventDayWeek == day){
-            weekContent.innerHTML += 
-                `<div class="semanal">
-                    <ul>
-                        <li class="event eventWeek"> Hora ${horas} Day ${day}</li>
-                    </ul>
-                </div>`;
-        }else{
-            weekContent.innerHTML += 
-                `<div class="semanal">
-                    <ul>
-                        <li class="event eventWeek"></li>
-                    </ul>
-                </div>`;
-        }
-
-        if(w % 7 == 0){
-            horas++;
-            day = 0;
-        }
-        day++;
-        cont++;
-    }
-
     hourDayWeek.forEach((item) => {
         document.getElementById("grid-hour").innerHTML += `<div class="horas"> ${item.hour} </div>`
     });
@@ -157,5 +125,58 @@ export function hourWeekComponent(getDay, getDate, getMonth, getFullYear) {
             d.setDate(currentWeek + countStartSun++);
             weekDays[i].innerHTML = d.getDate();
         }
+    }
+
+    eventsWeek()
+}
+
+//Events Week
+async function eventsWeek() {
+    const basicWeek = await fetch("http://localhost:5500/basicStructure.json");
+    const basicWeekJSON = await basicWeek.json();
+
+    //Dates yy - mm - dd for new Date()
+    const datesJSON = basicWeekJSON.events[0].dateStartEvent;
+    const datesSplit = datesJSON.split("-");
+
+    //Hours hour:minutes:secons for new Date()
+    const hoursJSON = basicWeekJSON.events[0].hourStart;
+    const hoursSplit = hoursJSON.split(":");
+
+    let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2] , hoursSplit[0], hoursSplit[1], hoursSplit[2]);
+    console.log(fechaEvento);
+
+    /* en fase de pruebas 1 */
+    let weekContent = document.getElementById("days-of-week");
+    let cont = 1;
+    let day = 1;
+    let horas = 0;
+    let tmpEventDayWeek = fechaEvento.getDay(); // Trae el dia de la semana del json
+    let tmpHourDayWeek = fechaEvento.getHours(); ; // Trae la hora del json
+
+    for (let w = 1; w < 169; w++) {
+
+        if(horas == tmpHourDayWeek && tmpEventDayWeek == day){
+            weekContent.innerHTML += 
+                `<div class="semanal">
+                    <ul>
+                        <li class="event eventWeek"> Hora ${horas} Day ${day}</li>
+                    </ul>
+                </div>`;
+        }else{
+            weekContent.innerHTML += 
+                `<div class="semanal">
+                    <ul>
+                        <li class="event eventWeek"></li>
+                    </ul>
+                </div>`;
+        }
+
+        if(w % 7 == 0){
+            horas++;
+            day = 0;
+        }
+        day++;
+        cont++;
     }
 }

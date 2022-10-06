@@ -1,9 +1,9 @@
 {
   "events": [
     {
-      "dateStartEvent": "2022-08-18",
-      "hourStart": "00:00:00",
-      "dateFinishEvent": "2022-08-18",
+      "dateStartEvent": "2022-10-18",
+      "hourStart": "00:30:00",
+      "dateFinishEvent": "2022-10-18",
       "hourFinish": "00:59:00",
       "title": "Ejemplo de titulo 1",
       "description": "Ejemplo de descripcion 1",
@@ -18,9 +18,9 @@
         "colorType": "white"
       }
   }, {
-      "dateStartEvent": "2022-08-19",
-      "hourStart": "00:00:00",
-      "dateFinishEvent": "2022-08-19",
+      "dateStartEvent": "2022-10-19",
+      "hourStart": "00:30:00",
+      "dateFinishEvent": "2022-10-19",
       "hourFinish": "00:59:00",
       "title": "Ejemplo de titulo 2",
       "description": "Ejemplo de descripcion 2",
@@ -35,9 +35,9 @@
         "colorType": "white"
       }
   }, {
-      "dateStartEvent": "2022-08-20",
-      "hourStart": "00:00:00",
-      "dateFinishEvent": "2022-08-20",
+      "dateStartEvent": "2022-10-20",
+      "hourStart": "00:30:00",
+      "dateFinishEvent": "2022-10-20",
       "hourFinish": "00:59:00",
       "title": "Ejemplo de titulo 3",
       "description": "Ejemplo de descripcion 3",
