@@ -85,6 +85,15 @@ export function hourWeekComponent(getDay, getDate, getMonth, getFullYear) {
         {hour: "23:00 hrs"}
     ];
 
+    for (let w = 1; w < 169; w++) {
+        weekContent.innerHTML += 
+            `<div class="semanal">
+                <ul>
+                    <li class="event eventWeek"></li>
+                </ul>
+            </div>`;
+    }
+
     hourDayWeek.forEach((item) => {
         document.getElementById("grid-hour").innerHTML += `<div class="horas"> ${item.hour} </div>`
     });
@@ -132,54 +141,44 @@ export function hourWeekComponent(getDay, getDate, getMonth, getFullYear) {
 
 //Events Week
 async function eventsWeek() {
-    /* for (let e = 0; e < 2; e++) {
-    } */
     const basicWeek = await fetch("http://localhost:5500/basicStructure.json");
     const basicWeekJSON = await basicWeek.json();
-    //Dates yy - mm - dd for new Date()
-    const datesJSON = basicWeekJSON.events[0].dateStartEvent;
-    const datesSplit = datesJSON.split("-");
-
-    //Hours hour:minutes:secons for new Date()
-    const hoursJSON = basicWeekJSON.events[0].hourStart;
-    const hoursSplit = hoursJSON.split(":");
     
-    const titleEvent = basicWeekJSON.events[0].title
+
+    const eventWekk = document.getElementsByClassName("eventWeek");
+    for (let e = 0; e < 2; e++) {
+        console.log('hola');
+        //Dates yy - mm - dd for new Date()
+        const datesJSON = basicWeekJSON.events[e].dateStartEvent;
+        const datesSplit = datesJSON.split("-");
     
-    let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2] , hoursSplit[0], hoursSplit[1], hoursSplit[2]);
-
-    let weekContent = document.getElementById("days-of-week");
-    let cont = 1;
-    let day = 1;
-    let horas = 0;
-    let tmpEventDayWeek = fechaEvento.getDay(); // Trae el dia de la semana del json
-    let tmpHourDayWeek = fechaEvento.getHours(); ; // Trae la hora del json
-
-    for (let w = 1; w < 169; w++) {
-
-        if(horas == tmpHourDayWeek && tmpEventDayWeek == day){
-            weekContent.innerHTML += 
-                `<div class="semanal">
-                    <ul>
-                        <li class="event eventWeek">
-                            <button class="btn-item" onclick="handleBtn()"><span class="sp-hour"> ${hoursJSON} </span> - <span class="sp-title"> ${titleEvent} </span></button>
-                        </li>
-                    </ul>
-                </div>`;
-        }else{
-            weekContent.innerHTML += 
-                `<div class="semanal">
-                    <ul>
-                        <li class="event eventWeek"></li>
-                    </ul>
-                </div>`;
+        //Hours hour:minutes:secons for new Date()
+        const hoursJSON = basicWeekJSON.events[e].hourStart;
+        const hoursSplit = hoursJSON.split(":");
+        
+        const titleEvent = basicWeekJSON.events[e].title
+        
+        let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2] , hoursSplit[0], hoursSplit[1], hoursSplit[2]);
+    
+        let weekContent = document.getElementById("days-of-week");
+        let cont = 1;
+        let day = 1;
+        let horas = 0;
+        let tmpEventDayWeek = fechaEvento.getDay(); // Trae el dia de la semana del json
+        let tmpHourDayWeek = fechaEvento.getHours(); // Trae la hora del json
+    
+        for (let w = 1; w < 169; w++) {
+            if(horas == tmpHourDayWeek && tmpEventDayWeek == day){
+                eventWekk[w].innerHTML += 
+                    `<button class="btn-item" onclick="handleBtn()"><span class="sp-hour"> ${hoursJSON} </span> - <span class="sp-title"> ${titleEvent} </span></button>`;
+            }
+    
+            if(w % 7 == 0){
+                horas++;
+                day = 0;
+            }
+            day++;
+            cont++;
         }
-
-        if(w % 7 == 0){
-            horas++;
-            day = 0;
-        }
-        day++;
-        cont++;
     }
 }

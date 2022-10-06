@@ -332,7 +332,6 @@ function setNewDateYear() {
 /*--------------*/
 
 const eventoLi = document.getElementsByClassName("event");
-const eventWekk = document.getElementsByClassName("eventWeek");
 
 async function inicioEventoDia() {
   //const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
