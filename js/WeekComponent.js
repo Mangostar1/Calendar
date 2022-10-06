@@ -170,7 +170,7 @@ async function eventsWeek() {
         for (let w = 1; w < 169; w++) {
             if(horas == tmpHourDayWeek && tmpEventDayWeek == day){
                 eventWekk[w].innerHTML += 
-                    `<button class="btn-item" onclick="handleBtn()"><span class="sp-hour"> ${hoursJSON} </span> - <span class="sp-title"> ${titleEvent} </span></button>`;
+                    `<button id="event-Modal" class="btn-item" onclick="handleBtn()"><span class="sp-hour"> ${hoursJSON} </span> - <span class="sp-title"> ${titleEvent} </span></button>`;
             }
     
             if(w % 7 == 0){

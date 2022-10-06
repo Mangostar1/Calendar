@@ -80,7 +80,7 @@ async function eventoMonth() {
 
         if (dateMonth.getMonth() === currentMonth && dateMonth.getFullYear() === currentYear) {
             eventMonth.innerHTML = 
-                `<button class="btn-item" id="btn-event-${i}">
+                `<button id="event-Modal" class="btn-item" id="btn-event-${i}">
                     <span class="sp-hour"> ${horaInicialAA} - ${horafinalAA} </span> 
                     <br> 
                     <span class="sp-title"> ${tituloEventoAA} </span>
@@ -110,7 +110,7 @@ async function eventoMonthMobile() {
 
         if (dateMonth.getMonth() === currentMonth && dateMonth.getFullYear() === currentYear) {
             eventMonth.innerHTML = 
-                `<button class="btn-item" id="btn-event-${i}">
+                `<button id="event-Modal" class="btn-item" id="btn-event-${i}">
                 </button>`;
         } else {
             eventMonth.innerHTML = `<li class="event"></li>`;
