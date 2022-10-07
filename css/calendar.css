@@ -51,21 +51,6 @@
   box-sizing: border-box;
 }
 
-.btn-item{
-  width: 99%;
-  background-color: var(--colorOne);
-  color: var(--neutralWhite);
-  border-style: none;
-  font-size: 15px;
-  padding: 4px 4px;
-  border-radius: 6.5px;
-  cursor: pointer;
-}
-.btn-item:hover{
-  background-color: var(--colorTwo);
-  color: var(--neutralWhite);
-}
-
 
 /*-----------------------*/
 /* dates buttons control */
@@ -177,8 +162,4 @@ h1{
 #btn-year{
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
-}
-
-.color-text{
-  color: black;
 }

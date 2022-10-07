@@ -122,3 +122,7 @@
     color: var(--neutralWhite);
     letter-spacing: 2px;
 }
+
+.color-text{
+    color: black;
+}

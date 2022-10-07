@@ -84,7 +84,7 @@ async function eventoMonth() {
 
                 if (dateMonth.getMonth() === currentMonth && dateMonth.getFullYear() === currentYear) {
                     eventMonth.innerHTML += 
-                        `<button id="event-Modal" class="btn-item" id="btn-event-${i}">
+                        `<button id="event-Modal" class="btn-item btm-event-month">
                             <span class="sp-hour"> ${horaInicial} - ${horafinal} </span> 
                             <br> 
                             <span class="sp-title"> ${tituloEvento} </span>

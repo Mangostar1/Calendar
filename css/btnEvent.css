@@ -1,0 +1,23 @@
+.btn-item{
+    width: 99%;
+    background-color: var(--colorOne);
+    color: var(--neutralWhite);
+    border-style: none;
+    font-size: 15px;
+    padding: 4px 4px;
+    border-radius: 6.5px;
+    cursor: pointer;
+    transition: all .6s ease
+}
+.btn-item:hover{
+    background-color: var(--colorTwo);
+    color: var(--neutralWhite);
+}
+
+/* .btm-event-month span{
+    display: none;
+}
+
+.btm-event-month:hover span{
+    display: inline;
+} */
