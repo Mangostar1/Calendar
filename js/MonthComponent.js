@@ -67,7 +67,7 @@ async function eventoMonth() {
 
     for (let i = 0; i < 7; i++) {// <-- Este recorre los 7 dias de la semana
         
-        if (basicMonthJson.events[0].dayEvents !== 0) {// <-- Si dentro de un dia de la semana hay eventos, este recorre todos los eventos agendados en el dia
+        if (basicMonthJson.events[i].dayEvents !== 0) {// <-- Si dentro de un dia de la semana hay eventos, este recorre todos los eventos agendados en el dia
             for (let d = 0; d < (basicMonthJson.events[i].dayEvents).length; d++) {// <-- Con este for recorro todos los eventos del dia en cuestion
                 
                 let datesJSON = basicMonthJson.events[i].dayEvents[d].dateStartEvent;
