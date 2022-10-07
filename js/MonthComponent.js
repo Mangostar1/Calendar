@@ -71,7 +71,7 @@ async function eventoMonth() {
         //let datesJSON = basicMonthJson.events[i];
         console.log(i);
         if (basicMonthJson.events[0].dayEvents !== 0) {// <-- Si dentro de un dia de la semana hay eventos, este recorre todos los eventos agendados en el dia
-            for (let d = 0; d < (basicMonthJson.events[0].dayEvents).length; d++) {// <-- Con este for recorro todos los eventos del dia en cuestion
+            for (let d = 0; d < (basicMonthJson.events[i].dayEvents).length; d++) {// <-- Con este for recorro todos los eventos del dia en cuestion
                 
                 let datesJSON = basicMonthJson.events[i].dayEvents[d].dateStartEvent;
                 const datesSplit = datesJSON.split('-');
