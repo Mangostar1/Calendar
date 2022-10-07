@@ -1,0 +1,72 @@
+{
+  "events": [
+    {
+      "dateStartEvent": "2022-10-18",
+      "hourStart": "00:30:00",
+      "dateFinishEvent": "2022-10-18",
+      "hourFinish": "00:59:00",
+      "title": "Ejemplo de titulo 1",
+      "description": "Ejemplo de descripcion 1",
+      "statusInformation": {
+          "statusCode": "001",
+          "status": "activo",
+          "colorStatus": "green"
+      },
+      "typeInformation": {
+        "type": "0001",
+        "colorBackgroundType": "#0096a6",
+        "colorType": "white"
+      }
+  },{
+    "dateStartEvent": "2022-10-18",
+    "hourStart": "01:30:00",
+    "dateFinishEvent": "2022-10-18",
+    "hourFinish": "01:59:00",
+    "title": "Ejemplo de titulo 1.1",
+    "description": "Ejemplo de descripcion 1.1",
+    "statusInformation": {
+        "statusCode": "001",
+        "status": "activo",
+        "colorStatus": "green"
+    },
+    "typeInformation": {
+      "type": "0001",
+      "colorBackgroundType": "#0096a6",
+      "colorType": "white"
+    }
+}, {
+      "dateStartEvent": "2022-10-19",
+      "hourStart": "00:30:00",
+      "dateFinishEvent": "2022-10-19",
+      "hourFinish": "00:59:00",
+      "title": "Ejemplo de titulo 2",
+      "description": "Ejemplo de descripcion 2",
+      "statusInformation": {
+          "statusCode": "001",
+          "status": "activo",
+          "colorStatus": "green"
+      },
+      "typeInformation": {
+        "type": "0001",
+        "colorBackgroundType": "#0096a6",
+        "colorType": "white"
+      }
+  }, {
+      "dateStartEvent": "2022-10-20",
+      "hourStart": "00:30:00",
+      "dateFinishEvent": "2022-10-20",
+      "hourFinish": "00:59:00",
+      "title": "Ejemplo de titulo 3",
+      "description": "Ejemplo de descripcion 3",
+      "statusInformation": {
+          "statusCode": "001",
+          "status": "activo",
+          "colorStatus": "green"
+      },
+      "typeInformation": {
+        "type": "0001",
+        "colorBackgroundType": "#0096a6",
+        "colorType": "white"
+      }
+  }]
+}

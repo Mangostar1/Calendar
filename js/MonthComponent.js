@@ -65,28 +65,36 @@ async function eventoMonth() {
     //const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
     const basicMonthJson = await basicMonth.json();
 
-    for (let i = 0; i < 3; i++) {
-        let datesJSON = basicMonthJson.events[i].dateStartEvent;
+    console.log('aca',basicMonthJson.events[0].dayEvents[0].dateStartEvent); //Muestra todos los eventos agendados en el dia 0/Lunes
+    console.log(basicMonthJson.events[0]);
+    for (let i = 0; i < 7; i++) {// <-- Este recorre los 7 dias de la semana
+        //let datesJSON = basicMonthJson.events[i];
+        console.log(i);
+        if (basicMonthJson.events[0].dayEvents !== 0) {// <-- Si dentro de un dia de la semana hay eventos, este recorre todos los eventos agendados en el dia
+            for (let d = 0; d < (basicMonthJson.events[0].dayEvents).length; d++) {// <-- Con este for recorro todos los eventos del dia en cuestion
+                
+                let datesJSON = basicMonthJson.events[i].dayEvents[d].dateStartEvent;
+                const datesSplit = datesJSON.split('-');
 
-        const datesSplit = datesJSON.split('-');
+                let dateMonth = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
+                let diames = dateMonth.getDate();
+                let eventMonth = document.getElementById(`evento-${diames}`);
 
-        let dateMonth = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
-        let diames = dateMonth.getDate();
-        let eventMonth = document.getElementById(`evento-${diames}`);
+                let horaInicial = basicMonthJson.events[i].dayEvents[d].hourStart;
+                let horafinal = basicMonthJson.events[i].dayEvents[d].hourFinish;
+                let tituloEvento = basicMonthJson.events[i].dayEvents[d].title;
 
-        let horaInicialAA = basicMonthJson.events[i].hourStart;
-        let horafinalAA = basicMonthJson.events[i].hourFinish;
-        let tituloEventoAA = basicMonthJson.events[i].title;
-
-        if (dateMonth.getMonth() === currentMonth && dateMonth.getFullYear() === currentYear) {
-            eventMonth.innerHTML = 
-                `<button id="event-Modal" class="btn-item" id="btn-event-${i}">
-                    <span class="sp-hour"> ${horaInicialAA} - ${horafinalAA} </span> 
-                    <br> 
-                    <span class="sp-title"> ${tituloEventoAA} </span>
-                </button>`;
-        } else {
-            eventMonth.innerHTML = `<li class="event"></li>`;
+                if (dateMonth.getMonth() === currentMonth && dateMonth.getFullYear() === currentYear) {
+                    eventMonth.innerHTML = 
+                        `<button id="event-Modal" class="btn-item" id="btn-event-${i}">
+                            <span class="sp-hour"> ${horaInicial} - ${horafinal} </span> 
+                            <br> 
+                            <span class="sp-title"> ${tituloEvento} </span>
+                        </button>`;
+                } else {
+                    eventMonth.innerHTML = `<li class="event"></li>`;
+                }
+            }
         }
     }
 }
