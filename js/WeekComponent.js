@@ -146,17 +146,17 @@ async function eventsWeek() {
     
 
     const eventWekk = document.getElementsByClassName("eventWeek");
-    for (let e = 0; e < 2; e++) {
+    for (let e = 0; e < 2; e++) {// <-- Events in
         console.log('hola');
         //Dates yy - mm - dd for new Date()
-        const datesJSON = basicWeekJSON.events[e].dateStartEvent;
+        const datesJSON = basicWeekJSON.events[e].dayEvents[0].dateStartEvent;
         const datesSplit = datesJSON.split("-");
     
         //Hours hour:minutes:secons for new Date()
-        const hoursJSON = basicWeekJSON.events[e].hourStart;
+        const hoursJSON = basicWeekJSON.events[e].dayEvents[0].hourStart;
         const hoursSplit = hoursJSON.split(":");
         
-        const titleEvent = basicWeekJSON.events[e].title
+        const titleEvent = basicWeekJSON.events[e].dayEvents[0].title
         
         let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2] , hoursSplit[0], hoursSplit[1], hoursSplit[2]);
     

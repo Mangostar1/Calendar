@@ -16,21 +16,21 @@ async function ModalEventWeek(element) {
     newDiv.classList.add('modal');
     newDiv.id = 'modal-id';
 
-    //const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
-    const dateEvent = await fetch("http://localhost:5500/basicStructure.json");
+    //const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");// <-- For production
+    const dateEvent = await fetch("http://localhost:5500/basicStructure.json");// <-- For development
     const dateEventJson = await dateEvent.json();
 
      //Dates yy - mm - dd for new Date()
-    const datesJSON = dateEventJson.events[0].dateStartEvent;
+    const datesJSON = dateEventJson.events[0].dayEvents[0].dateStartEvent;
     const datesSplit = datesJSON.split("-");
 
     //Hours hour:minutes:secons for new Date()
-    const hoursJSON = dateEventJson.events[0].hourStart;
+    const hoursJSON = dateEventJson.events[0].dayEvents[0].hourStart;
     const hoursSplit = hoursJSON.split(":");
 
-    const titleEvent = dateEventJson.events[0].title;
+    const titleEvent = dateEventJson.events[0].dayEvents[0].title;
 
-    const descriptionEvent = dateEventJson.events[0].description;
+    const descriptionEvent = dateEventJson.events[0].dayEvents[0].description;
 
     let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2] , hoursSplit[0], hoursSplit[1], hoursSplit[2]);
 
