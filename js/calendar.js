@@ -331,7 +331,7 @@ function setNewDateYear() {
 /* json eventos */
 /*--------------*/
 
-const eventoLi = document.getElementsByClassName("event");
+/* const eventoLi = document.getElementsByClassName("event");
 
 async function inicioEventoDia() {
   //const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
@@ -355,4 +355,4 @@ async function inicioEventoDia() {
     eventoLi[4].innerHTML = '<li class="event"></li>';
   }
 }
-inicioEventoDia();
+inicioEventoDia(); */

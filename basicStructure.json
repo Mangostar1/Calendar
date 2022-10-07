@@ -2,7 +2,7 @@
     "events": [
         {
             "id": 1,
-            "dayName": "Lunes",
+            "dayName": "Monday",
             "dayEvents": [
                 {
                     "dateStartEvent": "2022-10-17",
@@ -43,7 +43,7 @@
         },
         {
             "id": 2,
-            "dayName": "Martes",
+            "dayName": "Tuesday",
             "dayEvents": [
                 {
                     "dateStartEvent": "2022-10-18",
@@ -67,7 +67,7 @@
         },
         {
             "id": 3,
-            "dayName": "Miercoles",
+            "dayName": "Wednesday",
             "dayEvents": [
                 {
                     "dateStartEvent": "2022-10-19",
@@ -91,25 +91,25 @@
         },
         {
             "id": 4,
-            "dayName": "Jueves",
+            "dayName": "Thursday",
             "dayEvents": [
             ]
         },
         {
             "id": 5,
-            "dayName": "Viernes",
+            "dayName": "Friday",
             "dayEvents": [
             ]
         },
         {
             "id": 6,
-            "dayName": "Sabado",
+            "dayName": "Saturday",
             "dayEvents": [
             ]
         },
         {
             "id": 7,
-            "dayName": "Domingo",
+            "dayName": "Sunday",
             "dayEvents": [
             ]
         }
