@@ -1,5 +1,5 @@
 .btn-item{
-    width: 99%;
+    width: 100%;
     background-color: var(--colorOne);
     color: var(--neutralWhite);
     border-style: none;
@@ -7,17 +7,21 @@
     padding: 4px 4px;
     border-radius: 6.5px;
     cursor: pointer;
-    transition: all .6s ease
+    transition: all .6s ease;
+
+    position: relative;
 }
 .btn-item:hover{
     background-color: var(--colorTwo);
     color: var(--neutralWhite);
 }
 
-/* .btm-event-month span{
-    display: none;
+/* .btm-event-month .sp-hour{
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
-.btm-event-month:hover span{
-    display: inline;
+.btm-event-month:hover .sp-hour{
+    position: relative;
 } */
