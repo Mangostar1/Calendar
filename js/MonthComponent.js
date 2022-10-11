@@ -1,4 +1,4 @@
-import { getTotalDays, startDay, currentWeek, currentMonth, currentYear} from "./calendar.js";
+import { getTotalDays, startDay, currentWeek, currentMonth, currentYear, currentDayName} from "./calendar.js";
 
 export function MonthComponent(element) {
     let MonthContent = document.createElement('div');
@@ -95,6 +95,7 @@ async function eventoMonth() {
             }
         }
     }
+    console.log(currentDayName, currentWeek, currentMonth, currentYear);
 }
 
 

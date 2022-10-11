@@ -135,7 +135,6 @@ export function hourWeekComponent(getDay, getDate, getMonth, getFullYear) {
             weekDays[i].innerHTML = d.getDate();
         }
     }
-
     eventsWeek()
 }
 
@@ -143,13 +142,12 @@ export function hourWeekComponent(getDay, getDate, getMonth, getFullYear) {
 async function eventsWeek() {
     const basicWeek = await fetch("http://localhost:5500/basicStructure.json");
     const basicWeekJSON = await basicWeek.json();
-    
 
     const eventWekk = document.getElementsByClassName("eventWeek");
     for (let i = 0; i < 7; i++) {
         if (basicWeekJSON.events[i].dayEvents !== 0) {
             for (let e = 0; e < (basicWeekJSON.events[i].dayEvents).length; e++) {// <-- Events in
-                console.log('hola');
+                
                 //Dates yy - mm - dd for new Date()
                 const datesJSON = basicWeekJSON.events[i].dayEvents[e].dateStartEvent;
                 const datesSplit = datesJSON.split("-");
@@ -161,16 +159,18 @@ async function eventsWeek() {
                 const titleEvent = basicWeekJSON.events[i].dayEvents[e].title
                 
                 let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2] , hoursSplit[0], hoursSplit[1], hoursSplit[2]);
-            
                 let weekContent = document.getElementById("days-of-week");
                 let cont = 1;
-                let day = 1;
-                let horas = 0;
+                let day = 1; //El dia de la semana L a D |
+                let horas = 0; //La hora del evento |
                 let tmpEventDayWeek = fechaEvento.getDay(); // Trae el dia de la semana del json
                 let tmpHourDayWeek = fechaEvento.getHours(); // Trae la hora del json
-            
+                
+                /* if (horas == tmpHourDayWeek && tmpEventDayWeek == day) {
+                } */
+
                 for (let w = 1; w < 169; w++) {
-                    if(horas == tmpHourDayWeek && tmpEventDayWeek == day){
+                    if(horas === tmpHourDayWeek && tmpEventDayWeek === day){
                         eventWekk[w].innerHTML += 
                             `<button id="event-Modal" class="btn-item" onclick="handleBtn()"><span class="sp-hour"> ${hoursJSON} </span> - <span class="sp-title"> ${titleEvent} </span></button>`;
                     }
