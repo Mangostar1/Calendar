@@ -165,12 +165,9 @@ async function eventsWeek() {
                 let horas = 0; //La hora del evento |
                 let tmpEventDayWeek = fechaEvento.getDay(); // Trae el dia de la semana del json
                 let tmpHourDayWeek = fechaEvento.getHours(); // Trae la hora del json
-                
-                /* if (horas == tmpHourDayWeek && tmpEventDayWeek == day) {
-                } */
 
                 for (let w = 1; w < 169; w++) {
-                    if(horas === tmpHourDayWeek && tmpEventDayWeek === day && fechaEvento.getMonth() === currentMonth){
+                    if(horas === tmpHourDayWeek && tmpEventDayWeek === day && fechaEvento.getMonth() === currentMonth && fechaEvento.getFullYear() === currentYear){
                         eventWekk[w].innerHTML += 
                             `<button id="event-Modal" class="btn-item" onclick="handleBtn()"><span class="sp-hour"> ${hoursJSON} </span> - <span class="sp-title"> ${titleEvent} </span></button>`;
                     }
