@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Web calendar",
   "main": "calendar.js",
+  "type": "module",
   "scripts": {
     "test": "jest"
   },

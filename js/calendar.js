@@ -338,15 +338,15 @@ async function inicioEventoDia() {
   const basicStruc = await fetch("http://localhost:5500/basicStructure.json");
   const primerEvento = await basicStruc.json();
 
-  const datesJSON = primerEvento.events[0].dateStartEvent;
+  const datesJSON = primerEvento.events[0].dayEvents[0].dateStartEvent;
   const datesSplit = datesJSON.split("-");
 
   let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
   //console.log(datesSplit);
 
-  let horaInicial = primerEvento.events[0].hourStart;
-  let horafinal = primerEvento.events[0].hourFinish;
-  let tituloEvento = primerEvento.events[0].title;
+  let horaInicial = primerEvento.events[0].dayEvents[0].hourStart;
+  let horafinal = primerEvento.events[0].dayEvents[0].hourFinish;
+  let tituloEvento = primerEvento.events[0].dayEvents[0].title;
 
   // Day
   if (fechaEvento.getDate() === currentWeek && fechaEvento.getDay() === currentDayName && fechaEvento.getFullYear() === currentYear) {
