@@ -170,7 +170,7 @@ async function eventsWeek() {
                 } */
 
                 for (let w = 1; w < 169; w++) {
-                    if(horas === tmpHourDayWeek && tmpEventDayWeek === day){
+                    if(horas === tmpHourDayWeek && tmpEventDayWeek === day && fechaEvento.getMonth() === currentMonth){
                         eventWekk[w].innerHTML += 
                             `<button id="event-Modal" class="btn-item" onclick="handleBtn()"><span class="sp-hour"> ${hoursJSON} </span> - <span class="sp-title"> ${titleEvent} </span></button>`;
                     }
@@ -185,4 +185,5 @@ async function eventsWeek() {
             }
         }
     }
+    console.log(currentDayName, currentWeek, currentMonth, currentYear);
 }
