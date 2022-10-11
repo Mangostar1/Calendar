@@ -123,7 +123,7 @@ document.addEventListener('click', (e) => {
   if (e.target.matches('#radio-week')) {//semana
     calendarContainer.lastChild.remove();
     WeekComponent(calendarContainer);
-    hourWeekComponent();
+    hourWeekComponent(currentDayName, currentWeek);
     document.getElementById("fecha-week").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
   }
   if (e.target.matches('#radio-month')) {//mes
@@ -250,10 +250,14 @@ function nextWeek() {
 
 function setNewDateWeek() {
   fecha.setFullYear(currentYear, currentMonth, currentWeek);
+  
+  calendarContainer.lastChild.remove();
+  WeekComponent(calendarContainer);
   document.getElementById("fecha-week").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
+  hourWeekComponent(currentDayName, currentWeek);
 
   // declarated to week and month counter
-  let countCurrentWeek = 0;//poner ojo con esta variable, domingo tenia que ser 1, ahora lunes tiene que ser 0 para que no de bug
+  /* let countCurrentWeek = 0;//poner ojo con esta variable, domingo tenia que ser 1, ahora lunes tiene que ser 0 para que no de bug
   let countCurrentMonth = 0;
   
   for (var i = 0; i < 7; i++) {
@@ -262,7 +266,7 @@ function setNewDateWeek() {
       fecha.setDate(1 + countCurrentMonth++);
       weekDays[i].innerHTML = fecha.getDate();
     }
-  }
+  } */
 }
 
 // month

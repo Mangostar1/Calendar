@@ -107,31 +107,31 @@ export function hourWeekComponent(getDay, getDate, getMonth, getFullYear) {
     let countStartSun = -6; //domingo
 
     for (var i = 0; i < 7; i++) {//Corregir este for o pasar por testeo | Este for imprime las fechas de la semana en pantalla
-        if (currentDayName === 1) {
-            weekDays[i].innerHTML = currentWeek + countStartMon++;
-        } else if (currentDayName === 2) {
+        if (getDay === 1) {
+            weekDays[i].innerHTML = getDate + countStartMon++;
+        } else if (getDay === 2) {
             let d = new Date();
-            d.setDate(currentWeek + countStartTue++);
+            d.setDate(getDate + countStartTue++);
             weekDays[i].innerHTML = d.getDate();
-        } else if (currentDayName === 3) {
+        } else if (getDay === 3) {
             let d = new Date();
-            d.setDate(currentWeek + countStartWed++);
+            d.setDate(getDate + countStartWed++);
             weekDays[i].innerHTML = d.getDate();
-        } else if (currentDayName === 4) {
+        } else if (getDay === 4) {
             let d = new Date();
-            d.setDate(currentWeek + countStartThr++);
+            d.setDate(getDate + countStartThr++);
             weekDays[i].innerHTML = d.getDate();
-        } else if (currentDayName === 5) {
+        } else if (getDay === 5) {
             let d = new Date();
-            d.setDate(currentWeek + countStartFre++);
+            d.setDate(getDate + countStartFre++);
             weekDays[i].innerHTML = d.getDate();
-        } else if (currentDayName === 6) {
+        } else if (getDay === 6) {
             let d = new Date();
-            d.setDate(currentWeek + countStartSat++);
+            d.setDate(getDate + countStartSat++);
             weekDays[i].innerHTML = d.getDate();
-        } else if (currentDayName === 0) {
+        } else if (getDay === 0) {
             let d = new Date();
-            d.setDate(currentWeek + countStartSun++);
+            d.setDate(getDate + countStartSun++);
             weekDays[i].innerHTML = d.getDate();
         }
     }
