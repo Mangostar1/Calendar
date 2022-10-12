@@ -40,8 +40,6 @@ Date.prototype.getWeekNumber = function () {
   return Math.ceil((((d - new Date(d.getFullYear(), 0, 1)) / 8.64e7) + 1) / 7);
 };
 
-console.log(fecha.getWeekNumber());
-
 export function isLeap() {
   return ((currentYear % 100 !== 0) && (currentYear % 4 === 0) || (currentYear % 400 === 0))
 }
