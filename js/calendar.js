@@ -28,7 +28,21 @@ const weekDays = document.getElementsByClassName("diasNumber");
 /* funciones para el calendario */
 /*------------------------------*/
 
-function isLeap() {
+export function numberOfWeek(){
+  //code
+}
+
+Date.prototype.getWeekNumber = function () {
+  var d = new Date(+this);  //Creamos un nuevo Date con la fecha de "this".
+  d.setHours(0, 0, 0, 0);   //Nos aseguramos de limpiar la hora.
+  d.setDate(d.getDate() + 4 - (d.getDay() || 7)); // Recorremos los días para asegurarnos de estar "dentro de la semana"
+  //Finalmente, calculamos redondeando y ajustando por la naturaleza de los números en JS:
+  return Math.ceil((((d - new Date(d.getFullYear(), 0, 1)) / 8.64e7) + 1) / 7);
+};
+
+console.log(fecha.getWeekNumber());
+
+export function isLeap() {
   return ((currentYear % 100 !== 0) && (currentYear % 4 === 0) || (currentYear % 400 === 0))
 }
 
@@ -255,18 +269,6 @@ function setNewDateWeek() {
   WeekComponent(calendarContainer);
   document.getElementById("fecha-week").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
   hourWeekComponent(currentDayName, currentWeek);
-
-  // declarated to week and month counter
-  /* let countCurrentWeek = 0;//poner ojo con esta variable, domingo tenia que ser 1, ahora lunes tiene que ser 0 para que no de bug
-  let countCurrentMonth = 0;
-  
-  for (var i = 0; i < 7; i++) {
-    weekDays[i].innerHTML = currentWeek + countCurrentWeek++;
-    if (weekDays[i].innerHTML > getTotalDays(currentMonth)) {
-      fecha.setDate(1 + countCurrentMonth++);
-      weekDays[i].innerHTML = fecha.getDate();
-    }
-  } */
 }
 
 // month

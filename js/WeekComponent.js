@@ -107,29 +107,35 @@ export function hourWeekComponent(getDay, getDate, getMonth, getFullYear) {
     let countStartSun = -6; //domingo
 
     for (var i = 0; i < 7; i++) {//Corregir este for o pasar por testeo | Este for imprime las fechas de la semana en pantalla
-        if (getDay === 1) {
+        if (getDay === 1) {// <-- Lunes
             weekDays[i].innerHTML = getDate + countStartMon++;
-        } else if (getDay === 2) {
+        }
+        if (getDay === 2) {// <-- Martes
             let d = new Date();
             d.setDate(getDate + countStartTue++);
             weekDays[i].innerHTML = d.getDate();
-        } else if (getDay === 3) {
+        }
+        if (getDay === 3) {// <-- Miercoles
             let d = new Date();
             d.setDate(getDate + countStartWed++);
             weekDays[i].innerHTML = d.getDate();
-        } else if (getDay === 4) {
+        }
+        if (getDay === 4) {// <-- Jueves
             let d = new Date();
             d.setDate(getDate + countStartThr++);
             weekDays[i].innerHTML = d.getDate();
-        } else if (getDay === 5) {
+        }
+        if (getDay === 5) {// <-- Viernes
             let d = new Date();
             d.setDate(getDate + countStartFre++);
             weekDays[i].innerHTML = d.getDate();
-        } else if (getDay === 6) {
+        }
+        if (getDay === 6) {// <-- Sabado
             let d = new Date();
             d.setDate(getDate + countStartSat++);
             weekDays[i].innerHTML = d.getDate();
-        } else if (getDay === 0) {
+        }
+        if (getDay === 0) {// <-- Domingo
             let d = new Date();
             d.setDate(getDate + countStartSun++);
             weekDays[i].innerHTML = d.getDate();
@@ -159,7 +165,6 @@ async function eventsWeek() {
                 const titleEvent = basicWeekJSON.events[i].dayEvents[e].title
                 
                 let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2] , hoursSplit[0], hoursSplit[1], hoursSplit[2]);
-                let weekContent = document.getElementById("days-of-week");
                 let cont = 1;
                 let day = 1; //El dia de la semana L a D | Actual en el calendario
                 let horas = 0; //La hora del evento | Actual en el calendario
@@ -167,7 +172,7 @@ async function eventsWeek() {
                 let tmpHourDayWeek = fechaEvento.getHours(); // Trae la hora del json
 
                 for (let w = 1; w < 169; w++) {
-                    if(horas === tmpHourDayWeek /* && tmpEventDayWeek === day */ && fechaEvento.getDate() === currentWeek && fechaEvento.getMonth() === currentMonth && fechaEvento.getFullYear() === currentYear){
+                    if(horas === tmpHourDayWeek && tmpEventDayWeek === day && /* fechaEvento.getDate() === currentWeek && */ fechaEvento.getMonth() === currentMonth && fechaEvento.getFullYear() === currentYear){
                         eventWekk[w].innerHTML += 
                             `<button id="event-Modal" class="btn-item" onclick="handleBtn()"><span class="sp-hour"> ${hoursJSON} </span> - <span class="sp-title"> ${titleEvent} </span></button>`;
                     }
