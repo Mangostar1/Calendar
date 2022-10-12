@@ -189,5 +189,4 @@ async function eventsWeek() {
             }
         }
     }
-    console.log(fecha.getWeekNumber());
 }

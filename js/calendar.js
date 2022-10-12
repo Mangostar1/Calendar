@@ -346,7 +346,6 @@ async function inicioEventoDia() {
   const datesSplit = datesJSON.split("-");
 
   let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
-  //console.log(datesSplit);
 
   let horaInicial = primerEvento.events[0].dayEvents[0].hourStart;
   let horafinal = primerEvento.events[0].dayEvents[0].hourFinish;
