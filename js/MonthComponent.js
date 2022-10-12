@@ -95,7 +95,6 @@ async function eventoMonth() {
             }
         }
     }
-    console.log(currentDayName, currentWeek, currentMonth, currentYear);
 }
 
 
