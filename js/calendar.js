@@ -211,43 +211,43 @@ function setNewDateDay() {
   document.getElementById("cambia-dia").innerHTML = nameDay[currentDayName] + " " + currentWeek;
 }
 
+
 // botones week
 
 function prevWeek() {
   if (currentWeek !== 1) {
     currentWeek -= 7;
-    if (currentWeek <= 0) {
+    /* if (currentWeek <= 0) {
       currentMonth--;
       currentWeek = getTotalDays(currentMonth);
     }
     if (currentMonth === -1) {
       currentMonth = 11;
       currentYear--;
-    }
+    } */
   } else {//resolver aca para cuando hace el cambio de año
     currentMonth--;
-    currentWeek = getTotalDays(currentMonth);
+    currentWeek = getTotalDays(currentMonth) + 1;
     if (currentMonth === -1) {
       currentYear--;
       currentMonth = 11;
     }
   }
-  inicioEventoDia();
   setNewDateWeek();
 }
 
 function nextWeek() {
   if (currentWeek !== getTotalDays(currentMonth)) {
     currentWeek += 7;
-    if (currentWeek > getTotalDays(currentMonth)) { //antes tenia el 31
+    /* if (currentWeek > getTotalDays(currentMonth)) { //antes tenia el 31
       currentWeek = 1;
       currentMonth++;
     }
     if (currentMonth === 12) {
       currentMonth = 0;
       currentYear++;
-    }
-  } else {//quiza sea aca el problema
+    } */
+  } else {
     currentMonth++;
     currentWeek = 1;
     currentWeek += 6;
@@ -256,7 +256,6 @@ function nextWeek() {
       currentYear++;
     }
   }
-  inicioEventoDia();
   setNewDateWeek();
 }
 
@@ -267,6 +266,7 @@ function setNewDateWeek() {
   WeekComponent(calendarContainer);
   document.getElementById("fecha-week").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
   hourWeekComponent(currentDayName, currentWeek);
+  console.log(currentMonth);
 }
 
 // month
