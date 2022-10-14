@@ -211,7 +211,6 @@ function setNewDateDay() {
   document.getElementById("cambia-dia").innerHTML = nameDay[currentDayName] + " " + currentWeek;
 }
 
-
 // botones week
 
 function prevWeek() {
@@ -227,7 +226,7 @@ function prevWeek() {
     }
   } else {//resolver aca para cuando hace el cambio de año
     currentMonth--;
-    currentWeek = getTotalDays(currentMonth) + 1;
+    currentWeek = getTotalDays(currentMonth);
     if (currentMonth === -1) {
       currentYear--;
       currentMonth = 11;
@@ -247,7 +246,7 @@ function nextWeek() {
       currentMonth = 0;
       currentYear++;
     }
-  } else {
+  } else {//quiza sea aca el problema
     currentMonth++;
     currentWeek = 1;
     currentWeek += 6;
@@ -266,7 +265,6 @@ function setNewDateWeek() {
   WeekComponent(calendarContainer);
   document.getElementById("fecha-week").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
   hourWeekComponent(currentDayName, currentWeek);
-  console.log(currentMonth, currentYear);
 }
 
 // month
