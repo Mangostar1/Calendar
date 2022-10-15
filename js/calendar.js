@@ -228,7 +228,6 @@ function prevWeek() {
       currentMonth = 11;
     }
   }
-  inicioEventoDia();
   setNewDateWeek();
 }
 
@@ -252,7 +251,6 @@ function nextWeek() {
       currentYear++;
     }
   }
-  inicioEventoDia();
   setNewDateWeek();
 }
 
