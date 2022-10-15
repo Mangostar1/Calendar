@@ -28,10 +28,6 @@ const weekDays = document.getElementsByClassName("diasNumber");
 /* funciones para el calendario */
 /*------------------------------*/
 
-export function numberOfWeek(){
-  //code
-}
-
 Date.prototype.getWeekNumber = function () {
   var d = new Date(+this);  //Creamos un nuevo Date con la fecha de "this".
   d.setHours(0, 0, 0, 0);   //Nos aseguramos de limpiar la hora.

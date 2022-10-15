@@ -106,7 +106,7 @@ export function hourWeekComponent(getDay, getDate, getMonth, getFullYear) {
     let countStartSat = -5; //sabado
     let countStartSun = -6; //domingo
 
-    for (var i = 0; i < 7; i++) {//Corregir este for o pasar por testeo | Este for imprime las fechas de la semana en pantalla
+    for (var i = 0; i < 7; i++) {
         if (getDay === 1) {// <-- Lunes
             weekDays[i].innerHTML = getDate + countStartMon++;
         }
