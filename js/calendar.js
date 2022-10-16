@@ -7,7 +7,7 @@ import {handlerBtn, handlerBtnMobile} from "./Evento_Fetch.js";
 
 /*----------------------------------------------*/
 /*
-  
+
   Hoy dia viernes el calendario semanal al llegar al limite del mes ocubre me marca el ultimo dia
   del mes en el dia viernes como viernes 30.
 
