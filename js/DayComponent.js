@@ -1,8 +1,8 @@
 export function DayComponent(element) {
-    let DayContent = document.createElement('div');
-    DayContent.classList.add('day-content');
-    DayContent.id = "container-Day";
-    DayContent.innerHTML = `
+    const $DayContent = document.createElement('div');
+    $DayContent.classList.add('day-content');
+    $DayContent.id = "container-Day";
+    $DayContent.innerHTML = `
         <div id="dates-control-day" class="dates-control">
             <button id="prev-day" class="prev"> &#10094; </button>
             <h1 id="fecha-day" class="fecha">Diciembre de 2021</h1>
@@ -11,11 +11,11 @@ export function DayComponent(element) {
         <hr>
         <h2 id="cambia-dia"></h2>`;
 
-    element.appendChild(DayContent);
+    element.appendChild($DayContent);
 }
 
 export function hourDayComponent() {
-    let containerDay = document.getElementById("container-Day");
+    const $containerDay = document.getElementById("container-Day");
     let hourDay = [{
         hour: "00:00 hrs"}, 
         {hour: "01:00 hrs"}, 
@@ -43,7 +43,7 @@ export function hourDayComponent() {
         {hour: "23:00 hrs"}
     ];
     hourDay.forEach((item) => {
-        containerDay.innerHTML += 
+        $containerDay.innerHTML += 
             `<div class="diario">
                 <p class="hora">  ${item.hour} </p>
                 <ul>

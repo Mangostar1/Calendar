@@ -1,10 +1,10 @@
 import { getTotalDays, startDayYear, fecha, currentDayName, currentWeek, currentMonth, currentYear} from "./calendar.js";
 
 export function YearComponent(element) {
-    let yearContent = document.createElement('div');
-    yearContent.classList.add('year-content');
-    yearContent.id = "container-Year";
-    yearContent.innerHTML = 
+    const $yearContent = document.createElement('div');
+    $yearContent.classList.add('year-content');
+    $yearContent.id = "container-Year";
+    $yearContent.innerHTML = 
         `<div id="dates-control-year" class="dates-control">
             <button id="prev-year" class="prev">&#10094;</button>
             <h1 id="fecha-year" class="fecha">Diciembre de 2021</h1>
@@ -108,106 +108,106 @@ export function YearComponent(element) {
             </div>
         </div>`;
 
-    element.appendChild(yearContent);
+    element.appendChild($yearContent);
 }
 
 export function DaysOFYear() {
-    let dayNameYear = document.getElementsByClassName("day-name-div");
+    const $dayNameYear = document.getElementsByClassName("day-name-div");
     const nameWeeck = [
         {day: 'L'}, {day: 'M'}, {day: 'M'}, {day: 'J'}, {day: 'V'}, {day: 'S'}, {day: 'D'}
     ];
 
     nameWeeck.forEach((item) => {
         for (let i = 0; i < 12; i++) {
-            dayNameYear[i].innerHTML += `<li class="day-name"> ${item.day} </li>`;
+            $dayNameYear[i].innerHTML += `<li class="day-name"> ${item.day} </li>`;
         }
     });
 }
 
 export function writeYear() {
-    let daysMonthYear = document.getElementsByClassName("day-div");
+    const $daysMonthYear = document.getElementsByClassName("day-div");
     //Enero
     for (let i = startDayYear(0); i > 0; i--) {
-        daysMonthYear[0].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+        $daysMonthYear[0].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
     }
     for (let i = 1; i <= getTotalDays(0); i++) {
-        daysMonthYear[0].innerHTML += `<li class="day"> ${i} </li>`;
+        $daysMonthYear[0].innerHTML += `<li class="day"> ${i} </li>`;
     }
     //Febrero
     for (let i = startDayYear(1); i > 0; i--) {
-        daysMonthYear[1].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+        $daysMonthYear[1].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
     }
     for (let i = 1; i <= getTotalDays(1); i++) {
-        daysMonthYear[1].innerHTML += `<li class="day"> ${i} </li>`;
+        $daysMonthYear[1].innerHTML += `<li class="day"> ${i} </li>`;
     }
     //Marzo
     for (let i = startDayYear(2); i > 0; i--) {
-        daysMonthYear[2].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+        $daysMonthYear[2].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
     }
     for (let i = 1; i <= getTotalDays(2); i++) {
-        daysMonthYear[2].innerHTML += `<li class="day"> ${i} </li>`;
+        $daysMonthYear[2].innerHTML += `<li class="day"> ${i} </li>`;
     }
     //Abril
     for (let i = startDayYear(3); i > 0; i--) {
-        daysMonthYear[3].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+        $daysMonthYear[3].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
     }
     for (let i = 1; i <= getTotalDays(3); i++) {
-        daysMonthYear[3].innerHTML += `<li class="day"> ${i} </li>`;
+        $daysMonthYear[3].innerHTML += `<li class="day"> ${i} </li>`;
     }
     //Mayo
     for (let i = startDayYear(4); i > 0; i--) {
-        daysMonthYear[4].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+        $daysMonthYear[4].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
     }
     for (let i = 1; i <= getTotalDays(4); i++) {
-        daysMonthYear[4].innerHTML += `<li class="day"> ${i} </li>`;
+        $daysMonthYear[4].innerHTML += `<li class="day"> ${i} </li>`;
     }
     //Junio
     for (let i = startDayYear(5); i > 0; i--) {
-        daysMonthYear[5].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+        $daysMonthYear[5].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
     }
     for (let i = 1; i <= getTotalDays(5); i++) {
-        daysMonthYear[5].innerHTML += `<li class="day"> ${i} </li>`;
+        $daysMonthYear[5].innerHTML += `<li class="day"> ${i} </li>`;
     }
     //Julio
     for (let i = startDayYear(6); i > 0; i--) {
-        daysMonthYear[6].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+        $daysMonthYear[6].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
     }
     for (let i = 1; i <= getTotalDays(6); i++) {
-        daysMonthYear[6].innerHTML += `<li class="day"> ${i} </li>`;
+        $daysMonthYear[6].innerHTML += `<li class="day"> ${i} </li>`;
     }
     //Agosto
     for (let i = startDayYear(7); i > 0; i--) {
-        daysMonthYear[7].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+        $daysMonthYear[7].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
     }
     for (let i = 1; i <= getTotalDays(7); i++) {
-        daysMonthYear[7].innerHTML += `<li class="day"> ${i} </li>`;
+        $daysMonthYear[7].innerHTML += `<li class="day"> ${i} </li>`;
     }
     //Septiembre
     for (let i = startDayYear(8); i > 0; i--) {
-        daysMonthYear[8].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+        $daysMonthYear[8].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
     }
     for (let i = 1; i <= getTotalDays(8); i++) {
-        daysMonthYear[8].innerHTML += `<li class="day"> ${i} </li>`;
+        $daysMonthYear[8].innerHTML += `<li class="day"> ${i} </li>`;
     }
     //Octubre
     for (let i = startDayYear(9); i > 0; i--) {
-        daysMonthYear[9].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+        $daysMonthYear[9].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
     }
     for (let i = 1; i <= getTotalDays(9); i++) {
-        daysMonthYear[9].innerHTML += `<li class="day"> ${i} </li>`;
+        $daysMonthYear[9].innerHTML += `<li class="day"> ${i} </li>`;
     }
     //Noviembre
     for (let i = startDayYear(10); i > 0; i--) {
-        daysMonthYear[10].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+        $daysMonthYear[10].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
     }
     for (let i = 1; i <= getTotalDays(10); i++) {
-        daysMonthYear[10].innerHTML += `<li class="day"> ${i} </li>`;
+        $daysMonthYear[10].innerHTML += `<li class="day"> ${i} </li>`;
     }
     //Diciembre
     for (let i = startDayYear(11); i > 0; i--) {
-        daysMonthYear[11].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+        $daysMonthYear[11].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
     }
     for (let i = 1; i <= getTotalDays(11); i++) {
-        daysMonthYear[11].innerHTML += `<li class="day"> ${i} </li>`;
+        $daysMonthYear[11].innerHTML += `<li class="day"> ${i} </li>`;
     }
 }

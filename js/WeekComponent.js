@@ -1,11 +1,11 @@
 import { fecha, currentDayName, currentWeek, currentMonth, currentYear} from "./calendar.js";
 
 export function WeekComponent(element) {
-    const WeekContent = document.createElement('div');
-    WeekContent.classList.add('container-week');
-    WeekContent.id = "container-week";
+    const $WeekContent = document.createElement('div');
+    $WeekContent.classList.add('container-week');
+    $WeekContent.id = "container-week";
     
-    WeekContent.innerHTML = 
+    $WeekContent.innerHTML = 
     `<div id="dates-control-week" class="dates-control">
         <button id="prev-week" class="prev">&#10094;</button>
         <h1 id="fecha-week" class="fecha">Diciembre de 2021</h1>
@@ -49,14 +49,14 @@ export function WeekComponent(element) {
         <div id="grid-hour"></div>
     </div>`;
 
-    element.appendChild(WeekContent);
+    element.appendChild($WeekContent);
 }
 
 export function hourWeekComponent(getDay, getDate, getMonth, getFullYear) {
 
-    let weekContent = document.getElementById("days-of-week");
+    const $weekContent = document.getElementById("days-of-week");
     const nameMonth = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-    let weekDays = document.getElementsByClassName("diasNumber");
+    const $weekDays = document.getElementsByClassName("diasNumber");
     const hourDayWeek = [{
         hour: "Horas"}, 
         {hour: "00:00 hrs"}, 
@@ -86,7 +86,7 @@ export function hourWeekComponent(getDay, getDate, getMonth, getFullYear) {
     ];
 
     for (let w = 1; w < 169; w++) {
-        weekContent.innerHTML += 
+        $weekContent.innerHTML += 
             `<div class="semanal">
                 <ul>
                     <li class="event eventWeek"></li>
@@ -108,37 +108,37 @@ export function hourWeekComponent(getDay, getDate, getMonth, getFullYear) {
 
     for (var i = 0; i < 7; i++) {
         if (getDay === 1) {// <-- Lunes
-            weekDays[i].innerHTML = getDate + countStartMon++;
+            $weekDays[i].innerHTML = getDate + countStartMon++;
         }
         if (getDay === 2) {// <-- Martes
             let d = new Date();
             d.setDate(getDate + countStartTue++);
-            weekDays[i].innerHTML = d.getDate();
+            $weekDays[i].innerHTML = d.getDate();
         }
         if (getDay === 3) {// <-- Miercoles
             let d = new Date();
             d.setDate(getDate + countStartWed++);
-            weekDays[i].innerHTML = d.getDate();
+            $weekDays[i].innerHTML = d.getDate();
         }
         if (getDay === 4) {// <-- Jueves
             let d = new Date();
             d.setDate(getDate + countStartThr++);
-            weekDays[i].innerHTML = d.getDate();
+            $weekDays[i].innerHTML = d.getDate();
         }
         if (getDay === 5) {// <-- Viernes
             let d = new Date();
             d.setDate(getDate + countStartFre++);
-            weekDays[i].innerHTML = d.getDate();
+            $weekDays[i].innerHTML = d.getDate();
         }
         if (getDay === 6) {// <-- Sabado
             let d = new Date();
             d.setDate(getDate + countStartSat++);
-            weekDays[i].innerHTML = d.getDate();
+            $weekDays[i].innerHTML = d.getDate();
         }
         if (getDay === 0) {// <-- Domingo
             let d = new Date();
             d.setDate(getDate + countStartSun++);
-            weekDays[i].innerHTML = d.getDate();
+            $weekDays[i].innerHTML = d.getDate();
         }
     }
     eventsWeek()

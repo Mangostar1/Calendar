@@ -5,8 +5,22 @@ import { MonthComponent, DaysOfMonth} from "./MonthComponent.js";
 import { YearComponent, writeYear, DaysOFYear} from "./YearComponent.js";
 import {handlerBtn, handlerBtnMobile} from "./Evento_Fetch.js";
 
+/*----------------------------------------------*/
+/*
+  
+  Hoy dia viernes el calendario semanal al llegar al limite del mes ocubre me marca el ultimo dia
+  del mes en el dia viernes como viernes 30.
 
-let calendarContainer = document.getElementsByClassName("calendar-container")[0];
+  Me marca el limite del mes como dia 30 y no 31 porque resta a partir del mes actual y no del mes pasado,
+  lo que significa que deve restar a partir del mes pasado y no del actual.
+
+  En el cambio de dias de la semana se imprime la fecha actual y se comeinza a restar y sumar a partir de
+  esta para completar el restos de dia de la semana, esto se hace segun que dia de la semana caigar el
+  currentWeek.
+
+  */
+/*----------------------------------------------*/
+const $calendarContainer = document.getElementsByClassName("calendar-container")[0];
 
 /*-------*/
 /* Dates */
@@ -65,7 +79,7 @@ export function startDayYear(month) {//corregir el dia en que comienza el mes en
 /*------------------------*/
 /* Load Default Component */
 /*------------------------*/
-MonthComponent(calendarContainer);
+MonthComponent($calendarContainer);
 DaysOfMonth(currentMonth);
 document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
 
@@ -122,28 +136,28 @@ document.addEventListener('click', (e) => {
   }
   //control de componentes
   if (e.target.matches('#radio-day')) {//dia
-    calendarContainer.lastChild.remove();
-    DayComponent(calendarContainer);
+    $calendarContainer.lastChild.remove();
+    DayComponent($calendarContainer);
     hourDayComponent();
     document.getElementById("fecha-day").innerHTML = currentWeek + " de " + nameMonth[currentMonth] + " del " + currentYear;
     document.getElementById('cambia-dia').innerHTML = nameDay[currentDayName] + " " + currentWeek;
   }
   if (e.target.matches('#radio-week')) {//semana
-    calendarContainer.lastChild.remove();
-    WeekComponent(calendarContainer);
+    $calendarContainer.lastChild.remove();
+    WeekComponent($calendarContainer);
     hourWeekComponent(currentDayName, currentWeek);
     document.getElementById("fecha-week").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
   }
   if (e.target.matches('#radio-month')) {//mes
-    calendarContainer.lastChild.remove();
-    MonthComponent(calendarContainer);
+    $calendarContainer.lastChild.remove();
+    MonthComponent($calendarContainer);
     DaysOfMonth(currentMonth);
     document.getElementById("dates-control-month").style = "display: flex";
     document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
   }
   if (e.target.matches('#radio-year')) {//año
-    calendarContainer.lastChild.remove();
-    YearComponent(calendarContainer);
+    $calendarContainer.lastChild.remove();
+    YearComponent($calendarContainer);
     DaysOFYear();
     writeYear();
     document.getElementById("dates-control-month").style = "display: none";
@@ -252,15 +266,17 @@ function nextWeek() {
     }
   }
   setNewDateWeek();
+  console.log(currentWeek);
 }
 
 function setNewDateWeek() {
   fecha.setFullYear(currentYear, currentMonth, currentWeek);
   
-  calendarContainer.lastChild.remove();
-  WeekComponent(calendarContainer);
+  $calendarContainer.lastChild.remove();
+  WeekComponent($calendarContainer);
   document.getElementById("fecha-week").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
   hourWeekComponent(currentDayName, currentWeek);
+
 }
 
 // month
@@ -288,8 +304,8 @@ function nextMonth() {
 function setNewDateMonth() {
   fecha.setFullYear(currentYear, currentMonth, currentWeek);
   
-  calendarContainer.lastChild.remove();
-  MonthComponent(calendarContainer);
+  $calendarContainer.lastChild.remove();
+  MonthComponent($calendarContainer);
   document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
   DaysOfMonth(currentMonth);
 }

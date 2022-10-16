@@ -1,10 +1,10 @@
 import { getTotalDays, startDay, currentWeek, currentMonth, currentYear, currentDayName} from "./calendar.js";
 
 export function MonthComponent(element) {
-    let MonthContent = document.createElement('div');
-    MonthContent.classList.add('wrapper');
-    MonthContent.id = "container-month";
-    MonthContent.innerHTML = `
+    const $MonthContent = document.createElement('div');
+    $MonthContent.classList.add('wrapper');
+    $MonthContent.id = "container-month";
+    $MonthContent.innerHTML = `
         <div id="dates-control-month" class="dates-control">
             <button id="prev-month" class="prev">&#10094;</button>
             <h1 id="fecha-month" class="fecha">Diciembre de 2021</h1>
@@ -12,20 +12,20 @@ export function MonthComponent(element) {
         </div>
         <div id="days-of-month"></div>`;
 
-    element.appendChild(MonthContent);
+    element.appendChild($MonthContent);
 }
 
 export function DaysOfMonth(month) {
-    let wrapper = document.getElementById('days-of-month');
+    const $wrapper = document.getElementById('days-of-month');
     const daysOfWeek = [
         {day: 'Lun'}, {day: 'Mar'}, {day: 'Mié'}, {day: 'Jue'}, {day: 'Vie'}, {day: 'Sáb'}, {day: 'Dom'}
     ];
     daysOfWeek.forEach((item) => {
-        wrapper.innerHTML += `<div class="grid-days"> ${item.day} </div>`;
+        $wrapper.innerHTML += `<div class="grid-days"> ${item.day} </div>`;
     });
     
     for (let i = startDay(); i > 0; i--) {
-        wrapper.innerHTML += 
+        $wrapper.innerHTML += 
             `<div class="grid-item"><p class="day-number lastMonth"> ${getTotalDays(currentMonth - 1)-(i - 1)} </p>
                 <ul>
                     <li class="event"></li>
@@ -35,7 +35,7 @@ export function DaysOfMonth(month) {
     
     for (let i = 1; i <= getTotalDays(month); i++) {
         if (i == currentWeek && month == 0) {
-            wrapper.innerHTML += 
+            $wrapper.innerHTML += 
                 `<div class="grid-item">
                     <p class="day-number day-month-active"> ${i} </p>
                     <ul>
@@ -43,7 +43,7 @@ export function DaysOfMonth(month) {
                     </ul>
                 </div>`;
         } else {
-            wrapper.innerHTML += 
+            $wrapper.innerHTML += 
                 `<div class="grid-item">
                     <p class="day-number"> ${i} </p>
                     <ul>
