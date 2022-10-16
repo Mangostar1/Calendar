@@ -61,7 +61,7 @@ export function DaysOfMonth(month) {
 
 //Eventos del mes
 async function eventoMonth() {
-    const basicMonth = await fetch("http://localhost:5500/basicStructure.json");// <-- For development
+    const basicMonth = await fetch("http://localhost:3000/basicStructure.json");// <-- For development
     //const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");// <-- For production
     const basicMonthJson = await basicMonth.json();
 

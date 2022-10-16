@@ -355,7 +355,7 @@ const eventoLi = document.getElementsByClassName("event");
 
 async function inicioEventoDia() {
   //const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
-  const basicStruc = await fetch("http://localhost:5500/basicStructure.json");
+  const basicStruc = await fetch("http://localhost:3000/basicStructure.json");
   const primerEvento = await basicStruc.json();
 
   const datesJSON = primerEvento.events[0].dayEvents[0].dateStartEvent;

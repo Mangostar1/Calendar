@@ -146,7 +146,7 @@ export function hourWeekComponent(getDay, getDate, getMonth, getFullYear) {
 
 //Events Week
 async function eventsWeek() {
-    const basicWeek = await fetch("http://localhost:5500/basicStructure.json");
+    const basicWeek = await fetch("http://localhost:3000/basicStructure.json");
     const basicWeekJSON = await basicWeek.json();
 
     const eventWekk = document.getElementsByClassName("eventWeek");
