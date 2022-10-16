@@ -18,6 +18,10 @@ import {handlerBtn, handlerBtnMobile} from "./Evento_Fetch.js";
   esta para completar el restos de dia de la semana, esto se hace segun que dia de la semana caigar el
   currentWeek.
 
+  ______________________________________________________________________________________________________
+
+  * Hacer que en WeekComponent la resta en los cambios de mes se reste a partir del mes anterior
+
   */
 /*----------------------------------------------*/
 const $calendarContainer = document.getElementsByClassName("calendar-container")[0];
@@ -243,20 +247,22 @@ function prevWeek() {
     }
   }
   setNewDateWeek();
+  console.log(currentWeek);
 }
 
 function nextWeek() {
-  if (currentWeek !== getTotalDays(currentMonth)) {
+  if (currentWeek !== getTotalDays(currentMonth)) {//<-- Si no es el ultimo dia del mes
     currentWeek += 7;
-    if (currentWeek > getTotalDays(currentMonth)) { //antes tenia el 31
-      currentWeek = 1;
+    if (currentWeek > getTotalDays(currentMonth)) {//<-- Si se pasa al sumar, entra este if
       currentMonth++;
+      currentWeek = 1;
+      currentWeek += 4;//<-- Este se agrego como prueba el dia sabado 15 de octubre
     }
-    if (currentMonth === 12) {
+    if (currentMonth === 12) {//<-- Si se pasa de diciembre al momento de sumar +1 al mes, pasa al siguiente año en el mes 0
       currentMonth = 0;
       currentYear++;
     }
-  } else {//quiza sea aca el problema
+  } else {//<-- Si es el ultimo dia del mes
     currentMonth++;
     currentWeek = 1;
     currentWeek += 6;
