@@ -14,8 +14,10 @@ export function handlerBtnMobile() {
 }
 
 //modal en construccion
-function ModalEventWeek(element) {
+function ModalEventWeek(element, button) {
     const btnItem = document.getElementById('event-Modal');
+    //const btnItem = document.querySelectorAll('.btn-item');
+    //console.log(btnItem.length);
 
     const $newDiv = document.createElement('div');
     
@@ -29,16 +31,16 @@ function ModalEventWeek(element) {
         </button>
     </div>
     <div class="modal-content-info">
-        <h2 class="color-text">${btnItem.dataset.title}</h2>
+        <h2 class="color-text">${button.dataset.title}</h2>
 
         <p class="color-text">Descripcion</p>
 
         <div class="inputs-content">
-            <p class="color-text">Desde: ${btnItem.dataset.hourFinish}</p>
+            <p class="color-text">Desde: ${button.dataset.hourFinish}</p>
         </div>
 
         <div class="inputs-content">
-        <p class="color-text">Hasta las: ${btnItem.dataset.hourStart} hrs</p>
+        <p class="color-text">Hasta las: ${button.dataset.hourStart} hrs</p>
         </div>
     </div>`;
 

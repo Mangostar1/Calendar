@@ -105,7 +105,7 @@ document.addEventListener('click', (e) => {
   if (e.target.matches("#closeModal-ID")) {
     closeModal();
   }
-  if (e.target.matches(".btn-item")) {
+  if (e.target.matches(".btn-item")) { // #event-Modal
     if (screen.width < 768) {
       handlerBtnMobile();
     } else {
