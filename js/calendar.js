@@ -20,7 +20,7 @@ import {handlerBtn, handlerBtnMobile} from "./Evento_Fetch.js";
 
   ______________________________________________________________________________________________________
 
-  * Hacer que en WeekComponent la resta en los cambios de mes se reste a partir del mes anterior
+  * Arreglar paso de fecha en nextWeek(), El bug se dispara al momento de cambiar de año, osea, al pasar de diciembre a enero
 
   */
 /*----------------------------------------------*/
@@ -164,7 +164,6 @@ document.addEventListener('click', (e) => {
     YearComponent($calendarContainer);
     DaysOFYear();
     writeYear();
-    document.getElementById("dates-control-month").style = "display: none";
     document.getElementById("fecha-year").innerHTML = currentYear;
   }
 });
@@ -256,7 +255,7 @@ function nextWeek() {
     if (currentWeek > getTotalDays(currentMonth)) {//<-- Si se pasa al sumar, entra este if
       currentMonth++;
       currentWeek = 1;
-      currentWeek += 5;//<-- Este se agrego como prueba el dia sabado 15 de octubre | Era 4 para el dia sabado, hoy domingo es 5
+      currentWeek += 4;//<-- Este se agrego como prueba el dia sabado 15 de octubre | Era 4 para el dia sabado, hoy domingo es 5 | Hoy Lunes 17 tiene que ser +4
     }
     if (currentMonth === 12) {//<-- Si se pasa de diciembre al momento de sumar +1 al mes, pasa al siguiente año en el mes 0
       currentMonth = 0;
