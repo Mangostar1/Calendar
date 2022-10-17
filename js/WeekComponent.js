@@ -146,23 +146,23 @@ export function hourWeekComponent(getDay, getDate, getMonth, getFullYear) {
 
 //Events Week
 async function eventsWeek() {
-    const basicWeek = await fetch("http://localhost:3000/basicStructure.json");
+    const basicWeek = await fetch("http://localhost:3000/events");
     const basicWeekJSON = await basicWeek.json();
 
     const eventWekk = document.getElementsByClassName("eventWeek");
     for (let i = 0; i < 7; i++) {
-        if (basicWeekJSON.events[i].dayEvents !== 0) {
-            for (let e = 0; e < (basicWeekJSON.events[i].dayEvents).length; e++) {// <-- Events in
+        if (basicWeekJSON[i].dayEvents !== 0) {
+            for (let e = 0; e < (basicWeekJSON[i].dayEvents).length; e++) {// <-- Events in
                 
                 //Dates yy - mm - dd for new Date()
-                const datesJSON = basicWeekJSON.events[i].dayEvents[e].dateStartEvent;
+                const datesJSON = basicWeekJSON[i].dayEvents[e].dateStartEvent;
                 const datesSplit = datesJSON.split("-");
             
                 //Hours hour:minutes:secons for new Date()
-                const hoursJSON = basicWeekJSON.events[i].dayEvents[e].hourStart;
+                const hoursJSON = basicWeekJSON[i].dayEvents[e].hourStart;
                 const hoursSplit = hoursJSON.split(":");
                 
-                const titleEvent = basicWeekJSON.events[i].dayEvents[e].title
+                const titleEvent = basicWeekJSON[i].dayEvents[e].title
                 
                 let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2] , hoursSplit[0], hoursSplit[1], hoursSplit[2]);
                 let numWeekEvent = fechaEvento.getWeekNumber();

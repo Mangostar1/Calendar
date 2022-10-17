@@ -265,7 +265,7 @@ function nextWeek() {
   } else {//<-- Si es el ultimo dia del mes
     currentMonth++;
     currentWeek = 1;
-    currentWeek += 6;
+    currentWeek += 6; //<-- Era 6
     if (currentMonth === 12) {
       currentMonth = 0;
       currentYear++;
@@ -355,17 +355,17 @@ const eventoLi = document.getElementsByClassName("event");
 
 async function inicioEventoDia() {
   //const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
-  const basicStruc = await fetch("http://localhost:3000/basicStructure.json");
+  const basicStruc = await fetch("http://localhost:3000/events");
   const primerEvento = await basicStruc.json();
 
-  const datesJSON = primerEvento.events[0].dayEvents[0].dateStartEvent;
+  const datesJSON = primerEvento[0].dayEvents[0].dateStartEvent;
   const datesSplit = datesJSON.split("-");
 
   let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
 
-  let horaInicial = primerEvento.events[0].dayEvents[0].hourStart;
-  let horafinal = primerEvento.events[0].dayEvents[0].hourFinish;
-  let tituloEvento = primerEvento.events[0].dayEvents[0].title;
+  let horaInicial = primerEvento[0].dayEvents[0].hourStart;
+  let horafinal = primerEvento[0].dayEvents[0].hourFinish;
+  let tituloEvento = primerEvento[0].dayEvents[0].title;
 
   // Day
   if (fechaEvento.getDate() === currentWeek && fechaEvento.getDay() === currentDayName && fechaEvento.getFullYear() === currentYear) {

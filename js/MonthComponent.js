@@ -61,16 +61,16 @@ export function DaysOfMonth(month) {
 
 //Eventos del mes
 async function eventoMonth() {
-    const basicMonth = await fetch("http://localhost:3000/basicStructure.json");// <-- For development
+    const basicMonth = await fetch("http://localhost:3000/events");// <-- For development
     //const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");// <-- For production
     const basicMonthJson = await basicMonth.json();
 
     for (let i = 0; i < 7; i++) {// <-- Este recorre los 7 dias de la semana
         
-        if (basicMonthJson.events[i].dayEvents !== 0) {// <-- Si dentro de un dia de la semana hay eventos, este recorre todos los eventos agendados en el dia
-            for (let d = 0; d < (basicMonthJson.events[i].dayEvents).length; d++) {// <-- Con este for recorro todos los eventos del dia en cuestion
+        if (basicMonthJson[i].dayEvents !== 0) {// <-- Si dentro de un dia de la semana hay eventos, este recorre todos los eventos agendados en el dia
+            for (let d = 0; d < (basicMonthJson[i].dayEvents).length; d++) {// <-- Con este for recorro todos los eventos del dia en cuestion
                 
-                let datesJSON = basicMonthJson.events[i].dayEvents[d].dateStartEvent;
+                let datesJSON = basicMonthJson[i].dayEvents[d].dateStartEvent;
                 
                 const datesSplit = datesJSON.split('-');
                 
@@ -78,9 +78,9 @@ async function eventoMonth() {
                 let diames = dateMonth.getDate();
                 let eventMonth = document.getElementById(`evento-${diames}`);
 
-                let horaInicial = basicMonthJson.events[i].dayEvents[d].hourStart;
-                let horafinal = basicMonthJson.events[i].dayEvents[d].hourFinish;
-                let tituloEvento = basicMonthJson.events[i].dayEvents[d].title;
+                let horaInicial = basicMonthJson[i].dayEvents[d].hourStart;
+                let horafinal = basicMonthJson[i].dayEvents[d].hourFinish;
+                let tituloEvento = basicMonthJson[i].dayEvents[d].title;
 
                 if (dateMonth.getMonth() === currentMonth && dateMonth.getFullYear() === currentYear) {
                     eventMonth.innerHTML += 
@@ -100,11 +100,12 @@ async function eventoMonth() {
 
 //Se requiere actualizar este evento al formato actual
 async function eventoMonthMobile() {
-    const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
+    //const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
+    const basicMonth = await fetch("http://localhost:3000/events");// <-- For development
     const basicMonthJson = await basicMonth.json();
 
     for (let i = 0; i < 3; i++) {
-        let datesJSON = basicMonthJson.events[i].dateStartEvent;
+        let datesJSON = basicMonthJson[i].dateStartEvent;
 
         const datesSplit = datesJSON.split('-');
 
@@ -112,9 +113,9 @@ async function eventoMonthMobile() {
         let diames = dateMonth.getDate();
         let eventMonth = document.getElementById(`evento-${diames}`);
 
-        let horaInicialAA = basicMonthJson.events[i].hourStart;
-        let horafinalAA = basicMonthJson.events[i].hourFinish;
-        let tituloEventoAA = basicMonthJson.events[i].title;
+        let horaInicialAA = basicMonthJson[i].hourStart;
+        let horafinalAA = basicMonthJson[i].hourFinish;
+        let tituloEventoAA = basicMonthJson[i].title;
 
         if (dateMonth.getMonth() === currentMonth && dateMonth.getFullYear() === currentYear) {
             eventMonth.innerHTML = 

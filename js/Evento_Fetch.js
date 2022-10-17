@@ -1,8 +1,8 @@
 import { getTotalDays, startDay, startDayYear, fecha, currentDayName, currentWeek, currentMonth, currentYear} from "./calendar.js";
 
 export function handlerBtn() {
-    const eventModal = document.getElementById('event-Modal');
-    ModalEventWeek(eventModal)
+    const $eventModal = document.getElementById('event-Modal');
+    ModalEventWeek($eventModal)
 }
 
 export function handlerBtnMobile() {
@@ -11,30 +11,30 @@ export function handlerBtnMobile() {
 
 //modal en construccion
 async function ModalEventWeek(element) {
-    let newDiv = document.createElement('div');
+    const $newDiv = document.createElement('div');
 
-    newDiv.classList.add('modal');
-    newDiv.id = 'modal-id';
+    $newDiv.classList.add('modal');
+    $newDiv.id = 'modal-id';
 
     //const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");// <-- For production
     const dateEvent = await fetch("http://localhost:5500/basicStructure.json");// <-- For development
     const dateEventJson = await dateEvent.json();
 
      //Dates yy - mm - dd for new Date()
-    const datesJSON = dateEventJson.events[0].dayEvents[0].dateStartEvent;
+    const datesJSON = dateEventJson[0].dayEvents[0].dateStartEvent;
     const datesSplit = datesJSON.split("-");
 
     //Hours hour:minutes:secons for new Date()
-    const hoursJSON = dateEventJson.events[0].dayEvents[0].hourStart;
+    const hoursJSON = dateEventJson[0].dayEvents[0].hourStart;
     const hoursSplit = hoursJSON.split(":");
 
-    const titleEvent = dateEventJson.events[0].dayEvents[0].title;
+    const titleEvent = dateEventJson[0].dayEvents[0].title;
 
-    const descriptionEvent = dateEventJson.events[0].dayEvents[0].description;
+    const descriptionEvent = dateEventJson[0].dayEvents[0].description;
 
     let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2] , hoursSplit[0], hoursSplit[1], hoursSplit[2]);
 
-    newDiv.innerHTML = 
+    $newDiv.innerHTML = 
     `<div class="modal-close-content" id="closeModalID">
         <button class="btn-close-modal" id="btn-close-modal-ID">
             <img src="./icons/close-svgrepo-com.svg" class="closeModal" id="closeModal-ID">
@@ -54,5 +54,5 @@ async function ModalEventWeek(element) {
         </div>
     </div>`;
 
-    element.appendChild(newDiv);
+    element.appendChild($newDiv);
 }
