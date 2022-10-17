@@ -14,29 +14,13 @@ export function handlerBtnMobile() {
 }
 
 //modal en construccion
-async function ModalEventWeek(element) {
-    const $newDiv = document.createElement('div');
+function ModalEventWeek(element) {
+    const btnItem = document.getElementById('event-Modal');
 
+    const $newDiv = document.createElement('div');
+    
     $newDiv.classList.add('modal');
     $newDiv.id = 'modal-id';
-
-    //const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");// <-- For production
-    const dateEvent = await fetch("http://localhost:3000/events");// <-- For development
-    const dateEventJson = await dateEvent.json();
-
-     //Dates yy - mm - dd for new Date()
-    const datesJSON = dateEventJson[0].dayEvents[0].dateStartEvent;
-    const datesSplit = datesJSON.split("-");
-
-    //Hours hour:minutes:secons for new Date()
-    const hoursJSON = dateEventJson[0].dayEvents[0].hourStart;
-    const hoursSplit = hoursJSON.split(":");
-
-    const titleEvent = dateEventJson[0].dayEvents[0].title;
-
-    const descriptionEvent = dateEventJson[0].dayEvents[0].description;
-
-    let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2] , hoursSplit[0], hoursSplit[1], hoursSplit[2]);
 
     $newDiv.innerHTML = 
     `<div class="modal-close-content" id="closeModalID">
@@ -45,16 +29,16 @@ async function ModalEventWeek(element) {
         </button>
     </div>
     <div class="modal-content-info">
-        <h2 class="color-text">${titleEvent}</h2>
+        <h2 class="color-text">${btnItem.dataset.title}</h2>
 
-        <p class="color-text">${descriptionEvent}</p>
+        <p class="color-text">Descripcion</p>
 
         <div class="inputs-content">
-            <p class="color-text">el ${fechaEvento.toLocaleDateString()}</p>
+            <p class="color-text">Desde: ${btnItem.dataset.hourFinish}</p>
         </div>
 
         <div class="inputs-content">
-        <p class="color-text">${fechaEvento.toLocaleTimeString()} hrs</p>
+        <p class="color-text">Hasta las: ${btnItem.dataset.hourStart} hrs</p>
         </div>
     </div>`;
 
