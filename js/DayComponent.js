@@ -1,3 +1,5 @@
+import { getTotalDays, startDay, currentWeek, currentMonth, currentYear, currentDayName} from "./calendar.js";
+
 export function DayComponent(element) {
     const $DayContent = document.createElement('div');
     $DayContent.classList.add('day-content');
@@ -51,4 +53,34 @@ export function hourDayComponent() {
                 </ul>
             </div>`;
     });
+    inicioEventoDia();
+}
+
+const $eventoLi = document.getElementsByClassName("event");
+
+async function inicioEventoDia() {
+    //const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");// <-- For production
+    const basicStruc = await fetch("http://localhost:3000/events");// <-- For development
+    const primerEvento = await basicStruc.json();
+
+    const datesJSON = primerEvento[0].dayEvents[0].dateStartEvent;
+    const datesSplit = datesJSON.split("-");
+
+    let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
+
+    let horaInicial = primerEvento[0].dayEvents[0].hourStart;
+    let horafinal = primerEvento[0].dayEvents[0].hourFinish;
+    let tituloEvento = primerEvento[0].dayEvents[0].title;
+
+    let hours = fechaEvento.getHours();
+
+    // Day
+    if (fechaEvento.getDate() === currentWeek && fechaEvento.getDay() === currentDayName && fechaEvento.getFullYear() === currentYear) {
+        $eventoLi[hours].innerHTML = 
+            `<button id="event-Modal" class="btn-item" data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}">
+                <span class="sp-hour"> ${horaInicial} </span> - <span class="sp-title"> ${tituloEvento} </span>
+            </button>`;
+    } else {
+        $eventoLi[hours].innerHTML = '<li class="event"></li>';
+    }
 }

@@ -22,8 +22,6 @@ import {handlerBtn, handlerBtnMobile} from "./Evento_Fetch.js";
 
   * Arreglar paso de fecha en nextWeek(), El bug se dispara al momento de cambiar de año, osea, al pasar de diciembre a enero
 
-  * Agregar data-atributes a los botones para luego consultar estos data-atributes al abrir el modal clickeando el boton
-
   */
 /*----------------------------------------------*/
 const $calendarContainer = document.getElementsByClassName("calendar-container")[0];
@@ -192,7 +190,6 @@ function prevDay() {
       currentYear--;
     }
   }
-  inicioEventoDia();
   setNewDateDay();
 }
 
@@ -212,7 +209,6 @@ function nextDay() {
       currentYear++;
     }
   }
-  inicioEventoDia();
   setNewDateDay();
 }
 
@@ -346,32 +342,3 @@ function setNewDateYear() {
   }
   writeYear();
 }
-
-/*--------------*/
-/* json eventos */
-/*--------------*/
-
-const eventoLi = document.getElementsByClassName("event");
-
-async function inicioEventoDia() {
-  //const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
-  const basicStruc = await fetch("http://localhost:3000/events");
-  const primerEvento = await basicStruc.json();
-
-  const datesJSON = primerEvento[0].dayEvents[0].dateStartEvent;
-  const datesSplit = datesJSON.split("-");
-
-  let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
-
-  let horaInicial = primerEvento[0].dayEvents[0].hourStart;
-  let horafinal = primerEvento[0].dayEvents[0].hourFinish;
-  let tituloEvento = primerEvento[0].dayEvents[0].title;
-
-  // Day
-  if (fechaEvento.getDate() === currentWeek && fechaEvento.getDay() === currentDayName && fechaEvento.getFullYear() === currentYear) {
-    eventoLi[4].innerHTML = `<button id="event-Modal" class="btn-item" onclick="handleBtn()"><span class="sp-hour"> ${horaInicial} </span> - <span class="sp-title"> ${tituloEvento} </span></button>`;
-  } else {
-    eventoLi[4].innerHTML = '<li class="event"></li>';
-  }
-}
-inicioEventoDia();

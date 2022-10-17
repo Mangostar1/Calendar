@@ -162,6 +162,7 @@ async function eventsWeek() {
             
                 //Hours hour:minutes:secons for new Date()
                 const hoursJSON = basicWeekJSON[i].dayEvents[e].hourStart;
+                const hoursFinishJSON = basicWeekJSON[i].dayEvents[e].hourFinish;
                 const hoursSplit = hoursJSON.split(":");
                 
                 const titleEvent = basicWeekJSON[i].dayEvents[e].title
@@ -178,7 +179,9 @@ async function eventsWeek() {
                 for (let w = 1; w < 169; w++) {
                     if(horas === tmpHourDayWeek && tmpEventDayWeek === day && fechaEvento.getMonth() === currentMonth && fechaEvento.getFullYear() === currentYear && numWeekEvent === numOfCurrentWeek){
                         eventWekk[w].innerHTML += 
-                            `<button id="event-Modal" class="btn-item"><span class="sp-hour"> ${hoursJSON} </span> - <span class="sp-title"> ${titleEvent} </span></button>`;
+                            `<button id="event-Modal" class="btn-item" data-hour-start="${hoursJSON}" data-hour-finish="${hoursFinishJSON}" data-title="${titleEvent}">
+                                <span class="sp-hour"> ${hoursJSON} </span> - <span class="sp-title"> ${titleEvent} </span>
+                            </button>`;
                     }
             
                     if(w % 7 == 0){
