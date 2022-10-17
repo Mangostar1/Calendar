@@ -1,4 +1,4 @@
-import { fecha, currentDayName, currentWeek, currentMonth, currentYear} from "./calendar.js";
+import { fecha, currentDayName, currentWeek, currentMonth, currentYear, getTotalDays} from "./calendar.js";
 
 export function WeekComponent(element) {
     const $WeekContent = document.createElement('div');
@@ -55,8 +55,8 @@ export function WeekComponent(element) {
 export function hourWeekComponent(getDay, getDate, getMonth, getFullYear) {
 
     const $weekContent = document.getElementById("days-of-week");
-    const nameMonth = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
     const $weekDays = document.getElementsByClassName("diasNumber");
+    const nameMonth = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
     const hourDayWeek = [{
         hour: "Horas"}, 
         {hour: "00:00 hrs"}, 
@@ -108,7 +108,9 @@ export function hourWeekComponent(getDay, getDate, getMonth, getFullYear) {
 
     for (var i = 0; i < 7; i++) {
         if (getDay === 1) {// <-- Lunes
-            $weekDays[i].innerHTML = getDate + countStartMon++;
+            let d = new Date();
+            d.setDate(getDate + countStartMon++);
+            $weekDays[i].innerHTML = d.getDate();
         }
         if (getDay === 2) {// <-- Martes
             let d = new Date();

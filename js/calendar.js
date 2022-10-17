@@ -46,7 +46,7 @@ const weekDays = document.getElementsByClassName("diasNumber");
 /* funciones para el calendario */
 /*------------------------------*/
 
-Date.prototype.getWeekNumber = function () {
+Date.prototype.getWeekNumber = function () { //<-- Se agrega prototipo para saber cuantas semanas hay en el año
   var d = new Date(+this);  //Creamos un nuevo Date con la fecha de "this".
   d.setHours(0, 0, 0, 0);   //Nos aseguramos de limpiar la hora.
   d.setDate(d.getDate() + 4 - (d.getDay() || 7)); // Recorremos los días para asegurarnos de estar "dentro de la semana"
@@ -281,8 +281,7 @@ function setNewDateWeek() {
   $calendarContainer.lastChild.remove();
   WeekComponent($calendarContainer);
   document.getElementById("fecha-week").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
-  hourWeekComponent(currentDayName, currentWeek);
-
+  hourWeekComponent(currentDayName, currentWeek, currentMonth, currentYear);
 }
 
 // month
