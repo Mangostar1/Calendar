@@ -22,6 +22,8 @@ import {handlerBtn, handlerBtnMobile} from "./Evento_Fetch.js";
 
   * Arreglar paso de fecha en nextWeek(), El bug se dispara al momento de cambiar de año, osea, al pasar de diciembre a enero
 
+  * Agregar data-atributes a los botones para luego consultar estos data-atributes al abrir el modal clickeando el boton
+
   */
 /*----------------------------------------------*/
 const $calendarContainer = document.getElementsByClassName("calendar-container")[0];
@@ -255,7 +257,7 @@ function nextWeek() {
     if (currentWeek > getTotalDays(currentMonth)) {//<-- Si se pasa al sumar, entra este if
       currentMonth++;
       currentWeek = 1;
-      currentWeek += 4;//<-- Este se agrego como prueba el dia sabado 15 de octubre | Era 4 para el dia sabado, hoy domingo es 5 | Hoy Lunes 17 tiene que ser +4 (testear otros numeros del -1 al 3)
+      currentWeek += 4;//<-- Este se agrego como prueba, falta testear el dia M Mie J y V
     }
     if (currentMonth === 12) {//<-- Si se pasa de diciembre al momento de sumar +1 al mes, pasa al siguiente año en el mes 0
       currentMonth = 0;
