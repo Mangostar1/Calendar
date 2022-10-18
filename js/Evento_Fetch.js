@@ -4,9 +4,9 @@ import { getTotalDays, startDay, startDayYear, fecha, currentDayName, currentWee
 /*-- Este Modal muestra los detalles del evento clickeado --*/
 /*----------------------------------------------------------*/
 
-export function handlerBtn() {
+export function handlerBtn(button) {
     const $eventModal = document.getElementById('event-Modal');
-    ModalEventWeek($eventModal)
+    ModalEventWeek($eventModal, button)
 }
 
 export function handlerBtnMobile() {
