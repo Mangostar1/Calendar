@@ -24,6 +24,9 @@ import {handlerBtn, handlerBtnMobile} from "./Evento_Fetch.js";
 
   * Probar usar el algoritmo usado para imprimir als fechas del WeekComponent en el NextDay y PrevDay
 
+  ** USAR LA FUNCION addDays() para la suma la suma y resta de las fechas para evitar asi bugs durante las operaciones de suma y resta | 
+  Hacer eso hace que lo que se sumen sean datos de tipo fecha y no datos de tipo int.
+
   */
 /*----------------------------------------------*/
 const $calendarContainer = document.getElementsByClassName("calendar-container")[0];
@@ -31,17 +34,17 @@ const $calendarContainer = document.getElementsByClassName("calendar-container")
 /*-------*/
 /* Dates */
 /*-------*/
-export let fecha = new Date();
+export let currentDate = new Date();
 
-export let currentDayName = fecha.getDay();
-export let currentWeek = fecha.getDate();
-export let currentMonth = fecha.getMonth();
-export let currentYear = fecha.getFullYear();
+export let currentDayName = currentDate.getDay();
+export let currentWeek = currentDate.getDate();
+export let currentMonth = currentDate.getMonth();
+export let currentYear = currentDate.getFullYear();
 
 
 const nameMonth = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 const nameDay = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
-const weekDays = document.getElementsByClassName("diasNumber");
+const $weekDays = document.getElementsByClassName("diasNumber");
 
 
 /*------------------------------*/
@@ -60,8 +63,12 @@ function addDays(fecha, dias){
   fecha.setDate(fecha.getDate() + dias);
   return fecha;
 }
+//console.log(addDays(currentDate, 7), 'Linea 59 a 64');
 
-console.log(addDays(fecha, 7), 'Linea 59 a 64');
+//console.log(currentWeek + 20, 'numero del dia de la semana');
+//console.log(addDays(currentDate, 100), 'numero del dia de la semana');
+//console.log(currentDate)
+
 
 export function isLeap() {
   return ((currentYear % 100 !== 0) && (currentYear % 4 === 0) || (currentYear % 400 === 0))
@@ -222,7 +229,7 @@ function nextDay() {
 }
 
 function setNewDateDay() {
-  fecha.setFullYear(currentYear, currentMonth, currentWeek);
+  currentDate.setFullYear(currentYear, currentMonth, currentWeek);
 
   document.getElementById("fecha-day").innerHTML = " ";
   document.getElementById("cambia-dia").innerHTML = " ";
@@ -263,7 +270,7 @@ function nextWeek() {
     if (currentWeek > getTotalDays(currentMonth)) {//<-- Si se pasa al sumar, entra este if
       currentMonth++;
       currentWeek = 1;
-      currentWeek += 0;//<-- Este se agrego como prueba, falta testear el dia Mie J y V
+      currentWeek += 1;//<-- Este se agrego como prueba, falta testear el dia Mie J y V
       console.log('Pase por el primer if, segundo if');
     }
     if (currentMonth === 12) {//<-- Si se pasa de diciembre al momento de sumar +1 al mes, pasa al siguiente año en el mes 0
@@ -342,11 +349,11 @@ function nextWeek() {
     }
   } */
   setNewDateWeek();
-  console.log(currentWeek);
+  console.log(currentWeek, currentMonth);
 }
 
 function setNewDateWeek() {
-  fecha.setFullYear(currentYear, currentMonth, currentWeek);
+  currentDate.setFullYear(currentYear, currentMonth, currentWeek);
   
   $calendarContainer.lastChild.remove();
   WeekComponent($calendarContainer);
@@ -377,7 +384,7 @@ function nextMonth() {
 }
 
 function setNewDateMonth() {
-  fecha.setFullYear(currentYear, currentMonth, currentWeek);
+  currentDate.setFullYear(currentYear, currentMonth, currentWeek);
   
   $calendarContainer.lastChild.remove();
   MonthComponent($calendarContainer);
@@ -407,7 +414,7 @@ function nextYear() {
 
 function setNewDateYear() {
   let daysMonthYear = document.getElementsByClassName("day-div");
-  fecha.setFullYear(currentYear, currentMonth, currentWeek);
+  currentDate.setFullYear(currentYear, currentMonth, currentWeek);
   document.getElementById("fecha-year").innerHTML = currentYear;
 
   for (let y = 0; y < 12; y++) {

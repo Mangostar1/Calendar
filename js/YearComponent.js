@@ -1,4 +1,4 @@
-import { getTotalDays, startDayYear, fecha, currentDayName, currentWeek, currentMonth, currentYear} from "./calendar.js";
+import { getTotalDays, startDayYear, currentDate, currentDayName, currentWeek, currentMonth, currentYear} from "./calendar.js";
 
 export function YearComponent(element) {
     const $yearContent = document.createElement('div');

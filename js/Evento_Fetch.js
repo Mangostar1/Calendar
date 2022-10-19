@@ -1,4 +1,4 @@
-import { getTotalDays, startDay, startDayYear, fecha, currentDayName, currentWeek, currentMonth, currentYear} from "./calendar.js";
+import { getTotalDays, startDay, startDayYear, currentDate, currentDayName, currentWeek, currentMonth, currentYear} from "./calendar.js";
 
 /*----------------------------------------------------------*/
 /*-- Este Modal muestra los detalles del evento clickeado --*/

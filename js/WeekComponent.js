@@ -1,4 +1,4 @@
-import { fecha, currentDayName, currentWeek, currentMonth, currentYear, getTotalDays} from "./calendar.js";
+import { currentDate, currentDayName, currentWeek, currentMonth, currentYear, getTotalDays} from "./calendar.js";
 
 export function WeekComponent(element) {
     const $WeekContent = document.createElement('div');
@@ -169,7 +169,7 @@ async function eventsWeek() {
                 
                 let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2] , hoursSplit[0], hoursSplit[1], hoursSplit[2]);
                 let numWeekEvent = fechaEvento.getWeekNumber();
-                let numOfCurrentWeek = fecha.getWeekNumber();
+                let numOfCurrentWeek = currentDate.getWeekNumber();
                 let cont = 1;
                 let day = 1; //El dia de la semana L a D | Actual en el calendario
                 let horas = 0; //La hora del evento | Actual en el calendario
