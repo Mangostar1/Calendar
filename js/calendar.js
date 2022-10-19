@@ -61,7 +61,7 @@ function addDays(fecha, dias){
   return fecha;
 }
 
-console.log(addDays(fecha, 7))
+console.log(addDays(fecha, 7), 'Linea 59 a 64');
 
 export function isLeap() {
   return ((currentYear % 100 !== 0) && (currentYear % 4 === 0) || (currentYear % 400 === 0))
@@ -259,24 +259,88 @@ function prevWeek() {
 function nextWeek() {
   if (currentWeek !== getTotalDays(currentMonth)) {//<-- Si no es el ultimo dia del mes
     currentWeek += 7;
+    console.log('Pase por el primer if');
     if (currentWeek > getTotalDays(currentMonth)) {//<-- Si se pasa al sumar, entra este if
       currentMonth++;
       currentWeek = 1;
       currentWeek += 0;//<-- Este se agrego como prueba, falta testear el dia Mie J y V
+      console.log('Pase por el primer if, segundo if');
     }
     if (currentMonth === 12) {//<-- Si se pasa de diciembre al momento de sumar +1 al mes, pasa al siguiente año en el mes 0
       currentMonth = 0;
       currentYear++;
+      console.log('Pase por el primer if, tercer if');
     }
   } else {//<-- Si es el ultimo dia del mes
     currentMonth++;
     currentWeek = 1;
     currentWeek += 0;//<-- Este se agrego como prueba, falta testear el dia Mie J y V
+    console.log('Pase por el else');
     if (currentMonth === 12) {
+      console.log('Pase por el else, primer if');
       currentMonth = 0;
       currentYear++;
     }
   }
+
+
+  /*_________________________________________________________________________________________________*/
+
+  
+  /* const $weekDays = document.getElementsByClassName("diasNumber");
+  let countStartMon = 0; //lunes
+  let countStartTue = -1; //martes
+  let countStartWed = -2; //miercoles
+  let countStartThr = -3; //jueves
+  let countStartFre = -4; //viernes
+  let countStartSat = -5; //sabado
+  let countStartSun = -6; //domingo
+  for (var i = 0; i < 7; i++) {
+    if (currentDayName === 1) {// <-- Lunes
+        let d = new Date();
+        d.setDate(currentWeek + countStartMon++);
+        d.setDate(d.getDate() + 7);
+        console.log(d.getDate());
+        $weekDays[i].innerHTML = d.getDate();
+    }
+    if (currentDayName === 2) {// <-- Martes
+        let d = new Date();
+        d.setDate((currentWeek + countStartTue++) + 7);
+        //d.setDate(d.getDate() + 7);
+        console.log(d.getDate());
+        $weekDays[i].innerHTML = d.getDate();
+    }
+    if (currentDayName === 3) {// <-- Miercoles
+        let d = new Date();
+        d.setDate(currentWeek + countStartWed++);
+        d.setDate(d.getDate() + 7);
+        $weekDays[i].innerHTML = d.getDate();
+    }
+    if (currentDayName === 4) {// <-- Jueves
+        let d = new Date();
+        d.setDate(currentWeek + countStartThr++);
+        d.setDate(d.getDate() + 7);
+        $weekDays[i].innerHTML = d.getDate();
+    }
+    if (currentDayName === 5) {// <-- Viernes
+        let d = new Date();
+        d.setDate(currentWeek + countStartFre++);
+        d.setDate(d.getDate() + 7);
+        $weekDays[i].innerHTML = d.getDate();
+    }
+    if (currentDayName === 6) {// <-- Sabado
+        let d = new Date();
+        d.setDate(currentWeek + countStartSat++);
+        d.setDate(d.getDate() + 7);
+        $weekDays[i].innerHTML = d.getDate();
+    }
+    if (currentDayName === 0) {// <-- Domingo
+        let d = new Date();
+        d.setDate(currentWeek + countStartSun++);
+        d.setDate(d.getDate() + 7);
+        $weekDays[i].innerHTML = d.getDate();
+    }
+  } */
   setNewDateWeek();
   console.log(currentWeek);
 }
