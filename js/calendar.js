@@ -48,12 +48,12 @@ Date.prototype.getWeekNumber = function () { //<-- Se agrega prototipo para sabe
   return Math.ceil((((d - new Date(d.getFullYear(), 0, 1)) / 8.64e7) + 1) / 7);
 };
 
-function addDays(fecha, days){
+export function addDays(fecha, days){
   fecha.setDate(fecha.getDate() + days);
   return fecha;
 }
 
-function lessDays(fecha, dias){
+function lessDays(fecha, days){
   fecha.setDate(fecha.getDate() - days);
   return fecha;
 }
@@ -153,7 +153,7 @@ document.addEventListener('click', (e) => {
   if (e.target.matches('#radio-week')) {//semana
     $calendarContainer.lastChild.remove();
     WeekComponent($calendarContainer);
-    hourWeekComponent(currentDayName, currentWeek);
+    hourWeekComponent(currentDate, currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
     document.getElementById("fecha-week").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
   }
   if (e.target.matches('#radio-month')) {//mes
@@ -234,10 +234,11 @@ function setNewDateDay() {
   /*--------------*/
 function prevWeek() {
   lessDays(currentDate, 7);
+  console.log(currentDate);
   $calendarContainer.lastChild.remove();
   WeekComponent($calendarContainer);
+  hourWeekComponent(currentDate, currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
   document.getElementById("fecha-week").innerHTML = nameMonth[currentDate.getMonth()] + " de " + currentDate.getFullYear();
-  hourWeekComponent(currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
 }
 
 function nextWeek() {
@@ -245,8 +246,8 @@ function nextWeek() {
   console.log(currentDate);
   $calendarContainer.lastChild.remove();
   WeekComponent($calendarContainer);
+  hourWeekComponent(currentDate, currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
   document.getElementById("fecha-week").innerHTML = nameMonth[currentDate.getMonth()] + " de " + currentDate.getFullYear();
-  hourWeekComponent(currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
 }
 
   /*---------------*/

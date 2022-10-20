@@ -1,4 +1,4 @@
-import { currentDate, currentDayName, currentWeek, currentMonth, currentYear, getTotalDays} from "./calendar.js";
+import { currentDate, currentDayName, currentWeek, currentMonth, currentYear, getTotalDays, addDays, startDay} from "./calendar.js";
 
 export function WeekComponent(element) {
     const $WeekContent = document.createElement('div');
@@ -52,7 +52,7 @@ export function WeekComponent(element) {
     element.appendChild($WeekContent);
 }
 
-export function hourWeekComponent(getDay, getDate, getMonth, getFullYear) {
+export function hourWeekComponent(currentDate, getDay, getDate, getMonth, getFullYear) {
 
     const $weekContent = document.getElementById("days-of-week");
     const $weekDays = document.getElementsByClassName("diasNumber");
@@ -108,39 +108,40 @@ export function hourWeekComponent(getDay, getDate, getMonth, getFullYear) {
 
     for (var i = 0; i < 7; i++) {
         if (getDay === 1) {// <-- Lunes
-            let d = new Date();
-            d.setDate(getDate + countStartMon++);
-            $weekDays[i].innerHTML = d.getDate();
+            //let d = new Date();
+            currentDate.setDate(getDate + countStartMon++);
+            $weekDays[i].innerHTML = currentDate.getDate();
         }
         if (getDay === 2) {// <-- Martes
-            let d = new Date();
-            d.setDate(getDate + countStartTue++);
-            $weekDays[i].innerHTML = d.getDate();
+            //let d = new Date();
+            currentDate.setDate(getDate + countStartTue++);
+            $weekDays[i].innerHTML = currentDate.getDate();
         }
         if (getDay === 3) {// <-- Miercoles
-            let d = new Date();
-            d.setDate(getDate + countStartWed++);
-            $weekDays[i].innerHTML = d.getDate();
+            //let d = new Date();
+            currentDate.setDate(getDate + countStartWed++);
+            $weekDays[i].innerHTML = currentDate.getDate();
         }
         if (getDay === 4) {// <-- Jueves
-            let d = new Date();
-            d.setDate(getDate + countStartThr++);
-            $weekDays[i].innerHTML = d.getDate();
+            //currentDate.setDate(getDate + countStartThr++); //El error de este es que no me deja pasar de mes, se queda pegado en octubre todo el tiempo
+            currentDate.setDate(currentDate.getDate() + countStartThr++); //El problema de este es que aplica resta sobre resta, suma -3 luego sobre el resultado le aplica el -2
+
+            $weekDays[i].innerHTML = currentDate.getDate();
         }
         if (getDay === 5) {// <-- Viernes
-            let d = new Date();
-            d.setDate(getDate + countStartFre++);
-            $weekDays[i].innerHTML = d.getDate();
+            //let d = new Date();
+            currentDate.setDate(getDate + countStartFre++);
+            $weekDays[i].innerHTML = currentDate.getDate();
         }
         if (getDay === 6) {// <-- Sabado
-            let d = new Date();
-            d.setDate(getDate + countStartSat++);
-            $weekDays[i].innerHTML = d.getDate();
+            //let d = new Date();
+            currentDate.setDate(getDate + countStartSat++);
+            $weekDays[i].innerHTML = currentDate.getDate();
         }
         if (getDay === 0) {// <-- Domingo
-            let d = new Date();
-            d.setDate(getDate + countStartSun++);
-            $weekDays[i].innerHTML = d.getDate();
+            //let d = new Date();
+            currentDate.setDate(getDate + countStartSun++);
+            $weekDays[i].innerHTML = currentDate.getDate();
         }
     }
     eventsWeek()
