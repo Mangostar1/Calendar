@@ -66,8 +66,8 @@ function addDays(fecha, dias){
 //console.log(addDays(currentDate, 7), 'Linea 59 a 64');
 
 //console.log(currentWeek + 20, 'numero del dia de la semana');
-//console.log(addDays(currentDate, 100), 'numero del dia de la semana');
-//console.log(currentDate)
+//console.log(addDays(currentDate, 100), 'numero del dia de la semana | se le suman 100 dias');
+//console.log(currentDate);
 
 
 export function isLeap() {
@@ -140,7 +140,13 @@ document.addEventListener('click', (e) => {
     prevWeek();
   }
   if (e.target.matches('#next-week')) {
-    nextWeek();
+    //nextWeek();
+    addDays(currentDate, 7);
+    console.log(currentDate);
+    $calendarContainer.lastChild.remove();
+    WeekComponent($calendarContainer);
+    document.getElementById("fecha-week").innerHTML = nameMonth[currentDate.getMonth()] + " de " + currentDate.getFullYear();
+    hourWeekComponent(currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
   }
   if (e.target.matches('#prev-month')) {
     prevMonth();
@@ -264,7 +270,8 @@ function prevWeek() {
 }
 
 function nextWeek() {
-  if (currentWeek !== getTotalDays(currentMonth)) {//<-- Si no es el ultimo dia del mes
+  addDays(currentDate, 7);
+  /* if (currentWeek !== getTotalDays(currentMonth)) {//<-- Si no es el ultimo dia del mes
     currentWeek += 7;
     console.log('Pase por el primer if');
     if (currentWeek > getTotalDays(currentMonth)) {//<-- Si se pasa al sumar, entra este if
@@ -288,7 +295,7 @@ function nextWeek() {
       currentMonth = 0;
       currentYear++;
     }
-  }
+  } */
 
 
   /*_________________________________________________________________________________________________*/
