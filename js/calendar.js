@@ -63,6 +63,11 @@ function addDays(fecha, dias){
   fecha.setDate(fecha.getDate() + dias);
   return fecha;
 }
+
+function lessDays(fecha, dias){
+  fecha.setDate(fecha.getDate() - dias);
+  return fecha;
+}
 //console.log(addDays(currentDate, 7), 'Linea 59 a 64');
 
 //console.log(currentWeek + 20, 'numero del dia de la semana');
@@ -241,70 +246,20 @@ function setNewDateDay() {
 // botones week
 
 function prevWeek() {
-  if (currentWeek !== 1) {
-    currentWeek -= 7;
-    if (currentWeek <= 0) {
-      currentMonth--;
-      currentWeek = getTotalDays(currentMonth);
-    }
-    if (currentMonth === -1) {
-      currentMonth = 11;
-      currentYear--;
-    }
-  } else {//resolver aca para cuando hace el cambio de año
-    currentMonth--;
-    currentWeek = getTotalDays(currentMonth);
-    if (currentMonth === -1) {
-      currentYear--;
-      currentMonth = 11;
-    }
-  }
-  setNewDateWeek();
-  console.log(currentWeek);
+  lessDays(currentDate, 7);
+  $calendarContainer.lastChild.remove();
+  WeekComponent($calendarContainer);
+  document.getElementById("fecha-week").innerHTML = nameMonth[currentDate.getMonth()] + " de " + currentDate.getFullYear();
+  hourWeekComponent(currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
 }
 
 function nextWeek() {
   addDays(currentDate, 7);
-    console.log(currentDate);
-    $calendarContainer.lastChild.remove();
-    WeekComponent($calendarContainer);
-    document.getElementById("fecha-week").innerHTML = nameMonth[currentDate.getMonth()] + " de " + currentDate.getFullYear();
-    hourWeekComponent(currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
-  /* if (currentWeek !== getTotalDays(currentMonth)) {//<-- Si no es el ultimo dia del mes
-    currentWeek += 7;
-    console.log('Pase por el primer if');
-    if (currentWeek > getTotalDays(currentMonth)) {//<-- Si se pasa al sumar, entra este if
-      currentMonth++;
-      currentWeek = 1;
-      currentWeek += 1;//<-- Este se agrego como prueba, falta testear el dia Mie J y V
-      console.log('Pase por el primer if, segundo if');
-    }
-    if (currentMonth === 12) {//<-- Si se pasa de diciembre al momento de sumar +1 al mes, pasa al siguiente año en el mes 0
-      currentMonth = 0;
-      currentYear++;
-      console.log('Pase por el primer if, tercer if');
-    }
-  } else {//<-- Si es el ultimo dia del mes
-    currentMonth++;
-    currentWeek = 1;
-    currentWeek += 0;//<-- Este se agrego como prueba, falta testear el dia Mie J y V
-    console.log('Pase por el else');
-    if (currentMonth === 12) {
-      console.log('Pase por el else, primer if');
-      currentMonth = 0;
-      currentYear++;
-    }
-  } */
-  //setNewDateWeek();
-}
-
-function setNewDateWeek() {
-  currentDate.setFullYear(currentYear, currentMonth, currentWeek);
-  
+  console.log(currentDate);
   $calendarContainer.lastChild.remove();
   WeekComponent($calendarContainer);
-  document.getElementById("fecha-week").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
-  hourWeekComponent(currentDayName, currentWeek, currentMonth, currentYear);
+  document.getElementById("fecha-week").innerHTML = nameMonth[currentDate.getMonth()] + " de " + currentDate.getFullYear();
+  hourWeekComponent(currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
 }
 
 // month
