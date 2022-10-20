@@ -124,9 +124,21 @@ export function hourWeekComponent(currentDate, getDay, getDate, getMonth, getFul
         }
         if (getDay === 4) {// <-- Jueves
             //currentDate.setDate(getDate + countStartThr++); //El error de este es que no me deja pasar de mes, se queda pegado en octubre todo el tiempo
-            currentDate.setDate(currentDate.getDate() + countStartThr++); //El problema de este es que aplica resta sobre resta, suma -3 luego sobre el resultado le aplica el -2
+            //currentDate.setDate(currentDate.getDate() + countStartThr++); //El problema de este es que aplica resta sobre resta, suma -3 luego sobre el resultado le aplica el -2
+            //$weekDays[i].innerHTML = currentDate.getDate();
 
-            $weekDays[i].innerHTML = currentDate.getDate();
+            let dia = currentDate.getDate() + countStartThr++;
+            console.log(dia, 'Valor de la variable dia');
+            //console.log( getTotalDays(currentDate.getMonth() - 1)- i, 'getTotalDays function');
+            $weekDays[i].innerHTML = dia;
+
+            if (dia <= 0) {
+                $weekDays[i].innerHTML = getTotalDays(currentDate.getMonth() - 1) - i;
+            }
+            if (dia > getTotalDays(currentDate.getMonth())) {
+                $weekDays[i].innerHTML = getTotalDays(currentDate.getMonth() - 1) + (i - getTotalDays(currentDate.getMonth())) - 5;
+            }
+
         }
         if (getDay === 5) {// <-- Viernes
             //let d = new Date();

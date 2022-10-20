@@ -234,7 +234,7 @@ function setNewDateDay() {
   /*--------------*/
 function prevWeek() {
   lessDays(currentDate, 7);
-  console.log(currentDate);
+  //console.log(currentDate);
   $calendarContainer.lastChild.remove();
   WeekComponent($calendarContainer);
   hourWeekComponent(currentDate, currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
@@ -243,7 +243,7 @@ function prevWeek() {
 
 function nextWeek() {
   addDays(currentDate, 7);
-  console.log(currentDate);
+  //console.log(currentDate);
   $calendarContainer.lastChild.remove();
   WeekComponent($calendarContainer);
   hourWeekComponent(currentDate, currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
