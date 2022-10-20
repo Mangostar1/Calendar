@@ -8,24 +8,13 @@ import {handlerBtn, handlerBtnMobile} from "./Evento_Fetch.js";
 /*----------------------------------------------*/
 /*
 
-  Hoy dia viernes el calendario semanal al llegar al limite del mes ocubre me marca el ultimo dia
-  del mes en el dia viernes como viernes 30.
-
-  Me marca el limite del mes como dia 30 y no 31 porque resta a partir del mes actual y no del mes pasado,
-  lo que significa que deve restar a partir del mes pasado y no del actual.
-
-  En el cambio de dias de la semana se imprime la fecha actual y se comeinza a restar y sumar a partir de
-  esta para completar el restos de dia de la semana, esto se hace segun que dia de la semana caigar el
-  currentWeek.
+  El calendario en su version semanal ya esta pasando bien las fechas tanto en el next como en el prev, ahora queda resolver que
+  al momento de pasar mes, la continuacion del mes anterior se haga con la fecha del mes anterior y no con la del actual para
+  que un mes que termine en 31 por ejemplo, al pasar al siguiente mes en la semana marque como 30.
 
   ______________________________________________________________________________________________________
 
-  * Arreglar paso de fecha en nextWeek(), El bug se dispara al momento de cambiar de año, osea, al pasar de diciembre a enero
-
-  * Probar usar el algoritmo usado para imprimir als fechas del WeekComponent en el NextDay y PrevDay
-
-  ** USAR LA FUNCION addDays() para la suma la suma y resta de las fechas para evitar asi bugs durante las operaciones de suma y resta | 
-  Hacer eso hace que lo que se sumen sean datos de tipo fecha y no datos de tipo int.
+  * Arreglar ultimo dia del mes al cambiar de mes
 
   */
 /*----------------------------------------------*/
@@ -47,9 +36,9 @@ const nameDay = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes",
 const $weekDays = document.getElementsByClassName("diasNumber");
 
 
-/*------------------------------*/
-/* funciones para el calendario */
-/*------------------------------*/
+/*--------------------------*/
+/*----Calendar Functions----*/
+/*--------------------------*/
 
 Date.prototype.getWeekNumber = function () { //<-- Se agrega prototipo para saber cuantas semanas hay en el año
   var d = new Date(+this);  //Creamos un nuevo Date con la fecha de "this".
@@ -59,21 +48,15 @@ Date.prototype.getWeekNumber = function () { //<-- Se agrega prototipo para sabe
   return Math.ceil((((d - new Date(d.getFullYear(), 0, 1)) / 8.64e7) + 1) / 7);
 };
 
-function addDays(fecha, dias){
-  fecha.setDate(fecha.getDate() + dias);
+function addDays(fecha, days){
+  fecha.setDate(fecha.getDate() + days);
   return fecha;
 }
 
 function lessDays(fecha, dias){
-  fecha.setDate(fecha.getDate() - dias);
+  fecha.setDate(fecha.getDate() - days);
   return fecha;
 }
-//console.log(addDays(currentDate, 7), 'Linea 59 a 64');
-
-//console.log(currentWeek + 20, 'numero del dia de la semana');
-//console.log(addDays(currentDate, 100), 'numero del dia de la semana | se le suman 100 dias');
-//console.log(currentDate);
-
 
 export function isLeap() {
   return ((currentYear % 100 !== 0) && (currentYear % 4 === 0) || (currentYear % 400 === 0))
@@ -109,7 +92,7 @@ DaysOfMonth(currentMonth);
 document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
 
 /*-----------------------*/
-/* Delegacion de eventos */
+/*----Event Listeners----*/
 /*-----------------------*/
 document.addEventListener('click', (e) => {
   //Mobile components control
@@ -189,11 +172,14 @@ document.addEventListener('click', (e) => {
   }
 });
 
-/*---------------*/
-/* dates control */
-/*---------------*/
 
-// botones day
+/*---------------------*/
+/*----Dates Control----*/
+/*---------------------*/
+
+  /*-------------*/
+  /*--Day Dates--*/
+  /*-------------*/
 function prevDay() {
   if (currentWeek !== 1) {
     currentWeek--;
@@ -243,8 +229,9 @@ function setNewDateDay() {
   document.getElementById("cambia-dia").innerHTML = nameDay[currentDayName] + " " + currentWeek;
 }
 
-// botones week
-
+  /*--------------*/
+  /*--Week Dates--*/
+  /*--------------*/
 function prevWeek() {
   lessDays(currentDate, 7);
   $calendarContainer.lastChild.remove();
@@ -262,8 +249,9 @@ function nextWeek() {
   hourWeekComponent(currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
 }
 
-// month
-
+  /*---------------*/
+  /*--Month Dates--*/
+  /*---------------*/
 function prevMonth() {
   if (currentMonth !== 0) {
     currentMonth--;
@@ -293,8 +281,9 @@ function setNewDateMonth() {
   DaysOfMonth(currentMonth);
 }
 
-// year
-
+/*--------------*/
+/*--Year Dates--*/
+/*--------------*/
 function prevYear() {
   if (currentYear !== 0) {
     currentYear--;
