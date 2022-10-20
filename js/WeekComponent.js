@@ -133,10 +133,12 @@ export function hourWeekComponent(currentDate, getDay, getDate, getMonth, getFul
             $weekDays[i].innerHTML = dia;
 
             if (dia <= 0) {
+                console.log('primer if');
                 $weekDays[i].innerHTML = getTotalDays(currentDate.getMonth() - 1) - i;
             }
             if (dia > getTotalDays(currentDate.getMonth())) {
-                $weekDays[i].innerHTML = getTotalDays(currentDate.getMonth() - 1) + (i - getTotalDays(currentDate.getMonth())) - 5;
+                console.log('segundo if');
+                $weekDays[i].innerHTML = getTotalDays(currentDate.getMonth() - 1) + (i - getTotalDays(currentDate.getMonth()))/*  - 5 */;
             }
 
         }
