@@ -46,13 +46,16 @@ export function closeModal() {
 /* Datos formulario */
 /*------------------*/
 
-document.addEventListener('click', (e) => {
+document.addEventListener('click', async(e) => {
     if(e.target.matches('#buttonModalID') === true){
         const $title = document.getElementById('titleEvent').value;
         const $description = document.getElementById('descriptionEvent').value;
         const $date = document.getElementById('dateInput').value;
         const $time = document.getElementById('timeInput').value;
+
         console.log($title, $description, $date, $time);
+
+        //await fetch();
     }
 });
 
