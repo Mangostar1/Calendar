@@ -5,19 +5,6 @@ import { MonthComponent, DaysOfMonth} from "./MonthComponent.js";
 import { YearComponent, writeYear, DaysOFYear} from "./YearComponent.js";
 import {handlerBtn, handlerBtnMobile} from "./Evento_Fetch.js";
 
-/*----------------------------------------------*/
-/*
-
-  El calendario en su version semanal ya esta pasando bien las fechas tanto en el next como en el prev, ahora queda resolver que
-  al momento de pasar mes, la continuacion del mes anterior se haga con la fecha del mes anterior y no con la del actual para
-  que un mes que termine en 31 por ejemplo, al pasar al siguiente mes en la semana marque como 30.
-
-  ______________________________________________________________________________________________________
-
-  * Arreglar ultimo dia del mes al cambiar de mes
-
-  */
-/*----------------------------------------------*/
 const $calendarContainer = document.getElementsByClassName("calendar-container")[0];
 
 /*-------*/
@@ -33,13 +20,10 @@ export let currentYear = currentDate.getFullYear();
 
 const nameMonth = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 const nameDay = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
-const $weekDays = document.getElementsByClassName("diasNumber");
-
 
 /*--------------------------*/
 /*----Calendar Functions----*/
 /*--------------------------*/
-
 Date.prototype.getWeekNumber = function () { //<-- Se agrega prototipo para saber cuantas semanas hay en el año
   var d = new Date(+this);  //Creamos un nuevo Date con la fecha de "this".
   d.setHours(0, 0, 0, 0);   //Nos aseguramos de limpiar la hora.
@@ -74,12 +58,12 @@ export function getTotalDays(month) {
   }
 }
 
-export function startDay() {//corregir el dia en que comienza el mes
+export function startDay() {//corrige el dia en que comienza el mes
   let start = new Date(currentYear, currentMonth, 1);
   return ((start.getDay() - 1) === -1) ? 6 : start.getDay() - 1;
 }
 
-export function startDayYear(month) {//corregir el dia en que comienza el mes en el año
+export function startDayYear(month) {//corrige el dia en que comienza el mes en el año
   let start = new Date(currentYear, month, 1);
   return ((start.getDay() - 1) === -1) ? 6 : start.getDay() - 1;
 }
@@ -143,27 +127,27 @@ document.addEventListener('click', (e) => {
     nextYear();
   }
   //control de componentes
-  if (e.target.matches('#radio-day')) {//dia
+  if (e.target.matches('#radio-day')) {//Day
     $calendarContainer.lastChild.remove();
     DayComponent($calendarContainer);
     hourDayComponent();
     document.getElementById("fecha-day").innerHTML = currentWeek + " de " + nameMonth[currentMonth] + " del " + currentYear;
     document.getElementById('cambia-dia').innerHTML = nameDay[currentDayName] + " " + currentWeek;
   }
-  if (e.target.matches('#radio-week')) {//semana
+  if (e.target.matches('#radio-week')) {//Week
     $calendarContainer.lastChild.remove();
     WeekComponent($calendarContainer);
     hourWeekComponent(currentDate, currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
     document.getElementById("fecha-week").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
   }
-  if (e.target.matches('#radio-month')) {//mes
+  if (e.target.matches('#radio-month')) {//Month
     $calendarContainer.lastChild.remove();
     MonthComponent($calendarContainer);
     DaysOfMonth(currentMonth);
     document.getElementById("dates-control-month").style = "display: flex";
     document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
   }
-  if (e.target.matches('#radio-year')) {//año
+  if (e.target.matches('#radio-year')) {//Year
     $calendarContainer.lastChild.remove();
     YearComponent($calendarContainer);
     DaysOFYear();
@@ -234,7 +218,6 @@ function setNewDateDay() {
   /*--------------*/
 function prevWeek() {
   lessDays(currentDate, 7);
-  //console.log(currentDate);
   $calendarContainer.lastChild.remove();
   WeekComponent($calendarContainer);
   hourWeekComponent(currentDate, currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
@@ -243,7 +226,6 @@ function prevWeek() {
 
 function nextWeek() {
   addDays(currentDate, 7);
-  //console.log(currentDate);
   $calendarContainer.lastChild.remove();
   WeekComponent($calendarContainer);
   hourWeekComponent(currentDate, currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
