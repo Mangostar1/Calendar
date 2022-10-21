@@ -37,7 +37,7 @@ export function addDays(fecha, days){
   return fecha;
 }
 
-function lessDays(fecha, days){
+export function lessDays(fecha, days){
   fecha.setDate(fecha.getDate() - days);
   return fecha;
 }

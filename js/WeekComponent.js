@@ -1,4 +1,4 @@
-import { currentDate, currentDayName, currentWeek, currentMonth, currentYear, getTotalDays, addDays, startDay} from "./calendar.js";
+import { currentDate, currentDayName, currentWeek, currentMonth, currentYear, getTotalDays, addDays, lessDays, startDay} from "./calendar.js";
 
 export function WeekComponent(element) {
     const $WeekContent = document.createElement('div');
@@ -123,29 +123,38 @@ export function hourWeekComponent(currentDate, getDay, getDate, getMonth, getFul
             $weekDays[i].innerHTML = currentDate.getDate();
         }
         if (getDay === 4) {// <-- Jueves
-            //currentDate.setDate(getDate + countStartThr++); //El error de este es que no me deja pasar de mes, se queda pegado en octubre todo el tiempo
-            //currentDate.setDate(currentDate.getDate() + countStartThr++); //El problema de este es que aplica resta sobre resta, suma -3 luego sobre el resultado le aplica el -2
-            //$weekDays[i].innerHTML = currentDate.getDate();
-
-            let dia = currentDate.getDate() + countStartThr++;
-            console.log(dia, 'Valor de la variable dia');
-            //console.log( getTotalDays(currentDate.getMonth() - 1)- i, 'getTotalDays function');
-            $weekDays[i].innerHTML = dia;
-
-            if (dia <= 0) {
-                console.log('primer if');
-                $weekDays[i].innerHTML = getTotalDays(currentDate.getMonth() - 1) - i;
-            }
-            if (dia > getTotalDays(currentDate.getMonth())) {
-                console.log('segundo if');
-                $weekDays[i].innerHTML = getTotalDays(currentDate.getMonth() - 1) + (i - getTotalDays(currentDate.getMonth()))/*  - 5 */;
-            }
-
+            currentDate.setDate(getDate + countStartThr++);
+            $weekDays[i].innerHTML = currentDate.getDate();
         }
         if (getDay === 5) {// <-- Viernes
-            //let d = new Date();
-            currentDate.setDate(getDate + countStartFre++);
-            $weekDays[i].innerHTML = currentDate.getDate();
+
+            let mo = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            lessDays(mo, 4);
+            $weekDays[0].innerHTML = mo.getDate();
+
+            let tu = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            lessDays(tu, 3);
+            $weekDays[1].innerHTML = tu.getDate();
+
+            let we = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            lessDays(we, 2);
+            $weekDays[2].innerHTML = we.getDate();
+
+            let th = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            lessDays(th, 1);
+            $weekDays[3].innerHTML = th.getDate();
+
+            let fr = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            $weekDays[4].innerHTML = fr.getDate();
+
+            let sa = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            addDays(sa, 1);
+            $weekDays[5].innerHTML = sa.getDate();
+
+            let su = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            addDays(su, 2);
+            $weekDays[6].innerHTML = su.getDate();
+
         }
         if (getDay === 6) {// <-- Sabado
             //let d = new Date();
