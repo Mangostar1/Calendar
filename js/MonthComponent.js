@@ -1,4 +1,4 @@
-import { getTotalDays, startDay, currentWeek, currentMonth, currentYear, currentDayName} from "./calendar.js";
+import { getTotalDays, startDay, currentDate, currentWeek, currentMonth, currentYear, currentDayName} from "./calendar.js";
 
 export function MonthComponent(element) {
     const $MonthContent = document.createElement('div');
@@ -26,7 +26,7 @@ export function DaysOfMonth(month) {
     
     for (let i = startDay(); i > 0; i--) {
         $wrapper.innerHTML += 
-            `<div class="grid-item"><p class="day-number lastMonth"> ${getTotalDays(currentMonth - 1)-(i - 1)} </p>
+            `<div class="grid-item"><p class="day-number lastMonth"> ${getTotalDays(currentDate.getMonth() - 1)-(i - 1)} </p>
                 <ul>
                     <li class="event"></li>
                 </ul>

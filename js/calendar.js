@@ -59,7 +59,7 @@ export function getTotalDays(month) {
 }
 
 export function startDay() {//corrige el dia en que comienza el mes
-  let start = new Date(currentYear, currentMonth, 1);
+  let start = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
   return ((start.getDay() - 1) === -1) ? 6 : start.getDay() - 1;
 }
 
@@ -209,32 +209,22 @@ function nextWeek() {
   /*--Month Dates--*/
   /*---------------*/
 function prevMonth() {
-  if (currentMonth !== 0) {
-    currentMonth--;
-  } else {
-    currentMonth = 11;
-    currentYear--;
-  }
+  currentDate.setMonth(currentDate.getMonth() - 1);
   setNewDateMonth();
 }
 
 function nextMonth() {
-  if (currentMonth !== 11) {
-    currentMonth++;
-  } else {
-    currentMonth = 0;
-    currentYear++;
-  }
+  currentDate.setMonth(currentDate.getMonth() + 1);
   setNewDateMonth();
 }
 
 function setNewDateMonth() {
-  currentDate.setFullYear(currentYear, currentMonth, currentWeek);
+  currentDate.setFullYear(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
   
   $calendarContainer.lastChild.remove();
   MonthComponent($calendarContainer);
-  document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
-  DaysOfMonth(currentMonth);
+  document.getElementById("fecha-month").innerHTML = nameMonth[currentDate.getMonth()] + " de " + currentDate.getFullYear();
+  DaysOfMonth(currentDate.getMonth());
 }
 
 /*--------------*/
