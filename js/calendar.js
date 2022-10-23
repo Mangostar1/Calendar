@@ -165,52 +165,25 @@ document.addEventListener('click', (e) => {
   /*--Day Dates--*/
   /*-------------*/
 function prevDay() {
-  if (currentWeek !== 1) {
-    currentWeek--;
-    currentDayName--;
-    /* nameDay[currentDayName--]; */
-    if (currentDayName === -1) {
-      currentDayName = 6;
-    }
-  } else {
-    currentMonth--;
-    currentWeek = getTotalDays(currentMonth);
-    currentDayName--;
-    if (currentMonth === -1) {
-      currentMonth = 11;
-      currentYear--;
-    }
-  }
-  setNewDateDay();
-}
-
-function nextDay() {
-  if (currentWeek !== getTotalDays(currentMonth)) {
-    currentWeek++;
-    nameDay[currentDayName++];
-    if (currentDayName === 7) {
-      currentDayName = 0;
-    }
-  } else {
-    currentWeek = 1;
-    currentDayName++;
-    currentMonth++;
-    if (currentMonth === 12) {
-      currentMonth = 0;
-      currentYear++;
-    }
-  }
-  setNewDateDay();
-}
-
-function setNewDateDay() {
-  currentDate.setFullYear(currentYear, currentMonth, currentWeek);
+  lessDays(currentDate, 1);
+  currentDate.setFullYear(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
 
   document.getElementById("fecha-day").innerHTML = " ";
   document.getElementById("cambia-dia").innerHTML = " ";
 
-  document.getElementById("fecha-day").innerHTML = currentWeek + " de " + " " + nameMonth[currentMonth] + " del " + currentYear;
-  document.getElementById("cambia-dia").innerHTML = nameDay[currentDayName] + " " + currentWeek;
+  document.getElementById("fecha-day").innerHTML = currentDate.getDate() + " de " + " " + nameMonth[currentDate.getMonth()] + " del " + currentDate.getFullYear();
+  document.getElementById("cambia-dia").innerHTML = nameDay[currentDate.getDay()] + " " + currentDate.getDate();
+}
+
+function nextDay() {
+  addDays(currentDate, 1);
+  currentDate.setFullYear(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+
+  document.getElementById("fecha-day").innerHTML = " ";
+  document.getElementById("cambia-dia").innerHTML = " ";
+
+  document.getElementById("fecha-day").innerHTML = currentDate.getDate() + " de " + " " + nameMonth[currentDate.getMonth()] + " del " + currentDate.getFullYear();
+  document.getElementById("cambia-dia").innerHTML = nameDay[currentDate.getDay()] + " " + currentDate.getDate();
 }
 
   /*--------------*/
