@@ -64,7 +64,7 @@ export function startDay() {//corrige el dia en que comienza el mes
 }
 
 export function startDayYear(month) {//corrige el dia en que comienza el mes en el año
-  let start = new Date(currentYear, month, 1);
+  let start = new Date(currentDate.getFullYear(), month, 1);
   return ((start.getDay() - 1) === -1) ? 6 : start.getDay() - 1;
 }
 
@@ -231,27 +231,19 @@ function setNewDateMonth() {
 /*--Year Dates--*/
 /*--------------*/
 function prevYear() {
-  if (currentYear !== 0) {
-    currentYear--;
-  } else {
-    currentYear = 11;
-  }
+  currentDate.setFullYear(currentDate.getFullYear() - 1);
   setNewDateYear();
 }
 
 function nextYear() {
-  if (currentYear !== 11) {
-    currentYear++;
-  } else {
-    currentYear = 0;
-  }
+  currentDate.setFullYear(currentDate.getFullYear() + 1);
   setNewDateYear();
 }
 
 function setNewDateYear() {
   let daysMonthYear = document.getElementsByClassName("day-div");
-  currentDate.setFullYear(currentYear, currentMonth, currentWeek);
-  document.getElementById("fecha-year").innerHTML = currentYear;
+  currentDate.setFullYear(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+  document.getElementById("fecha-year").innerHTML = currentDate.getFullYear();
 
   for (let y = 0; y < 12; y++) {
     daysMonthYear[y].innerHTML = " "
