@@ -7,7 +7,7 @@
   "scripts": {
     "test": "jest",
     "api": "json-server -w -p 3000 basicStructure.json",
-    "api2": "json-server -w -p 3000 newAPI.json"
+    "api2": "json-server -w -p 3000 OLDbasicStructure.json"
   },
   "repository": {
     "type": "git",
