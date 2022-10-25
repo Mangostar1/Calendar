@@ -65,34 +65,30 @@ async function eventoMonth() {
     //const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");// <-- For production
     const basicMonthJson = await basicMonth.json();
 
-    for (let i = 0; i < 7; i++) {// <-- Este recorre los 7 dias de la semana
-        
-        if (basicMonthJson[i].dayEvents !== 0) {// <-- Si dentro de un dia de la semana hay eventos, este recorre todos los eventos agendados en el dia
-            for (let d = 0; d < (basicMonthJson[i].dayEvents).length; d++) {// <-- Con este for recorro todos los eventos del dia en cuestion
-                
-                let datesJSON = basicMonthJson[i].dayEvents[d].dateStartEvent;
-                
-                const datesSplit = datesJSON.split('-');
-                
-                let dateMonth = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
-                let diames = dateMonth.getDate();
-                let eventMonth = document.getElementById(`evento-${diames}`);
+    if (basicMonthJson.length !== 0) {// <-- Si dentro de un dia de la semana hay eventos, este recorre todos los eventos agendados en el dia
+        for (let d = 0; d < basicMonthJson.length; d++) {// <-- Con este for recorro todos los eventos del dia en cuestion
+            let datesJSON = basicMonthJson[d].dateStartEvent;
+            
+            const datesSplit = datesJSON.split('-');
+            
+            let dateMonth = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
+            let diames = dateMonth.getDate();
+            let eventMonth = document.getElementById(`evento-${diames}`);
 
-                let horaInicial = basicMonthJson[i].dayEvents[d].hourStart;
-                let horafinal = basicMonthJson[i].dayEvents[d].hourFinish;
-                let tituloEvento = basicMonthJson[i].dayEvents[d].title;
+            let horaInicial = basicMonthJson[d].hourStart;
+            let horafinal = basicMonthJson[d].hourFinish;
+            let tituloEvento = basicMonthJson[d].title;
 
-                if (dateMonth.getMonth() === currentMonth && dateMonth.getFullYear() === currentYear) {
-                    eventMonth.innerHTML += 
-                        `<button id="event-Modal" class="btn-item btm-event-month" data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}">
-                            <span class="sp-hour"> ${horaInicial} - ${horafinal} </span> 
-                            <br> 
-                            <span class="sp-title"> ${tituloEvento} </span>
-                        </button>`;
-                } else {
-                    eventMonth.innerHTML = `<li class="event"></li>`;
-                }
-            }
+            if (dateMonth.getMonth() === currentDate.getMonth() && dateMonth.getFullYear() === currentDate.getFullYear()) {
+                eventMonth.innerHTML += 
+                    `<button id="event-Modal" class="btn-item btm-event-month" data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}">
+                        <span class="sp-hour"> ${horaInicial} - ${horafinal} </span> 
+                        <br> 
+                        <span class="sp-title"> ${tituloEvento} </span>
+                    </button>`;
+            } /* else {
+                eventMonth.innerHTML = `<li class="event"> </li>`;
+            } */
         }
     }
 }

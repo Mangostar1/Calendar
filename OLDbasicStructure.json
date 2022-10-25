@@ -68,8 +68,7 @@
       "colorBackgroundType": "#0096a6",
       "colorType": "white"
     }
-  },
-  {
+  },{
     "dateStartEvent": "2022-10-18",
     "hourStart": "02:30:00",
     "dateFinishEvent": "2022-10-18",
@@ -319,6 +318,23 @@
     "hourFinish": "00:59:00",
     "title": "Ejemplo de titulo 15",
     "description": "Ejemplo de descripcion 15",
+    "statusInformation": {
+      "statusCode": "001",
+      "status": "activo",
+      "colorStatus": "green"
+    },
+    "typeInformation": {
+      "type": "0001",
+      "colorBackgroundType": "#0096a6",
+      "colorType": "white"
+    }
+  },{
+    "dateStartEvent": "2022-11-04",
+    "hourStart": "00:30:00",
+    "dateFinishEvent": "2022-11-04",
+    "hourFinish": "00:59:00",
+    "title": "Ejemplo de titulo 16",
+    "description": "Ejemplo de descripcion 16",
     "statusInformation": {
       "statusCode": "001",
       "status": "activo",
