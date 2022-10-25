@@ -79,6 +79,7 @@ document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " d
 /*----Event Listeners----*/
 /*-----------------------*/
 document.addEventListener('click', (e) => {
+  console.log(e.target);
   //Mobile components control
   if (e.target.matches('.menu-img')) {
     document.querySelector('.buttons').classList.toggle('active');
@@ -131,28 +132,28 @@ document.addEventListener('click', (e) => {
     $calendarContainer.lastChild.remove();
     DayComponent($calendarContainer);
     hourDayComponent();
-    document.getElementById("fecha-day").innerHTML = currentWeek + " de " + nameMonth[currentMonth] + " del " + currentYear;
-    document.getElementById('cambia-dia').innerHTML = nameDay[currentDayName] + " " + currentWeek;
+    document.getElementById("fecha-day").innerHTML = currentDate.getDate() + " de " + nameMonth[currentDate.getMonth()] + " del " + currentDate.getFullYear();
+    document.getElementById('cambia-dia').innerHTML = nameDay[currentDate.getDay()] + " " + currentDate.getDate();
   }
   if (e.target.matches('#radio-week')) {//Week
     $calendarContainer.lastChild.remove();
     WeekComponent($calendarContainer);
     hourWeekComponent(currentDate, currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
-    document.getElementById("fecha-week").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
+    document.getElementById("fecha-week").innerHTML = nameMonth[currentDate.getMonth()] + " de " + currentDate.getFullYear();
   }
   if (e.target.matches('#radio-month')) {//Month
     $calendarContainer.lastChild.remove();
     MonthComponent($calendarContainer);
-    DaysOfMonth(currentMonth);
+    DaysOfMonth(currentDate.getMonth());
     document.getElementById("dates-control-month").style = "display: flex";
-    document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
+    document.getElementById("fecha-month").innerHTML = nameMonth[currentDate.getMonth()] + " de " + currentDate.getFullYear();
   }
   if (e.target.matches('#radio-year')) {//Year
     $calendarContainer.lastChild.remove();
     YearComponent($calendarContainer);
     DaysOFYear();
     writeYear();
-    document.getElementById("fecha-year").innerHTML = currentYear;
+    document.getElementById("fecha-year").innerHTML = currentDate.getFullYear();
   }
 });
 
