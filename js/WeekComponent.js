@@ -314,12 +314,12 @@ async function eventsWeek() {
 
     const eventWekk = document.getElementsByClassName("eventWeek");
     if (basicWeekJSON.length !== 0) {
-        for (let e = 0; e < basicWeekJSON.length; e++) {// <-- Events in
+        for (let e = 0; e < basicWeekJSON.length; e++) {
             
             //Dates yy - mm - dd for new Date()
             const datesJSON = basicWeekJSON[e].dateStartEvent;
-            console.log(basicWeekJSON[e].dateStartEvent);
             const datesSplit = datesJSON.split("-");
+            //console.log(basicWeekJSON[e].dateStartEvent);
         
             //Hours hour:minutes:secons for new Date()
             const hoursJSON = basicWeekJSON[e].hourStart;
@@ -337,8 +337,10 @@ async function eventsWeek() {
             let horas = 0; //La hora del evento | Actual en el calendario
             let tmpEventDayWeek = fechaEvento.getDay(); // Trae el dia de la semana del json
             let tmpHourDayWeek = fechaEvento.getHours(); // Trae la hora del json
+            //console.log(fechaEvento.getDay(), 'Dia de la semana')
 
-            for (let w = 1; w < 169; w++) {//<-- 1 | 169
+            for (let w = 0; w < 168; w++) {//<-- 1 | 169
+                //console.log(day, 'day');
                 if(horas === tmpHourDayWeek && tmpEventDayWeek === day && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear() && numWeekEvent === numOfCurrentWeek){
                     eventWekk[w].innerHTML += 
                         `<button id="event-Modal" class="btn-item" data-hour-start="${hoursJSON}" data-hour-finish="${hoursFinishJSON}" data-title="${titleEvent}">
@@ -346,8 +348,11 @@ async function eventsWeek() {
                         </button>`;
                 }
         
-                if(w % 7 == 0){
-                    console.log(w % 7);
+                /* if(w % 7 == 0){
+                    horas++;
+                    day = 0;
+                } */
+                if(w === 6 || w === 13 || w === 20 || w === 27 || w === 34 || w === 41 || w === 48 || w === 55 || w === 62 || w === 69 || w === 76 || w === 83 || w === 90 || w === 97 || w === 104 || w === 111 || w === 118 || w === 125 || w === 132 || w === 139 || w === 146 || w === 153 || w === 160 || w === 167){
                     horas++;
                     day = 0;
                 }
