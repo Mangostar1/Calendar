@@ -313,46 +313,49 @@ async function eventsWeek() {
     const basicWeekJSON = await basicWeek.json();
 
     const eventWekk = document.getElementsByClassName("eventWeek");
-    for (let i = 0; i < 7; i++) {
-        if (basicWeekJSON[i].dayEvents !== 0) {
-            for (let e = 0; e < (basicWeekJSON[i].dayEvents).length; e++) {// <-- Events in
-                
-                //Dates yy - mm - dd for new Date()
-                const datesJSON = basicWeekJSON[i].dayEvents[e].dateStartEvent;
-                const datesSplit = datesJSON.split("-");
+    if (basicWeekJSON.length !== 0) {
+        for (let e = 0; e < basicWeekJSON.length; e++) {// <-- Events in
             
-                //Hours hour:minutes:secons for new Date()
-                const hoursJSON = basicWeekJSON[i].dayEvents[e].hourStart;
-                const hoursFinishJSON = basicWeekJSON[i].dayEvents[e].hourFinish;
-                const hoursSplit = hoursJSON.split(":");
-                
-                const titleEvent = basicWeekJSON[i].dayEvents[e].title
-                
-                let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2] , hoursSplit[0], hoursSplit[1], hoursSplit[2]);
-                let numWeekEvent = fechaEvento.getWeekNumber();
-                let numOfCurrentWeek = currentDate.getWeekNumber();
-                let cont = 1;
-                let day = 1; //El dia de la semana L a D | Actual en el calendario
-                let horas = 0; //La hora del evento | Actual en el calendario
-                let tmpEventDayWeek = fechaEvento.getDay(); // Trae el dia de la semana del json
-                let tmpHourDayWeek = fechaEvento.getHours(); // Trae la hora del json
+            //Dates yy - mm - dd for new Date()
+            const datesJSON = basicWeekJSON[e].dateStartEvent;
+            console.log(basicWeekJSON[e].dateStartEvent);
+            const datesSplit = datesJSON.split("-");
+        
+            //Hours hour:minutes:secons for new Date()
+            const hoursJSON = basicWeekJSON[e].hourStart;
+            const hoursFinishJSON = basicWeekJSON[e].hourFinish;
+            const hoursSplit = hoursJSON.split(":");
+            
+            const titleEvent = basicWeekJSON[e].title
 
-                for (let w = 1; w < 169; w++) {
-                    if(horas === tmpHourDayWeek && tmpEventDayWeek === day && fechaEvento.getMonth() === currentMonth && fechaEvento.getFullYear() === currentYear && numWeekEvent === numOfCurrentWeek){
-                        eventWekk[w].innerHTML += 
-                            `<button id="event-Modal" class="btn-item" data-hour-start="${hoursJSON}" data-hour-finish="${hoursFinishJSON}" data-title="${titleEvent}">
-                                <span class="sp-hour"> ${hoursJSON} </span> - <span class="sp-title"> ${titleEvent} </span>
-                            </button>`;
-                    }
             
-                    if(w % 7 == 0){
-                        horas++;
-                        day = 0;
-                    }
-                    day++;
-                    cont++;
+            let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2] , hoursSplit[0], hoursSplit[1], hoursSplit[2]);
+            let numWeekEvent = fechaEvento.getWeekNumber();
+            let numOfCurrentWeek = currentDate.getWeekNumber();
+            let cont = 1;
+            let day = 1; //El dia de la semana L a D | Actual en el calendario 1
+            let horas = 0; //La hora del evento | Actual en el calendario
+            let tmpEventDayWeek = fechaEvento.getDay(); // Trae el dia de la semana del json
+            let tmpHourDayWeek = fechaEvento.getHours(); // Trae la hora del json
+
+            for (let w = 1; w < 169; w++) {//<-- 1 | 169
+                if(horas === tmpHourDayWeek && tmpEventDayWeek === day && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear() && numWeekEvent === numOfCurrentWeek){
+                    eventWekk[w].innerHTML += 
+                        `<button id="event-Modal" class="btn-item" data-hour-start="${hoursJSON}" data-hour-finish="${hoursFinishJSON}" data-title="${titleEvent}">
+                            <span class="sp-hour"> ${hoursJSON} </span> - <span class="sp-title"> ${titleEvent} </span>
+                        </button>`;
                 }
+        
+                if(w % 7 == 0){
+                    console.log(w % 7);
+                    horas++;
+                    day = 0;
+                }
+                day++;
+                cont++;
             }
         }
     }
+    /* for (let i = 0; i < 7; i++) {
+    } */
 }

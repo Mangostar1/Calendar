@@ -345,5 +345,39 @@
       "colorBackgroundType": "#0096a6",
       "colorType": "white"
     }
-  }]
+  },{
+    "dateStartEvent": "2022-10-14",
+        "hourStart": "00:30:00",
+        "dateFinishEvent": "2022-10-14",
+        "hourFinish": "00:59:00",
+        "title": "Ejemplo de titulo 17",
+        "description": "Ejemplo de descripcion 17",
+        "statusInformation": {
+          "statusCode": "001",
+          "status": "activo",
+          "colorStatus": "green"
+        },
+        "typeInformation": {
+          "type": "0001",
+          "colorBackgroundType": "#0096a6",
+          "colorType": "white"
+        }
+},{
+  "dateStartEvent": "2022-12-05",
+      "hourStart": "00:30:00",
+      "dateFinishEvent": "2022-12-05",
+      "hourFinish": "00:59:00",
+      "title": "Ejemplo de titulo 18",
+      "description": "Ejemplo de descripcion 18",
+      "statusInformation": {
+        "statusCode": "001",
+        "status": "activo",
+        "colorStatus": "green"
+      },
+      "typeInformation": {
+        "type": "0001",
+        "colorBackgroundType": "#0096a6",
+        "colorType": "white"
+      }
+}]
 }
