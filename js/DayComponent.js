@@ -1,4 +1,4 @@
-import { getTotalDays, startDay, currentWeek, currentMonth, currentYear, currentDayName} from "./calendar.js";
+import { getTotalDays, startDay, currentDate, currentWeek, currentMonth, currentYear, currentDayName} from "./calendar.js";
 
 export function DayComponent(element) {
     const $DayContent = document.createElement('div');
@@ -16,9 +16,9 @@ export function DayComponent(element) {
     element.appendChild($DayContent);
 }
 
-export function hourDayComponent() {
+export function hourDayComponent(currentDate, getDay, getDate, getMonth, getFullYear) {
     const $containerDay = document.getElementById("container-Day");
-    let hourDay = [{
+    const hourDay = [{
         hour: "00:00 hrs"}, 
         {hour: "01:00 hrs"}, 
         {hour: "02:00 hrs"}, 
@@ -53,6 +53,9 @@ export function hourDayComponent() {
                 </ul>
             </div>`;
     });
+    const nameDay = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
+    document.getElementById('cambia-dia').innerHTML = nameDay[currentDate.getDay()] + " " + currentDate.getDate();
+
     inicioEventoDia();
 }
 
@@ -63,24 +66,30 @@ async function inicioEventoDia() {
     const basicStruc = await fetch("http://localhost:3000/events");// <-- For development
     const primerEvento = await basicStruc.json();
 
-    const datesJSON = primerEvento[0].dayEvents[0].dateStartEvent;
-    const datesSplit = datesJSON.split("-");
-
-    let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
-
-    let horaInicial = primerEvento[0].dayEvents[0].hourStart;
-    let horafinal = primerEvento[0].dayEvents[0].hourFinish;
-    let tituloEvento = primerEvento[0].dayEvents[0].title;
-
-    let hours = fechaEvento.getHours();
-
-    // Day
-    if (fechaEvento.getDate() === currentWeek && fechaEvento.getDay() === currentDayName && fechaEvento.getFullYear() === currentYear) {
-        $eventoLi[hours].innerHTML = 
-            `<button id="event-Modal" class="btn-item" data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}">
-                <span class="sp-hour"> ${horaInicial} </span> - <span class="sp-title"> ${tituloEvento} </span>
-            </button>`;
-    } else {
-        $eventoLi[hours].innerHTML = '<li class="event"></li>';
+    if (primerEvento.length !== 0) {
+        console.log(currentDate);
+        for (let e = 0; e < primerEvento.length; e++) {
+            const datesJSON = primerEvento[e].dateStartEvent;
+            const datesSplit = datesJSON.split("-");
+        
+            let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
+        
+            let horaInicial = primerEvento[e].hourStart;
+            let horafinal = primerEvento[e].hourFinish;
+            let tituloEvento = primerEvento[e].title;
+        
+            let hours = fechaEvento.getHours();
+        
+            // Day
+            if (/* fechaEvento.getDay() === currentDate.getDay() &&  */fechaEvento.getDate() === currentDate.getDate() && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear()) {
+                $eventoLi[hours].innerHTML = 
+                    `<button id="event-Modal" class="btn-item" data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}">
+                        <span class="sp-hour"> ${horaInicial} </span> - <span class="sp-title"> ${tituloEvento} </span>
+                    </button>`;
+            } /* else {
+                $eventoLi[hours].innerHTML = '<li class="event"></li>';
+            } */
+        }
     }
+
 }

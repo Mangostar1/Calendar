@@ -19,7 +19,6 @@ export let currentYear = currentDate.getFullYear();
 
 
 const nameMonth = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-const nameDay = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
 
 /*--------------------------*/
 /*----Calendar Functions----*/
@@ -79,7 +78,7 @@ document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " d
 /*----Event Listeners----*/
 /*-----------------------*/
 document.addEventListener('click', (e) => {
-  console.log(e.target);
+  //console.log(e.target);
   //Mobile components control
   if (e.target.matches('.menu-img')) {
     document.querySelector('.buttons').classList.toggle('active');
@@ -131,9 +130,8 @@ document.addEventListener('click', (e) => {
   if (e.target.matches('#radio-day')) {//Day
     $calendarContainer.lastChild.remove();
     DayComponent($calendarContainer);
-    hourDayComponent();
+    hourDayComponent(currentDate, currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
     document.getElementById("fecha-day").innerHTML = currentDate.getDate() + " de " + nameMonth[currentDate.getMonth()] + " del " + currentDate.getFullYear();
-    document.getElementById('cambia-dia').innerHTML = nameDay[currentDate.getDay()] + " " + currentDate.getDate();
   }
   if (e.target.matches('#radio-week')) {//Week
     $calendarContainer.lastChild.remove();
@@ -169,22 +167,22 @@ function prevDay() {
   lessDays(currentDate, 1);
   currentDate.setFullYear(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
 
-  document.getElementById("fecha-day").innerHTML = " ";
-  document.getElementById("cambia-dia").innerHTML = " ";
+  DayComponent($calendarContainer);
+  hourDayComponent(currentDate, currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
 
+  document.getElementById("fecha-day").innerHTML = " ";
   document.getElementById("fecha-day").innerHTML = currentDate.getDate() + " de " + " " + nameMonth[currentDate.getMonth()] + " del " + currentDate.getFullYear();
-  document.getElementById("cambia-dia").innerHTML = nameDay[currentDate.getDay()] + " " + currentDate.getDate();
 }
 
 function nextDay() {
   addDays(currentDate, 1);
   currentDate.setFullYear(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
 
-  document.getElementById("fecha-day").innerHTML = " ";
-  document.getElementById("cambia-dia").innerHTML = " ";
+  DayComponent($calendarContainer);
+  hourDayComponent(currentDate, currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
 
+  document.getElementById("fecha-day").innerHTML = " ";
   document.getElementById("fecha-day").innerHTML = currentDate.getDate() + " de " + " " + nameMonth[currentDate.getMonth()] + " del " + currentDate.getFullYear();
-  document.getElementById("cambia-dia").innerHTML = nameDay[currentDate.getDay()] + " " + currentDate.getDate();
 }
 
   /*--------------*/
