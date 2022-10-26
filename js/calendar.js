@@ -167,6 +167,7 @@ function prevDay() {
   lessDays(currentDate, 1);
   currentDate.setFullYear(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
 
+  $calendarContainer.lastChild.remove();
   DayComponent($calendarContainer);
   hourDayComponent(currentDate, currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
 
@@ -178,6 +179,7 @@ function nextDay() {
   addDays(currentDate, 1);
   currentDate.setFullYear(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
 
+  $calendarContainer.lastChild.remove();
   DayComponent($calendarContainer);
   hourDayComponent(currentDate, currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
 

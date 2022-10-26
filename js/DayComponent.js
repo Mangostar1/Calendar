@@ -49,7 +49,7 @@ export function hourDayComponent(currentDate, getDay, getDate, getMonth, getFull
             `<div class="diario">
                 <p class="hora">  ${item.hour} </p>
                 <ul>
-                    <li class="event">Test</li>
+                    <li class="event eventDay">Test</li>
                 </ul>
             </div>`;
     });
@@ -59,15 +59,14 @@ export function hourDayComponent(currentDate, getDay, getDate, getMonth, getFull
     inicioEventoDia();
 }
 
-const $eventoLi = document.getElementsByClassName("event");
-
 async function inicioEventoDia() {
+    const $eventoLi = document.getElementsByClassName("eventDay");
+    console.log($eventoLi.length);
     //const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");// <-- For production
     const basicStruc = await fetch("http://localhost:3000/events");// <-- For development
     const primerEvento = await basicStruc.json();
 
     if (primerEvento.length !== 0) {
-        console.log(currentDate);
         for (let e = 0; e < primerEvento.length; e++) {
             const datesJSON = primerEvento[e].dateStartEvent;
             const datesSplit = datesJSON.split("-");
@@ -81,15 +80,20 @@ async function inicioEventoDia() {
             let hours = fechaEvento.getHours();
         
             // Day
-            if (/* fechaEvento.getDay() === currentDate.getDay() &&  */fechaEvento.getDate() === currentDate.getDate() && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear()) {
-                $eventoLi[hours].innerHTML = 
+            if (fechaEvento.getDay() === currentDate.getDay() && fechaEvento.getDate() === currentDate.getDate() && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear()) {
+                $eventoLi[hours].innerHTML += 
                     `<button id="event-Modal" class="btn-item" data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}">
                         <span class="sp-hour"> ${horaInicial} </span> - <span class="sp-title"> ${tituloEvento} </span>
                     </button>`;
-            } /* else {
-                $eventoLi[hours].innerHTML = '<li class="event"></li>';
+            }
+            /* for (let d = 0; d < $eventoLi.length; d++) {
+                if (fechaEvento.getDay() === currentDate.getDay() && fechaEvento.getDate() === currentDate.getDate() && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear()) {
+                    $eventoLi[d].innerHTML += 
+                        `<button id="event-Modal" class="btn-item" data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}">
+                            <span class="sp-hour"> ${horaInicial} </span> - <span class="sp-title"> ${tituloEvento} </span>
+                        </button>`;
+                }
             } */
         }
     }
-
 }
