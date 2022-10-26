@@ -86,14 +86,6 @@ async function inicioEventoDia() {
                         <span class="sp-hour"> ${horaInicial} </span> - <span class="sp-title"> ${tituloEvento} </span>
                     </button>`;
             }
-            /* for (let d = 0; d < $eventoLi.length; d++) {
-                if (fechaEvento.getDay() === currentDate.getDay() && fechaEvento.getDate() === currentDate.getDate() && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear()) {
-                    $eventoLi[d].innerHTML += 
-                        `<button id="event-Modal" class="btn-item" data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}">
-                            <span class="sp-hour"> ${horaInicial} </span> - <span class="sp-title"> ${tituloEvento} </span>
-                        </button>`;
-                }
-            } */
         }
     }
 }
