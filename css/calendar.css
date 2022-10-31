@@ -165,14 +165,12 @@ h1{
 }
 
 /* Loader */
-body{
-  position: relative;
-}
+
 .content-loader{
   background-color: rgba(63, 63, 63, 0.452);
-  padding: 50vh 50% 80vh 50%;
+  padding: 20% 50% 20% 50%;
   position: fixed;
-  top: 0%;
+  top: 51px;
   left: 0%;
   z-index: 999999;
 }

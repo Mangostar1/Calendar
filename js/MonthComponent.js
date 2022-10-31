@@ -79,16 +79,17 @@ async function eventoMonth() {
             let horafinal = basicMonthJson[d].hourFinish;
             let tituloEvento = basicMonthJson[d].title;
 
+            let btns =
+            `<button id="event-Modal" class="btn-item btm-event-month" data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}">
+                <span class="sp-hour"> ${horaInicial} - ${horafinal} </span> 
+                <br> 
+                <span class="sp-title"> ${tituloEvento} </span>
+            </button>`;
+
             if (dateMonth.getMonth() === currentDate.getMonth() && dateMonth.getFullYear() === currentDate.getFullYear()) {
-                eventMonth.innerHTML += 
-                    `<button id="event-Modal" class="btn-item btm-event-month" data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}">
-                        <span class="sp-hour"> ${horaInicial} - ${horafinal} </span> 
-                        <br> 
-                        <span class="sp-title"> ${tituloEvento} </span>
-                    </button>`;
-            } /* else {
-                eventMonth.innerHTML = `<li class="event"> </li>`;
-            } */
+                document.querySelector(".content-loader").style.display="none";
+                eventMonth.innerHTML += btns;
+            }
         }
     }
 }
