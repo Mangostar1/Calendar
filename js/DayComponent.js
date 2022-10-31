@@ -61,7 +61,6 @@ export function hourDayComponent(currentDate, getDay, getDate, getMonth, getFull
 
 async function inicioEventoDia() {
     const $eventoLi = document.getElementsByClassName("eventDay");
-    console.log($eventoLi.length);
     //const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");// <-- For production
     const basicStruc = await fetch("http://localhost:3000/events");// <-- For development
     const primerEvento = await basicStruc.json();

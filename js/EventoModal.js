@@ -24,6 +24,9 @@ export function NewModalEvent(element) {
         <div class="inputs-content">
             <label for="timeInput" class="labels-modal">Hora de inicio</label>
             <input type='time' id='timeInput' />
+
+            <label for="timeInputEnd" class="labels-modal">Hora de termino</label>
+            <input type='time' id='timeInputEnd' />
         </div>
 
         <div class="modal-submit-content">
@@ -52,10 +55,34 @@ document.addEventListener('click', async(e) => {
         const $description = document.getElementById('descriptionEvent').value;
         const $date = document.getElementById('dateInput').value;
         const $time = document.getElementById('timeInput').value;
+        const $timeEnd = document.getElementById('timeInputEnd').value;
 
-        console.log($title, $description, $date, $time);
+        console.log($title, $description, $date, $time, $timeEnd);
 
-        //await fetch();
+        await fetch('http://localhost:3000/events', {//<-- POST
+            'method' : 'POST',
+            'headers' : {
+                'Content-Type': 'application/json'
+            },
+            'body': JSON.stringify({
+                "dateStartEvent": `${$date}`,
+                "hourStart": `${$time}`,
+                "dateFinishEvent": "2022-10-17",
+                "hourFinish": `${$timeEnd}`,
+                "title": `${$title}`,
+                "description": `${$description}`,
+                "statusInformation": {
+                    "statusCode": "001",
+                    "status": "activo",
+                    "colorStatus": "green"
+                },
+                "typeInformation": {
+                    "type": "0001",
+                    "colorBackgroundType": "#0096a6",
+                    "colorType": "white"
+                }
+            })
+        });
     }
 });
 
