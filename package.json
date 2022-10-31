@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "jest",
-    "api": "json-server -w -p 3000 basicStructure.json",
-    "api2": "json-server -w -p 3000 OLDbasicStructure.json"
+    "api": "json-server -w -p 3000 OLDbasicStructure.json",
+    "api2": "json-server -w -p 3000 basicStructure.json"
   },
   "repository": {
     "type": "git",
