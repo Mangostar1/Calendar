@@ -75,12 +75,13 @@ async function inicioEventoDia() {
             let horaInicial = primerEvento[e].hourStart;
             let horafinal = primerEvento[e].hourFinish;
             let tituloEvento = primerEvento[e].title;
+            let descriptcionEvent = primerEvento[e].description;
         
             let hours = fechaEvento.getHours();
 
             let btns =
-                `<button id="event-Modal" class="btn-item" data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}">
-                    <span class="sp-hour"> ${horaInicial} </span> - <span class="sp-title"> ${tituloEvento} </span>
+                `<button id="event-Modal" class="btn-item" data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}" data-description="${descriptcionEvent}">
+                    <span class="sp-title"> ${tituloEvento} </span>
                 </button>`;
         
             // Day

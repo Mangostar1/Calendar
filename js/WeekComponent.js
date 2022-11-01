@@ -319,7 +319,6 @@ async function eventsWeek() {
             //Dates yy - mm - dd for new Date()
             const datesJSON = basicWeekJSON[e].dateStartEvent;
             const datesSplit = datesJSON.split("-");
-            //console.log(basicWeekJSON[e].dateStartEvent);
         
             //Hours hour:minutes:secons for new Date()
             const hoursJSON = basicWeekJSON[e].hourStart;
@@ -327,6 +326,7 @@ async function eventsWeek() {
             const hoursSplit = hoursJSON.split(":");
             
             const titleEvent = basicWeekJSON[e].title
+            let descriptcionEvent = basicWeekJSON[e].description;
 
             
             let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2] , hoursSplit[0], hoursSplit[1], hoursSplit[2]);
@@ -338,14 +338,14 @@ async function eventsWeek() {
             let tmpEventDayWeek = fechaEvento.getDay(); // Trae el dia de la semana del json
             let tmpHourDayWeek = fechaEvento.getHours(); // Trae la hora del json
             let btns = 
-                `<button id="event-Modal" class="btn-item" data-hour-start="${hoursJSON}" data-hour-finish="${hoursFinishJSON}" data-title="${titleEvent}">
-                    <span class="sp-hour"> ${hoursJSON} </span> - <span class="sp-title"> ${titleEvent} </span>
+                `<button id="event-Modal" class="btn-item" data-hour-start="${hoursJSON}" data-hour-finish="${hoursFinishJSON}" data-title="${titleEvent}" data-description="${descriptcionEvent}">
+                    <span class="sp-title"> ${titleEvent} </span>
                 </button>`;
 
             for (let w = 0; w < 168; w++) {//<-- 1 | 169
                 if(horas === tmpHourDayWeek && tmpEventDayWeek === day && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear() && numWeekEvent === numOfCurrentWeek){
-                    eventWekk[w].innerHTML += btns;
                     document.querySelector(".content-loader").style.display="none";
+                    eventWekk[w].innerHTML += btns;
                 }
         
                 /* if(w % 7 == 0){

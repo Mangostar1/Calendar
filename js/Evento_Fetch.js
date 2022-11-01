@@ -33,7 +33,7 @@ function ModalEventWeek(element, button) {
     <div class="modal-content-info">
         <h2 class="color-text">${button.dataset.title}</h2>
 
-        <p class="color-text">Descripcion</p>
+        <p class="color-text">${button.dataset.description}</p>
 
         <div class="inputs-content">
             <p class="color-text">Desde: ${button.dataset.hourFinish}</p>
