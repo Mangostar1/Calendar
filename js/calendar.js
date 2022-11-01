@@ -132,14 +132,14 @@ document.addEventListener('click', (e) => {
     DayComponent($calendarContainer);
     hourDayComponent(currentDate, currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
     document.getElementById("fecha-day").innerHTML = currentDate.getDate() + " de " + nameMonth[currentDate.getMonth()] + " del " + currentDate.getFullYear();
-    document.querySelector(".content-loader").style.display="block";
+    //document.querySelector(".content-loader").style.display="block";
   }
   if (e.target.matches('#radio-week')) {//Week
     $calendarContainer.lastChild.remove();
     WeekComponent($calendarContainer);
     hourWeekComponent(currentDate, currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
     document.getElementById("fecha-week").innerHTML = nameMonth[currentDate.getMonth()] + " de " + currentDate.getFullYear();
-    document.querySelector(".content-loader").style.display="block";
+    //document.querySelector(".content-loader").style.display="block";
   }
   if (e.target.matches('#radio-month')) {//Month
     $calendarContainer.lastChild.remove();
@@ -147,7 +147,7 @@ document.addEventListener('click', (e) => {
     DaysOfMonth(currentDate.getMonth());
     document.getElementById("dates-control-month").style = "display: flex";
     document.getElementById("fecha-month").innerHTML = nameMonth[currentDate.getMonth()] + " de " + currentDate.getFullYear();
-    document.querySelector(".content-loader").style.display="block";
+    //document.querySelector(".content-loader").style.display="block";
   }
   if (e.target.matches('#radio-year')) {//Year
     $calendarContainer.lastChild.remove();
