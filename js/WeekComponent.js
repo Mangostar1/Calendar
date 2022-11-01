@@ -337,15 +337,15 @@ async function eventsWeek() {
             let horas = 0; //La hora del evento | Actual en el calendario
             let tmpEventDayWeek = fechaEvento.getDay(); // Trae el dia de la semana del json
             let tmpHourDayWeek = fechaEvento.getHours(); // Trae la hora del json
-            //console.log(fechaEvento.getDay(), 'Dia de la semana')
+            let btns = 
+                `<button id="event-Modal" class="btn-item" data-hour-start="${hoursJSON}" data-hour-finish="${hoursFinishJSON}" data-title="${titleEvent}">
+                    <span class="sp-hour"> ${hoursJSON} </span> - <span class="sp-title"> ${titleEvent} </span>
+                </button>`;
 
             for (let w = 0; w < 168; w++) {//<-- 1 | 169
-                //console.log(day, 'day');
                 if(horas === tmpHourDayWeek && tmpEventDayWeek === day && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear() && numWeekEvent === numOfCurrentWeek){
-                    eventWekk[w].innerHTML += 
-                        `<button id="event-Modal" class="btn-item" data-hour-start="${hoursJSON}" data-hour-finish="${hoursFinishJSON}" data-title="${titleEvent}">
-                            <span class="sp-hour"> ${hoursJSON} </span> - <span class="sp-title"> ${titleEvent} </span>
-                        </button>`;
+                    eventWekk[w].innerHTML += btns;
+                    document.querySelector(".content-loader").style.display="none";
                 }
         
                 /* if(w % 7 == 0){

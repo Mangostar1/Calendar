@@ -85,10 +85,10 @@ async function eventoMonth() {
                 <br> 
                 <span class="sp-title"> ${tituloEvento} </span>
             </button>`;
-
+            
             if (dateMonth.getMonth() === currentDate.getMonth() && dateMonth.getFullYear() === currentDate.getFullYear()) {
-                document.querySelector(".content-loader").style.display="none";
                 eventMonth.innerHTML += btns;
+                document.querySelector(".content-loader").style.display="none";
             }
         }
     }

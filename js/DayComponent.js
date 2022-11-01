@@ -77,13 +77,16 @@ async function inicioEventoDia() {
             let tituloEvento = primerEvento[e].title;
         
             let hours = fechaEvento.getHours();
+
+            let btns =
+                `<button id="event-Modal" class="btn-item" data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}">
+                    <span class="sp-hour"> ${horaInicial} </span> - <span class="sp-title"> ${tituloEvento} </span>
+                </button>`;
         
             // Day
             if (fechaEvento.getDay() === currentDate.getDay() && fechaEvento.getDate() === currentDate.getDate() && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear()) {
-                $eventoLi[hours].innerHTML += 
-                    `<button id="event-Modal" class="btn-item" data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}">
-                        <span class="sp-hour"> ${horaInicial} </span> - <span class="sp-title"> ${tituloEvento} </span>
-                    </button>`;
+                $eventoLi[hours].innerHTML += btns;
+                document.querySelector(".content-loader").style.display="none";
             }
         }
     }
