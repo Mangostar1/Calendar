@@ -87,7 +87,7 @@ async function inicioEventoDia() {
             // Day
             if (fechaEvento.getDay() === currentDate.getDay() && fechaEvento.getDate() === currentDate.getDate() && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear()) {
                 $eventoLi[hours].innerHTML += btns;
-                document.querySelector(".content-loader").style.display="none";
+                //document.querySelector(".content-loader").style.display="none";
             }
         }
     }

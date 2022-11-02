@@ -59,8 +59,57 @@ export function DaysOfMonth(month) {
     }
 }
 
+const $loader = 
+    `<div class="content-loader">
+        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>`;
+
+function Loading() {
+    document.querySelector(".content-loader").style.display="block";
+    setTimeout(() => {
+        document.querySelector(".content-loader").style.display="none";
+    }, 6000);
+}
+function IsLoaded() {
+    document.querySelector(".content-loader").style.display="none";
+}
 //Eventos del mes
 async function eventoMonth() {
+    Loading();
+    const basicMonth = await fetch("http://localhost:3000/events");// <-- For development
+    //const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");// <-- For production
+    const basicMonthJson = await basicMonth.json();
+
+    if (basicMonthJson.length !== 0) {// <-- Si dentro de un dia de la semana hay eventos, este recorre todos los eventos agendados en el dia
+        for (let d = 0; d < basicMonthJson.length; d++) {// <-- Con este for recorro todos los eventos del dia en cuestion
+            let datesJSON = basicMonthJson[d].dateStartEvent;
+            
+            const datesSplit = datesJSON.split('-');
+            
+            let dateMonth = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
+            let diames = dateMonth.getDate();
+            let $eventMonth = document.getElementById(`evento-${diames}`);
+
+            let horaInicial = basicMonthJson[d].hourStart;
+            let horafinal = basicMonthJson[d].hourFinish;
+            let tituloEvento = basicMonthJson[d].title;
+            let descriptcionEvent = basicMonthJson[d].description;
+
+            let btns =
+            `<button id="event-Modal" class="btn-item btm-event-month" data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}" data-description="${descriptcionEvent}">
+                <span class="sp-title"> ${tituloEvento} </span>
+            </button>`;
+            
+            if (dateMonth.getMonth() === currentDate.getMonth() && dateMonth.getFullYear() === currentDate.getFullYear()) {
+                IsLoaded();
+                $eventMonth.innerHTML += btns;
+            }
+        }
+    }
+}
+
+//btn en formato movil
+async function eventoMonthMobile() {
     const basicMonth = await fetch("http://localhost:3000/events");// <-- For development
     //const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");// <-- For production
     const basicMonthJson = await basicMonth.json();
@@ -86,39 +135,8 @@ async function eventoMonth() {
             </button>`;
             
             if (dateMonth.getMonth() === currentDate.getMonth() && dateMonth.getFullYear() === currentDate.getFullYear()) {
-                document.querySelector(".content-loader").style.display="none";
                 eventMonth.innerHTML += btns;
             }
-        }
-    }
-}
-
-
-//Se requiere actualizar este evento al formato actual
-async function eventoMonthMobile() {
-    //const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
-    const basicMonth = await fetch("http://localhost:3000/events");// <-- For development
-    const basicMonthJson = await basicMonth.json();
-
-    for (let i = 0; i < 3; i++) {
-        let datesJSON = basicMonthJson[i].dateStartEvent;
-
-        const datesSplit = datesJSON.split('-');
-
-        let dateMonth = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
-        let diames = dateMonth.getDate();
-        let eventMonth = document.getElementById(`evento-${diames}`);
-
-        let horaInicialAA = basicMonthJson[i].hourStart;
-        let horafinalAA = basicMonthJson[i].hourFinish;
-        let tituloEventoAA = basicMonthJson[i].title;
-
-        if (dateMonth.getMonth() === currentMonth && dateMonth.getFullYear() === currentYear) {
-            eventMonth.innerHTML = 
-                `<button id="event-Modal" class="btn-item" id="btn-event-${i}">
-                </button>`;
-        } else {
-            eventMonth.innerHTML = `<li class="event"></li>`;
         }
     }
 }

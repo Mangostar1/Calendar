@@ -344,7 +344,7 @@ async function eventsWeek() {
 
             for (let w = 0; w < 168; w++) {//<-- 1 | 169
                 if(horas === tmpHourDayWeek && tmpEventDayWeek === day && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear() && numWeekEvent === numOfCurrentWeek){
-                    document.querySelector(".content-loader").style.display="none";
+                    //document.querySelector(".content-loader").style.display="none";
                     eventWekk[w].innerHTML += btns;
                 }
         
