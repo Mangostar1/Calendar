@@ -4,4 +4,8 @@ Calendario que tiene como fin, poder ser utilizado para agendar y consultar even
 
 [Web](https://mangostar1.github.io/Calendar/)
 
-## Aun en fase de pruebas
+[GitHub](https://github.com/Mangostar1/Calendar)
+
+## Dependencias
+
+Para hacer uso de este calendario no es necesario instalarle dependencias npm, solo hace hace falta conectarla a alguna API para poder hacer el intercambio de datos.
