@@ -67,37 +67,42 @@ function IsLoaded() {
 }
 
 async function inicioEventoDia() {
-    const $eventoLi = document.getElementsByClassName("eventDay");
-    //const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");// <-- For production
-    const basicStruc = await fetch("http://localhost:3000/events");// <-- For development
-    const primerEvento = await basicStruc.json();
-
-    if (primerEvento.length !== 0) {
-        for (let e = 0; e < primerEvento.length; e++) {
-            const datesJSON = primerEvento[e].dateStartEvent;
-            const datesSplit = datesJSON.split("-");
-        
-            let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
-        
-            let horaInicial = primerEvento[e].hourStart;
-            let horafinal = primerEvento[e].hourFinish;
-            let tituloEvento = primerEvento[e].title;
-            let descriptcionEvent = primerEvento[e].description;
-        
-            let hours = fechaEvento.getHours();
-
-            let btns =
-                `<button id="event-Modal" class="btn-item" data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}" data-description="${descriptcionEvent}">
-                    <span class="sp-title"> ${tituloEvento} </span>
-                </button>`;
-        
-            // Day
-            if (fechaEvento.getDay() === currentDate.getDay() && fechaEvento.getDate() === currentDate.getDate() && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear()) {
-                $eventoLi[hours].innerHTML += btns;
-                IsLoaded();
-            } else {
-                IsLoaded();
+    try {
+        const $eventoLi = document.getElementsByClassName("eventDay");
+        //const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");// <-- For production
+        const basicStruc = await fetch("http://localhost:3000/events");// <-- For development
+        const primerEvento = await basicStruc.json();
+    
+        if (primerEvento.length !== 0) {
+            for (let e = 0; e < primerEvento.length; e++) {
+                const datesJSON = primerEvento[e].dateStartEvent;
+                const datesSplit = datesJSON.split("-");
+            
+                let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
+            
+                let horaInicial = primerEvento[e].hourStart;
+                let horafinal = primerEvento[e].hourFinish;
+                let tituloEvento = primerEvento[e].title;
+                let descriptcionEvent = primerEvento[e].description;
+            
+                let hours = fechaEvento.getHours();
+    
+                let btns =
+                    `<button id="event-Modal" class="btn-item" data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}" data-description="${descriptcionEvent}">
+                        <span class="sp-title"> ${tituloEvento} </span>
+                    </button>`;
+            
+                // Day
+                if (fechaEvento.getDay() === currentDate.getDay() && fechaEvento.getDate() === currentDate.getDate() && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear()) {
+                    $eventoLi[hours].innerHTML += btns;
+                    IsLoaded();
+                } else {
+                    IsLoaded();
+                }
             }
         }
+    } catch (err) {
+        console.error(err);
+        IsLoaded();
     }
 }

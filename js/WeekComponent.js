@@ -316,59 +316,64 @@ function IsLoaded() {
 
 //Events Week
 async function eventsWeek() {
-    const basicWeek = await fetch("http://localhost:3000/events");
-    const basicWeekJSON = await basicWeek.json();
-
-    const eventWekk = document.getElementsByClassName("eventWeek");
-    if (basicWeekJSON.length !== 0) {
-        for (let e = 0; e < basicWeekJSON.length; e++) {
+    try {
+        const basicWeek = await fetch("http://localhost:3000/events");
+        const basicWeekJSON = await basicWeek.json();
+    
+        const eventWekk = document.getElementsByClassName("eventWeek");
+        if (basicWeekJSON.length !== 0) {
+            for (let e = 0; e < basicWeekJSON.length; e++) {
+                
+                //Dates yy - mm - dd for new Date()
+                const datesJSON = basicWeekJSON[e].dateStartEvent;
+                const datesSplit = datesJSON.split("-");
             
-            //Dates yy - mm - dd for new Date()
-            const datesJSON = basicWeekJSON[e].dateStartEvent;
-            const datesSplit = datesJSON.split("-");
-        
-            //Hours hour:minutes:secons for new Date()
-            const hoursJSON = basicWeekJSON[e].hourStart;
-            const hoursFinishJSON = basicWeekJSON[e].hourFinish;
-            const hoursSplit = hoursJSON.split(":");
+                //Hours hour:minutes:secons for new Date()
+                const hoursJSON = basicWeekJSON[e].hourStart;
+                const hoursFinishJSON = basicWeekJSON[e].hourFinish;
+                const hoursSplit = hoursJSON.split(":");
+                
+                const titleEvent = basicWeekJSON[e].title
+                let descriptcionEvent = basicWeekJSON[e].description;
+    
+                
+                let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2] , hoursSplit[0], hoursSplit[1], hoursSplit[2]);
+                let numWeekEvent = fechaEvento.getWeekNumber();
+                let numOfCurrentWeek = currentDate.getWeekNumber();
+                let cont = 1;
+                let day = 1; //El dia de la semana L a D | Actual en el calendario 1
+                let horas = 0; //La hora del evento | Actual en el calendario
+                let tmpEventDayWeek = fechaEvento.getDay(); // Trae el dia de la semana del json
+                let tmpHourDayWeek = fechaEvento.getHours(); // Trae la hora del json
+                
+                let $btns = 
+                    `<button id="event-Modal" class="btn-item" data-hour-start="${hoursJSON}" data-hour-finish="${hoursFinishJSON}" data-title="${titleEvent}" data-description="${descriptcionEvent}">
+                        <span class="sp-title"> ${titleEvent} </span>
+                    </button>`;
+    
+                for (let w = 0; w < 168; w++) {//<-- 1 | 169
+                    if(horas === tmpHourDayWeek && tmpEventDayWeek === day && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear() && numWeekEvent === numOfCurrentWeek){
+                        eventWekk[w].innerHTML += $btns;
+                        IsLoaded();
+                    } else {
+                        IsLoaded();
+                    }
             
-            const titleEvent = basicWeekJSON[e].title
-            let descriptcionEvent = basicWeekJSON[e].description;
-
-            
-            let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2] , hoursSplit[0], hoursSplit[1], hoursSplit[2]);
-            let numWeekEvent = fechaEvento.getWeekNumber();
-            let numOfCurrentWeek = currentDate.getWeekNumber();
-            let cont = 1;
-            let day = 1; //El dia de la semana L a D | Actual en el calendario 1
-            let horas = 0; //La hora del evento | Actual en el calendario
-            let tmpEventDayWeek = fechaEvento.getDay(); // Trae el dia de la semana del json
-            let tmpHourDayWeek = fechaEvento.getHours(); // Trae la hora del json
-            
-            let $btns = 
-                `<button id="event-Modal" class="btn-item" data-hour-start="${hoursJSON}" data-hour-finish="${hoursFinishJSON}" data-title="${titleEvent}" data-description="${descriptcionEvent}">
-                    <span class="sp-title"> ${titleEvent} </span>
-                </button>`;
-
-            for (let w = 0; w < 168; w++) {//<-- 1 | 169
-                if(horas === tmpHourDayWeek && tmpEventDayWeek === day && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear() && numWeekEvent === numOfCurrentWeek){
-                    eventWekk[w].innerHTML += $btns;
-                    IsLoaded();
-                } else {
-                    IsLoaded();
+                    /* if(w % 7 == 0){
+                        horas++;
+                        day = 0;
+                    } */
+                    if(w === 6 || w === 13 || w === 20 || w === 27 || w === 34 || w === 41 || w === 48 || w === 55 || w === 62 || w === 69 || w === 76 || w === 83 || w === 90 || w === 97 || w === 104 || w === 111 || w === 118 || w === 125 || w === 132 || w === 139 || w === 146 || w === 153 || w === 160 || w === 167){
+                        horas++;
+                        day = 0;
+                    }
+                    day++;
+                    cont++;
                 }
-        
-                /* if(w % 7 == 0){
-                    horas++;
-                    day = 0;
-                } */
-                if(w === 6 || w === 13 || w === 20 || w === 27 || w === 34 || w === 41 || w === 48 || w === 55 || w === 62 || w === 69 || w === 76 || w === 83 || w === 90 || w === 97 || w === 104 || w === 111 || w === 118 || w === 125 || w === 132 || w === 139 || w === 146 || w === 153 || w === 160 || w === 167){
-                    horas++;
-                    day = 0;
-                }
-                day++;
-                cont++;
             }
         }
+    } catch (err) {
+        console.error(err);
+        IsLoaded();
     }
 }

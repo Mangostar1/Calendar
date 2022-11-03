@@ -67,37 +67,42 @@ function IsLoaded() {
 }
 //Eventos del mes
 async function eventoMonth() {
-    const basicMonth = await fetch("http://localhost:3000/events");// <-- For development
-    //const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");// <-- For production
-    const basicMonthJson = await basicMonth.json();
-
-    if (basicMonthJson.length !== 0) {// <-- Si dentro de un dia de la semana hay eventos, este recorre todos los eventos agendados en el dia
-        for (let d = 0; d < basicMonthJson.length; d++) {// <-- Con este for recorro todos los eventos del dia en cuestion
-            let datesJSON = basicMonthJson[d].dateStartEvent;
-            
-            const datesSplit = datesJSON.split('-');
-            
-            let dateMonth = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
-            let diames = dateMonth.getDate();
-            let $eventMonth = document.getElementById(`evento-${diames}`);
-
-            let horaInicial = basicMonthJson[d].hourStart;
-            let horafinal = basicMonthJson[d].hourFinish;
-            let tituloEvento = basicMonthJson[d].title;
-            let descriptcionEvent = basicMonthJson[d].description;
-
-            let btns =
-            `<button id="event-Modal" class="btn-item btm-event-month" data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}" data-description="${descriptcionEvent}">
-                <span class="sp-title"> ${tituloEvento} </span>
-            </button>`;
-            
-            if (dateMonth.getMonth() === currentDate.getMonth() && dateMonth.getFullYear() === currentDate.getFullYear()) {
-                $eventMonth.innerHTML += btns;
-                IsLoaded();
-            } else {
-                IsLoaded();
+    try {
+        const basicMonth = await fetch("http://localhost:3000/events");// <-- For development
+        //const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");// <-- For production
+        const basicMonthJson = await basicMonth.json();
+    
+        if (basicMonthJson.length !== 0) {// <-- Si dentro de un dia de la semana hay eventos, este recorre todos los eventos agendados en el dia
+            for (let d = 0; d < basicMonthJson.length; d++) {// <-- Con este for recorro todos los eventos del dia en cuestion
+                let datesJSON = basicMonthJson[d].dateStartEvent;
+                
+                const datesSplit = datesJSON.split('-');
+                
+                let dateMonth = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
+                let diames = dateMonth.getDate();
+                let $eventMonth = document.getElementById(`evento-${diames}`);
+    
+                let horaInicial = basicMonthJson[d].hourStart;
+                let horafinal = basicMonthJson[d].hourFinish;
+                let tituloEvento = basicMonthJson[d].title;
+                let descriptcionEvent = basicMonthJson[d].description;
+    
+                let btns =
+                `<button id="event-Modal" class="btn-item btm-event-month" data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}" data-description="${descriptcionEvent}">
+                    <span class="sp-title"> ${tituloEvento} </span>
+                </button>`;
+                
+                if (dateMonth.getMonth() === currentDate.getMonth() && dateMonth.getFullYear() === currentDate.getFullYear()) {
+                    $eventMonth.innerHTML += btns;
+                    IsLoaded();
+                } else {
+                    IsLoaded();
+                }
             }
         }
+    } catch (err) {
+        console.error(err);
+        IsLoaded();
     }
 }
 
