@@ -11,7 +11,10 @@ export function DayComponent(element) {
             <button id="next-day" class="next"> &#10095; </button>
         </div>
         <hr>
-        <h2 id="cambia-dia"></h2>`;
+        <h2 id="cambia-dia"></h2>
+        <div class="content-loader">
+            <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        </div>`;
 
     element.appendChild($DayContent);
 }
@@ -59,6 +62,10 @@ export function hourDayComponent(currentDate, getDay, getDate, getMonth, getFull
     inicioEventoDia();
 }
 
+function IsLoaded() {
+    document.querySelector(".content-loader").style.display="none";
+}
+
 async function inicioEventoDia() {
     const $eventoLi = document.getElementsByClassName("eventDay");
     //const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");// <-- For production
@@ -87,7 +94,9 @@ async function inicioEventoDia() {
             // Day
             if (fechaEvento.getDay() === currentDate.getDay() && fechaEvento.getDate() === currentDate.getDate() && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear()) {
                 $eventoLi[hours].innerHTML += btns;
-                //document.querySelector(".content-loader").style.display="none";
+                IsLoaded();
+            } else {
+                IsLoaded();
             }
         }
     }

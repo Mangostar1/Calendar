@@ -10,7 +10,10 @@ export function MonthComponent(element) {
             <h1 id="fecha-month" class="fecha">Diciembre de 2021</h1>
             <button id="next-month" class="next">&#10095;</button>
         </div>
-        <div id="days-of-month"></div>`;
+        <div id="days-of-month"></div>
+        <div class="content-loader">
+            <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        </div>`;
 
     element.appendChild($MonthContent);
 }
@@ -59,23 +62,11 @@ export function DaysOfMonth(month) {
     }
 }
 
-const $loader = 
-    `<div class="content-loader">
-        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-    </div>`;
-
-function Loading() {
-    document.querySelector(".content-loader").style.display="block";
-    setTimeout(() => {
-        document.querySelector(".content-loader").style.display="none";
-    }, 6000);
-}
 function IsLoaded() {
     document.querySelector(".content-loader").style.display="none";
 }
 //Eventos del mes
 async function eventoMonth() {
-    Loading();
     const basicMonth = await fetch("http://localhost:3000/events");// <-- For development
     //const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");// <-- For production
     const basicMonthJson = await basicMonth.json();
@@ -101,8 +92,10 @@ async function eventoMonth() {
             </button>`;
             
             if (dateMonth.getMonth() === currentDate.getMonth() && dateMonth.getFullYear() === currentDate.getFullYear()) {
-                IsLoaded();
                 $eventMonth.innerHTML += btns;
+                IsLoaded();
+            } else {
+                IsLoaded();
             }
         }
     }

@@ -47,6 +47,9 @@ export function WeekComponent(element) {
             <p class="diaa-week diasNumber"></p>
         </div>
         <div id="grid-hour"></div>
+    </div>
+    <div class="content-loader">
+        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     </div>`;
 
     element.appendChild($WeekContent);
@@ -307,6 +310,10 @@ export function hourWeekComponent(currentDate, getDay, getDate, getMonth, getFul
     eventsWeek()
 }
 
+function IsLoaded() {
+    document.querySelector(".content-loader").style.display="none";
+}
+
 //Events Week
 async function eventsWeek() {
     const basicWeek = await fetch("http://localhost:3000/events");
@@ -337,15 +344,18 @@ async function eventsWeek() {
             let horas = 0; //La hora del evento | Actual en el calendario
             let tmpEventDayWeek = fechaEvento.getDay(); // Trae el dia de la semana del json
             let tmpHourDayWeek = fechaEvento.getHours(); // Trae la hora del json
-            let btns = 
+            
+            let $btns = 
                 `<button id="event-Modal" class="btn-item" data-hour-start="${hoursJSON}" data-hour-finish="${hoursFinishJSON}" data-title="${titleEvent}" data-description="${descriptcionEvent}">
                     <span class="sp-title"> ${titleEvent} </span>
                 </button>`;
 
             for (let w = 0; w < 168; w++) {//<-- 1 | 169
                 if(horas === tmpHourDayWeek && tmpEventDayWeek === day && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear() && numWeekEvent === numOfCurrentWeek){
-                    //document.querySelector(".content-loader").style.display="none";
-                    eventWekk[w].innerHTML += btns;
+                    eventWekk[w].innerHTML += $btns;
+                    IsLoaded();
+                } else {
+                    IsLoaded();
                 }
         
                 /* if(w % 7 == 0){
