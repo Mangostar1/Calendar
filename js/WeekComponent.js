@@ -46,7 +46,6 @@ export function WeekComponent(element) {
             <p class="diaa-week">Dom</p>
             <p class="diaa-week diasNumber"></p>
         </div>
-        <div id="grid-hour"></div>
     </div>
     <div class="content-loader">
         <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
@@ -60,32 +59,31 @@ export function hourWeekComponent(currentDate, getDay, getDate, getMonth, getFul
     const $weekContent = document.getElementById("days-of-week");
     const $weekDays = document.getElementsByClassName("diasNumber");
     const nameMonth = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-    const hourDayWeek = [{
-        hour: "Horas"}, 
-        {hour: "00:00 hrs"}, 
-        {hour: "01:00 hrs"}, 
-        {hour: "02:00 hrs"}, 
-        {hour: "03:00 hrs"}, 
-        {hour: "04:00 hrs"}, 
-        {hour: "05:00 hrs"}, 
-        {hour: "06:00 hrs"}, 
-        {hour: "07:00 hrs"}, 
-        {hour: "08:00 hrs"}, 
-        {hour: "09:00 hrs"}, 
-        {hour: "10:00 hrs"}, 
-        {hour: "11:00 hrs"}, 
-        {hour: "12:00 hrs"}, 
-        {hour: "13:00 hrs"}, 
-        {hour: "14:00 hrs"}, 
-        {hour: "15:00 hrs"}, 
-        {hour: "16:00 hrs"}, 
-        {hour: "17:00 hrs"}, 
-        {hour: "18:00 hrs"}, 
-        {hour: "19:00 hrs"}, 
-        {hour: "20:00 hrs"}, 
-        {hour: "21:00 hrs"}, 
-        {hour: "22:00 hrs"}, 
-        {hour: "23:00 hrs"}
+    const hourDayWeekTest = [
+        "00:00 hrs", 
+        "01:00 hrs",
+        "02:00 hrs", 
+        "03:00 hrs", 
+        "04:00 hrs", 
+        "05:00 hrs", 
+        "06:00 hrs", 
+        "07:00 hrs", 
+        "08:00 hrs", 
+        "09:00 hrs", 
+        "10:00 hrs", 
+        "11:00 hrs", 
+        "12:00 hrs", 
+        "13:00 hrs", 
+        "14:00 hrs", 
+        "15:00 hrs", 
+        "16:00 hrs", 
+        "17:00 hrs", 
+        "18:00 hrs", 
+        "19:00 hrs", 
+        "20:00 hrs", 
+        "21:00 hrs", 
+        "22:00 hrs", 
+        "23:00 hrs"
     ];
 
     for (let w = 1; w < 169; w++) {
@@ -96,10 +94,6 @@ export function hourWeekComponent(currentDate, getDay, getDate, getMonth, getFul
                 </ul>
             </div>`;
     }
-
-    hourDayWeek.forEach((item) => {
-        document.getElementById("grid-hour").innerHTML += `<div class="horas"> ${item.hour} </div>`
-    });
 
     for (var i = 0; i < 7; i++) {
         if (getDay === 1) {// <-- Lunes
@@ -308,8 +302,95 @@ export function hourWeekComponent(currentDate, getDay, getDate, getMonth, getFul
         }
     }
     eventsWeek()
+
+    /*-Horas-*/
+    setTimeout(() => {
+        let semanal = document.querySelectorAll('.semanal');
+
+        function pushHoursWeek(hora) {
+            return `<p class="hours-in-Week">${hora}</p>`
+        }
+        
+        for (let h = 0; h < 7; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[0]);
+        }
+        for (let h = 7; h < 14; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[1]);
+        }
+        for (let h = 14; h < 21; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[2]);
+        }
+        for (let h = 21; h < 28; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[3]);
+        }
+        for (let h = 28; h < 35; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[4]);
+        }
+        for (let h = 35; h < 42; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[5]);
+        }
+        for (let h = 42; h < 49; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[6]);
+        }
+        for (let h = 49; h < 56; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[7]);
+        }
+        for (let h = 56; h < 63; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[8]);
+        }
+        for (let h = 63; h < 70; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[9]);
+        }
+        for (let h = 70; h < 77; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[10]);
+        }
+        for (let h = 77; h < 84; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[11]);
+        }
+        for (let h = 84; h < 91; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[12]);
+        }
+        for (let h = 91; h < 98; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[13]);
+        }
+        for (let h = 98; h < 105; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[14]);
+        }
+        for (let h = 105; h < 112; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[15]);
+        }
+        for (let h = 112; h < 119; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[16]);
+        }
+        for (let h = 119; h < 126; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[17]);
+        }
+        for (let h = 126; h < 133; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[18]);
+        }
+        for (let h = 133; h < 140; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[19]);
+        }
+        for (let h = 140; h < 147; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[20]);
+        }
+        for (let h = 147; h < 154; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[21]);
+        }
+        for (let h = 154; h < 161; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[22]);
+        }
+        for (let h = 161; h < 168; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[23]);
+        }
+    }, 1);
 }
 
+
+
+/*-------------*/
+/*-Eventos API-*/
+/*-------------*/
 function IsLoaded() {
     document.querySelector(".content-loader").style.display="none";
 }
