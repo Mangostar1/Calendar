@@ -54,11 +54,10 @@ export function WeekComponent(element) {
     element.appendChild($WeekContent);
 }
 
-export function hourWeekComponent(currentDate, getDay, getDate, getMonth, getFullYear) {
+export function hourWeekComponent(currentDate, getDay) {
 
     const $weekContent = document.getElementById("days-of-week");
     const $weekDays = document.getElementsByClassName("diasNumber");
-    const nameMonth = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
     const hourDayWeekTest = [
         "00:00 hrs", 
         "01:00 hrs",
@@ -240,7 +239,6 @@ export function hourWeekComponent(currentDate, getDay, getDate, getMonth, getFul
             let su = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             addDays(su, 2);
             $weekDays[6].innerHTML = su.getDate();
-
         }
         if (getDay === 6) {// <-- Sabado
 
@@ -386,8 +384,6 @@ export function hourWeekComponent(currentDate, getDay, getDate, getMonth, getFul
     }, 1);
 }
 
-
-
 /*-------------*/
 /*-Eventos API-*/
 /*-------------*/
@@ -416,7 +412,6 @@ async function eventsWeek() {
                 
                 const titleEvent = basicWeekJSON[e].title
                 let descriptcionEvent = basicWeekJSON[e].description;
-    
                 
                 let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2] , hoursSplit[0], hoursSplit[1], hoursSplit[2]);
                 let numWeekEvent = fechaEvento.getWeekNumber();
@@ -440,10 +435,6 @@ async function eventsWeek() {
                         IsLoaded();
                     }
             
-                    /* if(w % 7 == 0){
-                        horas++;
-                        day = 0;
-                    } */
                     if(w === 6 || w === 13 || w === 20 || w === 27 || w === 34 || w === 41 || w === 48 || w === 55 || w === 62 || w === 69 || w === 76 || w === 83 || w === 90 || w === 97 || w === 104 || w === 111 || w === 118 || w === 125 || w === 132 || w === 139 || w === 146 || w === 153 || w === 160 || w === 167){
                         horas++;
                         day = 0;
