@@ -11,7 +11,10 @@ export function DayComponent(element) {
             <button id="next-day" class="next"> &#10095; </button>
         </div>
         <hr>
-        <h2 id="cambia-dia"></h2>`;
+        <h2 id="cambia-dia"></h2>
+        <div class="content-loader">
+            <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        </div>`;
 
     element.appendChild($DayContent);
 }
@@ -59,36 +62,47 @@ export function hourDayComponent(currentDate, getDay, getDate, getMonth, getFull
     inicioEventoDia();
 }
 
+function IsLoaded() {
+    document.querySelector(".content-loader").style.display="none";
+}
+
 async function inicioEventoDia() {
-    const $eventoLi = document.getElementsByClassName("eventDay");
-    //const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");// <-- For production
-    const basicStruc = await fetch("http://localhost:3000/events");// <-- For development
-    const primerEvento = await basicStruc.json();
-
-    if (primerEvento.length !== 0) {
-        for (let e = 0; e < primerEvento.length; e++) {
-            const datesJSON = primerEvento[e].dateStartEvent;
-            const datesSplit = datesJSON.split("-");
-        
-            let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
-        
-            let horaInicial = primerEvento[e].hourStart;
-            let horafinal = primerEvento[e].hourFinish;
-            let tituloEvento = primerEvento[e].title;
-            let descriptcionEvent = primerEvento[e].description;
-        
-            let hours = fechaEvento.getHours();
-
-            let btns =
-                `<button id="event-Modal" class="btn-item" data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}" data-description="${descriptcionEvent}">
-                    <span class="sp-title"> ${tituloEvento} </span>
-                </button>`;
-        
-            // Day
-            if (fechaEvento.getDay() === currentDate.getDay() && fechaEvento.getDate() === currentDate.getDate() && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear()) {
-                $eventoLi[hours].innerHTML += btns;
-                document.querySelector(".content-loader").style.display="none";
+    try {
+        const $eventoLi = document.getElementsByClassName("eventDay");
+        //const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");// <-- For production
+        const basicStruc = await fetch("http://localhost:3000/events");// <-- For development
+        const primerEvento = await basicStruc.json();
+    
+        if (primerEvento.length !== 0) {
+            for (let e = 0; e < primerEvento.length; e++) {
+                const datesJSON = primerEvento[e].dateStartEvent;
+                const datesSplit = datesJSON.split("-");
+            
+                let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
+            
+                let horaInicial = primerEvento[e].hourStart;
+                let horafinal = primerEvento[e].hourFinish;
+                let tituloEvento = primerEvento[e].title;
+                let descriptcionEvent = primerEvento[e].description;
+            
+                let hours = fechaEvento.getHours();
+    
+                let btns =
+                    `<button id="event-Modal" class="btn-item" data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}" data-description="${descriptcionEvent}">
+                        <span class="sp-title"> ${tituloEvento} </span>
+                    </button>`;
+            
+                // Day
+                if (fechaEvento.getDay() === currentDate.getDay() && fechaEvento.getDate() === currentDate.getDate() && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear()) {
+                    $eventoLi[hours].innerHTML += btns;
+                    IsLoaded();
+                } else {
+                    IsLoaded();
+                }
             }
         }
+    } catch (err) {
+        console.error(err);
+        IsLoaded();
     }
 }

@@ -1,4 +1,4 @@
-import { currentDate, currentDayName, currentWeek, currentMonth, currentYear, getTotalDays, addDays, lessDays, startDay} from "./calendar.js";
+import { currentDate, getTotalDays, addDays, lessDays, startDay} from "./calendar.js";
 
 export function WeekComponent(element) {
     const $WeekContent = document.createElement('div');
@@ -46,43 +46,43 @@ export function WeekComponent(element) {
             <p class="diaa-week">Dom</p>
             <p class="diaa-week diasNumber"></p>
         </div>
-        <div id="grid-hour"></div>
+    </div>
+    <div class="content-loader">
+        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     </div>`;
 
     element.appendChild($WeekContent);
 }
 
-export function hourWeekComponent(currentDate, getDay, getDate, getMonth, getFullYear) {
+export function hourWeekComponent(currentDate, getDay) {
 
     const $weekContent = document.getElementById("days-of-week");
     const $weekDays = document.getElementsByClassName("diasNumber");
-    const nameMonth = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-    const hourDayWeek = [{
-        hour: "Horas"}, 
-        {hour: "00:00 hrs"}, 
-        {hour: "01:00 hrs"}, 
-        {hour: "02:00 hrs"}, 
-        {hour: "03:00 hrs"}, 
-        {hour: "04:00 hrs"}, 
-        {hour: "05:00 hrs"}, 
-        {hour: "06:00 hrs"}, 
-        {hour: "07:00 hrs"}, 
-        {hour: "08:00 hrs"}, 
-        {hour: "09:00 hrs"}, 
-        {hour: "10:00 hrs"}, 
-        {hour: "11:00 hrs"}, 
-        {hour: "12:00 hrs"}, 
-        {hour: "13:00 hrs"}, 
-        {hour: "14:00 hrs"}, 
-        {hour: "15:00 hrs"}, 
-        {hour: "16:00 hrs"}, 
-        {hour: "17:00 hrs"}, 
-        {hour: "18:00 hrs"}, 
-        {hour: "19:00 hrs"}, 
-        {hour: "20:00 hrs"}, 
-        {hour: "21:00 hrs"}, 
-        {hour: "22:00 hrs"}, 
-        {hour: "23:00 hrs"}
+    const hourDayWeekTest = [
+        "00:00 hrs", 
+        "01:00 hrs",
+        "02:00 hrs", 
+        "03:00 hrs", 
+        "04:00 hrs", 
+        "05:00 hrs", 
+        "06:00 hrs", 
+        "07:00 hrs", 
+        "08:00 hrs", 
+        "09:00 hrs", 
+        "10:00 hrs", 
+        "11:00 hrs", 
+        "12:00 hrs", 
+        "13:00 hrs", 
+        "14:00 hrs", 
+        "15:00 hrs", 
+        "16:00 hrs", 
+        "17:00 hrs", 
+        "18:00 hrs", 
+        "19:00 hrs", 
+        "20:00 hrs", 
+        "21:00 hrs", 
+        "22:00 hrs", 
+        "23:00 hrs"
     ];
 
     for (let w = 1; w < 169; w++) {
@@ -93,10 +93,6 @@ export function hourWeekComponent(currentDate, getDay, getDate, getMonth, getFul
                 </ul>
             </div>`;
     }
-
-    hourDayWeek.forEach((item) => {
-        document.getElementById("grid-hour").innerHTML += `<div class="horas"> ${item.hour} </div>`
-    });
 
     for (var i = 0; i < 7; i++) {
         if (getDay === 1) {// <-- Lunes
@@ -243,7 +239,6 @@ export function hourWeekComponent(currentDate, getDay, getDate, getMonth, getFul
             let su = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             addDays(su, 2);
             $weekDays[6].innerHTML = su.getDate();
-
         }
         if (getDay === 6) {// <-- Sabado
 
@@ -305,60 +300,152 @@ export function hourWeekComponent(currentDate, getDay, getDate, getMonth, getFul
         }
     }
     eventsWeek()
+
+    /*-Horas-*/
+    setTimeout(() => {
+        let semanal = document.querySelectorAll('.semanal');
+
+        function pushHoursWeek(hora) {
+            return `<p class="hours-in-Week">${hora}</p>`
+        }
+        
+        for (let h = 0; h < 7; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[0]);
+        }
+        for (let h = 7; h < 14; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[1]);
+        }
+        for (let h = 14; h < 21; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[2]);
+        }
+        for (let h = 21; h < 28; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[3]);
+        }
+        for (let h = 28; h < 35; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[4]);
+        }
+        for (let h = 35; h < 42; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[5]);
+        }
+        for (let h = 42; h < 49; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[6]);
+        }
+        for (let h = 49; h < 56; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[7]);
+        }
+        for (let h = 56; h < 63; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[8]);
+        }
+        for (let h = 63; h < 70; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[9]);
+        }
+        for (let h = 70; h < 77; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[10]);
+        }
+        for (let h = 77; h < 84; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[11]);
+        }
+        for (let h = 84; h < 91; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[12]);
+        }
+        for (let h = 91; h < 98; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[13]);
+        }
+        for (let h = 98; h < 105; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[14]);
+        }
+        for (let h = 105; h < 112; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[15]);
+        }
+        for (let h = 112; h < 119; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[16]);
+        }
+        for (let h = 119; h < 126; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[17]);
+        }
+        for (let h = 126; h < 133; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[18]);
+        }
+        for (let h = 133; h < 140; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[19]);
+        }
+        for (let h = 140; h < 147; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[20]);
+        }
+        for (let h = 147; h < 154; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[21]);
+        }
+        for (let h = 154; h < 161; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[22]);
+        }
+        for (let h = 161; h < 168; h++) {
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[23]);
+        }
+    }, 1);
+}
+
+/*-------------*/
+/*-Eventos API-*/
+/*-------------*/
+function IsLoaded() {
+    document.querySelector(".content-loader").style.display="none";
 }
 
 //Events Week
 async function eventsWeek() {
-    const basicWeek = await fetch("http://localhost:3000/events");
-    const basicWeekJSON = await basicWeek.json();
-
-    const eventWekk = document.getElementsByClassName("eventWeek");
-    if (basicWeekJSON.length !== 0) {
-        for (let e = 0; e < basicWeekJSON.length; e++) {
+    try {
+        const basicWeek = await fetch("http://localhost:3000/events");
+        const basicWeekJSON = await basicWeek.json();
+    
+        const eventWekk = document.getElementsByClassName("eventWeek");
+        if (basicWeekJSON.length !== 0) {
+            for (let e = 0; e < basicWeekJSON.length; e++) {
+                
+                //Dates yy - mm - dd for new Date()
+                const datesJSON = basicWeekJSON[e].dateStartEvent;
+                const datesSplit = datesJSON.split("-");
             
-            //Dates yy - mm - dd for new Date()
-            const datesJSON = basicWeekJSON[e].dateStartEvent;
-            const datesSplit = datesJSON.split("-");
-        
-            //Hours hour:minutes:secons for new Date()
-            const hoursJSON = basicWeekJSON[e].hourStart;
-            const hoursFinishJSON = basicWeekJSON[e].hourFinish;
-            const hoursSplit = hoursJSON.split(":");
+                //Hours hour:minutes:secons for new Date()
+                const hoursJSON = basicWeekJSON[e].hourStart;
+                const hoursFinishJSON = basicWeekJSON[e].hourFinish;
+                const hoursSplit = hoursJSON.split(":");
+                
+                const titleEvent = basicWeekJSON[e].title
+                let descriptcionEvent = basicWeekJSON[e].description;
+                
+                let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2] , hoursSplit[0], hoursSplit[1], hoursSplit[2]);
+                let numWeekEvent = fechaEvento.getWeekNumber();
+                let numOfCurrentWeek = currentDate.getWeekNumber();
+                let cont = 1;
+                let day = 1; //El dia de la semana L a D | Actual en el calendario 1
+                let horas = 0; //La hora del evento | Actual en el calendario
+                let tmpEventDayWeek = fechaEvento.getDay(); // Trae el dia de la semana del json
+                let tmpHourDayWeek = fechaEvento.getHours(); // Trae la hora del json
+                
+                let $btns = 
+                    `<button id="event-Modal" class="btn-item" data-hour-start="${hoursJSON}" data-hour-finish="${hoursFinishJSON}" data-title="${titleEvent}" data-description="${descriptcionEvent}">
+                        <span class="sp-title"> ${titleEvent} </span>
+                    </button>`;
+    
+                for (let w = 0; w < 168; w++) {//<-- 1 | 169
+                    if(horas === tmpHourDayWeek && tmpEventDayWeek === day && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear() && numWeekEvent === numOfCurrentWeek){
+                        eventWekk[w].innerHTML += $btns;
+                        IsLoaded();
+                    } else {
+                        IsLoaded();
+                    }
             
-            const titleEvent = basicWeekJSON[e].title
-            let descriptcionEvent = basicWeekJSON[e].description;
-
-            
-            let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2] , hoursSplit[0], hoursSplit[1], hoursSplit[2]);
-            let numWeekEvent = fechaEvento.getWeekNumber();
-            let numOfCurrentWeek = currentDate.getWeekNumber();
-            let cont = 1;
-            let day = 1; //El dia de la semana L a D | Actual en el calendario 1
-            let horas = 0; //La hora del evento | Actual en el calendario
-            let tmpEventDayWeek = fechaEvento.getDay(); // Trae el dia de la semana del json
-            let tmpHourDayWeek = fechaEvento.getHours(); // Trae la hora del json
-            let btns = 
-                `<button id="event-Modal" class="btn-item" data-hour-start="${hoursJSON}" data-hour-finish="${hoursFinishJSON}" data-title="${titleEvent}" data-description="${descriptcionEvent}">
-                    <span class="sp-title"> ${titleEvent} </span>
-                </button>`;
-
-            for (let w = 0; w < 168; w++) {//<-- 1 | 169
-                if(horas === tmpHourDayWeek && tmpEventDayWeek === day && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear() && numWeekEvent === numOfCurrentWeek){
-                    document.querySelector(".content-loader").style.display="none";
-                    eventWekk[w].innerHTML += btns;
+                    if(w === 6 || w === 13 || w === 20 || w === 27 || w === 34 || w === 41 || w === 48 || w === 55 || w === 62 || w === 69 || w === 76 || w === 83 || w === 90 || w === 97 || w === 104 || w === 111 || w === 118 || w === 125 || w === 132 || w === 139 || w === 146 || w === 153 || w === 160 || w === 167){
+                        horas++;
+                        day = 0;
+                    }
+                    day++;
+                    cont++;
                 }
-        
-                /* if(w % 7 == 0){
-                    horas++;
-                    day = 0;
-                } */
-                if(w === 6 || w === 13 || w === 20 || w === 27 || w === 34 || w === 41 || w === 48 || w === 55 || w === 62 || w === 69 || w === 76 || w === 83 || w === 90 || w === 97 || w === 104 || w === 111 || w === 118 || w === 125 || w === 132 || w === 139 || w === 146 || w === 153 || w === 160 || w === 167){
-                    horas++;
-                    day = 0;
-                }
-                day++;
-                cont++;
             }
         }
+    } catch (err) {
+        console.error(err);
+        IsLoaded();
     }
 }

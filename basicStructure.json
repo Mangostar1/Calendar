@@ -418,7 +418,8 @@
         "colorType": "white"
       }
     },
-    {
+    { 
+      "id": 23,
       "dateStartEvent": "2022-11-11",
       "hourStart": "00:17",
       "dateFinishEvent": "2022-10-17",
@@ -434,8 +435,7 @@
         "type": "0001",
         "colorBackgroundType": "#0096a6",
         "colorType": "white"
-      },
-      "id": 23
+      }
     }
   ]
 }

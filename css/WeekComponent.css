@@ -9,7 +9,7 @@
 
 #days-of-week{
     display: grid;
-    grid-template-columns: repeat(8, auto);
+    grid-template-columns: repeat(7, auto);
     grid-template-rows: repeat(24, auto);
     gap: 0px 0px;
     margin-top: 5px;
@@ -19,6 +19,9 @@
     display: flex;
     justify-content: end;
 }
+#days-of-week .grid-days:first-child{
+    border-top-left-radius: 10px;
+}
 #days-of-week .grid-days p{
     margin-left: 5px;
 }
@@ -26,8 +29,11 @@
     margin-right: 15px;
 }
 
-#days-of-week .semanal:nth-child(7n + 15){
+#days-of-week .semanal:nth-child(7n + 14){
     background-color: var(--neutralActive);
+}
+#days-of-week .semanal:nth-child(7n + 1){
+    border-left: solid 1px black;
 }
 
 #container-week .grid-days{
@@ -39,41 +45,20 @@
     border-top-right-radius: 10px;
     border-right: none;
 }
-#grid-hour{
-    grid-column: 1 / 2;
-    grid-row: 1 / 31;
 
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 44.5px repeat(24, auto);
-}
-
-.horas{
-    border-bottom: 1px solid var(--neutralGray);
-    border-right: 1px solid var(--neutralGray);
-    border-left: 1px solid var(--neutralGray);
-    padding-top: 40px;
-    text-align: center;
-    background-color: var(--background);
-}
-.horas:first-child{
-    margin-top: 10px;
-    padding-top: 8px;
-
-    font-weight: 600;
-    text-align: center;
-
-    border-top-left-radius: 10px;
-    border-right: 1px solid var(--neutralBlack);
-    border-left: none;
-    background-color: var(--colorOne);
-    color: var(--neutralWhite);
-}
 .semanal{
     border-bottom: 1px solid var(--neutralGray);
     border-right: 1px solid var(--neutralGray);
     background-color: var(--colorbg);
     min-height: 59.1px;
+    position: relative;
+}
+.hours-in-Week{
+    font-size: 14px;
+    color: var(--neutralGray);
+    position: absolute;
+    top: 4px;
+    right: 4px;
 }
 
 .diaa-week{
@@ -87,13 +72,12 @@
 
 #container-week .grid-days{
     text-align: center;
-
-
 }
+
 
 #container-week ul{
     list-style: none;
-    padding: 0px;
+    padding: 10px 0 0 0;
 
     width: 84%;
     margin-left: 0px;
