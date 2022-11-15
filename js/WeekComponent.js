@@ -1,4 +1,4 @@
-import { currentDate, getTotalDays, addDays, lessDays, startDay} from "./calendar.js";
+import { currentDate, addDays, lessDays} from "./calendar.js";
 
 export function WeekComponent(element) {
     const $WeekContent = document.createElement('div');

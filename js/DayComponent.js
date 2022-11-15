@@ -1,4 +1,4 @@
-import { getTotalDays, startDay, currentDate, currentWeek, currentMonth, currentYear, currentDayName} from "./calendar.js";
+import { currentDate} from "./calendar.js";
 
 export function DayComponent(element) {
     const $DayContent = document.createElement('div');
@@ -19,7 +19,7 @@ export function DayComponent(element) {
     element.appendChild($DayContent);
 }
 
-export function hourDayComponent(currentDate, getDay, getDate, getMonth, getFullYear) {
+export function hourDayComponent(currentDate) {
     const $containerDay = document.getElementById("container-Day");
     const hourDay = [{
         hour: "00:00 hrs"}, 
@@ -69,7 +69,6 @@ function IsLoaded() {
 async function inicioEventoDia() {
     try {
         const $eventoLi = document.getElementsByClassName("eventDay");
-        //const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");// <-- For production
         const basicStruc = await fetch("http://localhost:3000/events");// <-- For development
         const primerEvento = await basicStruc.json();
     
