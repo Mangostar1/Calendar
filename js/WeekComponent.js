@@ -58,7 +58,7 @@ export function hourWeekComponent(currentDate, getDay) {
 
     const $weekContent = document.getElementById("days-of-week");
     const $weekDays = document.getElementsByClassName("diasNumber");
-    const hourDayWeekTest = [
+    const hourDayWeek = [
         "00:00 hrs", 
         "01:00 hrs",
         "02:00 hrs", 
@@ -310,76 +310,76 @@ export function hourWeekComponent(currentDate, getDay) {
         }
         
         for (let h = 0; h < 7; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[0]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[0]);
         }
         for (let h = 7; h < 14; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[1]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[1]);
         }
         for (let h = 14; h < 21; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[2]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[2]);
         }
         for (let h = 21; h < 28; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[3]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[3]);
         }
         for (let h = 28; h < 35; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[4]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[4]);
         }
         for (let h = 35; h < 42; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[5]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[5]);
         }
         for (let h = 42; h < 49; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[6]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[6]);
         }
         for (let h = 49; h < 56; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[7]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[7]);
         }
         for (let h = 56; h < 63; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[8]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[8]);
         }
         for (let h = 63; h < 70; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[9]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[9]);
         }
         for (let h = 70; h < 77; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[10]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[10]);
         }
         for (let h = 77; h < 84; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[11]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[11]);
         }
         for (let h = 84; h < 91; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[12]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[12]);
         }
         for (let h = 91; h < 98; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[13]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[13]);
         }
         for (let h = 98; h < 105; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[14]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[14]);
         }
         for (let h = 105; h < 112; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[15]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[15]);
         }
         for (let h = 112; h < 119; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[16]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[16]);
         }
         for (let h = 119; h < 126; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[17]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[17]);
         }
         for (let h = 126; h < 133; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[18]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[18]);
         }
         for (let h = 133; h < 140; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[19]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[19]);
         }
         for (let h = 140; h < 147; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[20]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[20]);
         }
         for (let h = 147; h < 154; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[21]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[21]);
         }
         for (let h = 154; h < 161; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[22]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[22]);
         }
         for (let h = 161; h < 168; h++) {
-            semanal[h].innerHTML += pushHoursWeek(hourDayWeekTest[23]);
+            semanal[h].innerHTML += pushHoursWeek(hourDayWeek[23]);
         }
     }, 1);
 }
