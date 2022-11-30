@@ -77,9 +77,11 @@ async function inicioEventoDia() {
                 const datesJSON = primerEvento[e].dateStartEvent;
                 const datesSplit = datesJSON.split("-");
             
-                let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
-            
                 let horaInicial = primerEvento[e].hourStart;
+                let horaSplit = horaInicial.split(':');
+                
+                let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2], horaSplit[0], horaSplit[1], horaSplit[2]);
+
                 let horafinal = primerEvento[e].hourFinish;
                 let tituloEvento = primerEvento[e].title;
                 let descriptcionEvent = primerEvento[e].description;
