@@ -16,9 +16,7 @@ export function handlerBtnMobile() {
 //modal en construccion
 function ModalEventWeek(element, button) {
     const btnItem = document.getElementById('event-Modal');
-    //const btnItem = document.querySelectorAll('.btn-item');
-    //console.log(btnItem.length);
-
+    
     const $newDiv = document.createElement('div');
     
     $newDiv.classList.add('modal');
