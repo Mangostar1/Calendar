@@ -52,7 +52,7 @@ export function hourDayComponent(currentDate) {
             `<div class="diario">
                 <p class="hora">  ${item.hour} </p>
                 <ul>
-                    <li class="event eventDay">Test</li>
+                    <li class="event eventDay"></li>
                 </ul>
             </div>`;
     });
