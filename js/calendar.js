@@ -171,8 +171,8 @@ function prevDay() {
   DayComponent($calendarContainer);
   hourDayComponent(currentDate, currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
 
-  document.getElementById("fecha-day").innerHTML = " ";
-  document.getElementById("fecha-day").innerHTML = currentDate.getDate() + " de " + " " + nameMonth[currentDate.getMonth()] + " del " + currentDate.getFullYear();
+  document.getElementById("fecha-day").innerHTML = null;
+  document.getElementById("fecha-day").innerHTML = currentDate.getDate() + " de " + nameMonth[currentDate.getMonth()] + " del " + currentDate.getFullYear();
 }
 
 function nextDay() {
@@ -183,8 +183,8 @@ function nextDay() {
   DayComponent($calendarContainer);
   hourDayComponent(currentDate, currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
 
-  document.getElementById("fecha-day").innerHTML = " ";
-  document.getElementById("fecha-day").innerHTML = currentDate.getDate() + " de " + " " + nameMonth[currentDate.getMonth()] + " del " + currentDate.getFullYear();
+  document.getElementById("fecha-day").innerHTML = null;
+  document.getElementById("fecha-day").innerHTML = currentDate.getDate() + " de " + nameMonth[currentDate.getMonth()] + " del " + currentDate.getFullYear();
 }
 
   /*--------------*/
@@ -247,7 +247,7 @@ function setNewDateYear() {
   document.getElementById("fecha-year").innerHTML = currentDate.getFullYear();
 
   for (let y = 0; y < 12; y++) {
-    daysMonthYear[y].innerHTML = " "
+    daysMonthYear[y].innerHTML = null;
   }
   writeYear();
 }
