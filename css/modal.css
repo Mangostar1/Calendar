@@ -123,6 +123,24 @@
     letter-spacing: 2px;
 }
 
+/* Modal Details */
 .color-text{
     color: black;
+}
+
+.modal-tittle{
+    margin: .5rem 0 1.5rem 0;
+}
+
+.modal-description{
+    margin: 0 0 1rem 0;
+}
+
+.modal-hour{
+    margin: .4rem auto .1rem auto;
+}
+
+.text-bold{
+    font-weight: bold;
+    font-size: 1.1rem;
 }

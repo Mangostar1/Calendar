@@ -29,16 +29,16 @@ function ModalEventWeek(element, button) {
         </button>
     </div>
     <div class="modal-content-info">
-        <h2 class="color-text">${button.dataset.title}</h2>
+        <h2 class="color-text modal-tittle">${button.dataset.title}</h2>
 
-        <p class="color-text">${button.dataset.description}</p>
+        <p class="color-text modal-description">${button.dataset.description}</p>
 
         <div class="inputs-content">
-            <p class="color-text">Desde: ${button.dataset.hourFinish}</p>
+            <p class="color-text modal-hour"><span class="text-bold">Desde:</span>  ${button.dataset.hourFinish}</p>
         </div>
 
         <div class="inputs-content">
-        <p class="color-text">Hasta las: ${button.dataset.hourStart} hrs</p>
+        <p class="color-text modal-hour"><span class="text-bold">Hasta las:</span>  ${button.dataset.hourStart} hrs</p>
         </div>
     </div>`;
 
