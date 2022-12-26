@@ -45,8 +45,8 @@
     height:25px;
 }
 
-.btn-close-modal:hover{
-    background-color: var(--colorTwo);
+.btn-close-modal{
+    background-color: var(--colorOne);
     border: none;
 }
 .btn-close-modal:hover  .closeModal{
