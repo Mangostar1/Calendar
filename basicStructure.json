@@ -421,9 +421,9 @@
     { 
       "id": 23,
       "dateStartEvent": "2022-11-11",
-      "hourStart": "00:17",
-      "dateFinishEvent": "2022-10-17",
-      "hourFinish": "00:21",
+      "hourStart": "00:17:00",
+      "dateFinishEvent": "2022-11-11",
+      "hourFinish": "00:21:00",
       "title": "titulo A",
       "description": "descripcion test",
       "statusInformation": {

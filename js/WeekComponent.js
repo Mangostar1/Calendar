@@ -85,7 +85,7 @@ export function hourWeekComponent(currentDate, getDay) {
         "23:00 hrs"
     ];
 
-    for (let w = 1; w < 169; w++) {
+    for (let w = 0; w < 168; w++) {
         $weekContent.innerHTML += 
             `<div class="semanal">
                 <ul>
@@ -398,6 +398,7 @@ async function eventsWeek() {
         const basicWeekJSON = await basicWeek.json();
     
         const eventWekk = document.getElementsByClassName("eventWeek");
+        /* console.log(eventWekk); */
         if (basicWeekJSON.length !== 0) {
             for (let e = 0; e < basicWeekJSON.length; e++) {
                 
@@ -427,9 +428,10 @@ async function eventsWeek() {
                         <span class="sp-title"> ${titleEvent} </span>
                     </button>`;
     
-                for (let w = 0; w < 168; w++) {//<-- 1 | 169
-                    if(horas === tmpHourDayWeek && tmpEventDayWeek === day && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear() && numWeekEvent === numOfCurrentWeek){
+                for (let w = 0; w < 168; w++) {//<-- 1 | 169 || 0 | 168
+                    if(horas === fechaEvento.getHours() && fechaEvento.getDay() === day && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear() && numWeekEvent === numOfCurrentWeek){
                         eventWekk[w].innerHTML += $btns;
+                        console.log(w, 'tercero');
                         IsLoaded();
                     } else {
                         IsLoaded();
@@ -438,9 +440,20 @@ async function eventsWeek() {
                     if(w === 6 || w === 13 || w === 20 || w === 27 || w === 34 || w === 41 || w === 48 || w === 55 || w === 62 || w === 69 || w === 76 || w === 83 || w === 90 || w === 97 || w === 104 || w === 111 || w === 118 || w === 125 || w === 132 || w === 139 || w === 146 || w === 153 || w === 160 || w === 167){
                         horas++;
                         day = 0;
+                        /* console.log(w, 'primero') */
                     }
                     day++;
                     cont++;
+                    /* console.log(w, 'segundo') */
+                    
+                    /* if(w % 7 == 0){
+                        horas++;
+                        day = 0;
+                    }
+                    day++;
+                    cont++; */
+
+                    /* console.log('dia ->', day, 'horas ->', horas) */
                 }
             }
         }
