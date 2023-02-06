@@ -93,121 +93,122 @@ export function hourWeekComponent(currentDate, getDay) {
                 </ul>
             </div>`;
     }
-
+        
+    
     for (var i = 0; i < 7; i++) {
         if (getDay === 1) {// <-- Lunes
-
             let mo = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let tu = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let we = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let th = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let fr = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let sa = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let su = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+
             $weekDays[0].innerHTML = mo.getDate();
 
-            let tu = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             addDays(tu, 1);
             $weekDays[1].innerHTML = tu.getDate();
 
-            let we = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             addDays(we, 2);
             $weekDays[2].innerHTML = we.getDate();
 
-            let th = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             addDays(th, 3);
             $weekDays[3].innerHTML = th.getDate();
 
-            let fr = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             addDays(fr, 4);
             $weekDays[4].innerHTML = fr.getDate();
 
-            let sa = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             addDays(sa, 5);
             $weekDays[5].innerHTML = sa.getDate();
 
-            let su = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             addDays(su, 6);
             $weekDays[6].innerHTML = su.getDate();
         }
         if (getDay === 2) {// <-- Martes
-
             let mo = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let tu = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let we = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let th = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let fr = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let sa = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let su = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            
             lessDays(mo, 1);
             $weekDays[0].innerHTML = mo.getDate();
 
-            let tu = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             $weekDays[1].innerHTML = tu.getDate();
 
-            let we = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             addDays(we, 1);
             $weekDays[2].innerHTML = we.getDate();
 
-            let th = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             addDays(th, 2);
             $weekDays[3].innerHTML = th.getDate();
 
-            let fr = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             addDays(fr, 3);
             $weekDays[4].innerHTML = fr.getDate();
 
-            let sa = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             addDays(sa, 4);
             $weekDays[5].innerHTML = sa.getDate();
 
-            let su = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             addDays(su, 5);
             $weekDays[6].innerHTML = su.getDate();
         }
         if (getDay === 3) {// <-- Miercoles
-
             let mo = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let tu = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let we = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let th = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let fr = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let sa = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let su = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+
             lessDays(mo, 2);
             $weekDays[0].innerHTML = mo.getDate();
 
-            let tu = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             lessDays(tu, 1);
             $weekDays[1].innerHTML = tu.getDate();
 
-            let we = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             $weekDays[2].innerHTML = we.getDate();
 
-            let th = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             addDays(th, 1);
             $weekDays[3].innerHTML = th.getDate();
 
-            let fr = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             addDays(fr, 2);
             $weekDays[4].innerHTML = fr.getDate();
 
-            let sa = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             addDays(sa, 3);
             $weekDays[5].innerHTML = sa.getDate();
 
-            let su = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             addDays(su, 4);
             $weekDays[6].innerHTML = su.getDate();
         }
         if (getDay === 4) {// <-- Jueves
-
             let mo = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let tu = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let we = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let th = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let fr = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let sa = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+            let su = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+
             lessDays(mo, 3);
             $weekDays[0].innerHTML = mo.getDate();
 
-            let tu = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             lessDays(tu, 2);
             $weekDays[1].innerHTML = tu.getDate();
 
-            let we = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             lessDays(we, 1);
             $weekDays[2].innerHTML = we.getDate();
 
-            let th = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             $weekDays[3].innerHTML = th.getDate();
 
-            let fr = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             addDays(fr, 1);
             $weekDays[4].innerHTML = fr.getDate();
 
-            let sa = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             addDays(sa, 2);
             $weekDays[5].innerHTML = sa.getDate();
 
-            let su = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
             addDays(su, 3);
             $weekDays[6].innerHTML = su.getDate();
         }
