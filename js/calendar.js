@@ -57,12 +57,12 @@ export function getTotalDays(month) {
   }
 }
 
-export function startDay() {//corrige el dia en que comienza el mes
+export function startDay() {//<-- corrige el dia en que comienza el mes
   let start = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
   return ((start.getDay() - 1) === -1) ? 6 : start.getDay() - 1;
 }
 
-export function startDayYear(month) {//corrige el dia en que comienza el mes en el año
+export function startDayYear(month) {//<-- corrige el dia en que comienza el mes en el año
   let start = new Date(currentDate.getFullYear(), month, 1);
   return ((start.getDay() - 1) === -1) ? 6 : start.getDay() - 1;
 }
@@ -78,7 +78,6 @@ document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " d
 /*----Event Listeners----*/
 /*-----------------------*/
 document.addEventListener('click', (e) => {
-  //console.log(e.target);
   //Mobile components control
   if (e.target.matches('.menu-img')) {
     document.querySelector('.buttons').classList.toggle('active');
@@ -102,24 +101,28 @@ document.addEventListener('click', (e) => {
   }
 
   //control de fechas
+  /* Day */
   if (e.target.matches('#prev-day')) {
     prevDay();
   }
   if (e.target.matches('#next-day')) {
     nextDay();
   }
+  /* Week */
   if (e.target.matches('#prev-week')) {
     prevWeek();
   }
   if (e.target.matches('#next-week')) {
     nextWeek();
   }
+  /* Month */
   if (e.target.matches('#prev-month')) {
     prevMonth();
   }
   if (e.target.matches('#next-month')) {
     nextMonth();
   }
+  /* Year */
   if (e.target.matches('#prev-year')) {
     prevYear();
   }
