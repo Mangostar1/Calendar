@@ -1,3 +1,5 @@
+$white: #fff
+    
 @media screen and (max-width: 768px)
     .container
         position: relative
@@ -19,7 +21,7 @@
             width: 100%
             height: 190px
             padding: 15px
-            background-color: #fff
+            background-color: $white
             border-radius: 10px
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5)
             position: absolute
@@ -27,7 +29,7 @@
             left: 2rem
             z-index: 1
             #btn-day, #btn-week, #btn-month, #btn-year
-                background-color: #fff
+                background-color: $white
                 color: var(--colorOne)
                 padding: 10px 30px
                 width: 250px
@@ -38,7 +40,7 @@
                 text-align: center
                 border-radius: 0px
             #btn-day:hover, #btn-week:hover, #btn-month:hover, #btn-year:hover
-                background-color: #fff
+                background-color: $white
                 color: var(--colorTwo)
         .active
             display: flex
@@ -68,7 +70,7 @@
         padding-top: 0px
         font-size: 15px
         text-align: center
-    .diaa-week
+    .day-week
         font-size: 15px
 
     /*-----------------*/
@@ -121,7 +123,7 @@
         text-align: center
         &:active
             background-color: var(--colorTwo)
-            color: #fff
+            color: $white
     .modal
         top: 0px
         left: 0px

@@ -13,38 +13,38 @@ export function WeekComponent(element) {
     </div>
     <div id="days-of-week">
         <div class="grid-days">
-            <p class="diaa-week">Lun</p>
-            <p class="diaa-week diasNumber"></p>
+            <p class="day-week">Lun</p>
+            <p class="day-week daysNumber"></p>
         </div>
 
         <div class="grid-days">
-            <p class="diaa-week">Mar</p>
-            <p class="diaa-week diasNumber"></p>
+            <p class="day-week">Mar</p>
+            <p class="day-week daysNumber"></p>
         </div>
 
         <div class="grid-days">
-            <p class="diaa-week">Mié</p>
-            <p class="diaa-week diasNumber"></p>
+            <p class="day-week">Mié</p>
+            <p class="day-week daysNumber"></p>
         </div>
 
         <div class="grid-days">
-            <p class="diaa-week">Jue</p>
-            <p class="diaa-week diasNumber"></p>
+            <p class="day-week">Jue</p>
+            <p class="day-week daysNumber"></p>
         </div>
 
         <div class="grid-days">
-            <p class="diaa-week">Vie</p>
-            <p class="diaa-week diasNumber"></p>
+            <p class="day-week">Vie</p>
+            <p class="day-week daysNumber"></p>
         </div>
 
         <div class="grid-days">
-            <p class="diaa-week">Sáb</p>
-            <p class="diaa-week diasNumber"></p>
+            <p class="day-week">Sáb</p>
+            <p class="day-week daysNumber"></p>
         </div>
 
         <div class="grid-days">
-            <p class="diaa-week">Dom</p>
-            <p class="diaa-week diasNumber"></p>
+            <p class="day-week">Dom</p>
+            <p class="day-week daysNumber"></p>
         </div>
     </div>
     <div class="content-loader">
@@ -57,7 +57,7 @@ export function WeekComponent(element) {
 export function hourWeekComponent(currentDate, getDay) {
 
     const $weekContent = document.getElementById("days-of-week");
-    const $weekDays = document.getElementsByClassName("diasNumber");
+    const $weekDays = document.getElementsByClassName("daysNumber");
     const hourDayWeek = [
         "00:00 hrs", 
         "01:00 hrs",
@@ -162,7 +162,7 @@ async function eventsWeek() {
         const basicWeek = await fetch("http://localhost:3000/events");
         const basicWeekJSON = await basicWeek.json();
     
-        const eventWekk = document.getElementsByClassName("eventWeek");
+        const eventWekk = document.querySelectorAll(".eventWeek");
         if (basicWeekJSON.length !== 0) {
             for (let e = 0; e < basicWeekJSON.length; e++) {
                 
