@@ -96,14 +96,12 @@ async function inicioEventoDia() {
                 // Day
                 if (fechaEvento.getDay() === currentDate.getDay() && fechaEvento.getDate() === currentDate.getDate() && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear()) {
                     $eventoLi[hours].innerHTML += btns;
-                    IsLoaded();
-                } else {
-                    IsLoaded();
                 }
             }
         }
     } catch (err) {
         console.error(err);
+    } finally {
         IsLoaded();
     }
 }

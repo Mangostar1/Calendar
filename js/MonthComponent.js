@@ -93,14 +93,12 @@ async function eventoMonth() {
                 
                 if (dateMonth.getMonth() === currentDate.getMonth() && dateMonth.getFullYear() === currentDate.getFullYear()) {
                     $eventMonth.innerHTML += btns;
-                    IsLoaded();
-                } else {
-                    IsLoaded();
                 }
             }
         }
     } catch (err) {
         console.error(err);
+    } finally {
         IsLoaded();
     }
 }
