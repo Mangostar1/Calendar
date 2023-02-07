@@ -157,6 +157,7 @@ function IsLoaded() {
 }
 
 //Events Week
+const specialIndices = [6, 13, 20, 27, 34, 41, 48, 55, 62, 69, 76, 83, 90, 97, 104, 111, 118, 125, 132, 139, 146, 153, 160, 167];
 async function eventsWeek() {
     try {
         const basicWeek = await fetch("http://localhost:3000/events");
@@ -192,12 +193,15 @@ async function eventsWeek() {
                         <span class="sp-title"> ${titleEvent} </span>
                     </button>`;
     
-                for (let w = 0; w < 168; w++) {//<-- 1 | 169 || 0 | 168
+                for (let w = 0; w < 168; w++) {
+
                     if(horas === fechaEvento.getHours() && fechaEvento.getDay() === day && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear() && numWeekEvent === numOfCurrentWeek){
                         eventWekk[w].innerHTML += $btns;
                     }
-            
-                    if(w === 6 || w === 13 || w === 20 || w === 27 || w === 34 || w === 41 || w === 48 || w === 55 || w === 62 || w === 69 || w === 76 || w === 83 || w === 90 || w === 97 || w === 104 || w === 111 || w === 118 || w === 125 || w === 132 || w === 139 || w === 146 || w === 153 || w === 160 || w === 167){
+                    
+
+                    //Cuando la sentencia valida true, se establece el dia en 0 para reiniciar la semana y evitar bugs; y se suma una hora a la semana.
+                    if(specialIndices.includes(w)){
                         horas++;
                         day = 0;
                     }
