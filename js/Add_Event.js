@@ -1,4 +1,6 @@
 //Este evento modal tiene la funcion de ingresar a una base de datos un evento
+
+//Este archivo es solo a modo de ejemplo.
 export function NewModalEvent(element) {
     const $newDiv = document.createElement('div');
 
