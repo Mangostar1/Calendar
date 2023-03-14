@@ -73,8 +73,8 @@ async function eventoMonth() {
         const basicMonthJson = await basicMonth.json();
     
         if (basicMonthJson.length !== 0) {// <-- Si dentro de un dia de la semana hay eventos, este recorre todos los eventos agendados en el dia
-            for (let d = 0; d < basicMonthJson.length; d++) {// <-- Con este for recorro todos los eventos del dia en cuestion
-                let datesJSON = basicMonthJson[d].dateStartEvent;
+            for (let d = 0; d < basicMonthJson.events.length; d++) {// <-- Con este for recorro todos los eventos del dia en cuestion
+                let datesJSON = basicMonthJson.events[d].dateStartEvent;
                 
                 const datesSplit = datesJSON.split('-');
                 
@@ -82,10 +82,10 @@ async function eventoMonth() {
                 let diames = dateMonth.getDate();
                 let $eventMonth = document.getElementById(`evento-${diames}`);
     
-                let horaInicial = basicMonthJson[d].hourStart;
-                let horafinal = basicMonthJson[d].hourFinish;
-                let tituloEvento = basicMonthJson[d].title;
-                let descriptcionEvent = basicMonthJson[d].description;
+                let horaInicial = basicMonthJson.events[d].hourStart;
+                let horafinal = basicMonthJson.events[d].hourFinish;
+                let tituloEvento = basicMonthJson.events[d].title;
+                let descriptcionEvent = basicMonthJson.events[d].description;
     
                 let btns =
                 `<button id="event-Modal" class="btn-item btm-event-month" data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}" data-description="${descriptcionEvent}">

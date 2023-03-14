@@ -74,18 +74,18 @@ async function inicioEventoDia() {
         const primerEvento = await basicStruc.json();
     
         if (primerEvento.length !== 0) {
-            for (let e = 0; e < primerEvento.length; e++) {
-                const datesJSON = primerEvento[e].dateStartEvent;
+            for (let e = 0; e < primerEvento.events.length; e++) {
+                const datesJSON = primerEvento.events[e].dateStartEvent;
                 const datesSplit = datesJSON.split("-");
             
-                let horaInicial = primerEvento[e].hourStart;
+                let horaInicial = primerEvento.events[e].hourStart;
                 let horaSplit = horaInicial.split(':');
                 
                 let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2], horaSplit[0], horaSplit[1], horaSplit[2]);
 
-                let horafinal = primerEvento[e].hourFinish;
-                let tituloEvento = primerEvento[e].title;
-                let descriptcionEvent = primerEvento[e].description;
+                let horafinal = primerEvento.events[e].hourFinish;
+                let tituloEvento = primerEvento.events[e].title;
+                let descriptcionEvent = primerEvento.events[e].description;
             
                 let hours = fechaEvento.getHours();
     

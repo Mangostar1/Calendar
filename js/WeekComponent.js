@@ -165,20 +165,20 @@ async function eventsWeek() {
         const basicWeekJSON = await basicWeek.json();
     
         const eventWekk = document.querySelectorAll(".eventWeek");
-        if (basicWeekJSON.length !== 0) {
-            for (let e = 0; e < basicWeekJSON.length; e++) {
+        if (basicWeekJSON.events.length !== 0) {
+            for (let e = 0; e < basicWeekJSON.events.length; e++) {
                 
                 //Dates yy - mm - dd for new Date()
-                const datesJSON = basicWeekJSON[e].dateStartEvent;
+                const datesJSON = basicWeekJSON.events[e].dateStartEvent;
                 const datesSplit = datesJSON.split("-");
             
                 //Hours hour:minutes:secons for new Date()
-                const hoursJSON = basicWeekJSON[e].hourStart;
-                const hoursFinishJSON = basicWeekJSON[e].hourFinish;
+                const hoursJSON = basicWeekJSON.events[e].hourStart;
+                const hoursFinishJSON = basicWeekJSON.events[e].hourFinish;
                 const hoursSplit = hoursJSON.split(":");
                 
-                const titleEvent = basicWeekJSON[e].title
-                let descriptcionEvent = basicWeekJSON[e].description;
+                const titleEvent = basicWeekJSON.events[e].title
+                let descriptcionEvent = basicWeekJSON.events[e].description;
                 
                 let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2] , hoursSplit[0], hoursSplit[1], hoursSplit[2]);
                 let numWeekEvent = fechaEvento.getWeekNumber();
