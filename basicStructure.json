@@ -612,10 +612,10 @@
       "id": 33,
       "dateStartEvent": "2023-3-18",
       "hourStart": "00:17:00",
-      "dateFinishEvent": "2022-3-19",
+      "dateFinishEvent": "2022-3-20",
       "hourFinish": "00:21:00",
-      "title": "titulo B",
-      "description": "descripcion test",
+      "title": "Evento de dias seguidos",
+      "description": "Este evento dura varios dias seguidos",
       "statusInformation": {
         "statusCode": "001",
         "status": "activo",
