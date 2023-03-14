@@ -68,8 +68,8 @@ function IsLoaded() {
 //Eventos del mes
 async function eventoMonth() {
     try {
-        //const basicMonth = await fetch("http://localhost:3000/events");// <-- For development
-        const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
+        const basicMonth = await fetch("http://localhost:5500/basicStructure.json");// <-- For development
+        //const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
         const basicMonthJson = await basicMonth.json();
     
         if (basicMonthJson.length !== 0) {// <-- Si dentro de un dia de la semana hay eventos, este recorre todos los eventos agendados en el dia

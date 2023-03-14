@@ -160,8 +160,8 @@ function IsLoaded() {
 const specialIndices = [6, 13, 20, 27, 34, 41, 48, 55, 62, 69, 76, 83, 90, 97, 104, 111, 118, 125, 132, 139, 146, 153, 160, 167];
 async function eventsWeek() {
     try {
-        //const basicWeek = await fetch("http://localhost:3000/events");
-        const basicWeek = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
+        const basicWeek = await fetch("http://localhost:5500/basicStructure.json");
+        //const basicWeek = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
         const basicWeekJSON = await basicWeek.json();
     
         const eventWekk = document.querySelectorAll(".eventWeek");
