@@ -626,6 +626,25 @@
         "colorBackgroundType": "#0096a6",
         "colorType": "white"
       }
+    },
+    { 
+      "id": 34,
+      "dateStartEvent": "2023-3-10",
+      "hourStart": "00:17:00",
+      "dateFinishEvent": "2022-3-10",
+      "hourFinish": "00:21:00",
+      "title": "titulo B",
+      "description": "descripcion test",
+      "statusInformation": {
+        "statusCode": "001",
+        "status": "activo",
+        "colorStatus": "green"
+      },
+      "typeInformation": {
+        "type": "0001",
+        "colorBackgroundType": "#0096a6",
+        "colorType": "white"
+      }
     }
   ]
 }

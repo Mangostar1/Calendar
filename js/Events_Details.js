@@ -31,12 +31,18 @@ function ModalEventWeek(element, button) {
 
         <p class="color-text modal-description">${button.dataset.description}</p>
 
-        <div class="inputs-content">
-            <p class="color-text modal-hour"><span class="text-bold">Desde:</span>  ${button.dataset.hourFinish}</p>
-        </div>
+        <h2 class="color-text">Fecha</h2>
 
         <div class="inputs-content">
-        <p class="color-text modal-hour"><span class="text-bold">Hasta las:</span>  ${button.dataset.hourStart} hrs</p>
+            <p class="color-text modal-hour"><span class="text-bold">Desde:</span>  ${button.dataset.dateStart}</p>
+            <p class="color-text modal-hour"><span class="text-bold">Hasta:</span>  ${button.dataset.dateFinish}</p>
+        </div>
+
+        <h2 class="color-text">Hora</h2>
+
+        <div class="inputs-content">
+            <p class="color-text modal-hour"><span class="text-bold">Desde:</span>  ${button.dataset.hourFinish} hrs</p>
+            <p class="color-text modal-hour"><span class="text-bold">Hasta las:</span>  ${button.dataset.hourStart} hrs</p>
         </div>
     </div>`;
 

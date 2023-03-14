@@ -171,16 +171,23 @@ async function eventsWeek() {
                 //Dates yy - mm - dd for new Date()
                 const datesJSON = basicWeekJSON.events[e].dateStartEvent;
                 const datesSplit = datesJSON.split("-");
+
+                const datesFinishJSON = basicWeekJSON.events[e].dateStartEvent;
+                const datesFinishSplit = datesJSON.split("-");
             
                 //Hours hour:minutes:secons for new Date()
                 const hoursJSON = basicWeekJSON.events[e].hourStart;
-                const hoursFinishJSON = basicWeekJSON.events[e].hourFinish;
                 const hoursSplit = hoursJSON.split(":");
+
+                const hoursFinishJSON = basicWeekJSON.events[e].hourFinish;
+                const hoursFinishSplit = hoursJSON.split(":");
                 
                 const titleEvent = basicWeekJSON.events[e].title
                 let descriptcionEvent = basicWeekJSON.events[e].description;
                 
                 let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2] , hoursSplit[0], hoursSplit[1], hoursSplit[2]);
+                let dateWeekFinish = new Date(datesFinishSplit[0], datesFinishSplit[1] - 1, datesFinishSplit[2], hoursFinishSplit[0], hoursFinishSplit[1], hoursFinishSplit[2]);
+
                 let numWeekEvent = fechaEvento.getWeekNumber();
                 let numOfCurrentWeek = currentDate.getWeekNumber();
                 let cont = 1;
@@ -190,7 +197,7 @@ async function eventsWeek() {
                 let tmpHourDayWeek = fechaEvento.getHours(); // Trae la hora del json
                 
                 let $btns = 
-                    `<button id="event-Modal" class="btn-item" data-hour-start="${hoursJSON}" data-hour-finish="${hoursFinishJSON}" data-title="${titleEvent}" data-description="${descriptcionEvent}">
+                    `<button id="event-Modal" class="btn-item" data-date-start=${datesJSON} data-date-finish=${datesFinishJSON} data-hour-start="${hoursJSON}" data-hour-finish="${hoursFinishJSON}" data-title="${titleEvent}" data-description="${descriptcionEvent}">
                         <span class="sp-title"> ${titleEvent} </span>
                     </button>`;
     

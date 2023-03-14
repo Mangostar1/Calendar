@@ -77,79 +77,79 @@ document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " d
 /*-----------------------*/
 /*----Event Listeners----*/
 /*-----------------------*/
-document.addEventListener('click', (e) => {
+document.addEventListener('click', ({target}) => {
   //Mobile components control
-  if (e.target.matches('.menu-img')) {
+  if (target.matches('.menu-img')) {
     document.querySelector('.buttons').classList.toggle('active');
   }
   //modals
-  if (e.target.matches('.grid-item') && screen.width > 768) {
-    NewModalEvent(e.target);
+  if (target.matches('.grid-item') && screen.width > 768) {
+    NewModalEvent(target);
   }
-  if (e.target.matches("#new-event")) {
+  if (target.matches("#new-event")) {
     NewModalEvent(document.querySelector('.contaienr'));
   }
-  if (e.target.matches("#closeModal-ID")) {
+  if (target.matches("#closeModal-ID")) {
     closeModal();
   }
-  if (e.target.matches(".btn-item")) { // #event-Modal
+  if (target.matches(".btn-item")) { // #event-Modal
     if (screen.width < 768) {
       handlerBtnMobile();
     } else {
-      handlerBtn(e.target);
+      handlerBtn(target);
     }
   }
 
   //control de fechas
   /* Day */
-  if (e.target.matches('#prev-day')) {
+  if (target.matches('#prev-day')) {
     prevDay();
   }
-  if (e.target.matches('#next-day')) {
+  if (target.matches('#next-day')) {
     nextDay();
   }
   /* Week */
-  if (e.target.matches('#prev-week')) {
+  if (target.matches('#prev-week')) {
     prevWeek();
   }
-  if (e.target.matches('#next-week')) {
+  if (target.matches('#next-week')) {
     nextWeek();
   }
   /* Month */
-  if (e.target.matches('#prev-month')) {
+  if (target.matches('#prev-month')) {
     prevMonth();
   }
-  if (e.target.matches('#next-month')) {
+  if (target.matches('#next-month')) {
     nextMonth();
   }
   /* Year */
-  if (e.target.matches('#prev-year')) {
+  if (target.matches('#prev-year')) {
     prevYear();
   }
-  if (e.target.matches('#next-year')) {
+  if (target.matches('#next-year')) {
     nextYear();
   }
   //control de componentes
-  if (e.target.matches('#radio-day')) {//Day
+  if (target.matches('#radio-day')) {//Day
     $calendarContainer.lastChild.remove();
     DayComponent($calendarContainer);
     hourDayComponent(currentDate, currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
     document.getElementById("fecha-day").innerHTML = currentDate.getDate() + " de " + nameMonth[currentDate.getMonth()] + " del " + currentDate.getFullYear();
   }
-  if (e.target.matches('#radio-week')) {//Week
+  if (target.matches('#radio-week')) {//Week
     $calendarContainer.lastChild.remove();
     WeekComponent($calendarContainer);
     hourWeekComponent(currentDate, currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
     document.getElementById("fecha-week").innerHTML = nameMonth[currentDate.getMonth()] + " de " + currentDate.getFullYear();
   }
-  if (e.target.matches('#radio-month')) {//Month
+  if (target.matches('#radio-month')) {//Month
     $calendarContainer.lastChild.remove();
     MonthComponent($calendarContainer);
     DaysOfMonth(currentDate.getMonth());
     document.getElementById("dates-control-month").style = "display: flex";
     document.getElementById("fecha-month").innerHTML = nameMonth[currentDate.getMonth()] + " de " + currentDate.getFullYear();
   }
-  if (e.target.matches('#radio-year')) {//Year
+  if (target.matches('#radio-year')) {//Year
     $calendarContainer.lastChild.remove();
     YearComponent($calendarContainer);
     DaysOFYear();

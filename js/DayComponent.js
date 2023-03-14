@@ -77,20 +77,25 @@ async function inicioEventoDia() {
             for (let e = 0; e < primerEvento.events.length; e++) {
                 const datesJSON = primerEvento.events[e].dateStartEvent;
                 const datesSplit = datesJSON.split("-");
+
+                const datesFinishJSON = primerEvento.events[e].dateFinishEvent;
+                const datesFinishSplit = datesJSON.split("-");
             
                 let horaInicial = primerEvento.events[e].hourStart;
                 let horaSplit = horaInicial.split(':');
-                
                 let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2], horaSplit[0], horaSplit[1], horaSplit[2]);
 
                 let horafinal = primerEvento.events[e].hourFinish;
+                let horafinalSplit = horafinal.split(':');
+                let dateFinishEvent = new Date(datesFinishSplit[0], datesFinishSplit[1], datesFinishSplit[2], horafinalSplit[0], horafinalSplit[1], horafinalSplit[2]);
+
                 let tituloEvento = primerEvento.events[e].title;
                 let descriptcionEvent = primerEvento.events[e].description;
             
                 let hours = fechaEvento.getHours();
     
                 let btns =
-                    `<button id="event-Modal" class="btn-item" data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}" data-description="${descriptcionEvent}">
+                    `<button id="event-Modal" class="btn-item" data-date-start=${datesJSON} data-date-finish=${datesFinishJSON} data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}" data-description="${descriptcionEvent}">
                         <span class="sp-title"> ${tituloEvento} </span>
                     </button>`;
             
