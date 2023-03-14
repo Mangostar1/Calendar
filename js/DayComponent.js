@@ -69,7 +69,8 @@ function IsLoaded() {
 async function inicioEventoDia() {
     try {
         const $eventoLi = document.getElementsByClassName("eventDay");
-        const basicStruc = await fetch("http://localhost:3000/events");// <-- For development
+        //const basicStruc = await fetch("http://localhost:3000/events");// <-- For development
+        const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
         const primerEvento = await basicStruc.json();
     
         if (primerEvento.length !== 0) {
