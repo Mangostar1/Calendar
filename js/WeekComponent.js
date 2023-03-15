@@ -185,7 +185,7 @@ async function eventsWeek() {
                 const titleEvent = basicWeekJSON.events[e].title
                 let descriptcionEvent = basicWeekJSON.events[e].description;
                 
-                let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2] , hoursSplit[0], hoursSplit[1], hoursSplit[2]);
+                let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2], hoursSplit[0], hoursSplit[1], hoursSplit[2]);
                 let dateWeekFinish = new Date(datesFinishSplit[0], datesFinishSplit[1] - 1, datesFinishSplit[2], hoursFinishSplit[0], hoursFinishSplit[1], hoursFinishSplit[2]);
 
                 let numWeekEvent = fechaEvento.getWeekNumber();
@@ -203,7 +203,7 @@ async function eventsWeek() {
     
                 for (let w = 0; w < 168; w++) {
 
-                    if(horas === fechaEvento.getHours() && fechaEvento.getDay() === day && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear() && numWeekEvent === numOfCurrentWeek){
+                    if(horas === fechaEvento.getHours() && fechaEvento.getDay() === day % 7 && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear() && numWeekEvent === numOfCurrentWeek){
                         eventWekk[w].innerHTML += $btns;
                     }
                     
