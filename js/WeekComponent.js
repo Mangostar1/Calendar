@@ -172,8 +172,8 @@ async function eventsWeek() {
                 const datesJSON = basicWeekJSON.events[e].dateStartEvent;
                 const datesSplit = datesJSON.split("-");
 
-                const datesFinishJSON = basicWeekJSON.events[e].dateStartEvent;
-                const datesFinishSplit = datesJSON.split("-");
+                const datesFinishJSON = basicWeekJSON.events[e].dateFinishEvent;
+                const datesFinishSplit = datesFinishJSON.split("-");
             
                 //Hours hour:minutes:secons for new Date()
                 const hoursJSON = basicWeekJSON.events[e].hourStart;
@@ -185,10 +185,10 @@ async function eventsWeek() {
                 const titleEvent = basicWeekJSON.events[e].title
                 let descriptcionEvent = basicWeekJSON.events[e].description;
                 
-                let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2], hoursSplit[0], hoursSplit[1], hoursSplit[2]);
+                let dateWeekStart = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2], hoursSplit[0], hoursSplit[1], hoursSplit[2]);
                 let dateWeekFinish = new Date(datesFinishSplit[0], datesFinishSplit[1] - 1, datesFinishSplit[2], hoursFinishSplit[0], hoursFinishSplit[1], hoursFinishSplit[2]);
 
-                let numWeekEvent = fechaEvento.getWeekNumber();
+                let numWeekEvent = dateWeekStart.getWeekNumber();
                 let numOfCurrentWeek = currentDate.getWeekNumber();
                 let day = 1; //El dia de la semana L a D | Actual en el calendario 1
                 let horas = 0; //La hora del evento | Actual en el calendario
@@ -199,8 +199,21 @@ async function eventsWeek() {
                     </button>`;
     
                 for (let w = 0; w < 168; w++) {
-                    if(horas === fechaEvento.getHours() && fechaEvento.getDay() === day % 7 && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear() && numWeekEvent === numOfCurrentWeek){
-                        eventWekk[w].innerHTML += $btns;
+                    if(
+                        horas === dateWeekStart.getHours() 
+                        && dateWeekStart.getDay() === day % 7 
+                        && dateWeekStart.getMonth() === currentDate.getMonth() 
+                        && dateWeekStart.getFullYear() === currentDate.getFullYear() 
+                        && numWeekEvent === numOfCurrentWeek){
+
+                            /* eventWekk[w].innerHTML += $btns; */
+                            if (dateWeekStart.getDate() < dateWeekFinish.getDate()) {
+                                for (let d = 0; d <= dateWeekFinish.getDate() - dateWeekStart.getDate(); d++) {
+                                    eventWekk[w + d].innerHTML += $btns;
+                                }
+                            } else {
+                                eventWekk[w].innerHTML += $btns;
+                            }
                     }
                     
                     //Cuando la sentencia valida true, se establece el dia en 0 para reiniciar la semana y evitar bugs; y se suma una hora a la semana.
