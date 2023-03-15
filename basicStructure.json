@@ -424,7 +424,7 @@
       "hourStart": "00:17:00",
       "dateFinishEvent": "2022-11-11",
       "hourFinish": "00:21:00",
-      "title": "titulo A",
+      "title": "Ejemplo de titulo 19",
       "description": "descripcion test",
       "statusInformation": {
         "statusCode": "001",
@@ -443,7 +443,7 @@
       "hourStart": "00:17:00",
       "dateFinishEvent": "2022-1-11",
       "hourFinish": "00:21:00",
-      "title": "titulo B",
+      "title": "Ejemplo de titulo 20",
       "description": "descripcion test",
       "statusInformation": {
         "statusCode": "001",
@@ -462,7 +462,7 @@
       "hourStart": "00:17:00",
       "dateFinishEvent": "2022-2-11",
       "hourFinish": "00:21:00",
-      "title": "titulo B",
+      "title": "Ejemplo de titulo 21",
       "description": "descripcion test",
       "statusInformation": {
         "statusCode": "001",
@@ -481,7 +481,7 @@
       "hourStart": "00:17:00",
       "dateFinishEvent": "2022-3-11",
       "hourFinish": "00:21:00",
-      "title": "titulo B",
+      "title": "Ejemplo de titulo 22",
       "description": "descripcion test",
       "statusInformation": {
         "statusCode": "001",
@@ -500,7 +500,7 @@
       "hourStart": "00:17:00",
       "dateFinishEvent": "2022-3-12",
       "hourFinish": "00:21:00",
-      "title": "titulo B",
+      "title": "Ejemplo de titulo 23",
       "description": "descripcion test",
       "statusInformation": {
         "statusCode": "001",
@@ -519,7 +519,7 @@
       "hourStart": "00:17:00",
       "dateFinishEvent": "2022-3-13",
       "hourFinish": "00:21:00",
-      "title": "titulo B",
+      "title": "Ejemplo de titulo 24",
       "description": "descripcion test",
       "statusInformation": {
         "statusCode": "001",
@@ -538,7 +538,7 @@
       "hourStart": "00:17:00",
       "dateFinishEvent": "2022-3-14",
       "hourFinish": "00:21:00",
-      "title": "titulo B",
+      "title": "Ejemplo de titulo 25",
       "description": "descripcion test",
       "statusInformation": {
         "statusCode": "001",
@@ -557,7 +557,7 @@
       "hourStart": "00:17:00",
       "dateFinishEvent": "2022-3-15",
       "hourFinish": "00:21:00",
-      "title": "titulo B",
+      "title": "Ejemplo de titulo 26",
       "description": "descripcion test",
       "statusInformation": {
         "statusCode": "001",
@@ -576,7 +576,7 @@
       "hourStart": "00:17:00",
       "dateFinishEvent": "2022-3-16",
       "hourFinish": "00:21:00",
-      "title": "titulo B",
+      "title": "Ejemplo de titulo 27",
       "description": "descripcion test",
       "statusInformation": {
         "statusCode": "001",
@@ -595,7 +595,7 @@
       "hourStart": "00:17:00",
       "dateFinishEvent": "2022-3-17",
       "hourFinish": "00:21:00",
-      "title": "titulo B",
+      "title": "Ejemplo de titulo 28",
       "description": "descripcion test",
       "statusInformation": {
         "statusCode": "001",
@@ -614,7 +614,7 @@
       "hourStart": "00:17:00",
       "dateFinishEvent": "2022-3-20",
       "hourFinish": "00:21:00",
-      "title": "Evento de dias seguidos",
+      "title": "Ejemplo de titulo 29",
       "description": "Este evento dura varios dias seguidos",
       "statusInformation": {
         "statusCode": "001",
@@ -633,7 +633,7 @@
       "hourStart": "00:17:00",
       "dateFinishEvent": "2022-3-10",
       "hourFinish": "00:21:00",
-      "title": "titulo B",
+      "title": "Ejemplo de titulo 30",
       "description": "descripcion test",
       "statusInformation": {
         "statusCode": "001",

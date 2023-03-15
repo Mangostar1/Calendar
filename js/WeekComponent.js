@@ -190,11 +190,8 @@ async function eventsWeek() {
 
                 let numWeekEvent = fechaEvento.getWeekNumber();
                 let numOfCurrentWeek = currentDate.getWeekNumber();
-                let cont = 1;
                 let day = 1; //El dia de la semana L a D | Actual en el calendario 1
                 let horas = 0; //La hora del evento | Actual en el calendario
-                let tmpEventDayWeek = fechaEvento.getDay(); // Trae el dia de la semana del json
-                let tmpHourDayWeek = fechaEvento.getHours(); // Trae la hora del json
                 
                 let $btns = 
                     `<button id="event-Modal" class="btn-item" data-date-start=${datesJSON} data-date-finish=${datesFinishJSON} data-hour-start="${hoursJSON}" data-hour-finish="${hoursFinishJSON}" data-title="${titleEvent}" data-description="${descriptcionEvent}">
@@ -202,19 +199,16 @@ async function eventsWeek() {
                     </button>`;
     
                 for (let w = 0; w < 168; w++) {
-
                     if(horas === fechaEvento.getHours() && fechaEvento.getDay() === day % 7 && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear() && numWeekEvent === numOfCurrentWeek){
                         eventWekk[w].innerHTML += $btns;
                     }
                     
-
                     //Cuando la sentencia valida true, se establece el dia en 0 para reiniciar la semana y evitar bugs; y se suma una hora a la semana.
                     if(specialIndices.includes(w)){
                         horas++;
                         day = 0;
                     }
                     day++;
-                    cont++;
                 }
             }
         }
