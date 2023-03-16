@@ -96,7 +96,7 @@ async function eventoMonth() {
                         let descriptcionEvent = basicMonthJson.events[d].description;
                             
                         let btns =
-                            `<button id="event-Modal" class="btn-item btm-event-month" data-date-start=${datesJSON} data-date-finish=${datesFinishJSON} data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}" data-description="${descriptcionEvent}">
+                            `<button style="background-color: ${basicMonthJson.events[d].typeInformation.colorBackgroundType};" id="event-Modal" class="btn-item btm-event-month" data-date-start=${datesJSON} data-date-finish=${datesFinishJSON} data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}" data-description="${descriptcionEvent}">
                                 <span class="sp-title"> ${tituloEvento} </span>
                             </button>`;
                             

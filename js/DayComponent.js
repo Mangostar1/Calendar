@@ -95,7 +95,7 @@ async function inicioEventoDia() {
                 let hours = fechaEvento.getHours();
     
                 let btns =
-                    `<button id="event-Modal" class="btn-item" data-date-start=${datesJSON} data-date-finish=${datesFinishJSON} data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}" data-description="${descriptcionEvent}">
+                    `<button style="background-color: ${primerEvento.events[e].typeInformation.colorBackgroundType};" id="event-Modal" class="btn-item" data-date-start=${datesJSON} data-date-finish=${datesFinishJSON} data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}" data-description="${descriptcionEvent}">
                         <span class="sp-title"> ${tituloEvento} </span>
                     </button>`;
             

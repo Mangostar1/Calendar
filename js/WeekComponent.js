@@ -188,13 +188,14 @@ async function eventsWeek() {
                 let dateWeekStart = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2], hoursSplit[0], hoursSplit[1], hoursSplit[2]);
                 let dateWeekFinish = new Date(datesFinishSplit[0], datesFinishSplit[1] - 1, datesFinishSplit[2], hoursFinishSplit[0], hoursFinishSplit[1], hoursFinishSplit[2]);
 
-                let numWeekEvent = dateWeekStart.getWeekNumber();
+                let numWeekEventStart = dateWeekStart.getWeekNumber();
                 let numOfCurrentWeek = currentDate.getWeekNumber();
+                let numWeekEventFinish = dateWeekFinish.getWeekNumber();
                 let day = 1; //El dia de la semana L a D | Actual en el calendario 1
                 let horas = 0; //La hora del evento | Actual en el calendario
                 
                 let $btns = 
-                    `<button id="event-Modal" class="btn-item" data-date-start=${datesJSON} data-date-finish=${datesFinishJSON} data-hour-start="${hoursJSON}" data-hour-finish="${hoursFinishJSON}" data-title="${titleEvent}" data-description="${descriptcionEvent}">
+                    `<button style="background-color: ${basicWeekJSON.events[e].typeInformation.colorBackgroundType};" id="event-Modal" class="btn-item" data-date-start=${datesJSON} data-date-finish=${datesFinishJSON} data-hour-start="${hoursJSON}" data-hour-finish="${hoursFinishJSON}" data-title="${titleEvent}" data-description="${descriptcionEvent}">
                         <span class="sp-title"> ${titleEvent} </span>
                     </button>`;
     
@@ -204,7 +205,7 @@ async function eventsWeek() {
                         && dateWeekStart.getDay() === day % 7 
                         && dateWeekStart.getMonth() === currentDate.getMonth() 
                         && dateWeekStart.getFullYear() === currentDate.getFullYear() 
-                        && numWeekEvent === numOfCurrentWeek){
+                        && numWeekEventStart === numOfCurrentWeek){
                             
                             eventWekk[w].innerHTML += $btns;
                             /* if (dateWeekStart.getDate() < dateWeekFinish.getDate()) {
