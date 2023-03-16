@@ -208,13 +208,6 @@ async function eventsWeek() {
                         && numWeekEventStart === numOfCurrentWeek){
                             
                             eventWekk[w].innerHTML += $btns;
-                            /* if (dateWeekStart.getDate() < dateWeekFinish.getDate()) {
-                                for (let d = 0; d <= dateWeekFinish.getDate() - dateWeekStart.getDate(); d++) {
-                                    eventWekk[w + d].innerHTML += $btns;
-                                }
-                            } else {
-                                eventWekk[w].innerHTML += $btns;
-                            } */
                         
                     }
                     
