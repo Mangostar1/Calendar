@@ -157,7 +157,6 @@ function IsLoaded() {
 }
 
 //Events Week
-const specialIndices = [6, 13, 20, 27, 34, 41, 48, 55, 62, 69, 76, 83, 90, 97, 104, 111, 118, 125, 132, 139, 146, 153, 160, 167];
 async function eventsWeek() {
     try {
         //const basicWeek = await fetch("http://localhost:5500/basicStructure.json");
@@ -212,7 +211,7 @@ async function eventsWeek() {
                     }
                     
                     //Cuando la sentencia valida true, se establece el dia en 0 para reiniciar la semana y evitar bugs; y se suma una hora a la semana.
-                    if(specialIndices.includes(w)){
+                    if ((w + 1) % 7 == 0) {
                         horas++;
                         day = 0;
                     }
