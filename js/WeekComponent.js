@@ -207,9 +207,15 @@ async function eventsWeek() {
                         && numWeekEventStart === numOfCurrentWeek){
                             
                             eventWekk[w].innerHTML += $btns;
-                            console.log(w);
                         
                     }
+
+                    if (
+                        dateWeekStart.getDate() < dateWeekFinish.getDate()) {
+                        console.log(w);
+                    }
+
+
                     
                     /*Si este if valida la condiicon, se suma una hora en el dia y se reinicia el "day" a 0 para que 
                     este corresponda el comienzo de la semana pero en una hora diferente */
