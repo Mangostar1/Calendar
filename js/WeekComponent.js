@@ -212,7 +212,15 @@ async function eventsWeek() {
 
                     if (
                         dateWeekStart.getDate() < dateWeekFinish.getDate()) {
-                        console.log(w);
+                            if (
+                                dateWeekFinish.getDay() === day % 7 
+                                && horas === dateWeekFinish.getHours()
+                                && dateWeekFinish.getMonth() === currentDate.getMonth()
+                                && numWeekEventFinish === numOfCurrentWeek) {
+                                    
+                                    console.log(w);
+                                    eventWekk[w].innerHTML += $btns;
+                            }
                     }
 
 
