@@ -212,7 +212,7 @@ async function eventsWeek() {
 
                     if (
                         dateWeekStart.getDate() < dateWeekFinish.getDate()) {
-                            console.log(day % 7, dateWeekFinish.toLocaleDateString())
+                            
                             if (
                                 dateWeekFinish.getDay() === day % 7 
                                 && horas === dateWeekFinish.getHours()
@@ -220,7 +220,6 @@ async function eventsWeek() {
                                 && dateWeekFinish.getFullYear() === currentDate.getFullYear() 
                                 && numWeekEventFinish === numOfCurrentWeek) {
                                     
-                                    console.log(w);
                                     eventWekk[w].innerHTML += $btns;
 
                             }
