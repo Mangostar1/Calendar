@@ -212,6 +212,7 @@ async function eventsWeek() {
 
                     if (
                         dateWeekStart.getDate() < dateWeekFinish.getDate()) {
+                            console.log(day % 7, dateWeekFinish.toLocaleDateString())
                             if (
                                 dateWeekFinish.getDay() === day % 7 
                                 && horas === dateWeekFinish.getHours()
@@ -220,9 +221,9 @@ async function eventsWeek() {
                                     
                                     console.log(w);
                                     eventWekk[w].innerHTML += $btns;
+
                             }
                     }
-
 
                     
                     /*Si este if valida la condiicon, se suma una hora en el dia y se reinicia el "day" a 0 para que 
