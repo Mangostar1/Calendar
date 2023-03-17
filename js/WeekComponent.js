@@ -190,7 +190,7 @@ async function eventsWeek() {
                 let numWeekEventStart = dateWeekStart.getWeekNumber();
                 let numOfCurrentWeek = currentDate.getWeekNumber();
                 let numWeekEventFinish = dateWeekFinish.getWeekNumber();
-                let day = 1; //El dia de la semana L a D | Actual en el calendario 1
+                let day = 1; //El dia de la semana L a D | parte en 1 para que corresponda con el lunes del objeto Date()
                 let horas = 0; //La hora del evento | Actual en el calendario
                 
                 let $btns = 
@@ -207,13 +207,15 @@ async function eventsWeek() {
                         && numWeekEventStart === numOfCurrentWeek){
                             
                             eventWekk[w].innerHTML += $btns;
+                            console.log(w);
                         
                     }
                     
-                    //Cuando la sentencia valida true, se establece el dia en 0 para reiniciar la semana y evitar bugs; y se suma una hora a la semana.
+                    /*Si este if valida la condiicon, se suma una hora en el dia y se reinicia el "day" a 0 para que 
+                    este corresponda el comienzo de la semana pero en una hora diferente */
                     if ((w + 1) % 7 == 0) {
                         horas++;
-                        day = 0;
+                        day = 0;//<-- Se establece en 0. Al salir del "if" este volvera a valer 1 como en su declaracion inicial en la linea 193
                     }
                     day++;
                 }
@@ -225,3 +227,16 @@ async function eventsWeek() {
         IsLoaded();
     }
 }
+
+/* 
+
+Este calendario semanal imprime unos 168 "<div class="semanal">" en el DOM y estos provienen de la funcion 
+"hourWeekComponent()". Se imprimen 168 porque esa es la cantidad de "<div>" necesarios para representar 
+el formato 24/7 de un calendario semanal, porque en este se muestran los 7 dias de la semana y cada dia tiene sus 
+respectivas 24 horas.
+
+La forma en la que se incertan eventos al interior de este calendario es a traves de la funcion eventsWeek() 
+el cual recorrorre el calendario desde el 0 hasta el 167, cada 7 iteraciones se le suma +1 a la variable "hora" 
+para asi poder tener acceso a la siguiente hora en el calendario.
+
+*/
