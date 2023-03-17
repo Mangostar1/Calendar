@@ -217,6 +217,7 @@ async function eventsWeek() {
                                 dateWeekFinish.getDay() === day % 7 
                                 && horas === dateWeekFinish.getHours()
                                 && dateWeekFinish.getMonth() === currentDate.getMonth()
+                                && dateWeekFinish.getFullYear() === currentDate.getFullYear() 
                                 && numWeekEventFinish === numOfCurrentWeek) {
                                     
                                     console.log(w);
