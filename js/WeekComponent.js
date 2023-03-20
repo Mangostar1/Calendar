@@ -1,7 +1,7 @@
 import { currentDate, addDays, lessDays} from "./calendar.js";
 
 export function WeekComponent(element) {
-    const $WeekContent = document.createElement('div');
+    const $WeekContent = document.createElement('article');
     $WeekContent.classList.add('container-week');
     $WeekContent.id = "container-week";
     
@@ -212,7 +212,11 @@ async function eventsWeek() {
 
                     if (
                         dateWeekStart.getDate() < dateWeekFinish.getDate()) {
-                            
+
+                            for (let i = 0; i <= (dateWeekFinish.getDate() - dateWeekStart.getDate()); i++) {
+                                //code
+                            }
+
                             if (
                                 dateWeekFinish.getDay() === day % 7 
                                 && horas === dateWeekFinish.getHours()

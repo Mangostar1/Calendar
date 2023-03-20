@@ -1,7 +1,7 @@
 import { currentDate} from "./calendar.js";
 
 export function DayComponent(element) {
-    const $DayContent = document.createElement('div');
+    const $DayContent = document.createElement('article');
     $DayContent.classList.add('day-content');
     $DayContent.id = "container-Day";
     $DayContent.innerHTML = `
