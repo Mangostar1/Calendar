@@ -202,7 +202,7 @@ async function eventsWeek() {
                     </button>`;
     
                 for (let w = 0; w < 168; w++) {
-                    /* if(
+                    if(//Si el evento dura un solo dia
                         horas === dateWeekStart.getHours() 
                         && dateWeekStart.getDay() === day % 7 
                         && dateWeekStart.getMonth() === currentDate.getMonth() 
@@ -211,70 +211,20 @@ async function eventsWeek() {
                             
                             eventWekk[w].innerHTML += $btns;
                         
-                    } */
-
-                    /* if (
-                        dateWeekStart.getDate() < dateWeekFinish.getDate()) {
-
-                            for (let i = 0; i <= (dateWeekFinish.getDate() - dateWeekStart.getDate()); i++) {
-                                //code
-                            }
-
-                            if (
-                                dateWeekFinish.getDay() === day % 7 
-                                && horas === dateWeekFinish.getHours()
-                                && dateWeekFinish.getMonth() === currentDate.getMonth()
-                                && dateWeekFinish.getFullYear() === currentDate.getFullYear() 
-                                && numWeekEventFinish === numOfCurrentWeek) {
-                                    
-                                    eventWekk[w].innerHTML += $btns;
-
-                            }
-                    } */
-
-                    if (dateWeekStart.getDate() < dateWeekFinish.getDate()) {
-                        // Agregar botón del evento en el día de inicio
-                        if (dateWeekStart.getDay() === day % 7 
-                            && horas === dateWeekStart.getHours() 
-                            && dateWeekStart.getMonth() === currentDate.getMonth() 
-                            && dateWeekStart.getFullYear() === currentDate.getFullYear() 
-                            && numWeekEventStart === numOfCurrentWeek) {
-                            
-                            eventWekk[w].innerHTML += $btns;
-                        }
-                    
-                        // Recorrer los días entre el inicio y el fin del evento y agregar el botón en cada uno
-                        for (let i = 1; i <= (dateWeekFinish.getDate() - dateWeekStart.getDate()); i++) {
-                            let dateInBetween = new Date(dateWeekStart.getFullYear(), dateWeekStart.getMonth(), dateWeekStart.getDate() + i, hoursSplit[0], hoursSplit[1], hoursSplit[2]);
-                            
-                            if (dateInBetween.getDay() === day % 7 
-                                && horas === dateInBetween.getHours() 
-                                && dateInBetween.getMonth() === currentDate.getMonth() 
-                                && dateInBetween.getFullYear() === currentDate.getFullYear() 
-                                && numWeekEventStart === numOfCurrentWeek) {
+                    } else if (dateWeekStart.getDate() < dateWeekFinish.getDate()) {
+    
+                        for (let i = dateWeekStart; i <= dateWeekFinish; i = new Date(i.getTime() + (1000 * 60 * 60 * 24))) {
                                 
-                                eventWekk[w + i * 7].innerHTML += $btns;
+                            if (
+                                i.getDay() === day % 7 
+                                && horas === i.getHours()
+                                && i.getMonth() === currentDate.getMonth()
+                                && i.getFullYear() === currentDate.getFullYear() 
+                                && i.getWeekNumber() === numOfCurrentWeek) {
+    
+                                    eventWekk[w].innerHTML += $btns;
                             }
-                        }
-                    
-                        // Agregar botón del evento en el día de fin
-                        if (dateWeekFinish.getDay() === day % 7 
-                            && horas === dateWeekFinish.getHours() 
-                            && dateWeekFinish.getMonth() === currentDate.getMonth() 
-                            && dateWeekFinish.getFullYear() === currentDate.getFullYear() 
-                            && numWeekEventFinish === numOfCurrentWeek) {
-                            
-                            eventWekk[w + (dateWeekFinish.getDate() - getDateOf_dateWeekStart) * 7].innerHTML += $btns;
-                        }
-                    } else {
-                        // Si el evento dura solo un día, agregar el botón normalmente
-                        if (horas === dateWeekStart.getHours() 
-                            && dateWeekStart.getDay() === day % 7 
-                            && dateWeekStart.getMonth() === currentDate.getMonth() 
-                            && dateWeekStart.getFullYear() === currentDate.getFullYear() 
-                            && numWeekEventStart === numOfCurrentWeek) {
-                            
-                            eventWekk[w].innerHTML += $btns;
+
                         }
                     }
 
