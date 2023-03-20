@@ -187,6 +187,9 @@ async function eventsWeek() {
                 let dateWeekStart = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2], hoursSplit[0], hoursSplit[1], hoursSplit[2]);
                 let dateWeekFinish = new Date(datesFinishSplit[0], datesFinishSplit[1] - 1, datesFinishSplit[2], hoursFinishSplit[0], hoursFinishSplit[1], hoursFinishSplit[2]);
 
+                let getDateOf_dateWeekStart = dateWeekStart.getDate();
+                let getDateOf_dateWeekFinish = dateWeekFinish.getDate();
+
                 let numWeekEventStart = dateWeekStart.getWeekNumber();
                 let numOfCurrentWeek = currentDate.getWeekNumber();
                 let numWeekEventFinish = dateWeekFinish.getWeekNumber();
@@ -199,7 +202,7 @@ async function eventsWeek() {
                     </button>`;
     
                 for (let w = 0; w < 168; w++) {
-                    if(
+                    /* if(
                         horas === dateWeekStart.getHours() 
                         && dateWeekStart.getDay() === day % 7 
                         && dateWeekStart.getMonth() === currentDate.getMonth() 
@@ -208,9 +211,9 @@ async function eventsWeek() {
                             
                             eventWekk[w].innerHTML += $btns;
                         
-                    }
+                    } */
 
-                    if (
+                    /* if (
                         dateWeekStart.getDate() < dateWeekFinish.getDate()) {
 
                             for (let i = 0; i <= (dateWeekFinish.getDate() - dateWeekStart.getDate()); i++) {
@@ -227,6 +230,52 @@ async function eventsWeek() {
                                     eventWekk[w].innerHTML += $btns;
 
                             }
+                    } */
+
+                    if (dateWeekStart.getDate() < dateWeekFinish.getDate()) {
+                        // Agregar botón del evento en el día de inicio
+                        if (dateWeekStart.getDay() === day % 7 
+                            && horas === dateWeekStart.getHours() 
+                            && dateWeekStart.getMonth() === currentDate.getMonth() 
+                            && dateWeekStart.getFullYear() === currentDate.getFullYear() 
+                            && numWeekEventStart === numOfCurrentWeek) {
+                            
+                            eventWekk[w].innerHTML += $btns;
+                        }
+                    
+                        // Recorrer los días entre el inicio y el fin del evento y agregar el botón en cada uno
+                        for (let i = 1; i <= (dateWeekFinish.getDate() - dateWeekStart.getDate()); i++) {
+                            let dateInBetween = new Date(dateWeekStart.getFullYear(), dateWeekStart.getMonth(), dateWeekStart.getDate() + i, hoursSplit[0], hoursSplit[1], hoursSplit[2]);
+                            
+                            if (dateInBetween.getDay() === day % 7 
+                                && horas === dateInBetween.getHours() 
+                                && dateInBetween.getMonth() === currentDate.getMonth() 
+                                && dateInBetween.getFullYear() === currentDate.getFullYear() 
+                                && numWeekEventStart === numOfCurrentWeek) {
+                                
+                                eventWekk[w + i * 7].innerHTML += $btns;
+                            }
+                        }
+                    
+                        // Agregar botón del evento en el día de fin
+                        if (dateWeekFinish.getDay() === day % 7 
+                            && horas === dateWeekFinish.getHours() 
+                            && dateWeekFinish.getMonth() === currentDate.getMonth() 
+                            && dateWeekFinish.getFullYear() === currentDate.getFullYear() 
+                            && numWeekEventFinish === numOfCurrentWeek) {
+                            
+                            eventWekk[w + (dateWeekFinish.getDate() - getDateOf_dateWeekStart) * 7].innerHTML += $btns;
+                        }
+                    } else {
+                        // Si el evento dura solo un día, agregar el botón normalmente
+                        if (horas === dateWeekStart.getHours() 
+                            && dateWeekStart.getDay() === day % 7 
+                            && dateWeekStart.getMonth() === currentDate.getMonth() 
+                            && dateWeekStart.getFullYear() === currentDate.getFullYear() 
+                            && numWeekEventStart === numOfCurrentWeek) {
+                            
+                            eventWekk[w].innerHTML += $btns;
+                        }
                     }
 
                     

@@ -41,8 +41,8 @@ function ModalEventWeek(element, button) {
         <h2 class="color-text">Hora</h2>
 
         <div class="inputs-content">
-            <p class="color-text modal-hour"><span class="text-bold">Desde:</span>  ${button.dataset.hourFinish} hrs</p>
-            <p class="color-text modal-hour"><span class="text-bold">Hasta las:</span>  ${button.dataset.hourStart} hrs</p>
+            <p class="color-text modal-hour"><span class="text-bold">Desde:</span>  ${button.dataset.hourStart} hrs</p>
+            <p class="color-text modal-hour"><span class="text-bold">Hasta las:</span>  ${button.dataset.hourFinish} hrs</p>
         </div>
     </div>`;
 
