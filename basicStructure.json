@@ -594,7 +594,7 @@
       "dateStartEvent": "2023-3-17",
       "hourStart": "00:17:00",
       "dateFinishEvent": "2023-3-17",
-      "hourFinish": "00:21:00",
+      "hourFinish": "13:21:00",
       "title": "Ejemplo de titulo 28",
       "description": "descripcion test",
       "statusInformation": {
@@ -611,9 +611,9 @@
     { 
       "id": 33,
       "dateStartEvent": "2023-3-18",
-      "hourStart": "01:17:00",
-      "dateFinishEvent": "2023-3-20",
-      "hourFinish": "04:21:00",
+      "hourStart": "18:17:00",
+      "dateFinishEvent": "2023-3-19",
+      "hourFinish": "12:21:00",
       "title": "Ejemplo de titulo 29",
       "description": "Este evento dura varios dias seguidos",
       "statusInformation": {
@@ -623,7 +623,7 @@
       },
       "typeInformation": {
         "type": "0001",
-        "colorBackgroundType": "#E384FF",
+        "colorBackgroundType": "#364F6B",
         "colorType": "white"
       }
     },

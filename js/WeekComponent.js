@@ -179,20 +179,20 @@ async function eventsWeek() {
                 const hoursSplit = hoursJSON.split(":");
 
                 const hoursFinishJSON = basicWeekJSON.events[e].hourFinish;
-                const hoursFinishSplit = hoursJSON.split(":");
+                const hoursFinishSplit = hoursFinishJSON.split(":");
                 
                 const titleEvent = basicWeekJSON.events[e].title
                 let descriptcionEvent = basicWeekJSON.events[e].description;
                 
                 let dateWeekStart = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2], hoursSplit[0], hoursSplit[1], hoursSplit[2]);
                 let dateWeekFinish = new Date(datesFinishSplit[0], datesFinishSplit[1] - 1, datesFinishSplit[2], hoursFinishSplit[0], hoursFinishSplit[1], hoursFinishSplit[2]);
-
-                let getDateOf_dateWeekStart = dateWeekStart.getDate();
-                let getDateOf_dateWeekFinish = dateWeekFinish.getDate();
+                
+                let getDateOf_dateWeekStart = dateWeekStart.getDate();//! Eliminar
+                let getDateOf_dateWeekFinish = dateWeekFinish.getDate();//! Eliminar
 
                 let numWeekEventStart = dateWeekStart.getWeekNumber();
                 let numOfCurrentWeek = currentDate.getWeekNumber();
-                let numWeekEventFinish = dateWeekFinish.getWeekNumber();
+                let numWeekEventFinish = dateWeekFinish.getWeekNumber();//! Eliminar
                 let day = 1; //El dia de la semana L a D | parte en 1 para que corresponda con el lunes del objeto Date()
                 let horas = 0; //La hora del evento | Actual en el calendario
                 
@@ -202,24 +202,34 @@ async function eventsWeek() {
                     </button>`;
     
                 for (let w = 0; w < 168; w++) {
-                    
-                    if(//Si el evento dura un solo dia
-                        horas === dateWeekStart.getHours() 
+                    for (let i = dateWeekStart.getTime(); i <= dateWeekFinish.getTime(); i += (1000 * 60 * 60)) {
+                        const currentDateHour = new Date(i);
+                        if (
+                            currentDateHour.getDay() === day % 7 
+                            && currentDateHour.getHours() === horas 
+                            && currentDateHour.getMonth() === currentDate.getMonth() 
+                            && currentDateHour.getFullYear() === currentDate.getFullYear() 
+                            && currentDateHour.getWeekNumber() === numOfCurrentWeek
+                        ) {
+                            eventWekk[w].innerHTML += $btns;
+                        }
+                    }
+                    /* if(//Si el evento dura un solo dia
+                        dateWeekStart.getHours() === horas
                         && dateWeekStart.getDay() === day % 7 
                         && dateWeekStart.getMonth() === currentDate.getMonth() 
                         && dateWeekStart.getFullYear() === currentDate.getFullYear() 
-                        && numWeekEventStart === numOfCurrentWeek){
-                            
-                            eventWekk[w].innerHTML += $btns;
+                        && numWeekEventStart === numOfCurrentWeek
+                        ) {    
+                        eventWekk[w].innerHTML += $btns;
                         
                     } else if (dateWeekStart.getDate() < dateWeekFinish.getDate()) {
     
                         for (let i = dateWeekStart; i <= dateWeekFinish; i = new Date(i.getTime() + (1000 * 60 * 60 * 24))) {
-                                
                             if (
                                 i.getDay() === day % 7 
-                                && horas === i.getHours()
-                                && i.getMonth() === currentDate.getMonth()
+                                && i.getHours() === horas 
+                                && i.getMonth() === currentDate.getMonth() 
                                 && i.getFullYear() === currentDate.getFullYear() 
                                 && i.getWeekNumber() === numOfCurrentWeek) {
     
@@ -227,11 +237,10 @@ async function eventsWeek() {
                             }
 
                         }
-                    }
+                    } */
 
                     
-                    /*Si este if valida la condiicon, se suma una hora en el dia y se reinicia el "day" a 0 para que 
-                    este corresponda el comienzo de la semana pero en una hora diferente */
+                    //Si este if valida la condiicon, se suma una hora en el dia y se reinicia el "day" a 0 para que este corresponda el comienzo de la semana pero en una hora diferente
                     if ((w + 1) % 7 == 0) {
                         horas++;
                         day = 0;//<-- Se establece en 0. Al salir del "if" este volvera a valer 1 como en su declaracion inicial en la linea 193
