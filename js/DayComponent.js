@@ -68,7 +68,7 @@ function IsLoaded() {
 
 async function inicioEventoDia() {
     try {
-        const $eventoLi = document.getElementsByClassName("eventDay");
+        const $eventLi = document.getElementsByClassName("eventDay");
         //const basicStruc = await fetch("http://localhost:5500/basicStructure.json");// <-- For development
         const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
         const primerEvento = await basicStruc.json();
@@ -83,16 +83,17 @@ async function inicioEventoDia() {
             
                 let horaInicial = primerEvento.events[e].hourStart;
                 let horaSplit = horaInicial.split(':');
-                let fechaEvento = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2], horaSplit[0], horaSplit[1], horaSplit[2]);
-
+                
                 let horafinal = primerEvento.events[e].hourFinish;
                 let horafinalSplit = horafinal.split(':');
+
+                let dateStartEvent = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2], horaSplit[0], horaSplit[1], horaSplit[2]);
                 let dateFinishEvent = new Date(datesFinishSplit[0], datesFinishSplit[1], datesFinishSplit[2], horafinalSplit[0], horafinalSplit[1], horafinalSplit[2]);
 
                 let tituloEvento = primerEvento.events[e].title;
                 let descriptcionEvent = primerEvento.events[e].description;
-            
-                let hours = fechaEvento.getHours();
+    
+                let hours = dateStartEvent.getHours();
     
                 let btns =
                     `<button style="background-color: ${primerEvento.events[e].typeInformation.colorBackgroundType};" id="event-Modal" class="btn-item" data-date-start=${datesJSON} data-date-finish=${datesFinishJSON} data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}" data-description="${descriptcionEvent}">
@@ -100,8 +101,16 @@ async function inicioEventoDia() {
                     </button>`;
             
                 // Day
-                if (fechaEvento.getDay() === currentDate.getDay() && fechaEvento.getDate() === currentDate.getDate() && fechaEvento.getMonth() === currentDate.getMonth() && fechaEvento.getFullYear() === currentDate.getFullYear()) {
-                    $eventoLi[hours].innerHTML += btns;
+                for (let h = 0; h < 24; h++) {
+                    if (
+                        dateStartEvent.getHours() === h
+                        && dateStartEvent.getDay() === currentDate.getDay()
+                        && dateStartEvent.getDate() === currentDate.getDate()
+                        && dateStartEvent.getMonth() === currentDate.getMonth()
+                        && dateStartEvent.getFullYear() === currentDate.getFullYear()
+                    ) {
+                        $eventLi[h].innerHTML += btns;
+                    }
                 }
             }
         }

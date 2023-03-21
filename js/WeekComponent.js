@@ -190,7 +190,7 @@ async function eventsWeek() {
                 let getDateOf_dateWeekStart = dateWeekStart.getDate();//! Eliminar
                 let getDateOf_dateWeekFinish = dateWeekFinish.getDate();//! Eliminar
 
-                let numWeekEventStart = dateWeekStart.getWeekNumber();
+                let numWeekEventStart = dateWeekStart.getWeekNumber();//!Eliminar
                 let numOfCurrentWeek = currentDate.getWeekNumber();
                 let numWeekEventFinish = dateWeekFinish.getWeekNumber();//! Eliminar
                 let day = 1; //El dia de la semana L a D | parte en 1 para que corresponda con el lunes del objeto Date()
@@ -223,7 +223,7 @@ async function eventsWeek() {
                         ) {    
                         eventWekk[w].innerHTML += $btns;
                         
-                    } else if (dateWeekStart.getDate() < dateWeekFinish.getDate()) {
+                    } else if (dateWeekStart.getDate() < dateWeekFinish.getDate()) {//Si el evento dura mas de un dia
     
                         for (let i = dateWeekStart; i <= dateWeekFinish; i = new Date(i.getTime() + (1000 * 60 * 60 * 24))) {
                             if (
