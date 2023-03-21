@@ -611,9 +611,9 @@
     { 
       "id": 33,
       "dateStartEvent": "2023-3-18",
-      "hourStart": "00:17:00",
+      "hourStart": "01:17:00",
       "dateFinishEvent": "2023-3-20",
-      "hourFinish": "00:21:00",
+      "hourFinish": "04:21:00",
       "title": "Ejemplo de titulo 29",
       "description": "Este evento dura varios dias seguidos",
       "statusInformation": {

@@ -202,6 +202,7 @@ async function eventsWeek() {
                     </button>`;
     
                 for (let w = 0; w < 168; w++) {
+                    
                     if(//Si el evento dura un solo dia
                         horas === dateWeekStart.getHours() 
                         && dateWeekStart.getDay() === day % 7 
