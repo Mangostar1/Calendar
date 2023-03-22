@@ -99,7 +99,6 @@ async function inicioEventoDia() {
                         <span class="sp-title"> ${eventData.title} </span>
                     </button>`;
             
-                // Day
                 for (let h = 0; h < 24; h++) {
                     if (
                         eventData.dateStart.getHours() === h

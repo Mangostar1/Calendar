@@ -166,50 +166,43 @@ async function eventsWeek() {
         const eventWekk = document.querySelectorAll(".eventWeek");
         if (basicWeekJSON.events.length !== 0) {
             for (let e = 0; e < basicWeekJSON.events.length; e++) {
-                
-                //Dates yy - mm - dd for new Date()
-                const datesJSON = basicWeekJSON.events[e].dateStartEvent;
-                const datesSplit = datesJSON.split("-");
 
-                const datesFinishJSON = basicWeekJSON.events[e].dateFinishEvent;
-                const datesFinishSplit = datesFinishJSON.split("-");
-            
-                //Hours hour:minutes:secons for new Date()
-                const hoursJSON = basicWeekJSON.events[e].hourStart;
-                const hoursSplit = hoursJSON.split(":");
+                const event = basicWeekJSON.events[e];
 
-                const hoursFinishJSON = basicWeekJSON.events[e].hourFinish;
-                const hoursFinishSplit = hoursFinishJSON.split(":");
+                const eventData = {
+                    dateStart: new Date(`${event.dateStartEvent} ${event.hourStart}`),
+                    dateFinish: new Date(`${event.dateFinishEvent} ${event.hourFinish}`),
+                    title: event.title,
+                    description: event.description,
+                    color: event.typeInformation.colorBackgroundType
+                }
                 
-                const titleEvent = basicWeekJSON.events[e].title
-                let descriptcionEvent = basicWeekJSON.events[e].description;
-                
-                let dateWeekStart = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2], hoursSplit[0], hoursSplit[1], hoursSplit[2]);
-                let dateWeekFinish = new Date(datesFinishSplit[0], datesFinishSplit[1] - 1, datesFinishSplit[2], hoursFinishSplit[0], hoursFinishSplit[1], hoursFinishSplit[2]);
-                
-                let getDateOf_dateWeekStart = dateWeekStart.getDate();//! Eliminar
-                let getDateOf_dateWeekFinish = dateWeekFinish.getDate();//! Eliminar
-
-                let numWeekEventStart = dateWeekStart.getWeekNumber();//!Eliminar
-                let numOfCurrentWeek = currentDate.getWeekNumber();
-                let numWeekEventFinish = dateWeekFinish.getWeekNumber();//! Eliminar
                 let day = 1; //El dia de la semana L a D | parte en 1 para que corresponda con el lunes del objeto Date()
                 let horas = 0; //La hora del evento | Actual en el calendario
                 
                 let $btns = 
-                    `<button style="background-color: ${basicWeekJSON.events[e].typeInformation.colorBackgroundType};" id="event-Modal" class="btn-item" data-date-start=${datesJSON} data-date-finish=${datesFinishJSON} data-hour-start="${hoursJSON}" data-hour-finish="${hoursFinishJSON}" data-title="${titleEvent}" data-description="${descriptcionEvent}">
-                        <span class="sp-title"> ${titleEvent} </span>
+                    `<button 
+                    style="background-color: ${eventData.color};" 
+                    id="event-Modal" 
+                    class="btn-item" 
+                    data-date-start=${eventData.dateStart.toLocaleDateString()} 
+                    data-date-finish=${eventData.dateFinish.toLocaleDateString()} 
+                    data-hour-start="${eventData.dateStart.toLocaleTimeString()}" 
+                    data-hour-finish="${eventData.dateFinish.toLocaleTimeString()}" 
+                    data-title="${eventData.title}" 
+                    data-description="${eventData.description}">
+                        <span class="sp-title"> ${eventData.title} </span>
                     </button>`;
     
                 for (let w = 0; w < 168; w++) {
-                    for (let i = dateWeekStart.getTime(); i <= dateWeekFinish.getTime(); i += (1000 * 60 * 60)) {
+                    for (let i = eventData.dateStart.getTime(); i <= eventData.dateFinish.getTime(); i += (1000 * 60 * 60)) {
                         const currentDateHour = new Date(i);
                         if (
                             currentDateHour.getDay() === day % 7 
                             && currentDateHour.getHours() === horas 
                             && currentDateHour.getMonth() === currentDate.getMonth() 
                             && currentDateHour.getFullYear() === currentDate.getFullYear() 
-                            && currentDateHour.getWeekNumber() === numOfCurrentWeek
+                            && currentDateHour.getWeekNumber() === currentDate.getWeekNumber()
                         ) {
                             eventWekk[w].innerHTML += $btns;
                         }
