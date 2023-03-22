@@ -90,8 +90,7 @@ async function inicioEventoDia() {
                     $eventLi[hora].innerHTML += datesFetch(primerEvento, e).btns;
                 }
 
-                //Probando cosas | Funcinando relativamente bien, falta controlar que se imprima un boton por hora
-                // se imprimen 24 botones cada hora o div
+                //Probando cosas | Funcinando relativamente bien: Solo corregir que no se impriman de forma inicial, mas de un boton en la hora (se duplica el primer boton)
                 if (
                     eventData.dateStart.getHours() < eventData.dateFinish.getHours()
                     && eventData.dateStart.getDate() === currentDate.getDate()
