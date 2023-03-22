@@ -160,7 +160,6 @@ function IsLoaded() {
 //Events Week
 async function eventsWeek() {
     try {
-        //const basicWeek = await fetch("http://localhost:5500/basicStructure.json");
         const basicWeek = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
         const basicWeekJSON = await basicWeek.json();
     
