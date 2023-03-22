@@ -76,32 +76,18 @@ async function eventoMonth() {
 
         if (basicMonthJson.length !== 0) {
             for (let d = 0; d < basicMonthJson.events.length; d++) {
-                let datesJSON = basicMonthJson.events[d].dateStartEvent;
-                let datesFinishJSON = basicMonthJson.events[d].dateFinishEvent;
+
+                let eventData = datesFetch(basicMonthJson, d).eventData;
                 
-                const datesSplit = datesJSON.split('-');
-                let dateMonthStart = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2]);
-                let getDateOf_dateMonthStart = dateMonthStart.getDate();
-                
-                const datesFinishSplit = datesFinishJSON.split('-');
-                let dateMonthFinish = new Date(datesFinishSplit[0], datesFinishSplit[1] - 1, datesFinishSplit[2]);
-                let getDateOf_dateMonthFinish = dateMonthFinish.getDate();
+                let getDateOf_dateMonthStart = eventData.dateStart.getDate();
+                let getDateOf_dateMonthFinish = eventData.dateFinish.getDate();
                 
                 for (let i = getDateOf_dateMonthStart; i <= getDateOf_dateMonthFinish; i++) {
                     let $eventMonth = document.getElementById(`evento-${i}`);
                     if ($eventMonth) {
-                        let horaInicial = basicMonthJson.events[d].hourStart;
-                        let horafinal = basicMonthJson.events[d].hourFinish;
-                        let tituloEvento = basicMonthJson.events[d].title;
-                        let descriptcionEvent = basicMonthJson.events[d].description;
                             
-                        let $btns =
-                            `<button style="background-color: ${basicMonthJson.events[d].typeInformation.colorBackgroundType};" id="event-Modal" class="btn-item btm-event-month" data-date-start=${datesJSON} data-date-finish=${datesFinishJSON} data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}" data-description="${descriptcionEvent}">
-                                <span class="sp-title"> ${tituloEvento} </span>
-                            </button>`;
-                            
-                        if (dateMonthStart.getMonth() === currentDate.getMonth() && dateMonthStart.getFullYear() === currentDate.getFullYear()) {
-                            $eventMonth.innerHTML += $btns;
+                        if (eventData.dateStart.getMonth() === currentDate.getMonth() && eventData.dateStart.getFullYear() === currentDate.getFullYear()) {
+                            $eventMonth.innerHTML += datesFetch(basicMonthJson, d).btns;
                         }
                     }
                 }

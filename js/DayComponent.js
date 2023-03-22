@@ -77,29 +77,29 @@ async function inicioEventoDia() {
             for (let e = 0; e < primerEvento.events.length; e++) {
 
                 let eventData = datesFetch(primerEvento, e).eventData;
-            
-                for (let h = 0; h < 24; h++) {
-                    if (
-                        eventData.dateStart.getHours() === h
-                        && eventData.dateStart.getDay() === currentDate.getDay()
-                        && eventData.dateStart.getDate() === currentDate.getDate()
-                        && eventData.dateStart.getMonth() === currentDate.getMonth()
-                        && eventData.dateStart.getFullYear() === currentDate.getFullYear()
-                    ) {
-                        $eventLi[h].innerHTML += datesFetch(primerEvento, e).btns;
-                    }
 
-                    //Probando cosas | Funcinando relativamente bien, falta controlar que se imprima un boton por hora
-                    // se imprimen 24 botones cada hora o div
-                    if (
-                        eventData.dateStart.getHours() < eventData.dateFinish.getHours()
-                        && eventData.dateStart.getDate() === currentDate.getDate()
-                    ) {
-                        const duracion = (eventData.dateFinish - eventData.dateStart) / (1000 * 60 * 60);
-                        for (let i = 0; i <= duracion; i++) {
-                            const hora = new Date(eventData.dateStart.getTime() + (i * 60 * 60 * 1000)).getHours();
-                            $eventLi[hora].innerHTML += datesFetch(primerEvento, e).btns;
-                        }
+                let hora = eventData.dateStart.getHours();
+                
+                if (
+                    
+                    eventData.dateStart.getDay() === currentDate.getDay()
+                    && eventData.dateStart.getDate() === currentDate.getDate()
+                    && eventData.dateStart.getMonth() === currentDate.getMonth()
+                    && eventData.dateStart.getFullYear() === currentDate.getFullYear()
+                ) {
+                    $eventLi[hora].innerHTML += datesFetch(primerEvento, e).btns;
+                }
+
+                //Probando cosas | Funcinando relativamente bien, falta controlar que se imprima un boton por hora
+                // se imprimen 24 botones cada hora o div
+                if (
+                    eventData.dateStart.getHours() < eventData.dateFinish.getHours()
+                    && eventData.dateStart.getDate() === currentDate.getDate()
+                ) {
+                    const duracion = (eventData.dateFinish - eventData.dateStart) / (1000 * 60 * 60);
+                    for (let i = 0; i <= duracion; i++) {
+                        const hora = new Date(eventData.dateStart.getTime() + (i * 60 * 60 * 1000)).getHours();
+                        $eventLi[hora].innerHTML += datesFetch(primerEvento, e).btns;
                     }
                 }
             }
