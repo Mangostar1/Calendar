@@ -1,4 +1,5 @@
 import { currentDate } from "./calendar.js";
+import { datesFetch } from './datesFetch.js'
 
 export function DayComponent(element) {
     const $DayContent = document.createElement('article');
@@ -69,35 +70,13 @@ function IsLoaded() {
 async function inicioEventoDia() {
     try {
         const $eventLi = document.getElementsByClassName("eventDay");
-        //const basicStruc = await fetch("http://localhost:5500/basicStructure.json");// <-- For development
         const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
         const primerEvento = await basicStruc.json();
     
         if (primerEvento.length !== 0) {
             for (let e = 0; e < primerEvento.events.length; e++) {
-                const event = primerEvento.events[e];
 
-                const eventData = {
-                    dateStart: new Date(`${event.dateStartEvent} ${event.hourStart}`),
-                    dateFinish: new Date(`${event.dateFinishEvent} ${event.hourFinish}`),
-                    title: event.title,
-                    description: event.description,
-                    color: event.typeInformation.colorBackgroundType
-                }
-    
-                let btns =
-                    `<button 
-                    style="background-color: ${eventData.color};" 
-                    id="event-Modal" 
-                    class="btn-item" 
-                    data-date-start=${eventData.dateStart.toLocaleDateString()} 
-                    data-date-finish=${eventData.dateFinish.toLocaleDateString()} 
-                    data-hour-start="${eventData.dateStart.toLocaleTimeString()}" 
-                    data-hour-finish="${eventData.dateFinish.toLocaleTimeString()}" 
-                    data-title="${eventData.title}" 
-                    data-description="${eventData.description}">
-                        <span class="sp-title"> ${eventData.title} </span>
-                    </button>`;
+                let eventData = datesFetch(primerEvento, e).eventData;
             
                 for (let h = 0; h < 24; h++) {
                     if (
@@ -107,7 +86,13 @@ async function inicioEventoDia() {
                         && eventData.dateStart.getMonth() === currentDate.getMonth()
                         && eventData.dateStart.getFullYear() === currentDate.getFullYear()
                     ) {
-                        $eventLi[h].innerHTML += btns;
+                        $eventLi[h].innerHTML += datesFetch(primerEvento, e).btns;
+                    }
+                    if (
+                        eventData.dateStart.getHours() < eventData.dateFinish.getHours()
+                        && eventData.dateStart.getDate() === currentDate.getDate()
+                    ) {
+                        console.log('Se imprime');
                     }
                 }
             }
