@@ -1,5 +1,5 @@
-import { currentDate } from "./calendar.js";
-import { datesFetch } from './datesFetch.js';
+import { currentDate } from "./../calendar.js";
+import { datesFetch } from '../helpers/datesFetch.js';
 
 export function DayComponent(element) {
     const $DayContent = document.createElement('article');

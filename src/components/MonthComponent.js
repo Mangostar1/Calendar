@@ -1,5 +1,5 @@
-import { getTotalDays, startDay, currentDate, currentWeek} from "./calendar.js";
-import { datesFetch } from './datesFetch.js';
+import { getTotalDays, startDay, currentDate, currentWeek} from "../calendar.js";
+import { datesFetch } from '../helpers/datesFetch.js';
 
 export function MonthComponent(element) {
     const $MonthContent = document.createElement('article');

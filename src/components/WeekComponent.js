@@ -1,5 +1,5 @@
-import { currentDate, addDays} from "./calendar.js";
-import { datesFetch } from './datesFetch.js';
+import { currentDate, addDays} from "../calendar.js";
+import { datesFetch } from '../helpers/datesFetch.js';
 
 export function WeekComponent(element) {
     const $WeekContent = document.createElement('article');

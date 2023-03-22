@@ -1,9 +1,9 @@
-import { NewModalEvent, closeModal } from "./Add_Event.js";
-import { DayComponent, hourDayComponent} from "./DayComponent.js";
-import { WeekComponent, hourWeekComponent} from "./WeekComponent.js";
-import { MonthComponent, DaysOfMonth} from "./MonthComponent.js";
-import { YearComponent, writeYear, DaysOFYear} from "./YearComponent.js";
-import {handlerBtn, handlerBtnMobile} from "./Events_Details.js";
+import { NewModalEvent, closeModal } from "./components/Add_Event.js";
+import { DayComponent, hourDayComponent} from "./components/DayComponent.js";
+import { WeekComponent, hourWeekComponent} from "./components/WeekComponent.js";
+import { MonthComponent, DaysOfMonth} from "./components/MonthComponent.js";
+import { YearComponent, writeYear, DaysOFYear} from "./components/YearComponent.js";
+import {handlerBtn, handlerBtnMobile} from "./components/Events_Details.js";
 
 const $calendarContainer = document.getElementsByClassName("calendar-container")[0];
 
