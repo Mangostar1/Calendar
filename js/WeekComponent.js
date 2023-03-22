@@ -1,4 +1,5 @@
-import { currentDate, addDays, lessDays} from "./calendar.js";
+import { currentDate, addDays} from "./calendar.js";
+import { datesFetch } from './datesFetch.js';
 
 export function WeekComponent(element) {
     const $WeekContent = document.createElement('article');
@@ -167,32 +168,10 @@ async function eventsWeek() {
         if (basicWeekJSON.events.length !== 0) {
             for (let e = 0; e < basicWeekJSON.events.length; e++) {
 
-                const event = basicWeekJSON.events[e];
-
-                const eventData = {
-                    dateStart: new Date(`${event.dateStartEvent} ${event.hourStart}`),
-                    dateFinish: new Date(`${event.dateFinishEvent} ${event.hourFinish}`),
-                    title: event.title,
-                    description: event.description,
-                    color: event.typeInformation.colorBackgroundType
-                }
+                let eventData = datesFetch(basicWeekJSON, e).eventData;
                 
                 let day = 1; //El dia de la semana L a D | parte en 1 para que corresponda con el lunes del objeto Date()
                 let horas = 0; //La hora del evento | Actual en el calendario
-                
-                let $btns = 
-                    `<button 
-                    style="background-color: ${eventData.color};" 
-                    id="event-Modal" 
-                    class="btn-item" 
-                    data-date-start=${eventData.dateStart.toLocaleDateString()} 
-                    data-date-finish=${eventData.dateFinish.toLocaleDateString()} 
-                    data-hour-start="${eventData.dateStart.toLocaleTimeString()}" 
-                    data-hour-finish="${eventData.dateFinish.toLocaleTimeString()}" 
-                    data-title="${eventData.title}" 
-                    data-description="${eventData.description}">
-                        <span class="sp-title"> ${eventData.title} </span>
-                    </button>`;
     
                 for (let w = 0; w < 168; w++) {
                     for (let i = eventData.dateStart.getTime(); i <= eventData.dateFinish.getTime(); i += (1000 * 60 * 60)) {
@@ -204,7 +183,7 @@ async function eventsWeek() {
                             && currentDateHour.getFullYear() === currentDate.getFullYear() 
                             && currentDateHour.getWeekNumber() === currentDate.getWeekNumber()
                         ) {
-                            eventWekk[w].innerHTML += $btns;
+                            eventWekk[w].innerHTML += datesFetch(basicWeekJSON, e).btns;
                         }
                     }
                     /* if(//Si el evento dura un solo dia

@@ -1,4 +1,5 @@
 import { getTotalDays, startDay, currentDate, currentWeek} from "./calendar.js";
+import { datesFetch } from './datesFetch.js';
 
 export function MonthComponent(element) {
     const $MonthContent = document.createElement('article');
@@ -70,7 +71,6 @@ function IsLoaded() {
 //Eventos del mes
 async function eventoMonth() {
     try {
-        //const basicMonth = await fetch("http://localhost:5500/basicStructure.json");// <-- For development
         const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
         const basicMonthJson = await basicMonth.json();
 

@@ -1,5 +1,5 @@
 import { currentDate } from "./calendar.js";
-import { datesFetch } from './datesFetch.js'
+import { datesFetch } from './datesFetch.js';
 
 export function DayComponent(element) {
     const $DayContent = document.createElement('article');
@@ -22,8 +22,8 @@ export function DayComponent(element) {
 
 export function hourDayComponent(currentDate) {
     const $containerDay = document.getElementById("container-Day");
-    const hourDay = [{
-        hour: "00:00 hrs"}, 
+    const hourDay = [
+        {hour: "00:00 hrs"}, 
         {hour: "01:00 hrs"}, 
         {hour: "02:00 hrs"}, 
         {hour: "03:00 hrs"}, 
@@ -88,11 +88,18 @@ async function inicioEventoDia() {
                     ) {
                         $eventLi[h].innerHTML += datesFetch(primerEvento, e).btns;
                     }
+
+                    //Probando cosas | Funcinando relativamente bien, falta controlar que se imprima un boton por hora
+                    // se imprimen 24 botones cada hora o div
                     if (
                         eventData.dateStart.getHours() < eventData.dateFinish.getHours()
                         && eventData.dateStart.getDate() === currentDate.getDate()
                     ) {
-                        console.log('Se imprime');
+                        const duracion = (eventData.dateFinish - eventData.dateStart) / (1000 * 60 * 60);
+                        for (let i = 0; i <= duracion; i++) {
+                            const hora = new Date(eventData.dateStart.getTime() + (i * 60 * 60 * 1000)).getHours();
+                            $eventLi[hora].innerHTML += datesFetch(primerEvento, e).btns;
+                        }
                     }
                 }
             }
