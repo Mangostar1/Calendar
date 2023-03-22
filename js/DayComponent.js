@@ -1,4 +1,4 @@
-import { currentDate} from "./calendar.js";
+import { currentDate } from "./calendar.js";
 
 export function DayComponent(element) {
     const $DayContent = document.createElement('article');
@@ -75,39 +75,38 @@ async function inicioEventoDia() {
     
         if (primerEvento.length !== 0) {
             for (let e = 0; e < primerEvento.events.length; e++) {
-                const datesJSON = primerEvento.events[e].dateStartEvent;
-                const datesSplit = datesJSON.split("-");
+                const event = primerEvento.events[e];
 
-                const datesFinishJSON = primerEvento.events[e].dateFinishEvent;
-                const datesFinishSplit = datesJSON.split("-");
-            
-                let horaInicial = primerEvento.events[e].hourStart;
-                let horaSplit = horaInicial.split(':');
-                
-                let horafinal = primerEvento.events[e].hourFinish;
-                let horafinalSplit = horafinal.split(':');
-
-                let dateStartEvent = new Date(datesSplit[0], datesSplit[1] - 1, datesSplit[2], horaSplit[0], horaSplit[1], horaSplit[2]);
-                let dateFinishEvent = new Date(datesFinishSplit[0], datesFinishSplit[1], datesFinishSplit[2], horafinalSplit[0], horafinalSplit[1], horafinalSplit[2]);
-
-                let tituloEvento = primerEvento.events[e].title;
-                let descriptcionEvent = primerEvento.events[e].description;
-    
-                let hours = dateStartEvent.getHours();
+                const eventData = {
+                    dateStart: new Date(`${event.dateStartEvent} ${event.hourStart}`),
+                    dateFinish: new Date(`${event.dateFinishEvent} ${event.hourFinish}`),
+                    title: event.title,
+                    description: event.description,
+                    color: event.typeInformation.colorBackgroundType
+                }
     
                 let btns =
-                    `<button style="background-color: ${primerEvento.events[e].typeInformation.colorBackgroundType};" id="event-Modal" class="btn-item" data-date-start=${datesJSON} data-date-finish=${datesFinishJSON} data-hour-start="${horaInicial}" data-hour-finish="${horafinal}" data-title="${tituloEvento}" data-description="${descriptcionEvent}">
-                        <span class="sp-title"> ${tituloEvento} </span>
+                    `<button 
+                    style="background-color: ${eventData.color};" 
+                    id="event-Modal" 
+                    class="btn-item" 
+                    data-date-start=${eventData.dateStart.toLocaleDateString()} 
+                    data-date-finish=${eventData.dateFinish.toLocaleDateString()} 
+                    data-hour-start="${eventData.dateStart.toLocaleTimeString()}" 
+                    data-hour-finish="${eventData.dateFinish.toLocaleTimeString()}" 
+                    data-title="${eventData.title}" 
+                    data-description="${eventData.description}">
+                        <span class="sp-title"> ${eventData.title} </span>
                     </button>`;
             
                 // Day
                 for (let h = 0; h < 24; h++) {
                     if (
-                        dateStartEvent.getHours() === h
-                        && dateStartEvent.getDay() === currentDate.getDay()
-                        && dateStartEvent.getDate() === currentDate.getDate()
-                        && dateStartEvent.getMonth() === currentDate.getMonth()
-                        && dateStartEvent.getFullYear() === currentDate.getFullYear()
+                        eventData.dateStart.getHours() === h
+                        && eventData.dateStart.getDay() === currentDate.getDay()
+                        && eventData.dateStart.getDate() === currentDate.getDate()
+                        && eventData.dateStart.getMonth() === currentDate.getMonth()
+                        && eventData.dateStart.getFullYear() === currentDate.getFullYear()
                     ) {
                         $eventLi[h].innerHTML += btns;
                     }
