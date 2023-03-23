@@ -150,9 +150,9 @@ export function hourWeekComponent(currentDate, getDay) {
     }, 1);
 }
 
-/*-------------*/
+/*------------*/
 /*-API Events-*/
-/*-------------*/
+/*------------*/
 function IsLoaded() {
     document.querySelector(".content-loader").style.display="none";
 }

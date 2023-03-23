@@ -7,6 +7,8 @@ import {handlerBtn, handlerBtnMobile} from "./components/Events_Details.js";
 
 const $calendarContainer = document.getElementsByClassName("calendar-container")[0];
 
+let isVisible = false;
+
 /*-------*/
 /* Dates */
 /*-------*/
@@ -83,20 +85,25 @@ document.addEventListener('click', ({target}) => {
     document.querySelector('.buttons').classList.toggle('active');
   }
   //modals
-  if (target.matches('.grid-item') && screen.width > 768) {
+  if (target.matches('.grid-item') && screen.width > 768 && isVisible === false) {
     NewModalEvent(target);
+    isVisible = true;
   }
-  if (target.matches("#new-event")) {
+  if (target.matches("#new-event") && isVisible === false) {
     NewModalEvent(document.querySelector('.contaienr'));
+    isVisible = true;
   }
-  if (target.matches("#closeModal-ID")) {
+  if (target.matches("#closeModal-ID") && isVisible === true) {
     closeModal();
+    isVisible = false;
   }
-  if (target.matches(".btn-item")) { // #event-Modal
+  if (target.matches(".btn-item") && isVisible === false) { // #event-Modal
     if (screen.width < 768) {
       handlerBtnMobile();
+      isVisible = true;
     } else {
       handlerBtn(target);
+      isVisible = true;
     }
   }
 

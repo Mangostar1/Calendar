@@ -7,7 +7,7 @@
     border-radius: 8px;
     box-shadow: 0px 0px 25px 0px rgba(71, 71, 71, 0.507);
 
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     z-index: 10;
@@ -15,7 +15,8 @@
 
 /* conten close btn modal */
 .modal-close-content{
-    background-color: var(--colorOne);
+    /* background-color: var(--colorOne); */
+    background-color: rgb(233, 233, 233);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 
@@ -46,7 +47,8 @@
 }
 
 .btn-close-modal{
-    background-color: var(--colorOne);
+    /* background-color: var(--colorOne); */
+    background-color: transparent;
     border: none;
 }
 .btn-close-modal:hover  .closeModal{
