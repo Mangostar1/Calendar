@@ -1,23 +1,27 @@
 export function dragModal() {
-    const draggableElement = document.querySelector('.modal-close-content');
+    const draggableElement = document.querySelector('.modal-close-content').parentElement;
     let isDragging = false;
-    let originalX;
-    let originalY;
+    let initialX;
+    let initialY;
     let currentX;
     let currentY;
+    let xOffset = 0;
+    let yOffset = 0;
 
     draggableElement.addEventListener('mousedown', function(e) {
         isDragging = true;
-        originalX = e.clientX;
-        originalY = e.clientY;
+        initialX = e.clientX - xOffset;
+        initialY = e.clientY - yOffset;
     });
 
     document.addEventListener('mousemove', function(e) {
         if (isDragging) {
             e.preventDefault();
-            currentX = e.clientX - originalX;
-            currentY = e.clientY - originalY;
-            draggableElement.parentElement.style.transform = `translate(${currentX}px, ${currentY}px)`;
+            currentX = e.clientX - initialX;
+            currentY = e.clientY - initialY;
+            xOffset = currentX;
+            yOffset = currentY;
+            setTranslate(currentX, currentY, draggableElement);
         }
     });
 
@@ -25,4 +29,7 @@ export function dragModal() {
         isDragging = false;
     });
 
+    function setTranslate(xPos, yPos, el) {
+        el.style.transform = `translate(${xPos}px, ${yPos}px)`;
+    }
 }
