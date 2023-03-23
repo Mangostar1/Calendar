@@ -573,9 +573,9 @@
     { 
       "id": 31,
       "dateStartEvent": "2023-3-16",
-      "hourStart": "00:17:00",
+      "hourStart": "05:17:00",
       "dateFinishEvent": "2023-3-16",
-      "hourFinish": "00:21:00",
+      "hourFinish": "11:21:00",
       "title": "Ejemplo de titulo 27",
       "description": "descripcion test",
       "statusInformation": {
@@ -632,7 +632,7 @@
       "dateStartEvent": "2023-3-10",
       "hourStart": "00:17:00",
       "dateFinishEvent": "2023-3-10",
-      "hourFinish": "00:21:00",
+      "hourFinish": "03:21:00",
       "title": "Ejemplo de titulo 30",
       "description": "descripcion test",
       "statusInformation": {

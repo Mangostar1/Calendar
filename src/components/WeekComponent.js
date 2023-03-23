@@ -173,20 +173,8 @@ async function eventsWeek() {
                 let horas = 0; //La hora del evento | Actual en el calendario
     
                 for (let w = 0; w < 168; w++) {
-                    for (let i = eventData.dateStart.getTime(); i <= eventData.dateFinish.getTime(); i += (1000 * 60 * 60)) {
-                        const currentDateHour = new Date(i);
-                        if (
-                            currentDateHour.getDay() === day % 7 
-                            && currentDateHour.getHours() === horas 
-                            && currentDateHour.getMonth() === currentDate.getMonth() 
-                            && currentDateHour.getFullYear() === currentDate.getFullYear() 
-                            && currentDateHour.getWeekNumber() === currentDate.getWeekNumber()
-                        ) {
-                            eventWekk[w].innerHTML += datesFetch(basicWeekJSON, e).btns;
-                        }
-                    }
-                    /* if(//Si el evento dura un solo dia
-                    eventData.dateStart.getHours() === horas
+                    if(//Si el evento dura un solo dia
+                        eventData.dateStart.getHours() === horas
                         && eventData.dateStart.getDay() === day % 7 
                         && eventData.dateStart.getMonth() === currentDate.getMonth() 
                         && eventData.dateStart.getFullYear() === currentDate.getFullYear() 
@@ -209,7 +197,40 @@ async function eventsWeek() {
                             }
 
                         }
+                    }
+
+                    if (
+                        // Si el evento dura un solo día
+                        eventData.dateStart.getDay() === day % 7 &&
+                        eventData.dateStart.getMonth() === currentDate.getMonth() &&
+                        eventData.dateStart.getFullYear() === currentDate.getFullYear() &&
+                        eventData.dateStart.getWeekNumber() === currentDate.getWeekNumber() &&
+                        horas >= eventData.dateStart.getHours() &&
+                        horas < eventData.dateFinish.getHours()
+                    ) {
+                        eventWekk[w].innerHTML += datesFetch(basicWeekJSON, e).btns;
+                    } /* else if (
+                        // Si el evento dura más de un día
+                        eventData.dateStart.getMonth() === currentDate.getMonth() &&
+                        eventData.dateStart.getFullYear() === currentDate.getFullYear() &&
+                        eventData.dateStart.getWeekNumber() === currentDate.getWeekNumber() &&
+                        horas >= eventData.dateStart.getHours()
+                    ) {
+                        let nextDay = new Date(eventData.dateStart.getTime() + (24 * 60 * 60 * 1000));
+                        while (nextDay < eventData.dateFinish) {
+                            if (nextDay.getDay() === day % 7) {
+                                eventWekk[w].innerHTML += datesFetch(basicWeekJSON, e).btns;
+                            }
+                            nextDay = new Date(nextDay.getTime() + (24 * 60 * 60 * 1000));
+                        }
+                        if (
+                            day % 7 === eventData.dateFinish.getDay() &&
+                            horas < eventData.dateFinish.getHours()
+                        ) {
+                            eventWekk[w].innerHTML += datesFetch(basicWeekJSON, e).btns;
+                        }
                     } */
+                    
 
                     
                     //Si este if valida la condiicon, se suma una hora en el dia y se reinicia el "day" a 0 para que este corresponda el comienzo de la semana pero en una hora diferente
@@ -227,16 +248,3 @@ async function eventsWeek() {
         IsLoaded();
     }
 }
-
-/* 
-
-Este calendario semanal imprime unos 168 "<div class="semanal">" en el DOM y estos provienen de la funcion 
-"hourWeekComponent()". Se imprimen 168 porque esa es la cantidad de "<div>" necesarios para representar 
-el formato 24/7 de un calendario semanal, porque en este se muestran los 7 dias de la semana y cada dia tiene sus 
-respectivas 24 horas.
-
-La forma en la que se incertan eventos al interior de este calendario es a traves de la funcion eventsWeek() 
-el cual recorrorre el calendario desde el 0 hasta el 167, cada 7 iteraciones se le suma +1 a la variable "hora" 
-para asi poder tener acceso a la siguiente hora en el calendario.
-
-*/
