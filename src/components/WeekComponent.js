@@ -174,7 +174,8 @@ async function eventsWeek() {
     
                 for (let w = 0; w < 168; w++) {
                     if(//Si el evento dura un solo dia
-                        eventData.dateStart.getHours() === horas
+                        horas >= eventData.dateStart.getHours()
+                        && horas <= eventData.dateFinish.getHours()
                         && eventData.dateStart.getDay() === day % 7 
                         && eventData.dateStart.getMonth() === currentDate.getMonth() 
                         && eventData.dateStart.getFullYear() === currentDate.getFullYear() 
@@ -188,50 +189,18 @@ async function eventsWeek() {
                             
                             if (
                                 i.getDay() === day % 7 
-                                && i.getHours() === horas 
                                 && i.getMonth() === currentDate.getMonth() 
                                 && i.getFullYear() === currentDate.getFullYear() 
                                 && i.getWeekNumber() === currentDate.getWeekNumber()
+                                && horas >= eventData.dateStart.getHours()
+                                && horas <= eventData.dateFinish.getHours()
                             ) {
                                     eventWekk[w].innerHTML += datesFetch(basicWeekJSON, e).btns;
                             }
 
                         }
                     }
-
-                    if (
-                        // Si el evento dura un solo día
-                        eventData.dateStart.getDay() === day % 7 &&
-                        eventData.dateStart.getMonth() === currentDate.getMonth() &&
-                        eventData.dateStart.getFullYear() === currentDate.getFullYear() &&
-                        eventData.dateStart.getWeekNumber() === currentDate.getWeekNumber() &&
-                        horas >= eventData.dateStart.getHours() &&
-                        horas < eventData.dateFinish.getHours()
-                    ) {
-                        eventWekk[w].innerHTML += datesFetch(basicWeekJSON, e).btns;
-                    } /* else if (
-                        // Si el evento dura más de un día
-                        eventData.dateStart.getMonth() === currentDate.getMonth() &&
-                        eventData.dateStart.getFullYear() === currentDate.getFullYear() &&
-                        eventData.dateStart.getWeekNumber() === currentDate.getWeekNumber() &&
-                        horas >= eventData.dateStart.getHours()
-                    ) {
-                        let nextDay = new Date(eventData.dateStart.getTime() + (24 * 60 * 60 * 1000));
-                        while (nextDay < eventData.dateFinish) {
-                            if (nextDay.getDay() === day % 7) {
-                                eventWekk[w].innerHTML += datesFetch(basicWeekJSON, e).btns;
-                            }
-                            nextDay = new Date(nextDay.getTime() + (24 * 60 * 60 * 1000));
-                        }
-                        if (
-                            day % 7 === eventData.dateFinish.getDay() &&
-                            horas < eventData.dateFinish.getHours()
-                        ) {
-                            eventWekk[w].innerHTML += datesFetch(basicWeekJSON, e).btns;
-                        }
-                    } */
                     
-
                     
                     //Si este if valida la condiicon, se suma una hora en el dia y se reinicia el "day" a 0 para que este corresponda el comienzo de la semana pero en una hora diferente
                     if ((w + 1) % 7 == 0) {
