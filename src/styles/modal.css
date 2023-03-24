@@ -26,6 +26,8 @@
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+
+    cursor: move;
 }
 
 .btn-close-modal{

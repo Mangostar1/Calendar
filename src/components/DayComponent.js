@@ -72,33 +72,19 @@ async function inicioEventoDia() {
         const $eventLi = document.getElementsByClassName("eventDay");
         const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
         const primerEvento = await basicStruc.json();
-    
+
         if (primerEvento.length !== 0) {
             for (let e = 0; e < primerEvento.events.length; e++) {
-
                 let eventData = datesFetch(primerEvento, e).eventData;
+                let hourStart = eventData.dateStart.getHours();
+                let hourFinish = eventData.dateFinish.getHours();
 
-                let hora = eventData.dateStart.getHours();
-                
-                if (
-                    
-                    eventData.dateStart.getDay() === currentDate.getDay()
-                    && eventData.dateStart.getDate() === currentDate.getDate()
-                    && eventData.dateStart.getMonth() === currentDate.getMonth()
-                    && eventData.dateStart.getFullYear() === currentDate.getFullYear()
-                ) {
-                    $eventLi[hora].innerHTML += datesFetch(primerEvento, e).btns;
-                }
-
-                //Probando cosas | Funcinando relativamente bien: Solo corregir que no se impriman de forma inicial, mas de un boton en la hora (se duplica el primer boton)
-                if (
-                    eventData.dateStart.getHours() < eventData.dateFinish.getHours()
-                    && eventData.dateStart.getDate() === currentDate.getDate()
-                ) {
-                    const duracion = (eventData.dateFinish - eventData.dateStart) / (1000 * 60 * 60);
-                    for (let i = 0; i <= duracion; i++) {
-                        const hora = new Date(eventData.dateStart.getTime() + (i * 60 * 60 * 1000)).getHours();
-                        $eventLi[hora].innerHTML += datesFetch(primerEvento, e).btns;
+                for (let h = hourStart; h <= hourFinish; h++) {
+                    if (eventData.dateStart.getDay() === currentDate.getDay() &&
+                        eventData.dateStart.getDate() === currentDate.getDate() &&
+                        eventData.dateStart.getMonth() === currentDate.getMonth() &&
+                        eventData.dateStart.getFullYear() === currentDate.getFullYear()) {
+                        $eventLi[h].innerHTML += datesFetch(primerEvento, e).btns;
                     }
                 }
             }
