@@ -9,7 +9,7 @@ export function WeekComponent(element) {
     $WeekContent.innerHTML = 
     `<div id="dates-control-week" class="dates-control">
         <button id="prev-week" class="prev">&#10094;</button>
-        <h1 id="fecha-week" class="fecha">Diciembre de 2021</h1>
+        <h1 id="date-week" class="fecha">Diciembre de 2021</h1>
         <button id="next-week" class="next">&#10095;</button>
     </div>
     <div id="days-of-week">

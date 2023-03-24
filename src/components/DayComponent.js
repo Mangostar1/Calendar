@@ -8,7 +8,7 @@ export function DayComponent(element) {
     $DayContent.innerHTML = `
         <div id="dates-control-day" class="dates-control">
             <button id="prev-day" class="prev"> &#10094; </button>
-            <h1 id="fecha-day" class="fecha">Diciembre de 2021</h1>
+            <h1 id="date-day" class="fecha">Diciembre de 2021</h1>
             <button id="next-day" class="next"> &#10095; </button>
         </div>
         <hr>

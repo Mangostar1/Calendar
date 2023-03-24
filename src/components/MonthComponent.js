@@ -8,7 +8,7 @@ export function MonthComponent(element) {
     $MonthContent.innerHTML = `
         <div id="dates-control-month" class="dates-control">
             <button id="prev-month" class="prev">&#10094;</button>
-            <h1 id="fecha-month" class="fecha">Diciembre de 2021</h1>
+            <h1 id="date-month" class="fecha">Diciembre de 2021</h1>
             <button id="next-month" class="next">&#10095;</button>
         </div>
         <div id="days-of-month"></div>

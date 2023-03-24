@@ -7,7 +7,7 @@ export function YearComponent(element) {
     $yearContent.innerHTML = 
         `<div id="dates-control-year" class="dates-control">
             <button id="prev-year" class="prev">&#10094;</button>
-            <h1 id="fecha-year" class="fecha">Diciembre de 2021</h1>
+            <h1 id="date-year" class="fecha">Diciembre de 2021</h1>
             <button id="next-year" class="next">&#10095;</button>
         </div>
         <div id="days-of-year">
