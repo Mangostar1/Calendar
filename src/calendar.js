@@ -4,7 +4,7 @@ import { WeekComponent, hourWeekComponent} from "./components/WeekComponent.js";
 import { MonthComponent, DaysOfMonth} from "./components/MonthComponent.js";
 import { YearComponent, writeYear, DaysOFYear} from "./components/YearComponent.js";
 import {handlerBtn, handlerBtnMobile} from "./components/Events_Details.js";
-import { dragModal } from "./scripts/drag.js";
+import { dragModal } from "./scripts/dragModal.js";
 
 const $calendarContainer = document.getElementsByClassName("calendar-container")[0];
 
@@ -89,6 +89,7 @@ document.addEventListener('click', ({target}) => {
   if (target.matches('.grid-item') && screen.width > 768 && isVisible === false) {
     NewModalEvent(target);
     isVisible = true;
+    dragModal();
   }
   if (target.matches("#new-event") && isVisible === false) {
     NewModalEvent(document.querySelector('.contaienr'));
