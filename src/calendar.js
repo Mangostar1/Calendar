@@ -45,7 +45,7 @@ export function lessDays(fecha, days){
 }
 
 export function isLeap() {
-  return ((currentYear % 100 !== 0) && (currentYear % 4 === 0) || (currentYear % 400 === 0))
+  return ((currentDate.getFullYear() % 100 !== 0) && (currentDate.getFullYear() % 4 === 0) || (currentDate.getFullYear() % 400 === 0))
 }
 
 export function getTotalDays(month) {
