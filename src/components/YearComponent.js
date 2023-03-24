@@ -1,4 +1,4 @@
-import { getTotalDays, startDayYear, currentDate, currentMonth, isLeap} from "../calendar.js";
+import { getTotalDays, startDayYear, currentDate } from "../calendar.js";
 
 export function YearComponent(element) {
     const $yearContent = document.createElement('div');
@@ -129,7 +129,7 @@ export function writeYear() {
 
     for (let y = 0; y < 12; y++) {
         for (let i = startDayYear(y); i > 0; i--) {
-            $daysMonthYear[y].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentMonth - 1)-(i - 1)} </li>`;
+            $daysMonthYear[y].innerHTML += `<li class="day lastMonthYear"> ${getTotalDays(currentDate.getMonth() - 1)-(i - 1)} </li>`;
         }
         for (let i = 1; i <= getTotalDays(y); i++) {
             $daysMonthYear[y].innerHTML += `<li class="day"> ${i} </li>`;

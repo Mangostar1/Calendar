@@ -15,12 +15,6 @@ let isVisible = false;
 /*-------*/
 export let currentDate = new Date();
 
-export let currentDayName = currentDate.getDay();
-export let currentWeek = currentDate.getDate();
-export let currentMonth = currentDate.getMonth();
-export let currentYear = currentDate.getFullYear();
-
-
 const nameMonth = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
 /*--------------------------*/
@@ -74,8 +68,8 @@ export function startDayYear(month) {//<-- corrige el dia en que comienza el mes
 /* Load Default Component */
 /*------------------------*/
 MonthComponent($calendarContainer);
-DaysOfMonth(currentMonth);
-document.getElementById("fecha-month").innerHTML = nameMonth[currentMonth] + " de " + currentYear;
+DaysOfMonth(currentDate.getMonth());
+document.getElementById("fecha-month").innerHTML = nameMonth[currentDate.getMonth()] + " de " + currentDate.getFullYear();
 
 /*-----------------------*/
 /*----Event Listeners----*/

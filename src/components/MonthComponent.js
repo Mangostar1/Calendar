@@ -1,4 +1,4 @@
-import { getTotalDays, startDay, currentDate, currentWeek} from "../calendar.js";
+import { getTotalDays, startDay, currentDate } from "../calendar.js";
 import { datesFetch } from '../helpers/datesFetch.js';
 
 export function MonthComponent(element) {
@@ -38,7 +38,7 @@ export function DaysOfMonth(month) {
     }
     
     for (let i = 1; i <= getTotalDays(month); i++) {
-        if (i == currentWeek && month == 0) {
+        if (i == currentDate.getDate() && month == 0) {
             $wrapper.innerHTML += 
                 `<div class="grid-item">
                     <p class="day-number day-month-active"> ${i} </p>
