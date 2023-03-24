@@ -1,7 +1,7 @@
-import { getTotalDays, startDayYear, currentDate } from "../calendar.js";
+import { getTotalDays, startDayYear, currentDate } from "../index.js";
 
-export function YearComponent(element) {
-    const $yearContent = document.createElement('div');
+export function YearComponent(element) {//<-- Create the <article>, in this element will be print all info related be year.
+    const $yearContent = document.createElement('article');
     $yearContent.classList.add('year-content');
     $yearContent.id = "container-Year";
     $yearContent.innerHTML = 
@@ -111,20 +111,20 @@ export function YearComponent(element) {
     element.appendChild($yearContent);
 }
 
-export function DaysOFYear() {
+export function DaysOFYear() {//<-- Add day names on the month
     const $dayNameYear = document.getElementsByClassName("day-name-div");
-    const nameWeeck = [
+    const nameWeek = [
         {day: 'L'}, {day: 'M'}, {day: 'M'}, {day: 'J'}, {day: 'V'}, {day: 'S'}, {day: 'D'}
     ];
 
-    nameWeeck.forEach((item) => {
+    nameWeek.forEach((item) => {
         for (let i = 0; i < 12; i++) {
             $dayNameYear[i].innerHTML += `<li class="day-name"> ${item.day} </li>`;
         }
     });
 }
 
-export function writeYear() {
+export function writeYear() {//<-- 
     const $daysMonthYear = document.getElementsByClassName("day-div");
 
     for (let y = 0; y < 12; y++) {

@@ -1,7 +1,7 @@
-import { currentDate, addDays} from "../calendar.js";
+import { currentDate, addDays} from "../index.js";
 import { datesFetch } from '../helpers/datesFetch.js';
 
-export function WeekComponent(element) {
+export function WeekComponent(element) {//<-- Create the <article>, in this element will be print all info related be Week.
     const $WeekContent = document.createElement('article');
     $WeekContent.classList.add('container-week');
     $WeekContent.id = "container-week";

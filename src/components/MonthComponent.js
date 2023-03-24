@@ -1,7 +1,7 @@
-import { getTotalDays, startDay, currentDate } from "../calendar.js";
+import { getTotalDays, startDay, currentDate } from "../index.js";
 import { datesFetch } from '../helpers/datesFetch.js';
 
-export function MonthComponent(element) {
+export function MonthComponent(element) {//<-- Create the <article>, in this element will be print all info related be month.
     const $MonthContent = document.createElement('article');
     $MonthContent.classList.add('wrapper');
     $MonthContent.id = "container-month";

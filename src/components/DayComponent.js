@@ -1,7 +1,7 @@
-import { currentDate } from "./../calendar.js";
+import { currentDate } from "../index.js";
 import { datesFetch } from '../helpers/datesFetch.js';
 
-export function DayComponent(element) {
+export function DayComponent(element) {//<-- Create the <article>, in this element will be print all info related be Day.
     const $DayContent = document.createElement('article');
     $DayContent.classList.add('day-content');
     $DayContent.id = "container-Day";
