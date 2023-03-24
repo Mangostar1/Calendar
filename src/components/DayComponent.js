@@ -79,12 +79,29 @@ async function inicioEventoDia() {
                 let hourStart = eventData.dateStart.getHours();
                 let hourFinish = eventData.dateFinish.getHours();
 
-                for (let h = hourStart; h <= hourFinish; h++) {
-                    if (eventData.dateStart.getDay() === currentDate.getDay() &&
-                        eventData.dateStart.getDate() === currentDate.getDate() &&
-                        eventData.dateStart.getMonth() === currentDate.getMonth() &&
-                        eventData.dateStart.getFullYear() === currentDate.getFullYear()) {
-                        $eventLi[h].innerHTML += datesFetch(primerEvento, e).btns;
+                // Check if the event lasts more than one day
+                if (eventData.dateStart.toDateString() !== eventData.dateFinish.toDateString()) {
+                    const eventDuration = (eventData.dateFinish - eventData.dateStart) / (1000 * 60 * 60 * 24);
+
+                    for (let i = 0; i <= eventDuration; i++) {
+                        const currentDateCopy = new Date(eventData.dateStart.getTime());
+                        currentDateCopy.setDate(currentDateCopy.getDate() + i);
+                        if (currentDateCopy.getDate() === currentDate.getDate() &&
+                            currentDateCopy.getMonth() === currentDate.getMonth() &&
+                            currentDateCopy.getFullYear() === currentDate.getFullYear()) {
+                            for (let h = hourStart; h <= hourFinish; h++) {
+                                $eventLi[h].innerHTML += datesFetch(primerEvento, e).btns;
+                            }
+                        }
+                    }
+                } else {
+                    for (let h = hourStart; h <= hourFinish; h++) {
+                        if (eventData.dateStart.getDay() === currentDate.getDay() &&
+                            eventData.dateStart.getDate() === currentDate.getDate() &&
+                            eventData.dateStart.getMonth() === currentDate.getMonth() &&
+                            eventData.dateStart.getFullYear() === currentDate.getFullYear()) {
+                            $eventLi[h].innerHTML += datesFetch(primerEvento, e).btns;
+                        }
                     }
                 }
             }
