@@ -13,7 +13,7 @@ Este proyecto no hace uso de dependencias NPM, librerias ni frameworks.
 
 ## Uso
 
-Su uso es muy simple, este calenario solo cuenta con un selector que permite elegir una de cuatro opciones o vistas, las cuales son: vista diaria, vista semanal, vista mensual y vista anual.
+Este calenario solo cuenta con un selector que permite elegir una de cuatro opciones o vistas, las cuales son: vista diaria, vista semanal, vista mensual y vista anual.
 
 Cada vista cuenta con dos botones los cuales permiten navegar entre las fechas del calendario y un h1 que permite visualizar la fecha actual.
 
