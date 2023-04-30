@@ -61,7 +61,7 @@ document.addEventListener('click', async(e) => {
 
         console.log($title, $description, $date, $time, $timeEnd);
 
-        await fetch('http://localhost:3000/events', {//<-- POST
+        await fetch('http://localhost:3000/events', {//<-- URL for POST
             'method' : 'POST',
             'headers' : {
                 'Content-Type': 'application/json'
@@ -69,7 +69,7 @@ document.addEventListener('click', async(e) => {
             'body': JSON.stringify({
                 "dateStartEvent": `${$date}`,
                 "hourStart": `${$time}`,
-                "dateFinishEvent": "2022-10-17",
+                "dateFinishEvent": `${$date}`,
                 "hourFinish": `${$timeEnd}`,
                 "title": `${$title}`,
                 "description": `${$description}`,
