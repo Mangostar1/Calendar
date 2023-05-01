@@ -13,11 +13,13 @@ Este proyecto no hace uso de dependencias NPM, librerias ni frameworks.
 
 ## Uso
 
-Este calenario solo cuenta con un selector que permite elegir una de cuatro opciones o vistas, las cuales son: vista diaria, vista semanal, vista mensual y vista anual.
+Este calendario cuenta con un selector que permite elegir una de cuatro opciones o vistas, las cuales son: vista diaria, vista semanal, vista mensual y vista anual.
 
 Cada vista cuenta con dos botones los cuales permiten navegar entre las fechas del calendario y un h1 que permite visualizar la fecha actual.
 
-Al estar conectado a una API que le pase eventos, estos seran visualizados en el calendario de dos maneras, inicialmente se podra ver un boton con un breve titulo en el año, mes, dia y hora del evento, que al ser precionado abrira una ventana modal que mostrara mas detalles del evento como la descripcion de este, la hora y dia en la que este finalice.
+Al estar conectado a una API que le pase eventos, estos serán visualizados en el calendario de dos maneras, inicialmente se podrá ver un botón con un breve título en el año, mes, día y hora del evento, que al ser presionado abrirá una ventana modal que mostrara más detalles del evento como el título, la descripción del evento, la hora y fecha de inicio y fin.
+
+Además, es posible agregar eventos simplemente haciendo click al día en el que se quiere agregar el evento. Hacer esto abrirá una ventana modal en la cual se podrá poner los detalles de este evento.
 
 ## Requisitos
 

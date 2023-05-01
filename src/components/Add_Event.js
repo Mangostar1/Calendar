@@ -31,6 +31,13 @@ export function NewModalEvent(element) {
             <input type='time' id='timeInputEnd' />
         </div>
 
+        <div class="inputs-content">
+
+            <label for="chooseColor" class="labels-modal">Color:</label>
+            <input type='color' id='chooseColor' />
+
+        </div>
+
         <div class="modal-submit-content">
             <button class="buttonModa" id='buttonModalID'>Aceptar</button>
         </div>

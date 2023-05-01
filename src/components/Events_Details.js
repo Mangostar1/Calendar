@@ -43,6 +43,10 @@ function ModalEventWeek(element, button) {
             <p class="color-text modal-hour"><span class="text-bold">Desde:</span>  ${button.dataset.hourStart} hrs</p>
             <p class="color-text modal-hour"><span class="text-bold">Hasta las:</span>  ${button.dataset.hourFinish} hrs</p>
         </div>
+
+        <div class="inputs-content">
+            <p class="color-text modal-hour" style="color: ${button.dataset.colorEvent};"><span class="text-bold">Color:</span>  ${button.dataset.colorEvent} </p>
+        </div>
     </div>`;
 
     element.appendChild($newDiv);

@@ -20,6 +20,7 @@ export function datesFetch(fetchJSON, numFor) {
         data-hour-start="${eventData.dateStart.toLocaleTimeString()}" 
         data-hour-finish="${eventData.dateFinish.toLocaleTimeString()}" 
         data-title="${eventData.title}" 
+        data-color-event="${eventData.color}" 
         data-description="${eventData.description}">
             <span class="sp-title"> ${eventData.title} </span>
         </button>`;
