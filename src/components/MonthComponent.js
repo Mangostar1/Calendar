@@ -1,5 +1,6 @@
 import { getTotalDays, startDay, currentDate } from "../index.js";
 import { datesFetch } from '../helpers/datesFetch.js';
+import URL from '../helpers/UrlToFetch.js';
 
 export function MonthComponent(element) {//<-- Create the <article>, in this element will be print all info related be month.
     const $MonthContent = document.createElement('article');
@@ -102,8 +103,7 @@ async function eventoMonth() {
 
 //btn en formato movil
 async function eventoMonthMobile() {
-    //const basicMonth = await fetch("http://localhost:3000/events");// <-- For development
-    const basicMonth = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");// <-- For production
+    const basicMonth = await fetch(URL);// <-- For production
     const basicMonthJson = await basicMonth.json();
 
     if (basicMonthJson.length !== 0) {// <-- Si dentro de un dia de la semana hay eventos, este recorre todos los eventos agendados en el dia

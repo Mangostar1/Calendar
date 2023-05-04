@@ -1,5 +1,6 @@
 import { currentDate } from "../index.js";
 import { datesFetch } from '../helpers/datesFetch.js';
+import URL from '../helpers/UrlToFetch.js';
 
 export function DayComponent(element) {//<-- Create the <article>, in this element will be print all info related be Day.
     const $DayContent = document.createElement('article');
@@ -70,7 +71,7 @@ function IsLoaded() {
 async function inicioEventoDia() {
     try {
         const $eventLi = document.getElementsByClassName("eventDay");
-        const basicStruc = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
+        const basicStruc = await fetch(URL);
         const primerEvento = await basicStruc.json();
 
         if (primerEvento.length !== 0) {

@@ -1,5 +1,6 @@
 import { currentDate, addDays} from "../index.js";
 import { datesFetch } from '../helpers/datesFetch.js';
+import URL from '../helpers/UrlToFetch.js';
 
 export function WeekComponent(element) {//<-- Create the <article>, in this element will be print all info related be Week.
     const $WeekContent = document.createElement('article');
@@ -160,7 +161,7 @@ function IsLoaded() {
 //Events Week
 async function eventsWeek() {
     try {
-        const basicWeek = await fetch("https://mangostar1.github.io/Calendar/basicStructure.json");
+        const basicWeek = await fetch(URL);
         const basicWeekJSON = await basicWeek.json();
     
         const eventWekk = document.querySelectorAll(".eventWeek");

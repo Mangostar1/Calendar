@@ -1,4 +1,6 @@
-export function datesFetch(fetchJSON, numFor) {
+//* This function returns a <button> element to the following components "DayComponent", "WeekComponent", and "Months Component".
+
+export function datesFetch(fetchJSON, numFor) {//fetch.json(), for index
 
     const event = fetchJSON.events[numFor];
 
