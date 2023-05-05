@@ -8,9 +8,12 @@ Este calendario que tiene como fin, poder ser utilizado para agendar y consultar
 
 ## Instalacion
 
-Para instalar este proyecto solo deberas copiar la carpeta "src", junto a su "index.html" a tu proyecto. Luego solo deberas entregar la URL de tu API a la cosntante URL del archivo "UrlToFetch.js" ubicado en la ruta "src/helpers/UrlToFetch.js" para que el calendario cargue los eventos en pantalla.
+Para instalar este proyecto, sigue los siguientes pasos:
 
-Est proyecto maneja los eventos en formato JSON. El formato del JSON es el siguiente:
+1. Copia la carpeta "src" junto con su archivo "index.html" en la raíz de tu proyecto.
+2. Abre el archivo "UrlToFetch.js" ubicado en "src/helpers/UrlToFetch.js" y asigna la URL de tu API a la constante `URL`. Esto permitirá que el calendario cargue los eventos en pantalla.
+
+Ten en cuenta que este proyecto maneja los eventos en formato JSON, el cual debe seguir el siguiente formato:
 
 ```
 "events": [
@@ -36,7 +39,7 @@ Est proyecto maneja los eventos en formato JSON. El formato del JSON es el sigui
 ]
 ```
 
-Es importante aclarar que este proyecto no hace uso de dependencias NPM, librerias ni frameworks, esta todo construido en Javascript vanilla.
+Cabe destacar que este proyecto no utiliza dependencias de NPM, librerías ni frameworks, y está desarrollado completamente en Javascript vanilla.
 
 ## Uso
 
