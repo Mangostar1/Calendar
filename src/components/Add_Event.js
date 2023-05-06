@@ -2,13 +2,12 @@
 
 //Este archivo es solo a modo de ejemplo.
 export function NewModalEvent(element) {
-    const $newDiv = document.createElement('div');
+  const $newDiv = document.createElement("div");
 
-    $newDiv.classList.add('modal');
-    $newDiv.id = 'modal-id';
+  $newDiv.classList.add("modal");
+  $newDiv.id = "modal-id";
 
-    $newDiv.innerHTML = 
-    `<div class="modal-close-content" id="closeModalID">
+  $newDiv.innerHTML = `<div class="modal-close-content" id="closeModalID">
         <button class="btn-close-modal" id="btn-close-modal-ID">
             <img src="./src/assets/icons/close-svgrepo-com.svg" class="closeModal" id="closeModal-ID">
         </button>
@@ -43,60 +42,60 @@ export function NewModalEvent(element) {
         </div>
     </div>`;
 
-    element.appendChild($newDiv);
+  element.appendChild($newDiv);
 }
 
 export function closeModal() {
-    const $elements = document.getElementsByClassName("modal");
-    while($elements.length > 0){
-        $elements[0].parentNode.removeChild($elements[0]);
-    }
+  const $elements = document.getElementsByClassName("modal");
+  while ($elements.length > 0) {
+    $elements[0].parentNode.removeChild($elements[0]);
+  }
 }
-
 
 /*------------------*/
 /* Datos formulario */
 /*------------------*/
 
-document.addEventListener('click', async(e) => {
-    if(e.target.matches('#buttonModalID') === true){
-        const $title = document.getElementById('titleEvent').value;
-        const $description = document.getElementById('descriptionEvent').value;
-        const $date = document.getElementById('dateInput').value;
-        const $time = document.getElementById('timeInput').value;
-        const $timeEnd = document.getElementById('timeInputEnd').value;
+document.addEventListener("click", async (e) => {
+  if (e.target.matches("#buttonModalID") === true) {
+    const $title = document.getElementById("titleEvent").value;
+    const $description = document.getElementById("descriptionEvent").value;
+    const $date = document.getElementById("dateInput").value;
+    const $time = document.getElementById("timeInput").value;
+    const $timeEnd = document.getElementById("timeInputEnd").value;
 
-        console.log($title, $description, $date, $time, $timeEnd);
+    console.log($title, $description, $date, $time, $timeEnd);
 
-        await fetch('http://localhost:3000/events', {//<-- URL for POST
-            'method' : 'POST',
-            'headers' : {
-                'Content-Type': 'application/json'
-            },
-            'body': JSON.stringify({
-                "dateStartEvent": `${$date}`,
-                "hourStart": `${$time}`,
-                "dateFinishEvent": `${$date}`,
-                "hourFinish": `${$timeEnd}`,
-                "title": `${$title}`,
-                "description": `${$description}`,
-                "statusInformation": {
-                    "statusCode": "001",
-                    "status": "activo",
-                    "colorStatus": "green"
-                },
-                "typeInformation": {
-                    "type": "0001",
-                    "colorBackgroundType": "#0096a6",
-                    "colorType": "white"
-                }
-            })
-        });
-    }
+    await fetch("http://localhost:3000/events", {
+      //<-- URL for POST
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        dateStartEvent: `${$date}`,
+        hourStart: `${$time}`,
+        dateFinishEvent: `${$date}`,
+        hourFinish: `${$timeEnd}`,
+        title: `${$title}`,
+        description: `${$description}`,
+        statusInformation: {
+          statusCode: "001",
+          status: "activo",
+          colorStatus: "green",
+        },
+        typeInformation: {
+          type: "0001",
+          colorBackgroundType: "#0096a6",
+          colorType: "white",
+        },
+      }),
+    });
+  }
 });
 
 //extra code for stylesheet
-let btnMobile = document.querySelector('.new-event');
+let btnMobile = document.querySelector(".new-event");
 
 /* setInterval(() => {
     if(window.innerWidth < 768){

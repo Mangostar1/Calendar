@@ -1,6 +1,6 @@
 # Calendar
 
-Este calendario que tiene como fin, poder ser utilizado para agendar y consultar eventos que nosotros le ingresemos.
+Este calendario tiene como objetivo permitir la programación y consulta de eventos. Con esta herramienta, podrás agregar y visualizar fácilmente los eventos que desees.
 
 [Web](https://mangostar1.github.io/Calendar/)
 
@@ -43,14 +43,16 @@ Cabe destacar que este proyecto no utiliza dependencias de NPM, librerías ni fr
 
 ## Uso
 
-Este calendario cuenta con un selector que permite elegir una de cuatro opciones o vistas, las cuales son: vista diaria, vista semanal, vista mensual y vista anual.
+El calendario cuenta con cuatro vistas disponibles: diaria, semanal, mensual y anual. Cada vista incluye dos botones para navegar entre las fechas del calendario, así como un encabezado (h1) que muestra la fecha actual.
 
-Cada vista cuenta con dos botones los cuales permiten navegar entre las fechas del calendario y un h1 que permite visualizar la fecha actual.
+Si el calendario está conectado a una API que suministre eventos, éstos se visualizarán en el calendario de dos formas diferentes. En primer lugar, se mostrará un botón con un título breve en la fecha y hora del evento. Al hacer clic en este botón, se abrirá una ventana modal que mostrará información detallada sobre el evento, como el título, la descripción, la hora de inicio y finalización, entre otros.
 
-Al estar conectado a una API que le pase eventos, estos serán visualizados en el calendario de dos maneras, inicialmente se podrá ver un botón con un breve título en el año, mes, día y hora del evento, que al ser presionado abrirá una ventana modal que mostrara más detalles del evento como el título, la descripción del evento, la hora y fecha de inicio y fin.
-
-Además, es posible agregar eventos simplemente haciendo click al día en el que se quiere agregar el evento. Hacer esto abrirá una ventana modal en la cual se podrá poner los detalles de este evento.
+Además, es posible agregar eventos directamente en el calendario haciendo clic en el día deseado. Al hacer esto, se abrirá una ventana modal en la que se podrán agregar los detalles del evento.
 
 ## Requisitos
 
-lorem
+Para utilizar este calendario, necesitarás tener instalado un servidor web y un navegador web moderno como Google Chrome, Mozilla Firefox o Microsoft Edge. Este proyecto no hace uso de dependencias NPM, librerías ni frameworks, está todo construido en Javascript vanilla.
+
+## Licencia
+
+Este proyecto está bajo la Licencia Pública General de GNU (GPLv3), versión 3, 29 de junio de 2007. La licencia establece los términos y condiciones para el uso, la copia, la modificación y la distribución del software, así como los derechos y responsabilidades que se aplican a cualquier persona que lo utilice. Consulte el archivo `LICENSE` en la raíz del proyecto para obtener más información.
