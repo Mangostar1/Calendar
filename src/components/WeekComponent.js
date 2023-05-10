@@ -194,12 +194,12 @@ async function eventsWeek() {
       for (let e = 0; e < basicWeekJSON.events.length; e++) {
         let eventData = datesFetch(basicWeekJSON, e).eventData;
 
-        let day = 1; //El dia de la semana L a D | parte en 1 para que corresponda con el lunes del objeto Date()
-        let horas = 0; //La hora del evento | Actual en el calendario
+        let day = 1; // Weekday from Monday to Sunday | starts at 1 to correspond with Monday in the Date() object
+        let horas = 0; // Event time | Currently displayed on the calendar
 
         for (let w = 0; w < 168; w++) {
           if (
-            //Si el evento dura un solo dia
+            // If the event lasts only one day
             horas >= eventData.dateStart.getHours() &&
             horas <= eventData.dateFinish.getHours() &&
             eventData.dateStart.getDay() === day % 7 &&
@@ -211,7 +211,7 @@ async function eventsWeek() {
           } else if (
             eventData.dateStart.getDate() < eventData.dateFinish.getDate()
           ) {
-            //Si el evento dura mas de un dia
+            // If the event lasts more than one day
 
             for (
               let i = eventData.dateStart;
@@ -231,10 +231,10 @@ async function eventsWeek() {
             }
           }
 
-          //Si este if valida la condiicon, se suma una hora en el dia y se reinicia el "day" a 0 para que este corresponda el comienzo de la semana pero en una hora diferente
+          // If this if statement validates the condition, one hour is added to the day and the 'day' is reset to 0 to correspond to the start of the week but at a different hour
           if ((w + 1) % 7 == 0) {
             horas++;
-            day = 0; //<-- Se establece en 0. Al salir del "if" este volvera a valer 1 como en su declaracion inicial en la linea 193
+            day = 0; //<-- It is set to 0. Upon exiting the 'if' statement, it will be reset to 1, as in its initial declaration on line 197.
           }
           day++;
         }

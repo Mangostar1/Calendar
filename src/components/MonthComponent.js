@@ -23,7 +23,7 @@ export function MonthComponent(element) {
 
 export function DaysOfMonth(month) {
   const $wrapper = document.getElementById("days-of-month");
-  const daysOfWeek = [
+  const daysOfWeekEs = [
     { day: "Lun" },
     { day: "Mar" },
     { day: "Mié" },
@@ -32,7 +32,7 @@ export function DaysOfMonth(month) {
     { day: "Sáb" },
     { day: "Dom" },
   ];
-  daysOfWeek.forEach((item) => {
+  daysOfWeekEs.forEach((item) => {
     $wrapper.innerHTML += `<div class="grid-days"> ${item.day} </div>`;
   });
 

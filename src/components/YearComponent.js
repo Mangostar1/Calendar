@@ -114,7 +114,7 @@ export function YearComponent(element) {
 export function DaysOFYear() {
   //<-- Add day names on the month
   const $dayNameYear = document.getElementsByClassName("day-name-div");
-  const nameWeek = [
+  const nameWeekEs = [
     { day: "L" },
     { day: "M" },
     { day: "M" },
@@ -124,7 +124,7 @@ export function DaysOFYear() {
     { day: "D" },
   ];
 
-  nameWeek.forEach((item) => {
+  nameWeekEs.forEach((item) => {
     for (let i = 0; i < 12; i++) {
       $dayNameYear[i].innerHTML += `<li class="day-name"> ${item.day} </li>`;
     }

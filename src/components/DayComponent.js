@@ -58,7 +58,7 @@ export function hourDayComponent(currentDate) {
                 </ul>
             </div>`;
   });
-  const nameDay = [
+  const nameDayEs = [
     "Domingo",
     "Lunes",
     "Martes",
@@ -68,7 +68,7 @@ export function hourDayComponent(currentDate) {
     "Sabado",
   ];
   document.getElementById("cambia-dia").innerHTML =
-    nameDay[currentDate.getDay()] + " " + currentDate.getDate();
+    nameDayEs[currentDate.getDay()] + " " + currentDate.getDate();
 
   inicioEventoDia();
 }
