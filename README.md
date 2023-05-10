@@ -35,7 +35,7 @@ Ten en cuenta que este proyecto maneja los eventos en formato JSON, el cual debe
             "colorBackgroundType": "#0096a6",
             "colorType": "white"
         }
-    }
+    },
 ]
 ```
 
