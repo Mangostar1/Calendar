@@ -18,28 +18,14 @@ import { handlerBtn, handlerBtnMobile } from "./components/Events_Details.js";
 //Scripts
 import { dragModal } from "./scripts/dragModal.js";
 
+import languageHandler from "./i18n/en-es.js";
+
 /*--------------------*/
 /*--Useful Variables--*/
 /*--------------------*/
 
 const $calendarContainer =
   document.getElementsByClassName("calendar-container")[0]; //<-- Represents the <section> in index.html where the calendar will be printed.
-
-const nameMonthEs = [
-  //<-- Usend on some functions.
-  "Enero",
-  "Febrero",
-  "Marzo",
-  "Abril",
-  "Mayo",
-  "Junio",
-  "Julio",
-  "Agosto",
-  "Septiembre",
-  "Octubre",
-  "Noviembre",
-  "Diciembre",
-];
 
 let isVisible = false; //<-- Used to controls wodal window. Prevents more than one from being opened at the same time.
 
@@ -118,7 +104,9 @@ export function startDayYear(month) {
 MonthComponent($calendarContainer);
 DaysOfMonth(currentDate.getMonth());
 document.getElementById("date-month").innerHTML =
-  nameMonthEs[currentDate.getMonth()] + " de " + currentDate.getFullYear();
+  languageHandler.es.monthNames[currentDate.getMonth()] +
+  ` ${languageHandler.es.prep[0]} ` +
+  currentDate.getFullYear();
 
 /*-----------------------*/
 /*----Event Listeners----*/
@@ -202,9 +190,9 @@ document.addEventListener("click", ({ target }) => {
     );
     document.getElementById("date-day").innerHTML =
       currentDate.getDate() +
-      " de " +
-      nameMonthEs[currentDate.getMonth()] +
-      " del " +
+      ` ${languageHandler.es.prep[0]} ` +
+      languageHandler.es.monthNames[currentDate.getMonth()] +
+      ` ${languageHandler.es.prep[1]} ` +
       currentDate.getFullYear();
   }
   if (target.matches("#radio-week")) {
@@ -219,7 +207,9 @@ document.addEventListener("click", ({ target }) => {
       currentDate.getFullYear()
     );
     document.getElementById("date-week").innerHTML =
-      nameMonthEs[currentDate.getMonth()] + " de " + currentDate.getFullYear();
+      languageHandler.es.monthNames[currentDate.getMonth()] +
+      ` ${languageHandler.es.prep[0]} ` +
+      currentDate.getFullYear();
   }
   if (target.matches("#radio-month")) {
     //<-- Month
@@ -228,7 +218,9 @@ document.addEventListener("click", ({ target }) => {
     DaysOfMonth(currentDate.getMonth());
     document.getElementById("dates-control-month").style = "display: flex";
     document.getElementById("date-month").innerHTML =
-      nameMonthEs[currentDate.getMonth()] + " de " + currentDate.getFullYear();
+      languageHandler.es.monthNames[currentDate.getMonth()] +
+      ` ${languageHandler.es.prep[0]} ` +
+      currentDate.getFullYear();
   }
   if (target.matches("#radio-year")) {
     //<-- Year
@@ -268,9 +260,9 @@ function prevDay() {
   document.getElementById("date-day").innerHTML = null;
   document.getElementById("date-day").innerHTML =
     currentDate.getDate() +
-    " de " +
-    nameMonthEs[currentDate.getMonth()] +
-    " del " +
+    ` ${languageHandler.es.prep[0]} ` +
+    languageHandler.es.monthNames[currentDate.getMonth()] +
+    ` ${languageHandler.es.prep[1]} ` +
     currentDate.getFullYear();
 }
 
@@ -295,9 +287,9 @@ function nextDay() {
   document.getElementById("date-day").innerHTML = null;
   document.getElementById("date-day").innerHTML =
     currentDate.getDate() +
-    " de " +
-    nameMonthEs[currentDate.getMonth()] +
-    " del " +
+    ` ${languageHandler.es.prep[0]} ` +
+    languageHandler.es.monthNames[currentDate.getMonth()] +
+    ` ${languageHandler.es.prep[1]} ` +
     currentDate.getFullYear();
 }
 
@@ -316,7 +308,9 @@ function prevWeek() {
     currentDate.getFullYear()
   );
   document.getElementById("date-week").innerHTML =
-    nameMonthEs[currentDate.getMonth()] + " de " + currentDate.getFullYear();
+    languageHandler.es.monthNames[currentDate.getMonth()] +
+    ` ${languageHandler.es.prep[0]} ` +
+    currentDate.getFullYear();
 }
 
 function nextWeek() {
@@ -331,7 +325,9 @@ function nextWeek() {
     currentDate.getFullYear()
   );
   document.getElementById("date-week").innerHTML =
-    nameMonthEs[currentDate.getMonth()] + " de " + currentDate.getFullYear();
+    languageHandler.es.monthNames[currentDate.getMonth()] +
+    ` ${languageHandler.es.prep[0]} ` +
+    currentDate.getFullYear();
 }
 
 /*---------------*/
@@ -357,7 +353,9 @@ function setNewDateMonth() {
   $calendarContainer.lastChild.remove();
   MonthComponent($calendarContainer);
   document.getElementById("date-month").innerHTML =
-    nameMonthEs[currentDate.getMonth()] + " de " + currentDate.getFullYear();
+    languageHandler.es.monthNames[currentDate.getMonth()] +
+    ` ${languageHandler.es.prep[0]} ` +
+    currentDate.getFullYear();
   DaysOfMonth(currentDate.getMonth());
 }
 

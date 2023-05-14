@@ -1,45 +1,92 @@
-let languageHandler = {
+const languageHandler = {
   es: {
     prep: ["de", "del"],
+    monthNames: [
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Diciembre",
+    ],
+    dayNames: [
+      "Domingo",
+      "Lunes",
+      "Martes",
+      "Miércoles",
+      "Jueves",
+      "Viernes",
+      "Sábado",
+    ],
+    dayNameShort: [
+      { day: "Lun" },
+      { day: "Mar" },
+      { day: "Mié" },
+      { day: "Jue" },
+      { day: "Vie" },
+      { day: "Sáb" },
+      { day: "Dom" },
+    ],
+    weekAbbreviations: [
+      { day: "L" },
+      { day: "M" },
+      { day: "M" },
+      { day: "J" },
+      { day: "V" },
+      { day: "S" },
+      { day: "D" },
+    ],
   },
   en: {
     prep: ["in", "of"],
+    monthNames: [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ],
+    dayNames: [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ],
+    dayNameShort: [
+      { day: "Mon" },
+      { day: "Tue" },
+      { day: "Wed" },
+      { day: "Thu" },
+      { day: "Fri" },
+      { day: "Sat" },
+      { day: "Sun" },
+    ],
+    weekAbbreviations: [
+      { day: "M" },
+      { day: "T" },
+      { day: "W" },
+      { day: "T" },
+      { day: "F" },
+      { day: "S" },
+      { day: "S" },
+    ],
   },
 };
 
-//! Agregar este array dentro del handler para su respectivo manejo entre el ingles y el español.
-const nameMonthEs = [
-  //<-- Usend on some functions.
-  "Enero",
-  "Febrero",
-  "Marzo",
-  "Abril",
-  "Mayo",
-  "Junio",
-  "Julio",
-  "Agosto",
-  "Septiembre",
-  "Octubre",
-  "Noviembre",
-  "Diciembre",
-];
-
-const nameDayEs = [
-  "Domingo",
-  "Lunes",
-  "Martes",
-  "Miercoles",
-  "Jueves",
-  "Viernes",
-  "Sabado",
-];
-
-const daysOfWeekEs = [
-  { day: "Lun" },
-  { day: "Mar" },
-  { day: "Mié" },
-  { day: "Jue" },
-  { day: "Vie" },
-  { day: "Sáb" },
-  { day: "Dom" },
-];
+export default languageHandler;
