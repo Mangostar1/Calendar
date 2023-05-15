@@ -4,6 +4,7 @@ import { getTotalDays, startDayYear, currentDate } from "../index.js";
 import languageHandler from "../i18n/en-es.js";
 
 let monthsOfYear = "";
+//* Don't change ".es." in "languageHandler.es.monthNamesShort[m]" on lines 14 and 15 because that class name is used in CSS styles.
 
 for (let m = 0; m < 12; m++) {
   monthsOfYear += `

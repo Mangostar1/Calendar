@@ -4,6 +4,20 @@ import { datesFetch } from "../helpers/datesFetch.js";
 //url fetch
 import URL from "../helpers/UrlToFetch.js";
 
+//language
+import languageHandler from "../i18n/en-es.js";
+
+let daysOnWeek = "";
+
+languageHandler.es.dayNameShort.forEach((item) => {
+  daysOnWeek += `
+    <div class="grid-days">
+      <p class="day-week">${item.day}</p>
+      <p class="day-week daysNumber"></p>
+    </div>
+  `;
+});
+
 export function WeekComponent(element) {
   //<-- Create the <article>, in this element will be print all info related be Week.
   const $WeekContent = document.createElement("article");
@@ -16,40 +30,7 @@ export function WeekComponent(element) {
         <button id="next-week" class="next">&#10095;</button>
     </div>
     <div id="days-of-week">
-        <div class="grid-days">
-            <p class="day-week">Lun</p>
-            <p class="day-week daysNumber"></p>
-        </div>
-
-        <div class="grid-days">
-            <p class="day-week">Mar</p>
-            <p class="day-week daysNumber"></p>
-        </div>
-
-        <div class="grid-days">
-            <p class="day-week">Mié</p>
-            <p class="day-week daysNumber"></p>
-        </div>
-
-        <div class="grid-days">
-            <p class="day-week">Jue</p>
-            <p class="day-week daysNumber"></p>
-        </div>
-
-        <div class="grid-days">
-            <p class="day-week">Vie</p>
-            <p class="day-week daysNumber"></p>
-        </div>
-
-        <div class="grid-days">
-            <p class="day-week">Sáb</p>
-            <p class="day-week daysNumber"></p>
-        </div>
-
-        <div class="grid-days">
-            <p class="day-week">Dom</p>
-            <p class="day-week daysNumber"></p>
-        </div>
+        ${daysOnWeek}
     </div>
     <div class="content-loader">
         <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
