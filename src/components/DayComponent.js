@@ -1,6 +1,13 @@
 import { currentDate } from "../index.js";
+
+//button with fetch dates
 import { datesFetch } from "../helpers/datesFetch.js";
+
+//url fetch
 import URL from "../helpers/UrlToFetch.js";
+
+//language
+import languageHandler from "../i18n/en-es.js";
 
 export function DayComponent(element) {
   //<-- Create the <article>, in this element will be print all info related be Day.
@@ -10,7 +17,7 @@ export function DayComponent(element) {
   $DayContent.innerHTML = `
         <div id="dates-control-day" class="dates-control">
             <button id="prev-day" class="prev"> &#10094; </button>
-            <h1 id="date-day" class="fecha">Diciembre de 2021</h1>
+            <h1 id="date-day" class="fecha"></h1>
             <button id="next-day" class="next"> &#10095; </button>
         </div>
         <hr>
@@ -58,17 +65,11 @@ export function hourDayComponent(currentDate) {
                 </ul>
             </div>`;
   });
-  const nameDayEs = [
-    "Domingo",
-    "Lunes",
-    "Martes",
-    "Miercoles",
-    "Jueves",
-    "Viernes",
-    "Sabado",
-  ];
+
   document.getElementById("cambia-dia").innerHTML =
-    nameDayEs[currentDate.getDay()] + " " + currentDate.getDate();
+    languageHandler.es.dayNames[currentDate.getDay()] +
+    " " +
+    currentDate.getDate();
 
   inicioEventoDia();
 }

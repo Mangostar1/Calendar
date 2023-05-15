@@ -1,6 +1,11 @@
 import { getTotalDays, startDay, currentDate } from "../index.js";
 import { datesFetch } from "../helpers/datesFetch.js";
+
+//url fetch
 import URL from "../helpers/UrlToFetch.js";
+
+//language
+import languageHandler from "../i18n/en-es.js";
 
 export function MonthComponent(element) {
   //<-- Create the <article>, in this element will be print all info related be month.
@@ -23,16 +28,8 @@ export function MonthComponent(element) {
 
 export function DaysOfMonth(month) {
   const $wrapper = document.getElementById("days-of-month");
-  const daysOfWeekEs = [
-    { day: "Lun" },
-    { day: "Mar" },
-    { day: "Mié" },
-    { day: "Jue" },
-    { day: "Vie" },
-    { day: "Sáb" },
-    { day: "Dom" },
-  ];
-  daysOfWeekEs.forEach((item) => {
+
+  languageHandler.es.dayNameShort.forEach((item) => {
     $wrapper.innerHTML += `<div class="grid-days"> ${item.day} </div>`;
   });
 

@@ -1,5 +1,8 @@
 import { getTotalDays, startDayYear, currentDate } from "../index.js";
 
+//language
+import languageHandler from "../i18n/en-es.js";
+
 export function YearComponent(element) {
   //<-- Create the <article>, in this element will be print all info related be year.
   const $yearContent = document.createElement("article");
@@ -114,17 +117,8 @@ export function YearComponent(element) {
 export function DaysOFYear() {
   //<-- Add day names on the month
   const $dayNameYear = document.getElementsByClassName("day-name-div");
-  const nameWeekEs = [
-    { day: "L" },
-    { day: "M" },
-    { day: "M" },
-    { day: "J" },
-    { day: "V" },
-    { day: "S" },
-    { day: "D" },
-  ];
 
-  nameWeekEs.forEach((item) => {
+  languageHandler.es.weekAbbreviations.forEach((item) => {
     for (let i = 0; i < 12; i++) {
       $dayNameYear[i].innerHTML += `<li class="day-name"> ${item.day} </li>`;
     }

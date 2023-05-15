@@ -18,6 +18,7 @@ import { handlerBtn, handlerBtnMobile } from "./components/Events_Details.js";
 //Scripts
 import { dragModal } from "./scripts/dragModal.js";
 
+//language
 import languageHandler from "./i18n/en-es.js";
 
 /*--------------------*/
