@@ -39,7 +39,16 @@ Ten en cuenta que este proyecto maneja los eventos en formato JSON, el cual debe
 ]
 ```
 
-Cabe destacar que este proyecto no utiliza dependencias de NPM, librerías ni frameworks, y está desarrollado completamente en Javascript vanilla.
+Para personalizar el idioma de la interfaz del calendario, siga estos pasos sencillos:
+
+1. Abra el archivo `src/i18n/en-es.js` en su editor de código preferido.
+2. Dentro del archivo, encontrará un objeto que contiene las configuraciones de idioma.
+3. También encontrará un comentario detallado que explica cómo cambiar el idioma de la interfaz.
+4. De manera predeterminada, la interfaz está en español, pero puede cambiarla al inglés siguiendo las instrucciones del comentario.
+
+Con esta fácil configuración, puede adaptar rápidamente la herramienta a su idioma preferido.
+
+*Cabe destacar que este proyecto no utiliza dependencias de NPM, librerías ni frameworks, y está desarrollado completamente en Javascript vanilla.*
 
 ## Uso
 
