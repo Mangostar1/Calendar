@@ -49,6 +49,10 @@ Si el calendario está conectado a una API que suministre eventos, éstos se vis
 
 Además, es posible agregar eventos directamente en el calendario haciendo clic en el día deseado. Al hacer esto, se abrirá una ventana modal en la que se podrán agregar los detalles del evento.
 
+## Funcionalidades o Características
+
+lorem
+
 ## Requisitos
 
 Para utilizar este calendario, necesitarás tener instalado un servidor web y un navegador web moderno como Google Chrome, Mozilla Firefox o Microsoft Edge. Este proyecto no hace uso de dependencias NPM, librerías ni frameworks, está todo construido en Javascript vanilla.
