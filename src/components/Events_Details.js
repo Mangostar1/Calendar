@@ -18,7 +18,7 @@ function ModalEventWeek(element, button) {
   $newDiv.classList.add("modal");
   $newDiv.id = "modal-id";
 
-  $newDiv.innerHTML = `<div class="modal-close-content" id="closeModalID">
+  $newDiv.innerHTML = `<div class="modal-close-content" style="background-color: ${button.dataset.colorEvent};" id="closeModalID">
         <button class="btn-close-modal" id="btn-close-modal-ID">
             <img src="./src/assets/icons/close-svgrepo-com.svg" class="closeModal" id="closeModal-ID">
         </button>
@@ -40,10 +40,6 @@ function ModalEventWeek(element, button) {
         <div class="inputs-content">
             <p class="color-text modal-hour"><span class="text-bold">Desde:</span>  ${button.dataset.hourStart} hrs</p>
             <p class="color-text modal-hour"><span class="text-bold">Hasta las:</span>  ${button.dataset.hourFinish} hrs</p>
-        </div>
-
-        <div class="inputs-content">
-            <p class="color-text modal-hour" style="color: ${button.dataset.colorEvent};"><span class="text-bold">Color:</span>  ${button.dataset.colorEvent} </p>
         </div>
     </div>`;
 
