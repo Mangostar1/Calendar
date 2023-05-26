@@ -3,24 +3,22 @@
 /*----------------------------------------------------------*/
 
 export function handlerBtn(button) {
-    const $eventModal = document.getElementById('event-Modal');
-    ModalEventWeek($eventModal, button)
+  const $eventModal = document.getElementById("event-Modal");
+  ModalEventWeek($eventModal, button);
 }
 
 export function handlerBtnMobile() {
-    alert("Evento Fetch con datos del json desde el celular");
+  alert("Evento Fetch con datos del json desde el celular");
 }
 
 //modal en construccion
 function ModalEventWeek(element, button) {
-    
-    const $newDiv = document.createElement('div');
-    
-    $newDiv.classList.add('modal');
-    $newDiv.id = 'modal-id';
+  const $newDiv = document.createElement("div");
 
-    $newDiv.innerHTML = 
-    `<div class="modal-close-content" id="closeModalID">
+  $newDiv.classList.add("modal");
+  $newDiv.id = "modal-id";
+
+  $newDiv.innerHTML = `<div class="modal-close-content" id="closeModalID">
         <button class="btn-close-modal" id="btn-close-modal-ID">
             <img src="./src/assets/icons/close-svgrepo-com.svg" class="closeModal" id="closeModal-ID">
         </button>
@@ -49,5 +47,5 @@ function ModalEventWeek(element, button) {
         </div>
     </div>`;
 
-    element.appendChild($newDiv);
+  element.appendChild($newDiv);
 }
