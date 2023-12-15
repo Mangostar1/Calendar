@@ -664,6 +664,63 @@
         "colorBackgroundType": "#EA5455",
         "colorType": "white"
       }
+    },
+    { 
+      "id": 36,
+      "dateStartEvent": "2023-12-15",
+      "hourStart": "00:17:00",
+      "dateFinishEvent": "2023-12-15",
+      "hourFinish": "03:21:00",
+      "title": "Ejemplo de titulo 32",
+      "description": "descripcion test",
+      "statusInformation": {
+        "statusCode": "001",
+        "status": "activo",
+        "colorStatus": "green"
+      },
+      "typeInformation": {
+        "type": "0001",
+        "colorBackgroundType": "#EA5455",
+        "colorType": "white"
+      }
+    }
+    { 
+      "id": 37,
+      "dateStartEvent": "2023-12-15",
+      "hourStart": "00:17:00",
+      "dateFinishEvent": "2023-12-15",
+      "hourFinish": "03:21:00",
+      "title": "Ejemplo de titulo 32",
+      "description": "descripcion test 2",
+      "statusInformation": {
+        "statusCode": "001",
+        "status": "activo",
+        "colorStatus": "green"
+      },
+      "typeInformation": {
+        "type": "0001",
+        "colorBackgroundType": "#EA5455",
+        "colorType": "white"
+      }
+    },
+    { 
+      "id": 38,
+      "dateStartEvent": "2023-12-15",
+      "hourStart": "00:17:00",
+      "dateFinishEvent": "2023-12-15",
+      "hourFinish": "03:21:00",
+      "title": "Ejemplo de titulo 33",
+      "description": "descripcion test 2",
+      "statusInformation": {
+        "statusCode": "001",
+        "status": "activo",
+        "colorStatus": "green"
+      },
+      "typeInformation": {
+        "type": "0001",
+        "colorBackgroundType": "#EA5455",
+        "colorType": "white"
+      }
     }
   ]
 }
