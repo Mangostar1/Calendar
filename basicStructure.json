@@ -477,9 +477,9 @@
     },
     { 
       "id": 26,
-      "dateStartEvent": "2023-3-11",
+      "dateStartEvent": "2023-11-11",
       "hourStart": "00:17:00",
-      "dateFinishEvent": "2023-3-11",
+      "dateFinishEvent": "2023-11-11",
       "hourFinish": "00:21:00",
       "title": "Ejemplo de titulo 22",
       "description": "descripcion test",
@@ -496,9 +496,9 @@
     },
     { 
       "id": 27,
-      "dateStartEvent": "2023-3-12",
+      "dateStartEvent": "2023-11-12",
       "hourStart": "00:17:00",
-      "dateFinishEvent": "2023-3-12",
+      "dateFinishEvent": "2023-11-12",
       "hourFinish": "00:21:00",
       "title": "Ejemplo de titulo 23",
       "description": "descripcion test",
