@@ -699,7 +699,7 @@
       },
       "typeInformation": {
         "type": "0001",
-        "colorBackgroundType": "#EA5455",
+        "colorBackgroundType": "#EA5451",
         "colorType": "white"
       }
     },
@@ -718,7 +718,45 @@
       },
       "typeInformation": {
         "type": "0001",
-        "colorBackgroundType": "#EA5455",
+        "colorBackgroundType": "#EA5453",
+        "colorType": "white"
+      }
+    },
+    { 
+      "id": 39,
+      "dateStartEvent": "2023-12-15",
+      "hourStart": "00:17:00",
+      "dateFinishEvent": "2023-12-15",
+      "hourFinish": "03:21:00",
+      "title": "Ejemplo de titulo 35",
+      "description": "descripcion test 4",
+      "statusInformation": {
+        "statusCode": "001",
+        "status": "activo",
+        "colorStatus": "green"
+      },
+      "typeInformation": {
+        "type": "0001",
+        "colorBackgroundType": "#EA5454",
+        "colorType": "white"
+      }
+    },
+    { 
+      "id": 40,
+      "dateStartEvent": "2023-12-15",
+      "hourStart": "00:17:00",
+      "dateFinishEvent": "2023-12-15",
+      "hourFinish": "03:21:00",
+      "title": "Ejemplo de titulo 35",
+      "description": "descripcion test 5",
+      "statusInformation": {
+        "statusCode": "001",
+        "status": "activo",
+        "colorStatus": "green"
+      },
+      "typeInformation": {
+        "type": "0001",
+        "colorBackgroundType": "#EA5456",
         "colorType": "white"
       }
     }
