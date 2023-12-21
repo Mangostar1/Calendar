@@ -689,7 +689,7 @@
       "dateStartEvent": "2023-12-15",
       "hourStart": "00:17:00",
       "dateFinishEvent": "2023-12-15",
-      "hourFinish": "03:21:00",
+      "hourFinish": "01:21:00",
       "title": "Ejemplo de titulo 33",
       "description": "descripcion test 2",
       "statusInformation": {
@@ -708,7 +708,7 @@
       "dateStartEvent": "2023-12-15",
       "hourStart": "00:17:00",
       "dateFinishEvent": "2023-12-15",
-      "hourFinish": "03:21:00",
+      "hourFinish": "02:21:00",
       "title": "Ejemplo de titulo 34",
       "description": "descripcion test 3",
       "statusInformation": {
@@ -727,7 +727,7 @@
       "dateStartEvent": "2023-12-15",
       "hourStart": "00:17:00",
       "dateFinishEvent": "2023-12-15",
-      "hourFinish": "03:21:00",
+      "hourFinish": "00:21:00",
       "title": "Ejemplo de titulo 35",
       "description": "descripcion test 4",
       "statusInformation": {
