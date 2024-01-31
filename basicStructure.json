@@ -477,9 +477,9 @@
     },
     { 
       "id": 26,
-      "dateStartEvent": "2023-3-11",
+      "dateStartEvent": "2023-11-11",
       "hourStart": "00:17:00",
-      "dateFinishEvent": "2023-3-11",
+      "dateFinishEvent": "2023-11-11",
       "hourFinish": "00:21:00",
       "title": "Ejemplo de titulo 22",
       "description": "descripcion test",
@@ -496,9 +496,9 @@
     },
     { 
       "id": 27,
-      "dateStartEvent": "2023-3-12",
+      "dateStartEvent": "2023-11-12",
       "hourStart": "00:17:00",
-      "dateFinishEvent": "2023-3-12",
+      "dateFinishEvent": "2023-11-12",
       "hourFinish": "00:21:00",
       "title": "Ejemplo de titulo 23",
       "description": "descripcion test",
@@ -689,7 +689,7 @@
       "dateStartEvent": "2023-12-15",
       "hourStart": "00:17:00",
       "dateFinishEvent": "2023-12-15",
-      "hourFinish": "03:21:00",
+      "hourFinish": "01:21:00",
       "title": "Ejemplo de titulo 33",
       "description": "descripcion test 2",
       "statusInformation": {
@@ -699,7 +699,7 @@
       },
       "typeInformation": {
         "type": "0001",
-        "colorBackgroundType": "#EA5455",
+        "colorBackgroundType": "#B31312",
         "colorType": "white"
       }
     },
@@ -708,7 +708,7 @@
       "dateStartEvent": "2023-12-15",
       "hourStart": "00:17:00",
       "dateFinishEvent": "2023-12-15",
-      "hourFinish": "03:21:00",
+      "hourFinish": "02:21:00",
       "title": "Ejemplo de titulo 34",
       "description": "descripcion test 3",
       "statusInformation": {
@@ -718,7 +718,45 @@
       },
       "typeInformation": {
         "type": "0001",
-        "colorBackgroundType": "#EA5455",
+        "colorBackgroundType": "#750E21",
+        "colorType": "white"
+      }
+    },
+    { 
+      "id": 39,
+      "dateStartEvent": "2023-12-15",
+      "hourStart": "00:17:00",
+      "dateFinishEvent": "2023-12-15",
+      "hourFinish": "00:21:00",
+      "title": "Ejemplo de titulo 35",
+      "description": "descripcion test 4",
+      "statusInformation": {
+        "statusCode": "001",
+        "status": "activo",
+        "colorStatus": "green"
+      },
+      "typeInformation": {
+        "type": "0001",
+        "colorBackgroundType": "#7E30E1",
+        "colorType": "white"
+      }
+    },
+    { 
+      "id": 40,
+      "dateStartEvent": "2023-12-15",
+      "hourStart": "00:17:00",
+      "dateFinishEvent": "2023-12-15",
+      "hourFinish": "03:21:00",
+      "title": "Ejemplo de titulo 36",
+      "description": "descripcion test 5",
+      "statusInformation": {
+        "statusCode": "001",
+        "status": "activo",
+        "colorStatus": "green"
+      },
+      "typeInformation": {
+        "type": "0001",
+        "colorBackgroundType": "#FF9800",
         "colorType": "white"
       }
     }
