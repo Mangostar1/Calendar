@@ -9,7 +9,7 @@ let monthsOfYear = "";
 for (let m = 0; m < 12; m++) {
   monthsOfYear += `
 	<div class="meses">
-	<h2 class="tittle">${languageHandler.es.monthNames[m]}Enero</h2>
+	<h2 class="tittle">${languageHandler.es.monthNames[m]}</h2>
 	<div class="calendar">
 			<div id="day-name-${languageHandler.es.monthNamesShort[m]}" class="day-name-div"></div>
 			<div id="day-div-${languageHandler.es.monthNamesShort[m]}"" class="day-div"></div>
@@ -23,10 +23,16 @@ export function YearComponent(element) {
   const $yearContent = document.createElement("article");
   $yearContent.classList.add("year-content");
   $yearContent.id = "container-Year";
-  $yearContent.innerHTML = `<div id="dates-control-year" class="dates-control">
-            <button id="prev-year" class="prev">&#10094;</button>
-            <h1 id="date-year" class="fecha">Diciembre de 2021</h1>
-            <button id="next-year" class="next">&#10095;</button>
+  $yearContent.innerHTML = `
+        <div id="dates-control-year" class="dates-control">
+          <div id="" class="header-date-details">
+            <p id="date-year" class="header-date-details-text"></p>
+          </div>
+          <div>
+            <button id="prev-year" class="prev"> &#10094; </button>
+            <button id="btnToday">Hoy</button>
+            <button id="next-year" class="next"> &#10095; </button>
+          </div>
         </div>
         <div id="days-of-year">
             ${monthsOfYear}

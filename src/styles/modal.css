@@ -1,7 +1,5 @@
-.modal{
-    /* max-width: 330px; */
-    /* min-width: 200px; */
-    width: 300px;
+.modal-add-event-calendar{
+    width: 500px;
 
     background-color: white;
     border-radius: 8px;
@@ -13,10 +11,26 @@
     z-index: 10;
 }
 
+.modal-view-event-calendar{
+    width: 400px;
+
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 25px 0px rgba(71, 71, 71, 0.507);
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+}
+
+.modal-add-event-calendar label{
+    color: black;
+}
+
 /* conten close btn modal */
 .modal-close-content{
-    /* background-color: var(--colorOne); */
-    background-color: rgb(233, 233, 233);
+    background-color: var(--colorOne);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 
@@ -26,6 +40,7 @@
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+    justify-content: space-between;
 
     cursor: move;
 }
@@ -51,6 +66,7 @@
 .btn-close-modal{
     /* background-color: var(--colorOne); */
     background-color: transparent;
+    filter: invert(1%);
     border: none;
 }
 .btn-close-modal:hover  .closeModal{
@@ -60,6 +76,16 @@
 /* modal conten inputs and more */
 .modal-content-info{
     padding: 10px;
+    cursor: default;
+}
+
+#oportunidad{
+    width: 100%;
+    font-size: 1rem;
+}
+
+#dateInput{
+    font-size: 1rem;
 }
 
 #titleEvent{
@@ -67,15 +93,11 @@
     height: 30px;
 }
 #titleEvent::placeholder{
-    text-align: center;
     font-size: 16px;
 }
 #titleEvent:focus{
     outline: none;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 2px solid var(--colorOne);
+    border: 1px solid var(--colorOne);
 }
 
 #descriptionEvent{
@@ -84,13 +106,16 @@
     min-height: 50px;
     max-height: 80px;
     resize: vertical;
+    font-size: 1rem;
 
     margin-top: .5rem;
 }
 #descriptionEvent::placeholder{
     font-size: 16px;
-    text-align: center;
-    padding-top: 1rem;
+}
+#descriptionEvent:focus{
+    outline: none;
+    border: 1px solid var(--colorOne);
 }
 
 .inputs-content{
@@ -133,7 +158,10 @@
 }
 
 .modal-tittle{
-    margin: .5rem 0 1.5rem 0;
+    margin: .5rem 0 0 0;
+    padding: 0 0 1rem 0;
+    border-bottom: 1px solid var(--neutralGray);
+    white-space: wrap;
 }
 
 .modal-description{
@@ -147,4 +175,49 @@
 .text-bold{
     font-weight: bold;
     font-size: 1.1rem;
+}
+
+#modal-details-first-content{
+    border-bottom: 1px solid var(--neutralGray);
+    padding: .4rem 0 1rem 0;
+}
+
+#modal-details-second-content{
+    padding: .4rem 0 1rem 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.8rem;
+}
+
+.modal-details-content-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.text-detail{
+    font-size: .9rem;
+    white-space: wrap;
+    text-align: left;
+}
+
+.text-anchor{
+    color: #500859;
+}
+
+#radio-content{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+#radio-opcions{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
 }

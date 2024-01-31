@@ -24,10 +24,16 @@ export function WeekComponent(element) {
   $WeekContent.classList.add("container-week");
   $WeekContent.id = "container-week";
 
-  $WeekContent.innerHTML = `<div id="dates-control-week" class="dates-control">
-        <button id="prev-week" class="prev">&#10094;</button>
-        <h1 id="date-week" class="fecha">Diciembre de 2021</h1>
-        <button id="next-week" class="next">&#10095;</button>
+  $WeekContent.innerHTML = `
+    <div id="dates-control-week" class="dates-control">
+      <div id="" class="header-date-details">
+        <p id="date-week" class="header-date-details-text"></p>
+      </div>
+      <div>
+        <button id="prev-week" class="prev"> &#10094; </button>
+        <button id="btnToday">Hoy</button>
+        <button id="next-week" class="next"> &#10095; </button>
+      </div>
     </div>
     <div id="days-of-week">
         ${daysOnWeek}
@@ -69,92 +75,106 @@ export function hourWeekComponent(currentDate, getDay) {
     "23:00 hrs",
   ];
 
+  let days = [
+    new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      currentDate.getDate()
+    ),
+    new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      currentDate.getDate()
+    ),
+    new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      currentDate.getDate()
+    ),
+    new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      currentDate.getDate()
+    ),
+    new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      currentDate.getDate()
+    ),
+    new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      currentDate.getDate()
+    ),
+    new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      currentDate.getDate()
+    ),
+  ];
+
+  // Obtén el día actual (0 para domingo, 1 para lunes, ..., 6 para sábado)
+  const today = new Date().getDay() - 1;
+
   for (let w = 0; w < 168; w++) {
-    $weekContent.innerHTML += `<div class="semanal">
-                <ul>
-                    <li class="event eventWeek"></li>
-                </ul>
-            </div>`;
+      // Calcula el día correspondiente al índice del bucle
+      const dayIndex = w % 7;
+
+      // Verifica si el día actual coincide con el día del bucle
+      const isToday = dayIndex === today && currentDate.getMonth() == new Date().getMonth() && currentDate.getWeekNumber() == new Date().getWeekNumber();
+
+      // Agrega la clase correspondiente
+      $weekContent.innerHTML += `
+          <div class="semanal ${isToday ? 'week-day-active' : ''}">
+            <div class="event eventWeek" data-month="${currentDate.getMonth()}" data-year="${currentDate.getFullYear()}"></div>
+          </div>`;
   }
 
-  for (var i = 0; i < 7; i++) {
-    const days = [
-      new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        currentDate.getDate()
-      ),
-      new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        currentDate.getDate()
-      ),
-      new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        currentDate.getDate()
-      ),
-      new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        currentDate.getDate()
-      ),
-      new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        currentDate.getDate()
-      ),
-      new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        currentDate.getDate()
-      ),
-      new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        currentDate.getDate()
-      ),
-    ];
-
-    for (let j = 0; j < 7; j++) {
-      switch (getDay) {
-        case 1: //<-- Monday
-          addDays(days[j], j);
-          break;
-        case 2: //<-- Tuesday
-          addDays(days[j], j - 1);
-          break;
-        case 3: //<-- Wednesday
-          addDays(days[j], j - 2);
-          break;
-        case 4: //<-- Thursday
-          addDays(days[j], j - 3);
-          break;
-        case 5: //<-- Friday
-          addDays(days[j], j - 4);
-          break;
-        case 6: //<-- Saturday
-          addDays(days[j], j - 5);
-          break;
-        case 0: //<-- Sunday
-          addDays(days[j], j - 6);
-          break;
-      }
-      $weekDays[j].innerHTML = days[j].getDate();
+  for (let j = 0; j < 7; j++) {
+    switch (getDay) {
+      case 1: //<-- Monday
+        addDays(days[j], j);
+        break;
+      case 2: //<-- Tuesday
+        addDays(days[j], j - 1);
+        break;
+      case 3: //<-- Wednesday
+        addDays(days[j], j - 2);
+        break;
+      case 4: //<-- Thursday
+        addDays(days[j], j - 3);
+        break;
+      case 5: //<-- Friday
+        addDays(days[j], j - 4);
+        break;
+      case 6: //<-- Saturday
+        addDays(days[j], j - 5);
+        break;
+      case 0: //<-- Sunday
+        addDays(days[j], j - 6);
+        break;
     }
+    $weekDays[j].innerHTML = days[j].getDate();
   }
   eventsWeek();
 
   /*--Hours--*/
   setTimeout(() => {
-    let semanal = document.querySelectorAll(".semanal");
+    // <-- Para prevenir que no se ejecute antes de que los elementos .semanal esten en el DOM
+    let semanalLi = document.querySelectorAll(".eventWeek");
 
-    function pushHoursWeek(hora) {
-      return `<p class="hours-in-Week">${hora}</p>`;
+    function pushHoursWeek(hora, index) {
+        const hourWithoutHrs = hora.replace(' hrs', ''); // Eliminar "hrs" del final
+        semanalLi[index].setAttribute('data-hour', hourWithoutHrs);
+        return `<p class="hours-in-Week">${hora}</p>`;
     }
 
     for (let h = 0; h < 168; h++) {
-      semanal[h].innerHTML += pushHoursWeek(hourDayWeek[Math.floor(h / 7)]);
+        const currentDayIndex = h % 7; // Índice del día actual en el array 'days'
+        const currentDay = days[currentDayIndex].getDate();
+
+        semanalLi[h].setAttribute('data-day', currentDay);
+        semanalLi[h].innerHTML += pushHoursWeek(hourDayWeek[Math.floor(h / 7)], h);
     }
   }, 1);
 }
@@ -190,17 +210,12 @@ async function eventsWeek() {
             eventData.dateStart.getFullYear() === currentDate.getFullYear() &&
             eventData.dateStart.getWeekNumber() === currentDate.getWeekNumber()
           ) {
-            eventWekk[w].innerHTML += datesFetch(basicWeekJSON, e).btns;
-          } else if (
-            eventData.dateStart.getDate() < eventData.dateFinish.getDate()
-          ) {
-            // If the event lasts more than one day
 
-            for (
-              let i = eventData.dateStart;
-              i <= eventData.dateFinish;
-              i = new Date(i.getTime() + 1000 * 60 * 60 * 24)
-            ) {
+            
+            eventWekk[w].innerHTML += datesFetch(basicWeekJSON, e, "week").btns;
+          } else if (eventData.dateStart.getDate() < eventData.dateFinish.getDate()) {// If the event lasts more than one day
+
+            for (let i = eventData.dateStart; i <= eventData.dateFinish; i = new Date(i.getTime() + 1000 * 60 * 60 * 24)) {
               if (
                 i.getDay() === day % 7 &&
                 i.getMonth() === currentDate.getMonth() &&
@@ -209,7 +224,7 @@ async function eventsWeek() {
                 horas >= eventData.dateStart.getHours() &&
                 horas <= eventData.dateFinish.getHours()
               ) {
-                eventWekk[w].innerHTML += datesFetch(basicWeekJSON, e).btns;
+                eventWekk[w].innerHTML += datesFetch(basicWeekJSON, e, "week").btns;
               }
             }
           }

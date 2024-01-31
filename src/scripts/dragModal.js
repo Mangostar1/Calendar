@@ -1,7 +1,6 @@
 export function dragModal() {
-  const draggableElement = document.querySelector(
-    ".modal-close-content"
-  ).parentElement;
+  const draggableElement = document.querySelector(".modal-close-content").parentElement;
+  const draggableElementModal = document.querySelector(".modal-close-content");
   let isDragging = false;
   let initialX;
   let initialY;
@@ -10,7 +9,7 @@ export function dragModal() {
   let xOffset = 0;
   let yOffset = 0;
 
-  draggableElement.addEventListener("mousedown", function (e) {
+  draggableElementModal.addEventListener("mousedown", function (e) {
     isDragging = true;
     initialX = e.clientX - xOffset;
     initialY = e.clientY - yOffset;

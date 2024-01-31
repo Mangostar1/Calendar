@@ -14,10 +14,15 @@ export function MonthComponent(element) {
   $MonthContent.id = "container-month";
   $MonthContent.innerHTML = `
         <div id="dates-control-month" class="dates-control">
-            <button id="prev-month" class="prev">&#10094;</button>
-            <h1 id="date-month" class="fecha"></h1>
-            <button id="next-month" class="next">&#10095;</button>
-        </div>
+              <div id="" class="header-date-details">
+                <p id="date-month" class="header-date-details-text"></p>
+              </div>
+              <div>
+                <button id="prev-month" class="prev"> &#10094; </button>
+                <button id="btnToday">Hoy</button>
+                <button id="next-month" class="next"> &#10095; </button>
+              </div>
+          </div>
         <div id="days-of-month"></div>
         <div class="content-loader">
             <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
@@ -26,37 +31,33 @@ export function MonthComponent(element) {
   element.appendChild($MonthContent);
 }
 
-export function DaysOfMonth(month) {
+export function DaysOfMonth(month, currentDate) {
   const $wrapper = document.getElementById("days-of-month");
 
   languageHandler.es.dayNameShort.forEach((item) => {
     $wrapper.innerHTML += `<div class="grid-days"> ${item.day} </div>`;
   });
 
-  for (let i = startDay(); i > 0; i--) {
+  for (let i = startDay(); i > 0; i--) {//<-- Imprime los dias anteriores al primer dia del mes (por si el 1 cae martes u otro dia en adelante)
     $wrapper.innerHTML += `<div class="grid-item"><p class="day-number lastMonth"> ${
       getTotalDays(currentDate.getMonth() - 1) - (i - 1)
     } </p>
-                <ul>
-                    <li class="event"></li>
-                </ul>
+                <div class="event"></div>
             </div>`;
   }
 
-  for (let i = 1; i <= getTotalDays(month); i++) {
-    if (i == currentDate.getDate() && month == 0) {
-      $wrapper.innerHTML += `<div class="grid-item">
-                    <p class="day-number day-month-active"> ${i} </p>
-                    <ul>
-                        <li class="event" id="evento-${i}"></li>
-                    </ul>
+  for (let i = 1; i <= getTotalDays(month); i++) {//<-- Imprime los dias del mes
+    if (i == new Date().getDate() && month == new Date().getMonth()) {
+      $wrapper.innerHTML += 
+                `<div class="grid-item day-month-active" data-month="${month}" data-day="${i}" data-year="${currentDate.getFullYear()}">
+                    <p class="day-number day-month-number-active"> ${i} </p>
+                    <div class="event" id="evento-${i}"></div>
                 </div>`;
     } else {
-      $wrapper.innerHTML += `<div class="grid-item">
+      $wrapper.innerHTML += 
+                `<div class="grid-item" data-month="${month}" data-day="${i}" data-year="${currentDate.getFullYear()}">
                     <p class="day-number"> ${i} </p>
-                    <ul>
-                        <li class="event" id="evento-${i}"></li>
-                    </ul>
+                    <div class="event" id="evento-${i}"></div>
                 </div>`;
     }
   }
@@ -74,30 +75,27 @@ function IsLoaded() {
 //Eventos del mes
 async function eventoMonth() {
   try {
-    const basicMonth = await fetch(
-      "https://mangostar1.github.io/Calendar/basicStructure.json"
-    );
+    const basicMonth = await fetch(URL);
     const basicMonthJson = await basicMonth.json();
 
     if (basicMonthJson.length !== 0) {
+      let totalInnerHtmlExecutions = 0; // Contador para contar las ejecuciones de innerHTML
+
       for (let d = 0; d < basicMonthJson.events.length; d++) {
         let eventData = datesFetch(basicMonthJson, d).eventData;
 
         let getDateOf_dateMonthStart = eventData.dateStart.getDate();
         let getDateOf_dateMonthFinish = eventData.dateFinish.getDate();
 
-        for (
-          let i = getDateOf_dateMonthStart;
-          i <= getDateOf_dateMonthFinish;
-          i++
-        ) {
+        for (let i = getDateOf_dateMonthStart; i <= getDateOf_dateMonthFinish; i++) {
           let $eventMonth = document.getElementById(`evento-${i}`);
           if ($eventMonth) {
             if (
               eventData.dateStart.getMonth() === currentDate.getMonth() &&
               eventData.dateStart.getFullYear() === currentDate.getFullYear()
             ) {
-              $eventMonth.innerHTML += datesFetch(basicMonthJson, d).btns;
+              $eventMonth.innerHTML += datesFetch(basicMonthJson, d, "month").btns;
+              totalInnerHtmlExecutions++; // Incrementa el contador
             }
           }
         }

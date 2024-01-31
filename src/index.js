@@ -1,15 +1,8 @@
 //Components
 import { DayComponent, hourDayComponent } from "./components/DayComponent.js";
-import {
-  WeekComponent,
-  hourWeekComponent,
-} from "./components/WeekComponent.js";
+import { WeekComponent, hourWeekComponent } from "./components/WeekComponent.js";
 import { MonthComponent, DaysOfMonth } from "./components/MonthComponent.js";
-import {
-  YearComponent,
-  writeYear,
-  DaysOFYear,
-} from "./components/YearComponent.js";
+import { YearComponent, writeYear, DaysOFYear } from "./components/YearComponent.js";
 
 //Modals
 import { NewModalEvent, closeModal } from "./components/Add_Event.js";
@@ -25,8 +18,7 @@ import languageHandler from "./i18n/en-es.js";
 /*--Useful Variables--*/
 /*--------------------*/
 
-const $calendarContainer =
-  document.getElementsByClassName("calendar-container")[0]; //<-- Represents the <section> in index.html where the calendar will be printed.
+const $calendarContainer = document.getElementsByClassName("calendar-container")[0]; //<-- Represents the <section> in index.html where the calendar will be printed.
 
 let isVisible = false; //<-- Used to controls wodal window. Prevents more than one from being opened at the same time.
 
@@ -98,16 +90,88 @@ export function startDayYear(month) {
   return start.getDay() - 1 === -1 ? 6 : start.getDay() - 1;
 }
 
+function comeToday() {
+  currentDate = new Date();
+
+  // Obtén el ID del radio seleccionado
+  const selectedRadio = document.querySelector('input[name="btn"]:checked').id;
+
+  // Ejecuta diferentes códigos según el radio seleccionado
+  switch (selectedRadio) {
+    case 'radio-day':
+      $calendarContainer.lastChild.remove();
+      DayComponent($calendarContainer);
+      hourDayComponent(currentDate, currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
+      break;
+    case 'radio-week':
+      $calendarContainer.lastChild.remove();
+      WeekComponent($calendarContainer);
+      hourWeekComponent(currentDate, currentDate.getDay(), currentDate.getDate(), currentDate.getMonth(), currentDate.getFullYear());
+      document.getElementById("date-week").innerHTML = `${languageHandler.es.monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
+      break;
+    case 'radio-month':
+      $calendarContainer.lastChild.remove();
+      MonthComponent($calendarContainer);
+      document.getElementById("date-month").innerHTML = `${languageHandler.es.monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
+      DaysOfMonth(currentDate.getMonth(), currentDate);
+      break;
+    case 'radio-year':
+      let daysMonthYear = document.getElementsByClassName("day-div");
+      currentDate.setFullYear(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        currentDate.getDate()
+      );
+      document.getElementById("date-year").innerHTML = currentDate.getFullYear();
+
+      for (let y = 0; y < 12; y++) {
+        daysMonthYear[y].innerHTML = null;
+      }
+      writeYear();
+      break;
+    default:
+      console.log('Radio seleccionado no reconocido');
+  }
+}
+
+/* Used on DayComponent.js on DayComponent() to change the current date */
+function goToDayClick(element) {
+  const day = element.dataset.day;
+  const monthNumber = element.dataset.monthNumber;
+  const lastMonthDay = element.dataset.lastMonthDay;
+  const lastMonthNumber = element.dataset.lastMonthNumber;
+
+  if (day != undefined) {
+    currentDate.setMonth(monthNumber);
+    currentDate.setDate(day);
+
+    $calendarContainer.lastChild.remove();
+    DayComponent($calendarContainer);
+    hourDayComponent(currentDate);
+  }
+
+  if (lastMonthDay != undefined) {
+    currentDate.setMonth(lastMonthNumber);
+    currentDate.setDate(lastMonthDay);
+
+    $calendarContainer.lastChild.remove();
+    DayComponent($calendarContainer);
+    hourDayComponent(currentDate);
+  }
+}
+window.goToDayClick = goToDayClick;
+
+
 /*------------------------*/
 /* Load Default Component */
 /*------------------------*/
-
-MonthComponent($calendarContainer);
-DaysOfMonth(currentDate.getMonth());
-document.getElementById("date-month").innerHTML =
-  languageHandler.es.monthNames[currentDate.getMonth()] +
-  ` ${languageHandler.es.prep[0]} ` +
-  currentDate.getFullYear();
+  MonthComponent($calendarContainer);
+  DaysOfMonth(currentDate.getMonth(), currentDate);
+  document.getElementById("dates-control-month").style = "display: flex";
+  document.getElementById("date-month").innerHTML =
+    languageHandler.es.monthNames[currentDate.getMonth()] +
+    ` ` +
+    currentDate.getFullYear();
 
 /*-----------------------*/
 /*----Event Listeners----*/
@@ -118,12 +182,22 @@ document.addEventListener("click", ({ target }) => {
     document.querySelector(".buttons").classList.toggle("active");
   }
 
+  if (target.matches("#btnToday")) {
+    comeToday();
+  }
+  
   /*--Modal Window--*/
-  if (
-    target.matches(".grid-item") &&
-    screen.width > 768 &&
-    isVisible === false
-  ) {
+  if (target.matches(".grid-item") && screen.width > 768 && isVisible === false) {
+    NewModalEvent(target);
+    isVisible = true;
+    dragModal();
+  }
+  if (target.matches(".eventWeek") && screen.width > 768 && isVisible === false) {
+    NewModalEvent(target);
+    isVisible = true;
+    dragModal();
+  }
+  if (target.matches(".eventDay") && screen.width > 768 && isVisible === false) {
     NewModalEvent(target);
     isVisible = true;
     dragModal();
@@ -183,18 +257,9 @@ document.addEventListener("click", ({ target }) => {
     $calendarContainer.lastChild.remove();
     DayComponent($calendarContainer);
     hourDayComponent(
-      currentDate,
-      currentDate.getDay(),
-      currentDate.getDate(),
-      currentDate.getMonth(),
-      currentDate.getFullYear()
+      currentDate
     );
-    document.getElementById("date-day").innerHTML =
-      currentDate.getDate() +
-      ` ${languageHandler.es.prep[0]} ` +
-      languageHandler.es.monthNames[currentDate.getMonth()] +
-      ` ${languageHandler.es.prep[1]} ` +
-      currentDate.getFullYear();
+  isVisible = false;
   }
   if (target.matches("#radio-week")) {
     //<-- Week
@@ -209,19 +274,21 @@ document.addEventListener("click", ({ target }) => {
     );
     document.getElementById("date-week").innerHTML =
       languageHandler.es.monthNames[currentDate.getMonth()] +
-      ` ${languageHandler.es.prep[0]} ` +
+      ` ` +
       currentDate.getFullYear();
+    isVisible = false;
   }
   if (target.matches("#radio-month")) {
     //<-- Month
     $calendarContainer.lastChild.remove();
     MonthComponent($calendarContainer);
-    DaysOfMonth(currentDate.getMonth());
+    DaysOfMonth(currentDate.getMonth(), currentDate);
     document.getElementById("dates-control-month").style = "display: flex";
     document.getElementById("date-month").innerHTML =
       languageHandler.es.monthNames[currentDate.getMonth()] +
-      ` ${languageHandler.es.prep[0]} ` +
+      ` ` +
       currentDate.getFullYear();
+    isVisible = false;
   }
   if (target.matches("#radio-year")) {
     //<-- Year
@@ -230,6 +297,7 @@ document.addEventListener("click", ({ target }) => {
     DaysOFYear();
     writeYear();
     document.getElementById("date-year").innerHTML = currentDate.getFullYear();
+    isVisible = false;
   }
 });
 
@@ -242,11 +310,11 @@ document.addEventListener("click", ({ target }) => {
 /*-------------*/
 function prevDay() {
   lessDays(currentDate, 1);
-  currentDate.setFullYear(
+  /* currentDate.setFullYear(
     currentDate.getFullYear(),
     currentDate.getMonth(),
     currentDate.getDate()
-  );
+  ); */
 
   $calendarContainer.lastChild.remove();
   DayComponent($calendarContainer);
@@ -257,23 +325,15 @@ function prevDay() {
     currentDate.getMonth(),
     currentDate.getFullYear()
   );
-
-  document.getElementById("date-day").innerHTML = null;
-  document.getElementById("date-day").innerHTML =
-    currentDate.getDate() +
-    ` ${languageHandler.es.prep[0]} ` +
-    languageHandler.es.monthNames[currentDate.getMonth()] +
-    ` ${languageHandler.es.prep[1]} ` +
-    currentDate.getFullYear();
 }
 
 function nextDay() {
   addDays(currentDate, 1);
-  currentDate.setFullYear(
+  /* currentDate.setFullYear(
     currentDate.getFullYear(),
     currentDate.getMonth(),
     currentDate.getDate()
-  );
+  ); */
 
   $calendarContainer.lastChild.remove();
   DayComponent($calendarContainer);
@@ -284,14 +344,6 @@ function nextDay() {
     currentDate.getMonth(),
     currentDate.getFullYear()
   );
-
-  document.getElementById("date-day").innerHTML = null;
-  document.getElementById("date-day").innerHTML =
-    currentDate.getDate() +
-    ` ${languageHandler.es.prep[0]} ` +
-    languageHandler.es.monthNames[currentDate.getMonth()] +
-    ` ${languageHandler.es.prep[1]} ` +
-    currentDate.getFullYear();
 }
 
 /*--------------*/
@@ -310,7 +362,7 @@ function prevWeek() {
   );
   document.getElementById("date-week").innerHTML =
     languageHandler.es.monthNames[currentDate.getMonth()] +
-    ` ${languageHandler.es.prep[0]} ` +
+    ` ` +
     currentDate.getFullYear();
 }
 
@@ -327,7 +379,7 @@ function nextWeek() {
   );
   document.getElementById("date-week").innerHTML =
     languageHandler.es.monthNames[currentDate.getMonth()] +
-    ` ${languageHandler.es.prep[0]} ` +
+    ` ` +
     currentDate.getFullYear();
 }
 
@@ -355,9 +407,9 @@ function setNewDateMonth() {
   MonthComponent($calendarContainer);
   document.getElementById("date-month").innerHTML =
     languageHandler.es.monthNames[currentDate.getMonth()] +
-    ` ${languageHandler.es.prep[0]} ` +
+    ` ` +
     currentDate.getFullYear();
-  DaysOfMonth(currentDate.getMonth());
+  DaysOfMonth(currentDate.getMonth(), currentDate);
 }
 
 /*--------------*/

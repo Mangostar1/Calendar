@@ -1,6 +1,9 @@
 #container-week{
     flex-flow: row wrap;
     margin: 15px;
+    border: 1px solid var(--color3C);
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
 }
 
 #container-week #days-of-week{
@@ -9,18 +12,15 @@
 
 #days-of-week{
     display: grid;
-    grid-template-columns: repeat(7, auto);
+    grid-template-columns: repeat(7, minmax(0, 1fr));
     grid-template-rows: repeat(24, auto);
     gap: 0px 0px;
-    margin-top: 5px;
 }
 
 #days-of-week .grid-days{
     display: flex;
     justify-content: end;
-}
-#days-of-week .grid-days:first-child{
-    border-top-left-radius: 10px;
+    border-top: 1px solid var(--neutralBlack);
 }
 #days-of-week .grid-days p{
     margin-left: 5px;
@@ -29,20 +29,19 @@
     margin-right: 15px;
 }
 
-#days-of-week .semanal:nth-child(7n + 14){
+#days-of-week .semanal:nth-child(7n + 14), #days-of-week .semanal:nth-child(7n + 14) .hours-in-Week{
     background-color: var(--neutralActive);
 }
+
 #days-of-week .semanal:nth-child(7n + 1){
     border-left: solid 1px black;
 }
 
 #container-week .grid-days{
-    margin-top: 10px;
     border-right: 1px solid var(--neutralBlack);
     border-bottom: 1px solid var(--neutralGray);
 }
 #container-week .grid-days:nth-child(7){
-    border-top-right-radius: 10px;
     border-right: none;
 }
 
@@ -50,20 +49,51 @@
     border-bottom: 1px solid var(--neutralGray);
     border-right: 1px solid var(--neutralGray);
     background-color: var(--colorbg);
-    min-height: 59.1px;
+    height: 6.5rem;
+    width: 100%;
     position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
 }
+.semanal::-webkit-scrollbar {
+    width: 8px; /* Ancho del scrollbar */
+}
+
+.semanal::-webkit-scrollbar-thumb {
+    background-color: var(--neutralGray); /* Color del thumb (el mango del scrollbar) */
+    border-radius: 6px; /* Bordes redondeados del thumb */
+}
+
+.semanal::-webkit-scrollbar-track {
+    background-color: var(--neutralActive); /* Color del track (el fondo del scrollbar) */
+}
+
+.semanal .eventWeek{
+    order: 2;
+}
+.semanal .hours-in-Week{
+    order: 1;
+}
+
 .hours-in-Week{
+    text-align: right;
     font-size: 14px;
     color: var(--neutralGray);
     position: absolute;
-    top: 4px;
-    right: 4px;
+    top: 0;
+    right: 2px;
+    background-color: rgba(255, 255, 255, 0.99);
+    z-index: 1;
+    padding: 0px 0px 0 0; /* 8px 8px 0 0 */
+    height: fit-content;
+    width: fit-content;
 }
 
 .day-week{
     text-align: center;
-    font-size: 24px;
+    font-size: 20px;
     color: var(--neutralWhite);
     margin-top: 0px;
     margin-bottom: 0px;
@@ -75,17 +105,26 @@
 }
 
 
-#container-week ul{
+#container-week .eventWeek {
     list-style: none;
-    padding: 10px 0 0 0;
-
-    width: 84%;
-    margin-left: 0px;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    padding: 5px 0 0 0;
+    margin: 0px 2px 0px 2px;
+    width: 100%;
+    height: 100%;
 }
 
-#container-week .btn-item{
-    margin-left: 15px;
-    margin-bottom: 5px;
+#container-week .eventWeek{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    height: 100%;
+}
+
+#container-week .eventWeek .btn-item{
+    height: 100%;
+}
+
+.week-day-active{
+    border-left: 2px solid var(--colorOne);
+    border-right: 2px solid var(--colorOne);
 }

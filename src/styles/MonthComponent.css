@@ -1,18 +1,7 @@
-/* last Month days */
-.lastMonth{
-    color: var(--neutralGray);
-}
-
-.lastMonthYear{
-    color: var(--colorbg);
-    cursor: default;
-}
-
 #days-of-month{
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     background-color: transparent;
-    margin-top: 10px;
     grid-column-end: 9;
     gap: 0px;
     width: 100%;
@@ -28,32 +17,40 @@
     font-size: 20px;
     text-align: center;
 
-    padding: 15px;
-    min-height: 80px;
+    padding: 0px 8px 8px 8px;
+    min-height: 164px;
+    max-height: 164px;
 
     position: relative;
+
+    /* Añade overflow-y para el scroll vertical */
+    overflow-y: auto;
+}
+
+.grid-item::-webkit-scrollbar {
+    width: 8px; /* Ancho del scrollbar */
+}
+
+.grid-item::-webkit-scrollbar-thumb {
+    background-color: var(--neutralGray); /* Color del thumb (el mango del scrollbar) */
+    border-radius: 6px; /* Bordes redondeados del thumb */
+}
+
+.grid-item::-webkit-scrollbar-track {
+    background-color: var(--neutralActive); /* Color del track (el fondo del scrollbar) */
 }
 
 #days-of-month .grid-item:nth-child(7n+1){
     border-left: 1px solid var(--neutralGray);
 }
 
-#days-of-month .grid-item:nth-child(7n+14){
+#days-of-month .grid-item:nth-child(7n+14), #days-of-month .grid-item:nth-child(7n+14) .day-number{
     background-color: var(--neutralActive);
 }
 
 #days-of-month .grid-days{
-    margin-top: 5px;
     border-right: 0.5px solid var(--colorTwo);
-}
-
-#days-of-month .grid-days:first-child{
-    border-top-left-radius: 10px;
-}
-
-#days-of-month .grid-days:nth-child(7){
-    border-top-right-radius: 10px;
-    border-right: none;
+    border-top: 1px solid var(--colorTwo);
 }
 
 #container-month{
@@ -61,6 +58,9 @@
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
+    border: 1px solid var(--color3C);
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
 }
 
 #container-month .grid-days{
@@ -69,10 +69,49 @@
     padding-bottom: 5px;
 }
 
-ul{
+.day-month{
+    text-align: right;
+}
+
+.day-number {
+    text-align: right;
+    color: var(--neutralBlack);
+    background-color: rgba(255, 255, 255, 0.99);
+    padding: 4px 0 0 0;
+    position: sticky;
+    top: 0; /* Fija el elemento en la parte superior */
+    z-index: 1; /* Asegura que esté sobre los demás elementos */
+}
+
+.day-month-active{
+    border: 2px solid var(--colorOne);
+}
+.day-month-number-active{
+    color: var(--colorOne);
+}
+
+
+/* last Month days */
+.lastMonth{
+    color: var(--color2C);
+}
+
+.lastMonthYear{
+    color: var(--color2C);
+    cursor: default;
+}
+
+.grid-item .event{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* CODIGO DEPRECADO */
+/* #calendar-actividades #days-of-month ul{
     list-style: none;
     padding: 0px;
-    width: 100%; /* atencion */
+    width: 100%;
 
     margin-left: -15px;
 }
@@ -84,8 +123,8 @@ ul{
     margin-bottom: 5px;
 }
 
-#days-of-month ul li::before{/* pelotita de color en radio month */
-    /* content: ""; */
+#days-of-month ul li::before{
+    content: "";
 
     display: inline-block;
 
@@ -98,14 +137,4 @@ ul{
     margin-right: 15px;
     background-color: var(--neutralWhite);
     border-radius: 50%;
-}
-
-.day-month{
-    text-align: right;
-}
-
-.day-number{
-    text-align: right;
-    margin-top: -10px;
-    margin-right: -10px;
-}
+} */

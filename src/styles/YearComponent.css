@@ -1,6 +1,9 @@
 #container-Year{
     flex-flow: row wrap;
     margin: 15px;
+    border: 1px solid var(--color3C);
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
 }
 
 #days-of-year{
@@ -9,7 +12,6 @@
     grid-template-rows: repeat(3, auto);
     gap: 10px;
     width: 100%;
-    margin-top: 15px;
 }
 .meses{
     border: 1px solid var(--neutralGray);
@@ -36,7 +38,7 @@
 
 .day{
     list-style: none;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .day-name{
