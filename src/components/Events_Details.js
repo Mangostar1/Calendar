@@ -21,7 +21,7 @@ function ModalEventWeek(element, button) {
   $newDiv.innerHTML = `
     <div class="modal-close-content" style="background-color: ${button.dataset.colorEvent};" id="closeModalID">
         <button class="btn-close-modal" id="btn-close-modal-ID">
-            <img src="../../src/assets/icons/close-svgrepo-com.svg" class="closeModal" id="closeModal-ID">
+            <img src="../src/assets/icons/close-svgrepo-com.svg" class="closeModal" id="closeModal-ID">
         </button>
     </div>
     <div class="modal-content-info">
