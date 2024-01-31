@@ -33,7 +33,7 @@ export async function NewModalEvent(element) {
   $newDiv.innerHTML = `
     <div class="modal-close-content" id="closeModalID">
         <button class="btn-close-modal" id="btn-close-modal-ID">
-            <img src="../src/assets/icons/close-svgrepo-com.svg" class="closeModal" id="closeModal-ID">
+            <img src="./src/assets/icons/close-svgrepo-com.svg" class="closeModal" id="closeModal-ID">
         </button>
         <h4 class="text-white" style="margin-top: 15px; text-align: left; padding-left: 1rem;">Agregar Evento</h4>
     </div>
