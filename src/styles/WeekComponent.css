@@ -128,3 +128,18 @@
     border-left: 2px solid var(--colorOne);
     border-right: 2px solid var(--colorOne);
 }
+
+.week-content-div{
+    border: solid 1px #333333;
+    padding: 0px;
+}
+
+.hour-week-content-div{
+    height: 6.5rem;
+    width: 100%;
+    border-bottom: solid 1px #333333;
+    text-align: right;
+    font-size: 14px;
+    color: var(--neutralGray);
+    padding: 5px;
+}

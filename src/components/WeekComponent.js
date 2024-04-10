@@ -18,8 +18,8 @@ languageHandler.es.dayNameShort.forEach((item) => {
   `;
 });
 
-export function WeekComponent(element) {
-  //<-- Create the <article>, in this element will be print all info related be Week.
+export function WeekComponent(element) {//<-- Create the <article>, in this element will be print all info related be Week.
+  
   const $WeekContent = document.createElement("article");
   $WeekContent.classList.add("container-week");
   $WeekContent.id = "container-week";
@@ -129,6 +129,26 @@ export function hourWeekComponent(currentDate, getDay) {
             <div class="event eventWeek" data-month="${currentDate.getMonth()}" data-year="${currentDate.getFullYear()}"></div>
           </div>`;
   }
+
+  /* for (let w = 0; w < 7; w++) {
+    
+    const weekContentDiv = document.createElement('div');
+    weekContentDiv.id = 'week-content-div';
+    weekContentDiv.classList.add('week-content-div');
+
+    for (let h = 0; h < 24; h++) {
+      
+      const hourWeekContentDiv = document.createElement('div');
+      hourWeekContentDiv.id = 'hour-week-content-div';
+      hourWeekContentDiv.classList.add('hour-week-content-div');
+      hourWeekContentDiv.innerHTML += hourDayWeek[h];
+
+      weekContentDiv.appendChild(hourWeekContentDiv);
+
+    }
+
+    $weekContent.appendChild(weekContentDiv);
+  } */
 
   for (let j = 0; j < 7; j++) {
     switch (getDay) {
