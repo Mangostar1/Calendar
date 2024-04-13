@@ -183,7 +183,7 @@ async function eventsWeek() {
     const basicWeek = await fetch(URL);
     const basicWeekJSON = await basicWeek.json();
 
-    const eventWekk = document.querySelectorAll(".eventWeek");
+    const eventWekk = document.querySelectorAll(".hour-week-content-div");//!<-- ACTUALIZAR AL ACTUAL DIV A .hour-week-content-div
     if (basicWeekJSON.events.length !== 0) {
       for (let e = 0; e < basicWeekJSON.events.length; e++) {
         let eventData = datesFetch(basicWeekJSON, e).eventData;
@@ -191,7 +191,33 @@ async function eventsWeek() {
         let day = 1; // Weekday from Monday to Sunday | starts at 1 to correspond with Monday in the Date() object
         let horas = 0; // Event time | Currently displayed on the calendar
 
-        for (let w = 0; w < 168; w++) {//! REFACTORIZAR ESTE FOR
+        /* for (let day = 1; day < 7; day++) {//? EN REFACTORIZACION.
+          for (let horas = 0; horas < 24; horas++) {
+            
+            if (
+              //* If the event lasts only one day
+              horas >= eventData.dateStart.getHours() &&
+              horas <= eventData.dateFinish.getHours() &&
+              eventData.dateStart.getDay() === day % 7 &&
+              eventData.dateStart.getMonth() === currentDate.getMonth() &&
+              eventData.dateStart.getFullYear() === currentDate.getFullYear() &&
+              eventData.dateStart.getWeekNumber() === currentDate.getWeekNumber()
+            ) {
+              
+              eventWekk[horas].innerHTML += datesFetch(basicWeekJSON, e, "week").btns;
+
+            }
+
+            if (eventData.dateStart.getDate() < eventData.dateFinish.getDate()) {//* If the event lasts more than one day
+              
+              //code
+
+            }
+
+          }
+        }//? EN REFACTORIZACION HASTA ACA. */
+
+        for (let w = 0; w < 168; w++) {//! REFACTORIZAR ESTE FOR.
           if (
             // If the event lasts only one day
             horas >= eventData.dateStart.getHours() &&
@@ -203,7 +229,7 @@ async function eventsWeek() {
           ) {
 
             
-            eventWekk[w].innerHTML += datesFetch(basicWeekJSON, e, "week").btns;
+            eventWekk[w].innerHTML += datesFetch(basicWeekJSON, e, "week").btns;//!<-- ACA AFECTA
           } else if (eventData.dateStart.getDate() < eventData.dateFinish.getDate()) {// If the event lasts more than one day
 
             for (let i = eventData.dateStart; i <= eventData.dateFinish; i = new Date(i.getTime() + 1000 * 60 * 60 * 24)) {
@@ -215,7 +241,7 @@ async function eventsWeek() {
                 horas >= eventData.dateStart.getHours() &&
                 horas <= eventData.dateFinish.getHours()
               ) {
-                eventWekk[w].innerHTML += datesFetch(basicWeekJSON, e, "week").btns;
+                eventWekk[w].innerHTML += datesFetch(basicWeekJSON, e, "week").btns;//!<-- ACA AFECTA
               }
             }
           }
@@ -226,7 +252,7 @@ async function eventsWeek() {
             day = 0; //<-- It is set to 0. Upon exiting the 'if' statement, it will be reset to 1, as in its initial declaration on line 197.
           }
           day++;
-        }
+        }//! HASTA ACA.
       }
     }
   } catch (err) {
