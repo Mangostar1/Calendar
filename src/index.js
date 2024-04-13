@@ -192,7 +192,7 @@ document.addEventListener("click", ({ target }) => {
     isVisible = true;
     dragModal();
   }
-  if (target.matches(".eventWeek") && screen.width > 768 && isVisible === false) {
+  if (target.matches(".hour-week-content-div") && screen.width > 768 && isVisible === false) {//.eventWeek
     NewModalEvent(target);
     isVisible = true;
     dragModal();

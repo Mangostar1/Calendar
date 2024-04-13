@@ -113,43 +113,6 @@ export function hourWeekComponent(currentDate, getDay) {
     ),
   ];
 
-  // Obtén el día actual (0 para domingo, 1 para lunes, ..., 6 para sábado)
-  const today = new Date().getDay() - 1;
-
-  for (let w = 0; w < 168; w++) {
-      // Calcula el día correspondiente al índice del bucle
-      const dayIndex = w % 7;
-
-      // Verifica si el día actual coincide con el día del bucle
-      const isToday = dayIndex === today && currentDate.getMonth() == new Date().getMonth() && currentDate.getWeekNumber() == new Date().getWeekNumber();
-
-      // Agrega la clase correspondiente
-      $weekContent.innerHTML += `
-          <div class="semanal ${isToday ? 'week-day-active' : ''}">
-            <div class="event eventWeek" data-month="${currentDate.getMonth()}" data-year="${currentDate.getFullYear()}"></div>
-          </div>`;
-  }
-
-  /* for (let w = 0; w < 7; w++) {
-    
-    const weekContentDiv = document.createElement('div');
-    weekContentDiv.id = 'week-content-div';
-    weekContentDiv.classList.add('week-content-div');
-
-    for (let h = 0; h < 24; h++) {
-      
-      const hourWeekContentDiv = document.createElement('div');
-      hourWeekContentDiv.id = 'hour-week-content-div';
-      hourWeekContentDiv.classList.add('hour-week-content-div');
-      hourWeekContentDiv.innerHTML += hourDayWeek[h];
-
-      weekContentDiv.appendChild(hourWeekContentDiv);
-
-    }
-
-    $weekContent.appendChild(weekContentDiv);
-  } */
-
   for (let j = 0; j < 7; j++) {
     switch (getDay) {
       case 1: //<-- Monday
@@ -176,26 +139,34 @@ export function hourWeekComponent(currentDate, getDay) {
     }
     $weekDays[j].innerHTML = days[j].getDate();
   }
+
+  for (let w = 0; w < 7; w++) {
+    const weekContentDiv = document.createElement('div');
+    weekContentDiv.id = 'week-content-div';
+    weekContentDiv.classList.add('week-content-div');
+    weekContentDiv.setAttribute("data-week-day", w)//<-- dia de la semana representando de 0 a 6
+
+    for (let h = 0; h < 24; h++) {
+      
+      const hourWeekContentDiv = document.createElement('div');
+      hourWeekContentDiv.id = 'hour-week-content-div';
+      hourWeekContentDiv.classList.add('hour-week-content-div');
+      hourWeekContentDiv.innerHTML += hourDayWeek[h];
+      hourWeekContentDiv.setAttribute("data-day", days[w].getDate());//<-- dia del mes
+      const hourWithoutHrs = hourDayWeek[h].replace(' hrs', ''); // Eliminar "hrs" del final
+      hourWeekContentDiv.setAttribute("data-hour", hourWithoutHrs);//<-- horas en el dia
+
+      weekContentDiv.appendChild(hourWeekContentDiv);
+
+    }
+
+    $weekContent.appendChild(weekContentDiv);
+  }
   eventsWeek();
 
   /*--Hours--*/
   setTimeout(() => {
-    // <-- Para prevenir que no se ejecute antes de que los elementos .semanal esten en el DOM
-    let semanalLi = document.querySelectorAll(".eventWeek");
-
-    function pushHoursWeek(hora, index) {
-        const hourWithoutHrs = hora.replace(' hrs', ''); // Eliminar "hrs" del final
-        semanalLi[index].setAttribute('data-hour', hourWithoutHrs);
-        return `<p class="hours-in-Week">${hora}</p>`;
-    }
-
-    for (let h = 0; h < 168; h++) {
-        const currentDayIndex = h % 7; // Índice del día actual en el array 'days'
-        const currentDay = days[currentDayIndex].getDate();
-
-        semanalLi[h].setAttribute('data-day', currentDay);
-        semanalLi[h].innerHTML += pushHoursWeek(hourDayWeek[Math.floor(h / 7)], h);
-    }
+    //code
   }, 1);
 }
 
@@ -220,7 +191,7 @@ async function eventsWeek() {
         let day = 1; // Weekday from Monday to Sunday | starts at 1 to correspond with Monday in the Date() object
         let horas = 0; // Event time | Currently displayed on the calendar
 
-        for (let w = 0; w < 168; w++) {
+        for (let w = 0; w < 168; w++) {//! REFACTORIZAR ESTE FOR
           if (
             // If the event lasts only one day
             horas >= eventData.dateStart.getHours() &&
