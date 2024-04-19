@@ -153,7 +153,7 @@ export function hourWeekComponent(currentDate, getDay) {
       hourWeekContentDiv.classList.add('hour-week-content-div');
       hourWeekContentDiv.innerHTML += hourDayWeek[h];
       hourWeekContentDiv.setAttribute("data-day", days[w].getDate());//<-- dia del mes
-      const hourWithoutHrs = hourDayWeek[h].replace(' hrs', ''); // Eliminar "hrs" del final
+      const hourWithoutHrs = hourDayWeek[h].replace(':00 hrs', ''); // Eliminar "hrs" del final
       hourWeekContentDiv.setAttribute("data-hour", hourWithoutHrs);//<-- horas en el dia
 
       weekContentDiv.appendChild(hourWeekContentDiv);
@@ -188,23 +188,25 @@ async function eventsWeek() {
       for (let e = 0; e < basicWeekJSON.events.length; e++) {
         let eventData = datesFetch(basicWeekJSON, e).eventData;
 
-        let day = 1; // Weekday from Monday to Sunday | starts at 1 to correspond with Monday in the Date() object
-        let horas = 0; // Event time | Currently displayed on the calendar
-
+        /* let day = 1; // Weekday from Monday to Sunday | starts at 1 to correspond with Monday in the Date() object
+        let horas = 0; // Event time | Currently displayed on the calendar */
+        //TODO NOTA: eventos actualmente solo se imprimen en el primer dia de la semana.
+        //TODO NOTA: buscar origen de la duplizidad en los eventos
+        //TODO NOTA: reemplazar el doble 'for' por un 'for of' que seleccione el 'eventWekk', y de este se extraiga los data atributos para usarlos en las condicionales
         for (let day = 1; day < 7; day++) {//? EN REFACTORIZACION.
           for (let horas = 0; horas < 24; horas++) {
-            console.log('day:',day,' | horas:',horas, eventData.dateStart);
             if (
               //* If the event lasts only one day
               horas >= eventData.dateStart.getHours() &&
               horas <= eventData.dateFinish.getHours() &&
-              eventData.dateStart.getDay() === day % 7 &&
+              eventData.dateStart.getDay() === day && //TODO NOTA: este distribuye a los dias de la semana los eventos
               eventData.dateStart.getMonth() === currentDate.getMonth() &&
               eventData.dateStart.getFullYear() === currentDate.getFullYear() &&
               eventData.dateStart.getWeekNumber() === currentDate.getWeekNumber()
             ) {
               
               eventWekk[horas].innerHTML += datesFetch(basicWeekJSON, e, "week").btns;
+              console.log(eventWekk);
 
             }
 
