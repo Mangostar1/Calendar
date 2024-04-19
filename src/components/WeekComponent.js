@@ -191,9 +191,9 @@ async function eventsWeek() {
         let day = 1; // Weekday from Monday to Sunday | starts at 1 to correspond with Monday in the Date() object
         let horas = 0; // Event time | Currently displayed on the calendar
 
-        /* for (let day = 1; day < 7; day++) {//? EN REFACTORIZACION.
+        for (let day = 1; day < 7; day++) {//? EN REFACTORIZACION.
           for (let horas = 0; horas < 24; horas++) {
-            
+            console.log('day:',day,' | horas:',horas, eventData.dateStart);
             if (
               //* If the event lasts only one day
               horas >= eventData.dateStart.getHours() &&
@@ -215,9 +215,9 @@ async function eventsWeek() {
             }
 
           }
-        }//? EN REFACTORIZACION HASTA ACA. */
+        }//? EN REFACTORIZACION HASTA ACA.
 
-        for (let w = 0; w < 168; w++) {//! REFACTORIZAR ESTE FOR.
+        /* for (let w = 0; w < 168; w++) {//! REFACTORIZAR ESTE FOR.
           if (
             // If the event lasts only one day
             horas >= eventData.dateStart.getHours() &&
@@ -252,7 +252,7 @@ async function eventsWeek() {
             day = 0; //<-- It is set to 0. Upon exiting the 'if' statement, it will be reset to 1, as in its initial declaration on line 197.
           }
           day++;
-        }//! HASTA ACA.
+        }//! HASTA ACA. */
       }
     }
   } catch (err) {
