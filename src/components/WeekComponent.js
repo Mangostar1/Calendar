@@ -184,25 +184,25 @@ async function eventsWeek() {
     const basicWeek = await fetch(URL);
     const basicWeekJSON = await basicWeek.json();
 
-    const eventWekk = document.querySelectorAll(".hour-week-content-div");//!<-- ACTUALIZAR AL ACTUAL DIV A .hour-week-content-div
+    const eventWekk = document.querySelectorAll(".hour-week-content-div");
     if (basicWeekJSON.events.length !== 0) {
       for (let e = 0; e < basicWeekJSON.events.length; e++) {
         let eventData = datesFetch(basicWeekJSON, e).eventData;
 
-        /* let day = 1; // Weekday from Monday to Sunday | starts at 1 to correspond with Monday in the Date() object
-        let horas = 0; // Event time | Currently displayed on the calendar */
+        let day = 1; // Weekday from Monday to Sunday | starts at 1 to correspond with Monday in the Date() object
+        let horas = 0; // Event time | Currently displayed on the calendar
         //TODO NOTA: eventos actualmente solo se imprimen en el primer dia de la semana.
         //TODO NOTA: buscar origen de la duplizidad en los eventos
         //TODO NOTA: arreglar bug en data-week-day
         for (const ele of eventWekk) {
-          let dataHourEle = ele.getAttribute('data-hour');
-          let dataDayEle = ele.getAttribute('data-day');
-          let dayDateEle = ele.getAttribute('data-week-day');
-          console.log(dayDateEle, eventData.dateStart.getDay());
+          let dataHourEle = parseInt(ele.getAttribute('data-hour'));
+          let dataDateEle = parseInt(ele.getAttribute('data-day'));
+          let dayDayEle = parseInt(ele.getAttribute('data-week-day'));
+          
           if (
             dataHourEle >= eventData.dateStart.getHours() &&
             dataHourEle <= eventData.dateFinish.getHours() &&
-            eventData.dateStart.getDay() === (dayDateEle - 1) &&
+            eventData.dateStart.getDay() === (dayDayEle + 1) &&
             eventData.dateStart.getMonth() === currentDate.getMonth() &&
             eventData.dateStart.getFullYear() === currentDate.getFullYear() &&
             eventData.dateStart.getWeekNumber() === currentDate.getWeekNumber()
@@ -211,32 +211,24 @@ async function eventsWeek() {
             ele.innerHTML += datesFetch(basicWeekJSON, e, "week").btns;
 
           }
-        }
-        
-/*         for (let day = 1; day < 7; day++) {//? EN REFACTORIZACION.
-          for (let horas = 0; horas < 24; horas++) {
-            if (
-              //* If the event lasts only one day
-              horas >= eventData.dateStart.getHours() &&
-              horas <= eventData.dateFinish.getHours() &&
-              eventData.dateStart.getDay() === day && //TODO NOTA: este distribuye a los dias de la semana los eventos
-              eventData.dateStart.getMonth() === currentDate.getMonth() &&
-              eventData.dateStart.getFullYear() === currentDate.getFullYear() &&
-              eventData.dateStart.getWeekNumber() === currentDate.getWeekNumber()
-            ) {
-              
-              eventWekk[horas].innerHTML += datesFetch(basicWeekJSON, e, "week").btns;
 
-            }
-
-            if (eventData.dateStart.getDate() < eventData.dateFinish.getDate()) {//* If the event lasts more than one day
-              
-              //code
-
+          if (eventData.dateStart.getDate() < eventData.dateFinish.getDate()) {
+            
+            for (let i = eventData.dateStart; i <= eventData.dateFinish; i = new Date(i.getTime() + 1000 * 60 * 60 * 24)) {
+              if (
+                i.getDay() === (dayDayEle + 1) &&
+                i.getMonth() === currentDate.getMonth() &&
+                i.getFullYear() === currentDate.getFullYear() &&
+                i.getWeekNumber() === currentDate.getWeekNumber() &&
+                dataHourEle >= eventData.dateStart.getHours() &&
+                dataHourEle <= eventData.dateFinish.getHours()
+              ) {
+                ele.innerHTML += datesFetch(basicWeekJSON, e, "week").btns;
+              }
             }
 
           }
-        }//? EN REFACTORIZACION HASTA ACA. */
+        }
 
         /* for (let w = 0; w < 168; w++) {//! REFACTORIZAR ESTE FOR.
           if (
