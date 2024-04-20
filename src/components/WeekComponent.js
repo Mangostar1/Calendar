@@ -155,6 +155,7 @@ export function hourWeekComponent(currentDate, getDay) {
       hourWeekContentDiv.setAttribute("data-day", days[w].getDate());//<-- dia del mes
       const hourWithoutHrs = hourDayWeek[h].replace(':00 hrs', ''); // Eliminar "hrs" del final
       hourWeekContentDiv.setAttribute("data-hour", hourWithoutHrs);//<-- horas en el dia
+      hourWeekContentDiv.setAttribute("data-week-day", w)
 
       weekContentDiv.appendChild(hourWeekContentDiv);
 
@@ -192,8 +193,27 @@ async function eventsWeek() {
         let horas = 0; // Event time | Currently displayed on the calendar */
         //TODO NOTA: eventos actualmente solo se imprimen en el primer dia de la semana.
         //TODO NOTA: buscar origen de la duplizidad en los eventos
-        //TODO NOTA: reemplazar el doble 'for' por un 'for of' que seleccione el 'eventWekk', y de este se extraiga los data atributos para usarlos en las condicionales
-        for (let day = 1; day < 7; day++) {//? EN REFACTORIZACION.
+        //TODO NOTA: arreglar bug en data-week-day
+        for (const ele of eventWekk) {
+          let dataHourEle = ele.getAttribute('data-hour');
+          let dataDayEle = ele.getAttribute('data-day');
+          let dayDateEle = ele.getAttribute('data-week-day');
+          console.log(dayDateEle, eventData.dateStart.getDay());
+          if (
+            dataHourEle >= eventData.dateStart.getHours() &&
+            dataHourEle <= eventData.dateFinish.getHours() &&
+            eventData.dateStart.getDay() === (dayDateEle - 1) &&
+            eventData.dateStart.getMonth() === currentDate.getMonth() &&
+            eventData.dateStart.getFullYear() === currentDate.getFullYear() &&
+            eventData.dateStart.getWeekNumber() === currentDate.getWeekNumber()
+          ) {
+            
+            ele.innerHTML += datesFetch(basicWeekJSON, e, "week").btns;
+
+          }
+        }
+        
+/*         for (let day = 1; day < 7; day++) {//? EN REFACTORIZACION.
           for (let horas = 0; horas < 24; horas++) {
             if (
               //* If the event lasts only one day
@@ -206,7 +226,6 @@ async function eventsWeek() {
             ) {
               
               eventWekk[horas].innerHTML += datesFetch(basicWeekJSON, e, "week").btns;
-              console.log(eventWekk);
 
             }
 
@@ -217,7 +236,7 @@ async function eventsWeek() {
             }
 
           }
-        }//? EN REFACTORIZACION HASTA ACA.
+        }//? EN REFACTORIZACION HASTA ACA. */
 
         /* for (let w = 0; w < 168; w++) {//! REFACTORIZAR ESTE FOR.
           if (
