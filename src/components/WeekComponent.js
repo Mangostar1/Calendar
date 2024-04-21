@@ -140,11 +140,12 @@ export function hourWeekComponent(currentDate, getDay) {
     $weekDays[j].innerHTML = days[j].getDate();
   }
 
-  for (let w = 0; w < 7; w++) {
+  const daysOfWeek = [1, 2, 3, 4, 5, 6, 0];
+  for (let day of daysOfWeek) {
     const weekContentDiv = document.createElement('div');
     weekContentDiv.id = 'week-content-div';
     weekContentDiv.classList.add('week-content-div');
-    weekContentDiv.setAttribute("data-week-day", w)//<-- dia de la semana representando de 0 a 6
+    weekContentDiv.setAttribute("data-week-day", day)//<-- dia de la semana representando de 0 a 6
 
     for (let h = 0; h < 24; h++) {
       
@@ -152,10 +153,10 @@ export function hourWeekComponent(currentDate, getDay) {
       hourWeekContentDiv.id = 'hour-week-content-div';
       hourWeekContentDiv.classList.add('hour-week-content-div');
       hourWeekContentDiv.innerHTML += hourDayWeek[h];
-      hourWeekContentDiv.setAttribute("data-day", days[w].getDate());//<-- dia del mes
+      hourWeekContentDiv.setAttribute("data-day", days[day].getDate());//<-- dia del mes
       const hourWithoutHrs = hourDayWeek[h].replace(':00 hrs', ''); // Eliminar "hrs" del final
       hourWeekContentDiv.setAttribute("data-hour", hourWithoutHrs);//<-- horas en el dia
-      hourWeekContentDiv.setAttribute("data-week-day", w)
+      hourWeekContentDiv.setAttribute("data-week-day", day)
 
       weekContentDiv.appendChild(hourWeekContentDiv);
 
@@ -191,9 +192,7 @@ async function eventsWeek() {
 
         let day = 1; // Weekday from Monday to Sunday | starts at 1 to correspond with Monday in the Date() object
         let horas = 0; // Event time | Currently displayed on the calendar
-        //TODO NOTA: eventos actualmente solo se imprimen en el primer dia de la semana.
-        //TODO NOTA: buscar origen de la duplizidad en los eventos
-        //TODO NOTA: arreglar bug en data-week-day
+        //TODO NOTA: Hacer que se impriman los eventos el dia domingo, esto se debe a que
         for (const ele of eventWekk) {
           let dataHourEle = parseInt(ele.getAttribute('data-hour'));
           let dataDateEle = parseInt(ele.getAttribute('data-day'));
@@ -202,7 +201,7 @@ async function eventsWeek() {
           if (
             dataHourEle >= eventData.dateStart.getHours() &&
             dataHourEle <= eventData.dateFinish.getHours() &&
-            eventData.dateStart.getDay() === (dayDayEle + 1) &&
+            eventData.dateStart.getDay() === dayDayEle &&//<-- code
             eventData.dateStart.getMonth() === currentDate.getMonth() &&
             eventData.dateStart.getFullYear() === currentDate.getFullYear() &&
             eventData.dateStart.getWeekNumber() === currentDate.getWeekNumber()
@@ -216,7 +215,7 @@ async function eventsWeek() {
             
             for (let i = eventData.dateStart; i <= eventData.dateFinish; i = new Date(i.getTime() + 1000 * 60 * 60 * 24)) {
               if (
-                i.getDay() === (dayDayEle + 1) &&
+                i.getDay() === dayDayEle &&//<-- code
                 i.getMonth() === currentDate.getMonth() &&
                 i.getFullYear() === currentDate.getFullYear() &&
                 i.getWeekNumber() === currentDate.getWeekNumber() &&
@@ -229,43 +228,6 @@ async function eventsWeek() {
 
           }
         }
-
-        /* for (let w = 0; w < 168; w++) {//! REFACTORIZAR ESTE FOR.
-          if (
-            // If the event lasts only one day
-            horas >= eventData.dateStart.getHours() &&
-            horas <= eventData.dateFinish.getHours() &&
-            eventData.dateStart.getDay() === day % 7 &&
-            eventData.dateStart.getMonth() === currentDate.getMonth() &&
-            eventData.dateStart.getFullYear() === currentDate.getFullYear() &&
-            eventData.dateStart.getWeekNumber() === currentDate.getWeekNumber()
-          ) {
-
-            
-            eventWekk[w].innerHTML += datesFetch(basicWeekJSON, e, "week").btns;//!<-- ACA AFECTA
-          } else if (eventData.dateStart.getDate() < eventData.dateFinish.getDate()) {// If the event lasts more than one day
-
-            for (let i = eventData.dateStart; i <= eventData.dateFinish; i = new Date(i.getTime() + 1000 * 60 * 60 * 24)) {
-              if (
-                i.getDay() === day % 7 &&
-                i.getMonth() === currentDate.getMonth() &&
-                i.getFullYear() === currentDate.getFullYear() &&
-                i.getWeekNumber() === currentDate.getWeekNumber() &&
-                horas >= eventData.dateStart.getHours() &&
-                horas <= eventData.dateFinish.getHours()
-              ) {
-                eventWekk[w].innerHTML += datesFetch(basicWeekJSON, e, "week").btns;//!<-- ACA AFECTA
-              }
-            }
-          }
-
-          // If this if statement validates the condition, one hour is added to the day and the 'day' is reset to 0 to correspond to the start of the week but at a different hour
-          if ((w + 1) % 7 == 0) {
-            horas++;
-            day = 0; //<-- It is set to 0. Upon exiting the 'if' statement, it will be reset to 1, as in its initial declaration on line 197.
-          }
-          day++;
-        }//! HASTA ACA. */
       }
     }
   } catch (err) {
