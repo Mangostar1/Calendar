@@ -140,12 +140,16 @@ export function hourWeekComponent(currentDate, getDay) {
     $weekDays[j].innerHTML = days[j].getDate();
   }
 
-  const daysOfWeek = [1, 2, 3, 4, 5, 6, 0];
+  const daysOfWeek = [1, 2, 3, 4, 5, 6, 0];//<-- array de esta forma porque el calendario se imprime de L a D y no de D a S
   for (let day of daysOfWeek) {
     const weekContentDiv = document.createElement('div');
     weekContentDiv.id = 'week-content-div';
     weekContentDiv.classList.add('week-content-div');
-    weekContentDiv.setAttribute("data-week-day", day)//<-- dia de la semana representando de 0 a 6
+    weekContentDiv.setAttribute("data-week-day", day);
+
+    if (day === new Date().getDay()) {
+      weekContentDiv.classList.add('week-today');
+    }
 
     for (let h = 0; h < 24; h++) {
       
@@ -156,7 +160,7 @@ export function hourWeekComponent(currentDate, getDay) {
       hourWeekContentDiv.setAttribute("data-day", days[day].getDate());//<-- dia del mes
       const hourWithoutHrs = hourDayWeek[h].replace(':00 hrs', ''); // Eliminar "hrs" del final
       hourWeekContentDiv.setAttribute("data-hour", hourWithoutHrs);//<-- horas en el dia
-      hourWeekContentDiv.setAttribute("data-week-day", day)
+      hourWeekContentDiv.setAttribute("data-week-day", day);
 
       weekContentDiv.appendChild(hourWeekContentDiv);
 
@@ -165,11 +169,6 @@ export function hourWeekComponent(currentDate, getDay) {
     $weekContent.appendChild(weekContentDiv);
   }
   eventsWeek();
-
-  /*--Hours--*/
-  setTimeout(() => {
-    //code
-  }, 1);
 }
 
 /*------------*/
@@ -190,9 +189,6 @@ async function eventsWeek() {
       for (let e = 0; e < basicWeekJSON.events.length; e++) {
         let eventData = datesFetch(basicWeekJSON, e).eventData;
 
-        let day = 1; // Weekday from Monday to Sunday | starts at 1 to correspond with Monday in the Date() object
-        let horas = 0; // Event time | Currently displayed on the calendar
-        //TODO NOTA: Hacer que se impriman los eventos el dia domingo, esto se debe a que
         for (const ele of eventWekk) {
           let dataHourEle = parseInt(ele.getAttribute('data-hour'));
           let dataDateEle = parseInt(ele.getAttribute('data-day'));
@@ -201,7 +197,7 @@ async function eventsWeek() {
           if (
             dataHourEle >= eventData.dateStart.getHours() &&
             dataHourEle <= eventData.dateFinish.getHours() &&
-            eventData.dateStart.getDay() === dayDayEle &&//<-- code
+            eventData.dateStart.getDay() === dayDayEle &&
             eventData.dateStart.getMonth() === currentDate.getMonth() &&
             eventData.dateStart.getFullYear() === currentDate.getFullYear() &&
             eventData.dateStart.getWeekNumber() === currentDate.getWeekNumber()
@@ -209,13 +205,11 @@ async function eventsWeek() {
             
             ele.innerHTML += datesFetch(basicWeekJSON, e, "week").btns;
 
-          }
-
-          if (eventData.dateStart.getDate() < eventData.dateFinish.getDate()) {
+          } else if (eventData.dateStart.getDate() < eventData.dateFinish.getDate()) {
             
             for (let i = eventData.dateStart; i <= eventData.dateFinish; i = new Date(i.getTime() + 1000 * 60 * 60 * 24)) {
               if (
-                i.getDay() === dayDayEle &&//<-- code
+                i.getDay() === dayDayEle &&
                 i.getMonth() === currentDate.getMonth() &&
                 i.getFullYear() === currentDate.getFullYear() &&
                 i.getWeekNumber() === currentDate.getWeekNumber() &&
