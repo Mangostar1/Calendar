@@ -141,6 +141,9 @@ export function hourWeekComponent(currentDate, getDay) {
   }
 
   const daysOfWeek = [1, 2, 3, 4, 5, 6, 0];//<-- array de esta forma porque el calendario se imprime de L a D y no de D a S
+  const daysInDom = [0, 1, 2, 3, 4, 5, 6];
+  let thisDate = new Date();
+
   for (let day of daysOfWeek) {
     const weekContentDiv = document.createElement('div');
     weekContentDiv.id = 'week-content-div';
@@ -174,11 +177,16 @@ export function hourWeekComponent(currentDate, getDay) {
     $weekContent.appendChild(weekContentDiv);
   }
 
-  //Init line hour
-  actualizarLineaHora(0, 6);//<-- Week Day Number, Iterator number
+  for (let i = 0; i < daysOfWeek.length; i++) {
+    
+    if (thisDate.getDay() === i) {
+      actualizarLineaHora(i, daysInDom[i]);
 
-  // Actualizar la línea cada minuto
-  setInterval(actualizarLineaHora(0, 6), 60000);
+      // Actualizar la línea cada minuto
+      setInterval(actualizarLineaHora(i, daysInDom[i]), 60000);
+    }
+
+  }
   
   eventsWeek();
 }
