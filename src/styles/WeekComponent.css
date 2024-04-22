@@ -150,3 +150,35 @@
     border-right: var(--red) 2px solid;
     border-bottom: var(--red) 1px solid;
 }
+
+.week-content-div{
+    position: relative;
+}
+
+.lineHour-day-1, .lineHour-day-2, 
+.lineHour-day-3, .lineHour-day-4, 
+.lineHour-day-5, .lineHour-day-6, 
+.lineHour-day-0{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: orange;
+    width: 100%;
+    height: 1px;
+}
+.lineHour-day-1::before, .lineHour-day-2::before, 
+.lineHour-day-3::before, .lineHour-day-4::before, 
+.lineHour-day-5::before, .lineHour-day-6::before, 
+.lineHour-day-0::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(0%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: #e74c3c;
+    border-radius: 50%;
+}

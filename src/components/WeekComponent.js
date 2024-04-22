@@ -147,6 +147,11 @@ export function hourWeekComponent(currentDate, getDay) {
     weekContentDiv.classList.add('week-content-div');
     weekContentDiv.setAttribute("data-week-day", day);
 
+    const lineaHora = document.createElement('div');
+    lineaHora.classList.add(`lineHour-day-${day}`);
+
+    weekContentDiv.appendChild(lineaHora);
+
     if (day === new Date().getDay()) {
       weekContentDiv.classList.add('week-today');
     }
@@ -168,7 +173,34 @@ export function hourWeekComponent(currentDate, getDay) {
 
     $weekContent.appendChild(weekContentDiv);
   }
+
+  //Init line hour
+  actualizarLineaHora(0, 6);//<-- Week Day Number, Iterator number
+
+  // Actualizar la línea cada minuto
+  setInterval(actualizarLineaHora(0, 6), 60000);
+  
   eventsWeek();
+}
+
+//Linea que muestra la hora actual
+function actualizarLineaHora(dayNum, numItera) {
+  const contenedorHoras = document.querySelectorAll('.week-content-div');
+  const lineaHora = document.querySelector(`.lineHour-day-${dayNum}`);
+  lineaHora.style.display = 'block';
+
+  // Obtener la hora y minutos actuales
+  const horaActual = new Date().getHours();
+  const minutosActual = new Date().getMinutes();
+
+  // Calcular el porcentaje basado en la hora y los minutos actuales (considerando 24 horas y 60 minutos como 100%)
+  const porcentaje = ((horaActual * 60 + minutosActual) / (24 * 60)) * 100;
+
+  // Calcular la nueva posición en píxeles
+  const nuevaPosicion = (porcentaje / 100) * contenedorHoras[numItera].offsetHeight;
+
+  // Actualizar la posición de la línea
+  lineaHora.style.top = `${nuevaPosicion}px`;
 }
 
 /*------------*/
