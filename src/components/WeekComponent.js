@@ -144,6 +144,10 @@ export function hourWeekComponent(currentDate, getDay) {
   const daysInDom = [0, 1, 2, 3, 4, 5, 6];
   let thisDate = new Date();
 
+  let sunday = days[6];
+  days.splice(6, 1);
+  days.unshift(sunday);
+
   for (let day of daysOfWeek) {
     const weekContentDiv = document.createElement('div');
     weekContentDiv.id = 'week-content-div';
@@ -165,10 +169,14 @@ export function hourWeekComponent(currentDate, getDay) {
       hourWeekContentDiv.id = 'hour-week-content-div';
       hourWeekContentDiv.classList.add('hour-week-content-div');
       hourWeekContentDiv.innerHTML += hourDayWeek[h];
-      hourWeekContentDiv.setAttribute("data-day", days[day].getDate());//<-- dia del mes
+      hourWeekContentDiv.setAttribute("data-day", days[day].getDate());
       const hourWithoutHrs = hourDayWeek[h].replace(':00 hrs', ''); // Eliminar "hrs" del final
+      const hourWithoutHrsComplete = hourDayWeek[h].replace('hrs', ''); // Eliminar "hrs" del final
       hourWeekContentDiv.setAttribute("data-hour", hourWithoutHrs);//<-- horas en el dia
+      hourWeekContentDiv.setAttribute("data-hour-complete", hourWithoutHrsComplete);
       hourWeekContentDiv.setAttribute("data-week-day", day);
+      hourWeekContentDiv.setAttribute('data-month', days[day].getMonth());
+      hourWeekContentDiv.setAttribute('data-year', days[day].getFullYear());
 
       weekContentDiv.appendChild(hourWeekContentDiv);
 
