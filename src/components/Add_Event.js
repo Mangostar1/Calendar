@@ -10,8 +10,6 @@ export async function NewModalEvent(element) {
   let day = parseInt(element.dataset.day);
   let hourElement = element.dataset.hourComplete || element.dataset.hour;
 
-  console.log(element.dataset);
-
   let [hourStr, minuteStr] = hourElement.split(':');
 
   let hour = parseInt(hourStr, 10);
