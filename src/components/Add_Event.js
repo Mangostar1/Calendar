@@ -5,14 +5,12 @@ import { MonthComponent, DaysOfMonth } from "./MonthComponent.js";
 
 export async function NewModalEvent(element) {
 
-  console.log();
-
   let year = parseInt(element.dataset.year);
   let month = parseInt(element.dataset.month);
   let day = parseInt(element.dataset.day);
-  let hourElement = element.dataset.hourComplete || '00:00';
+  let hourElement = element.dataset.hourComplete || element.dataset.hour;
 
-  console.log(year, month, day, hourElement, element.dataset);
+  console.log(element.dataset);
 
   let [hourStr, minuteStr] = hourElement.split(':');
 
