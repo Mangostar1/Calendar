@@ -8,14 +8,22 @@ export async function NewModalEvent(element) {
   let year = parseInt(element.dataset.year);
   let month = parseInt(element.dataset.month);
   let day = parseInt(element.dataset.day);
-  /* let hourElement = element.dataset.hourComplete || element.dataset.hour;
+  let hourElement;
+  let newDate;
 
-  let [hourStr, minuteStr] = hourElement.split(':');
+  if (element.dataset.hourComplete || element.dataset.hour) {
+    hourElement = element.dataset.hourComplete || element.dataset.hour;
+    let [hourStr, minuteStr] = hourElement.split(':');
 
-  let hour = parseInt(hourStr, 10);
-  let minute = parseInt(minuteStr, 10); */
+    let hour = parseInt(hourStr, 10);
+    let minute = parseInt(minuteStr, 10);
 
-  let newDate = new Date(year, month, day, /* hour, minute */);
+    newDate = new Date(year, month, day, hour, minute);
+  } else {
+    newDate = new Date(year, month, day);
+  }
+
+  
   // Obtener los componentes de la fecha y hora
   let yearFormatted = newDate.getFullYear().toString().padStart(4, '0');
   let monthFormatted = (newDate.getMonth() + 1).toString().padStart(2, '0'); // Sumar 1 porque los meses se indexan desde 0
