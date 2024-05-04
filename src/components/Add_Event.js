@@ -116,7 +116,6 @@ document.addEventListener("click", async (e) => {
     
     const $notiClient = document.querySelector('input[name="noti-client"]:checked').value;
 
-    const $oportunidad = document.getElementById("opportunity_id").value;
     const $title = document.getElementById("titleEvent").value;
     const $description = document.getElementById("descriptionEvent").value;
     const $date = document.getElementById("dateInput").value;
@@ -126,7 +125,6 @@ document.addEventListener("click", async (e) => {
       url: './../../src/app/services/calendarService.php',
       method: 'POST',
       data: {
-        opportunity_id: $oportunidad,
         titleEvent: $title,
         descriptionEvent: $description,
         dateInput: $date,
@@ -156,6 +154,11 @@ document.addEventListener("click", async (e) => {
       },
       error: function (error) {
         console.error('Error en la solicitud:', error);
+        Swal.fire({
+          title: "Error",
+          text: "Problemas al crear un agendamiento",
+          icon: "error"
+        })
       }
     });
   }
