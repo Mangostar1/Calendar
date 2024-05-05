@@ -121,8 +121,10 @@ document.addEventListener("click", async (e) => {
     const $date = document.getElementById("dateInput").value;
     const $dateFinish = document.getElementById("dateInputEnd").value;
 
-    $.ajax({
-      url: './../../src/app/services/calendarService.php',
+    console.log($title, $description, $date, $dateFinish, $notiClient);//<-- info enviada al servidor hasta ahora
+
+    /* $.ajax({
+      url: 'http://localhost:5001/schedule',
       method: 'POST',
       data: {
         titleEvent: $title,
@@ -130,8 +132,8 @@ document.addEventListener("click", async (e) => {
         dateInput: $date,
         dateInputEnd: $dateFinish,
         notiClient: $notiClient,
-        userId: userId,
-        sendCreateActivity: true
+        //userId: userId,
+        //sendCreateActivity: true
       },
       dataType: 'json', // Especifica el tipo de datos que esperas recibir del servidor
       success: function (response) {
@@ -160,7 +162,7 @@ document.addEventListener("click", async (e) => {
           icon: "error"
         })
       }
-    });
+    }); */
   }
 });
 
