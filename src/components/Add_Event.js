@@ -121,7 +121,27 @@ document.addEventListener("click", async (e) => {
     const $date = document.getElementById("dateInput").value;
     const $dateFinish = document.getElementById("dateInputEnd").value;
 
-    console.log($title, $description, $date, $dateFinish, $notiClient);//<-- info enviada al servidor hasta ahora
+    const timeDateStart = $date.split("T")[1];
+    const timeDateFinish = $dateFinish.split("T")[1];
+
+    let addSchedule = {
+      "dateStartEvent": $date,
+      "hourStart": timeDateStart,
+      "dateFinishEvent": $dateFinish,
+      "hourFinish": timeDateFinish,
+      "title": $title,
+      "description": $description,
+      "statusInformation": {
+        "statusCode": 1,
+        "status": "activo",
+        "colorStatus": "green"
+      },
+      "typeInformation": {
+        "type": 1,
+        "colorBackgroundType": "#0096a6",
+        "colorType": "white"
+      }
+    }
 
     /* $.ajax({
       url: 'http://localhost:5001/schedule',
