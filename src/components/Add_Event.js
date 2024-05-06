@@ -143,15 +143,11 @@ document.addEventListener("click", async (e) => {
       }
     }
 
-    /* $.ajax({
+    $.ajax({
       url: 'http://localhost:5001/schedule',
       method: 'POST',
       data: {
-        titleEvent: $title,
-        descriptionEvent: $description,
-        dateInput: $date,
-        dateInputEnd: $dateFinish,
-        notiClient: $notiClient,
+        dataToSchedule: addSchedule,
         //userId: userId,
         //sendCreateActivity: true
       },
@@ -182,7 +178,7 @@ document.addEventListener("click", async (e) => {
           icon: "error"
         })
       }
-    }); */
+    });
   }
 });
 

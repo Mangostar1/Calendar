@@ -81,7 +81,7 @@ async function eventoMonth() {
     if (basicMonthJson.length !== 0) {
       let totalInnerHtmlExecutions = 0; // Contador para contar las ejecuciones de innerHTML
 
-      for (let d = 0; d < basicMonthJson.events.length; d++) {
+      for (let d = 0; d < basicMonthJson.length; d++) {
         let eventData = datesFetch(basicMonthJson, d).eventData;
 
         let getDateOf_dateMonthStart = eventData.dateStart.getDate();

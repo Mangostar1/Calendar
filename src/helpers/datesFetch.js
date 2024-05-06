@@ -4,7 +4,9 @@ export function datesFetch(fetchJSON, numFor, componentInfo) {
   //fetch.json(), for index
   let hoursEventDiration;
   let differenceInHours = 0;
-  const event = fetchJSON.events[numFor];
+  const event = fetchJSON[numFor];
+
+  console.log(fetchJSON[numFor]);
 
   const eventData = {
     dateStart: new Date(`${event.dateStartEvent} ${event.hourStart}`),
