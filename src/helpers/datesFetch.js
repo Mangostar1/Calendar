@@ -6,11 +6,12 @@ export function datesFetch(fetchJSON, numFor, componentInfo) {
   let differenceInHours = 0;
   const event = fetchJSON[numFor];
 
-  console.log(fetchJSON[numFor]);
-
+  let dateStartUTC = event.dateStartEvent.replace('Z', '');;
+  let dateFinishUTC = event.dateFinishEvent.replace('Z', '');;
+  
   const eventData = {
-    dateStart: new Date(`${event.dateStartEvent} ${event.hourStart}`),
-    dateFinish: new Date(`${event.dateFinishEvent} ${event.hourFinish}`),
+    dateStart: new Date(dateStartUTC),
+    dateFinish: new Date(dateFinishUTC),
     title: event.title,
     description: event.description,
     color: event.typeInformation.colorBackgroundType,
@@ -18,6 +19,8 @@ export function datesFetch(fetchJSON, numFor, componentInfo) {
     statusText: event.statusInformation.status,
     statusColor: event.statusInformation.colorStatus
   };
+
+  console.log(dateStartUTC);
 
   if (eventData.dateStart.toDateString() === eventData.dateFinish.toDateString()) {
     hoursEventDiration = eventData.dateFinish - eventData.dateStart;

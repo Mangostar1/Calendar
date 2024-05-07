@@ -233,8 +233,8 @@ async function eventsWeek() {
     const basicWeekJSON = await basicWeek.json();
 
     const eventWekk = document.querySelectorAll(".hour-week-content-div");
-    if (basicWeekJSON.events.length !== 0) {
-      for (let e = 0; e < basicWeekJSON.events.length; e++) {
+    if (basicWeekJSON.length !== 0) {
+      for (let e = 0; e < basicWeekJSON.length; e++) {
         let eventData = datesFetch(basicWeekJSON, e).eventData;
 
         for (const ele of eventWekk) {
