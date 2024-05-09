@@ -1,6 +1,7 @@
 import { currentDate } from "../index.js";
 import languageHandler from "../i18n/en-es.js";
 import { MonthComponent, DaysOfMonth } from "./MonthComponent.js";
+import URL from "../helpers/UrlToFetch.js";
 //Este evento modal tiene la funcion de ingresar a una base de datos un evento
 
 export async function NewModalEvent(element) {
@@ -124,7 +125,7 @@ document.addEventListener("click", async (e) => {
     const timeDateStart = $date.split("T")[1];
     const timeDateFinish = $dateFinish.split("T")[1];
 
-    fetch('http://localhost:5001/schedule', {
+    fetch(URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
