@@ -124,61 +124,64 @@ document.addEventListener("click", async (e) => {
     const timeDateStart = $date.split("T")[1];
     const timeDateFinish = $dateFinish.split("T")[1];
 
-    let addSchedule = {
-      "dateStartEvent": $date,
-      "hourStart": timeDateStart,
-      "dateFinishEvent": $dateFinish,
-      "hourFinish": timeDateFinish,
-      "title": $title,
-      "description": $description,
-      "statusInformation": {
-        "statusCode": 1,
-        "status": "activo",
-        "colorStatus": "green"
-      },
-      "typeInformation": {
-        "type": 1,
-        "colorBackgroundType": "#0096a6",
-        "colorType": "white"
-      }
-    }
-
-    $.ajax({
-      url: 'http://localhost:5001/schedule',
+    fetch('http://localhost:5001/schedule', {
       method: 'POST',
-      data: {
-        dataToSchedule: addSchedule,
-        //userId: userId,
-        //sendCreateActivity: true
+      headers: {
+        'Content-Type': 'application/json'
       },
-      dataType: 'json', // Especifica el tipo de datos que esperas recibir del servidor
-      success: function (response) {
-        console.log('Respuesta exitosa:', response);
-        Swal.fire({
-          title: "Listo",
-          text: "El evento fue ingresado con éxito",
-          icon: "success"
-        }).then(function(){
-            //window.location.reload();
-            document.getElementsByClassName("calendar-container")[0].lastChild.remove();
-            MonthComponent(document.getElementsByClassName("calendar-container")[0]);
-            DaysOfMonth(currentDate.getMonth(), currentDate);
-            document.getElementById("dates-control-month").style = "display: flex";
-            document.getElementById("date-month").innerHTML =
-              languageHandler.es.monthNames[currentDate.getMonth()] +
-              ` ` +
-              currentDate.getFullYear();
-        });
-      },
-      error: function (error) {
-        console.error('Error en la solicitud:', error);
-        Swal.fire({
-          title: "Error",
-          text: "Problemas al crear un agendamiento",
-          icon: "error"
-        })
+      body: JSON.stringify({
+        "dateStartEvent": $date,
+        "hourStart": timeDateStart,
+        "dateFinishEvent": $dateFinish,
+        "hourFinish": timeDateFinish,
+        "title": $title,
+        "description": $description,
+        "statusInformation": {
+          "statusCode": 1,
+          "status": "activo",
+          "colorStatus": "green"
+        },
+        "typeInformation": {
+          "type": 1,
+          "colorBackgroundType": "#0096a6",
+          "colorType": "white"
+        }
+        // userId: userId,
+        // sendCreateActivity: true
+      })
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error en la solicitud');
       }
+      return response.json();
+    })
+    .then(response => {
+      console.log('Respuesta exitosa:', response);
+      Swal.fire({
+        title: "Listo",
+        text: "El evento fue ingresado con éxito",
+        icon: "success"
+      }).then(function(){
+          document.getElementsByClassName("calendar-container")[0].lastChild.remove();
+          MonthComponent(document.getElementsByClassName("calendar-container")[0]);
+          DaysOfMonth(currentDate.getMonth(), currentDate);
+          document.getElementById("dates-control-month").style = "display: flex";
+          document.getElementById("date-month").innerHTML =
+            languageHandler.es.monthNames[currentDate.getMonth()] +
+            ` ` +
+            currentDate.getFullYear();
+      });
+    })
+    .catch(error => {
+      console.error('Error en la solicitud:', error);
+      Swal.fire({
+        title: "Error",
+        text: "Problemas al crear un agendamiento",
+        icon: "error"
+      });
     });
+
   }
 });
 

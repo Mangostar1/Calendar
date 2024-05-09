@@ -20,8 +20,6 @@ export function datesFetch(fetchJSON, numFor, componentInfo) {
     statusColor: event.statusInformation.colorStatus
   };
 
-  console.log(dateStartUTC);
-
   if (eventData.dateStart.toDateString() === eventData.dateFinish.toDateString()) {
     hoursEventDiration = eventData.dateFinish - eventData.dateStart;
     differenceInHours = Math.floor(hoursEventDiration / (1000 * 60 * 60));
