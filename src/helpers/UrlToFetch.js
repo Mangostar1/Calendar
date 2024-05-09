@@ -1,8 +1,9 @@
-const URL = `http://localhost:5001/schedule`;
+const URL = `https://calendar-servidor-production.up.railway.app/schedule`;
 
 export default URL;
 
 //<-- Main URL, JSON https://mangostar1.github.io/Calendar/basicStructure.json
+//<-- https://calendar-servidor-production.up.railway.app
 
 /*
 
