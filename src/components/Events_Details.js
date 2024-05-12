@@ -1,6 +1,6 @@
-/*----------------------------------------------------------*/
-/*-- Este Modal muestra los detalles del evento clickeado --*/
-/*----------------------------------------------------------*/
+/*-------------------------------------------------------*/
+/*-- This Modal shows the details of the clicked event --*/
+/*-------------------------------------------------------*/
 
 export function handlerBtn(button) {
   const $eventModal = document.getElementById("event-Modal");
@@ -11,7 +11,7 @@ export function handlerBtnMobile() {
   alert("Evento Fetch con datos del json desde el celular");
 }
 
-//modal en construccion
+
 function ModalEventWeek(element, button) {
   const $newDiv = document.createElement("div");
 
@@ -49,6 +49,6 @@ function ModalEventWeek(element, button) {
           </div>
         </div>
     </div>`;
-  console.log(button.dataset);
+
   element.appendChild($newDiv);
 }

@@ -2,7 +2,7 @@ import { currentDate } from "../index.js";
 import languageHandler from "../i18n/en-es.js";
 import { MonthComponent, DaysOfMonth } from "./MonthComponent.js";
 import URL from "../helpers/UrlToFetch.js";
-//Este evento modal tiene la funcion de ingresar a una base de datos un evento
+//This modal event has the function of entering an event into a database
 
 export async function NewModalEvent(element) {
 
@@ -25,9 +25,9 @@ export async function NewModalEvent(element) {
   }
 
   
-  // Obtener los componentes de la fecha y hora
+  //Gets the dates and times of the scheduling form
   let yearFormatted = newDate.getFullYear().toString().padStart(4, '0');
-  let monthFormatted = (newDate.getMonth() + 1).toString().padStart(2, '0'); // Sumar 1 porque los meses se indexan desde 0
+  let monthFormatted = (newDate.getMonth() + 1).toString().padStart(2, '0'); // Add 1 because months are indexed from 0
   let dayFormatted= newDate.getDate().toString().padStart(2, '0');
   let hourFormatted = newDate.getHours().toString().padStart(2, '0');
   let minuteFormatted = newDate.getMinutes().toString().padStart(2, '0');
@@ -77,20 +77,6 @@ export async function NewModalEvent(element) {
         </div>
       </div>
 
-      <div class="" id="radio-content">
-        <label style="font-size: 1rem;margin: auto;">¿Quiere notificar al cliente?</label>
-        <div class="" id="radio-opcions">
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="noti-client" id="inlineRadio1" value="1" checked>
-            <label class="form-check-label" for="inlineRadio1" style="font-size: 1rem;">Si</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="noti-client" id="inlineRadio2" value="0">
-            <label class="form-check-label" for="inlineRadio2" style="font-size: 1rem;">No</label>
-          </div>
-        </div>
-      </div>
-
       <div class="modal-submit-content">
           <button class="buttonModa" id='buttonModalID'>Aceptar</button>
       </div>
@@ -107,15 +93,15 @@ export function closeModal() {
   }
 }
 
-/*------------------*/
-/* Datos formulario */
-/*------------------*/
+/*------------*/
+/* Fetch data */
+/*------------*/
 
 document.addEventListener("click", async (e) => {
   if (e.target.matches("#buttonModalID") === true) {
     e.preventDefault();
-    
-    const $notiClient = document.querySelector('input[name="noti-client"]:checked').value;
+
+    let send = false;
 
     const $title = document.getElementById("titleEvent").value;
     const $description = document.getElementById("descriptionEvent").value;
@@ -125,63 +111,81 @@ document.addEventListener("click", async (e) => {
     const timeDateStart = $date.split("T")[1];
     const timeDateFinish = $dateFinish.split("T")[1];
 
-    fetch(URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        "dateStartEvent": $date,
-        "hourStart": timeDateStart,
-        "dateFinishEvent": $dateFinish,
-        "hourFinish": timeDateFinish,
-        "title": $title,
-        "description": $description,
-        "statusInformation": {
-          "statusCode": 1,
-          "status": "activo",
-          "colorStatus": "green"
+    
+    if ($date < $dateFinish) {//<-- Prevents the user from scheduling an event with an end date less than the start date when scheduling the event
+      send = true;
+    } else {
+      send = false;
+    }
+
+    if (send) {
+      
+      fetch(URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
         },
-        "typeInformation": {
-          "type": 1,
-          "colorBackgroundType": "#0096a6",
-          "colorType": "white"
-        }
-        // userId: userId,
-        // sendCreateActivity: true
+        body: JSON.stringify({
+          "dateStartEvent": $date,
+          "hourStart": timeDateStart,
+          "dateFinishEvent": $dateFinish,
+          "hourFinish": timeDateFinish,
+          "title": $title,
+          "description": $description,
+          "statusInformation": {
+            "statusCode": 1,
+            "status": "activo",
+            "colorStatus": "green"
+          },
+          "typeInformation": {
+            "type": 1,
+            "colorBackgroundType": "#0096a6",
+            "colorType": "white"
+          }
+          // userId: userId,
+          // sendCreateActivity: true
+        })
       })
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Error en la solicitud');
-      }
-      return response.json();
-    })
-    .then(response => {
-      console.log('Respuesta exitosa:', response);
-      Swal.fire({
-        title: "Listo",
-        text: "El evento fue ingresado con éxito",
-        icon: "success"
-      }).then(function(){
-          document.getElementsByClassName("calendar-container")[0].lastChild.remove();
-          MonthComponent(document.getElementsByClassName("calendar-container")[0]);
-          DaysOfMonth(currentDate.getMonth(), currentDate);
-          document.getElementById("dates-control-month").style = "display: flex";
-          document.getElementById("date-month").innerHTML =
-            languageHandler.es.monthNames[currentDate.getMonth()] +
-            ` ` +
-            currentDate.getFullYear();
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Error en la solicitud');
+        }
+        return response.json();
+      })
+      .then(response => {
+        console.log('Respuesta exitosa:', response);
+        Swal.fire({
+          title: "Listo",
+          text: "El evento fue ingresado con éxito",
+          icon: "success"
+        }).then(function(){
+            document.getElementsByClassName("calendar-container")[0].lastChild.remove();
+            MonthComponent(document.getElementsByClassName("calendar-container")[0]);
+            DaysOfMonth(currentDate.getMonth(), currentDate);
+            document.getElementById("dates-control-month").style = "display: flex";
+            document.getElementById("date-month").innerHTML =
+              languageHandler.es.monthNames[currentDate.getMonth()] +
+              ` ` +
+              currentDate.getFullYear();
+        });
+      })
+      .catch(error => {
+        console.error('Error en la solicitud:', error);
+        Swal.fire({
+          title: "Error",
+          text: "Problemas al crear un agendamiento: " + error,
+          icon: "error"
+        });
       });
-    })
-    .catch(error => {
-      console.error('Error en la solicitud:', error);
+
+    } else {
       Swal.fire({
         title: "Error",
-        text: "Problemas al crear un agendamiento",
+        text: "La fecha y hora de inicio debe ser menor a la fecha de término",
         icon: "error"
       });
-    });
+    }
+
 
   }
 });
