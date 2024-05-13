@@ -39,10 +39,10 @@ function ModalEventWeek(element, button) {
         </div>
 
         <div id="modal-details-second-content">
-          <div class="modal-details-content-info">
+          <!-- <div class="modal-details-content-info">
             <p id="" class="color-text text-bold">Creador: </p>
             <p id="" class="color-text text-detail">${button.dataset.creator}</p>
-          </div>
+          </div> -->
           <div class="modal-details-content-info">
             <p id="" class="color-text text-bold">Comentarios: </p>
             <p id="" class="color-text text-detail">${button.dataset.description}</p>

@@ -159,7 +159,7 @@ export function hourWeekComponent(currentDate, getDay) {
 
     weekContentDiv.appendChild(lineaHora);
 
-    if (day === new Date().getDay()) {
+    if (day === new Date().getDay() && currentDate.getMonth() === new Date().getMonth() && currentDate.getWeekNumber() === new Date().getWeekNumber() && currentDate.getFullYear() === new Date().getFullYear()) {
       weekContentDiv.classList.add('week-today');
     }
 

@@ -44,7 +44,7 @@ export async function NewModalEvent(element) {
         <button class="btn-close-modal" id="btn-close-modal-ID">
             <img src="./src/assets/icons/close-svgrepo-com.svg" class="closeModal" id="closeModal-ID">
         </button>
-        <h4 class="text-white" style="margin-top: 15px; text-align: left; padding-left: 1rem;">Agregar Evento</h4>
+        <h4 class="text-white" style="text-align: left; padding-left: 1rem; color: #fff;">Agregar Evento</h4>
     </div>
     <form class="modal-content-info" id="enviarActividad">
 
@@ -52,28 +52,28 @@ export async function NewModalEvent(element) {
       <div class="form-group row">
         <label for="dateInput" class="col-sm-3 col-form-label">Fecha de inicio</label>
         <div class="col-sm-9">
-          <input type='datetime-local' class="form-control" id="dateInput" name="dateInput" value="${`${formattedDate}`}">
+          <input type='datetime-local' class="form-control date-input-add-event" id="dateInput" name="dateInput" value="${`${formattedDate}`}">
         </div>
       </div>
 
       <div class="form-group row">
         <label for="dateInputEnd" class="col-sm-3 col-form-label">Fecha de termino</label>
         <div class="col-sm-9">
-          <input type='datetime-local' class="form-control" id="dateInputEnd" name="dateInputEnd" value="${`${formattedDate}`}">
+          <input type='datetime-local' class="form-control date-input-add-event" id="dateInputEnd" name="dateInputEnd" value="${`${formattedDate}`}">
         </div>
       </div>
 
       <div class="form-group row">
         <label for="titleEvent" class="col-sm-3 col-form-label">Titulo</label>
         <div class="col-sm-9">
-          <input type='text' class="form-control" id='titleEvent' name="titleEvent" placeholder="Añade un titulo">
+          <input type='text' class="form-control text-input-add-event" id='titleEvent' name="titleEvent" placeholder="Añade un titulo">
         </div>
       </div>
 
       <div class="form-group row">
         <label for="descriptionEvent" class="col-sm-3 col-form-label">Comentario</label>
         <div class="col-sm-9">
-          <textarea id='descriptionEvent' name="descriptionEvent" class="form-control" placeholder="Añade un comentario" ></textarea>
+          <textarea id='descriptionEvent' name="descriptionEvent" class="form-control text-input-add-event" placeholder="Añade un comentario" ></textarea>
         </div>
       </div>
 
