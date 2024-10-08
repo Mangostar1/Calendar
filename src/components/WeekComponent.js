@@ -140,7 +140,7 @@ export function hourWeekComponent(currentDate, getDay) {
     $weekDays[j].innerHTML = days[j].getDate();
   }
 
-  const daysOfWeek = [1, 2, 3, 4, 5, 6, 0];//<-- array de esta forma porque el calendario se imprime de L a D y no de D a S
+  const daysOfWeek = [1, 2, 3, 4, 5, 6, 0];// <-- Array in this format because the calendar is printed from Monday to Sunday instead of Sunday to Saturday
   const daysInDom = [0, 1, 2, 3, 4, 5, 6];
   let thisDate = new Date();
 
@@ -170,9 +170,9 @@ export function hourWeekComponent(currentDate, getDay) {
       hourWeekContentDiv.classList.add('hour-week-content-div');
       hourWeekContentDiv.innerHTML += hourDayWeek[h];
       hourWeekContentDiv.setAttribute("data-day", days[day].getDate());
-      const hourWithoutHrs = hourDayWeek[h].replace(':00 hrs', ''); // Eliminar "hrs" del final
-      const hourWithoutHrsComplete = hourDayWeek[h].replace('hrs', ''); // Eliminar "hrs" del final
-      hourWeekContentDiv.setAttribute("data-hour", hourWithoutHrs);//<-- horas en el dia
+      const hourWithoutHrs = hourDayWeek[h].replace(':00 hrs', ''); // Removes 'hrs' from the end
+      const hourWithoutHrsComplete = hourDayWeek[h].replace('hrs', ''); // Removes 'hrs' from the end
+      hourWeekContentDiv.setAttribute("data-hour", hourWithoutHrs);// <-- hours in the day
       hourWeekContentDiv.setAttribute("data-hour-complete", hourWithoutHrsComplete);
       hourWeekContentDiv.setAttribute("data-week-day", day);
       hourWeekContentDiv.setAttribute('data-month', days[day].getMonth());
@@ -190,7 +190,7 @@ export function hourWeekComponent(currentDate, getDay) {
     if (thisDate.getDay() === i) {
       actualizarLineaHora(i, daysInDom[i]);
 
-      // Actualizar la línea cada minuto
+      // Update the line every minute
       setInterval(actualizarLineaHora(i, daysInDom[i]), 60000);
     }
 
@@ -199,23 +199,23 @@ export function hourWeekComponent(currentDate, getDay) {
   eventsWeek();
 }
 
-//Linea que muestra la hora actual
+// Line that shows the current time
 function actualizarLineaHora(dayNum, numItera) {
   const contenedorHoras = document.querySelectorAll('.week-content-div');
   const lineaHora = document.querySelector(`.lineHour-day-${dayNum}`);
   lineaHora.style.display = 'block';
 
-  // Obtener la hora y minutos actuales
+  // Get the current hour and minutes
   const horaActual = new Date().getHours();
   const minutosActual = new Date().getMinutes();
 
-  // Calcular el porcentaje basado en la hora y los minutos actuales (considerando 24 horas y 60 minutos como 100%)
+  // Calculates the percentage based on the current hour and minutes (considering 24 hours and 60 minutes as 100%)
   const porcentaje = ((horaActual * 60 + minutosActual) / (24 * 60)) * 100;
 
-  // Calcular la nueva posición en píxeles
+  // Calculates the new position in pixels
   const nuevaPosicion = (porcentaje / 100) * contenedorHoras[numItera].offsetHeight;
 
-  // Actualizar la posición de la línea
+  // Updates the position of the line
   lineaHora.style.top = `${nuevaPosicion}px`;
 }
 

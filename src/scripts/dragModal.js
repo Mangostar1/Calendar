@@ -1,3 +1,30 @@
+/*--------------------------------------------------------------------------*/
+/* 
+  Function: dragModal
+  Description: 
+  This function allows a modal window, which opens from the calendar, to be 
+  dragged and moved freely across the screen. The selected modal element can be 
+  moved by the user by clicking and dragging the top section of the window 
+  (specifically the area with the class "modal-close-content").
+
+  Implementation:
+  - The "mousedown" event is used to initiate the drag when the user clicks on 
+    the appropriate section of the modal.
+  - The "mousemove" and "mouseup" events handle the movement and the end of 
+    the drag, respectively.
+  - The modal's position is dynamically adjusted with CSS transformations to 
+    reflect the real-time movement.
+
+  Usage: 
+  Call this function once the DOM is fully loaded and the modal has been 
+  rendered in the HTML.
+
+  Warning:
+  Ensure that the modal structure includes the "modal-close-content" class for 
+  the drag functionality to work properly.
+*/
+/*--------------------------------------------------------------------------*/
+
 export function dragModal() {
   const draggableElement = document.querySelector(".modal-close-content").parentElement;
   const draggableElementModal = document.querySelector(".modal-close-content");

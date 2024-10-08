@@ -96,7 +96,7 @@ export function hourDayComponent(currentDate) {
     { hour: "23:00 hrs" },
   ];
   hourDay.forEach((item) => {
-    const hourWithoutHrs = item.hour.replace(' hrs', ''); // Eliminar "hrs" del final
+    const hourWithoutHrs = item.hour.replace(' hrs', ''); // Removes "hrs" from the end
     $containerDay.innerHTML += `<div class="diario">
                 <p class="hora">  ${item.hour} </p>
                 <div class="dia-hora event eventDay" data-hour="${hourWithoutHrs}" data-day="${currentDate.getDate()}" data-month="${currentDate.getMonth()}" data-year="${currentDate.getFullYear()}"></div>
@@ -109,41 +109,41 @@ export function hourDayComponent(currentDate) {
 
     document.getElementById("day-component-current-month-year").innerHTML = `${languageHandler.es.dayNames[currentDate.getDay()]}, ${languageHandler.es.monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
 
-  //Imprime/Actualiza los eventos en el calendario
+  // Prints/Updates events on the calendar
   inicioEventoDia();
 
-  // Actualizar la línea al cargar la página
+  // Update the line when the page loads
   actualizarLineaHora();
 
-  // Actualizar la línea cada minuto
+  // Update the line every minute
   setInterval(actualizarLineaHora, 60000);
 }
 
-//Quita el loader
+// Remove the loader
 function IsLoaded() {
   document.querySelector(".content-loader").style.display = "none";
 }
 
-//Linea que muestra la hora actual
+// Line that shows the current time
 function actualizarLineaHora() {
   const contenedorHoras = document.getElementById('container-Day-Hours');
   const lineaHora = document.getElementById('lineaHora');
 
-  // Obtener la hora y minutos actuales
+  // Gets the current hour and minutes
   const horaActual = new Date().getHours();
   const minutosActual = new Date().getMinutes();
 
-  // Calcular el porcentaje basado en la hora y los minutos actuales (considerando 24 horas y 60 minutos como 100%)
+  // Calculates the percentage based on the current hour and minutes (considering 24 hours and 60 minutes as 100%)
   const porcentaje = ((horaActual * 60 + minutosActual) / (24 * 60)) * 100;
 
-  // Calcular la nueva posición en píxeles
+  // Calculates the new position in pixels
   const nuevaPosicion = (porcentaje / 100) * contenedorHoras.offsetHeight;
 
-  // Actualizar la posición de la línea
+  // Updates the position of the line
   lineaHora.style.top = `${nuevaPosicion}px`;
 }
 
-//Imprime los botones/div de los eventos en el calendario
+// Prints the buttons/divs of the events on the calendar
 async function inicioEventoDia() {
   try {
     const $eventLi = document.getElementsByClassName("eventDay");

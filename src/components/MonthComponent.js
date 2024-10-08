@@ -38,7 +38,7 @@ export function DaysOfMonth(month, currentDate) {
     $wrapper.innerHTML += `<div class="grid-days"> ${item.day} </div>`;
   });
 
-  for (let i = startDay(); i > 0; i--) {//<-- Imprime los dias anteriores al primer dia del mes (por si el 1 cae martes u otro dia en adelante)
+  for (let i = startDay(); i > 0; i--) {// <-- Prints the days before the first day of the month (in case the 1st falls on a Tuesday or another day onwards)
     $wrapper.innerHTML += `<div class="grid-item"><p class="day-number lastMonth"> ${
       getTotalDays(currentDate.getMonth() - 1) - (i - 1)
     } </p>
@@ -46,7 +46,7 @@ export function DaysOfMonth(month, currentDate) {
             </div>`;
   }
 
-  for (let i = 1; i <= getTotalDays(month); i++) {//<-- Imprime los dias del mes
+  for (let i = 1; i <= getTotalDays(month); i++) {// <-- Prints the days of the month
     if (i == new Date().getDate() && month == new Date().getMonth()) {
       $wrapper.innerHTML += 
                 `<div class="grid-item day-month-active" data-month="${month}" data-day="${i}" data-year="${currentDate.getFullYear()}">
@@ -72,14 +72,14 @@ function IsLoaded() {
   document.querySelector(".content-loader").style.display = "none";
 }
 
-//Eventos del mes
+// Events of the month
 async function eventoMonth() {
   try {
     const basicMonth = await fetch(URL);
     const basicMonthJson = await basicMonth.json();
 
     if (basicMonthJson.length !== 0) {
-      let totalInnerHtmlExecutions = 0; // Contador para contar las ejecuciones de innerHTML
+      let totalInnerHtmlExecutions = 0; // Counter to count the executions of innerHTML
 
       for (let d = 0; d < basicMonthJson.length; d++) {
         let eventData = datesFetch(basicMonthJson, d).eventData;
@@ -95,7 +95,7 @@ async function eventoMonth() {
               eventData.dateStart.getFullYear() === currentDate.getFullYear()
             ) {
               $eventMonth.innerHTML += datesFetch(basicMonthJson, d, "month").btns;
-              totalInnerHtmlExecutions++; // Incrementa el contador
+              totalInnerHtmlExecutions++; // Increments the counter
             }
           }
         }
@@ -108,15 +108,15 @@ async function eventoMonth() {
   }
 }
 
-//btn en formato movil
+// Button in mobile format
 async function eventoMonthMobile() {
   const basicMonth = await fetch(URL); // <-- For production
   const basicMonthJson = await basicMonth.json();
 
   if (basicMonthJson.length !== 0) {
-    // <-- Si dentro de un dia de la semana hay eventos, este recorre todos los eventos agendados en el dia
+    // <-- If there are events on a day of the week, this loops through all the scheduled events for that day
     for (let d = 0; d < basicMonthJson.length; d++) {
-      // <-- Con este for recorro todos los eventos del dia en cuestion
+      // <-- With this for loop, I iterate through all the events of the specified day
       let datesJSON = basicMonthJson[d].dateStartEvent;
 
       const datesSplit = datesJSON.split("-");

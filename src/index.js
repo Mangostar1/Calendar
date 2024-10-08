@@ -310,11 +310,6 @@ document.addEventListener("click", ({ target }) => {
 /*-------------*/
 function prevDay() {
   lessDays(currentDate, 1);
-  /* currentDate.setFullYear(
-    currentDate.getFullYear(),
-    currentDate.getMonth(),
-    currentDate.getDate()
-  ); */
 
   $calendarContainer.lastChild.remove();
   DayComponent($calendarContainer);
@@ -329,11 +324,6 @@ function prevDay() {
 
 function nextDay() {
   addDays(currentDate, 1);
-  /* currentDate.setFullYear(
-    currentDate.getFullYear(),
-    currentDate.getMonth(),
-    currentDate.getDate()
-  ); */
 
   $calendarContainer.lastChild.remove();
   DayComponent($calendarContainer);
