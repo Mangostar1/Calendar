@@ -1,19 +1,34 @@
 /* 
-  This object controls the language in the entire app. If you need to change it, you just need to replace 'languageHandler.es./' with 'languageHandler.en./'.
+  Description:
+  This object manages the language settings for the entire application. 
+  To change the language, simply replace 'languageHandler.es' with 'languageHandler.en' 
+  (or any other language handler you need).
 
-  This object is used in:
+  Usage:
+  This object is referenced in the following files and lines:
 
-    index.js --> line: 108, 109, 194, 195, 196, 211, 212, 222, 223, 264. 265. 266, 291, 292, 293, 312, 313, 329, 330, 357, 358.
+    - index.js:
+      Lines: 108, 109, 194, 195, 196, 211, 212, 222, 223, 264, 265, 266, 291, 292, 
+             293, 312, 313, 329, 330, 357, 358
 
-    DayComponent.js --> line: 70
+    - DayComponent.js:
+      Line: 70
 
-    WeekComponent.js --> line: 12
+    - WeekComponent.js:
+      Line: 12
 
-    MonthComponent.js --> line: 32
+    - MonthComponent.js:
+      Line: 32
 
-    YearComponent.js --> line: 12 (don't change line 14 and 15)
+    - YearComponent.js:
+      Line: 12 
+      (Note: Do not modify lines 14 and 15)
 
+  Important:
+  Ensure you update all necessary instances where the language handler is used if 
+  you decide to change the language setting.
 */
+
 
 const languageHandler = {
   es: {

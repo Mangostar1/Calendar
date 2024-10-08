@@ -1,3 +1,20 @@
+/*--------------------------------------------------------------------------*/
+/* 
+  Description:
+  This URL is used to send a request to the server, which will return the 
+  scheduling data stored in the database.
+
+  Details:
+  - The specified endpoint in this URL must be properly configured to handle 
+    requests related to retrieving scheduling information.
+
+  Note:
+  Make sure the server is running and that the endpoint here matches the API 
+  configuration in the backend.
+*/
+/*--------------------------------------------------------------------------*/
+
+
 const URL = `https://calendar-servidor-production.up.railway.app/schedule`;
 
 export default URL;

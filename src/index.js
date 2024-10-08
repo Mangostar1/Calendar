@@ -22,9 +22,9 @@ const $calendarContainer = document.getElementsByClassName("calendar-container")
 
 let isVisible = false; //<-- Used to controls wodal window. Prevents more than one from being opened at the same time.
 
-/*-------*/
-/* Dates */
-/*-------*/
+/*------------------------------------*/
+/*--Date used throughout the project--*/
+/*------------------------------------*/
 export let currentDate = new Date();
 
 /*-------------------------------*/
@@ -93,10 +93,10 @@ export function startDayYear(month) {
 function comeToday() {
   currentDate = new Date();
 
-  // Obtén el ID del radio seleccionado
+  // Get the ID of the selected radio button
   const selectedRadio = document.querySelector('input[name="btn"]:checked').id;
 
-  // Ejecuta diferentes códigos según el radio seleccionado
+  // Execute different code based on the selected radio button
   switch (selectedRadio) {
     case 'radio-day':
       $calendarContainer.lastChild.remove();
