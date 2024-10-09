@@ -47,7 +47,7 @@ export function DaysOfMonth(month, currentDate) {
   }
 
   for (let i = 1; i <= getTotalDays(month); i++) {// <-- Prints the days of the month
-    if (i == new Date().getDate() && month == new Date().getMonth()) {
+    if (i == new Date().getDate() && month == new Date().getMonth() && new Date().getFullYear() == currentDate.getFullYear()) {
       $wrapper.innerHTML += 
                 `<div class="grid-item day-month-active" data-month="${month}" data-day="${i}" data-year="${currentDate.getFullYear()}">
                     <p class="day-number day-month-number-active"> ${i} </p>
@@ -80,7 +80,7 @@ async function eventoMonth() {
 
     if (basicMonthJson.length !== 0) {
       let totalInnerHtmlExecutions = 0; // Counter to count the executions of innerHTML
-
+      
       for (let d = 0; d < basicMonthJson.length; d++) {
         let eventData = datesFetch(basicMonthJson, d).eventData;
 
