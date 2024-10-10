@@ -78,10 +78,10 @@ async function eventoMonth() {
     const basicMonth = await fetch(URL);
     const basicMonthJson = await basicMonth.json();
 
-    if (basicMonthJson.length !== 0) {
+    if (basicMonthJson.events.length !== 0) {
       let totalInnerHtmlExecutions = 0; // Counter to count the executions of innerHTML
       
-      for (let d = 0; d < basicMonthJson.length; d++) {
+      for (let d = 0; d < basicMonthJson.events.length; d++) {
         let eventData = datesFetch(basicMonthJson, d).eventData;
 
         let getDateOf_dateMonthStart = eventData.dateStart.getDate();

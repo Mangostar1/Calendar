@@ -150,8 +150,8 @@ async function inicioEventoDia() {
     const basicStruc = await fetch(URL);
     const primerEvento = await basicStruc.json();
 
-    if (primerEvento.length !== 0) {
-      for (let e = 0; e < primerEvento.length; e++) {
+    if (primerEvento.events.length !== 0) {
+      for (let e = 0; e < primerEvento.events.length; e++) {
         let eventData = datesFetch(primerEvento, e).eventData;
         let hourStart = eventData.dateStart.getHours();
         let hourFinish = eventData.dateFinish.getHours();

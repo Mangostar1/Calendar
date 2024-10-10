@@ -4,7 +4,7 @@ export function datesFetch(fetchJSON, numFor, componentInfo) {
   //fetch.json(), for index
   let hoursEventDiration;
   let differenceInHours = 0;
-  const event = fetchJSON[numFor];
+  const event = fetchJSON.events[numFor];
 
   let dateStartUTC = event.dateStartEvent.replace('Z', '');;
   let dateFinishUTC = event.dateFinishEvent.replace('Z', '');;
