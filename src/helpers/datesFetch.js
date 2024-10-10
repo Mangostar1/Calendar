@@ -29,6 +29,7 @@ export function datesFetch(fetchJSON, numFor, componentInfo) {
     <div 
       id="event-Modal" 
       class="btn-item component-${componentInfo} ${componentInfo}-event-hours-duration-${differenceInHours}" 
+      style="background-color: ${eventData.color};"
       data-date-start=${eventData.dateStart.toLocaleDateString()} 
       data-date-finish=${eventData.dateFinish.toLocaleDateString()} 
       data-hour-start="${eventData.dateStart.toLocaleTimeString()}" 
