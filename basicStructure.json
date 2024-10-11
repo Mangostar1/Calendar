@@ -686,9 +686,9 @@
     },
     { 
       "id": 37,
-      "dateStartEvent": "2023-12-15",
+      "dateStartEvent": "2023-12-16",
       "hourStart": "00:17:00",
-      "dateFinishEvent": "2023-12-15",
+      "dateFinishEvent": "2023-12-16",
       "hourFinish": "01:21:00",
       "title": "Ejemplo de titulo 33",
       "description": "descripcion test 2",
@@ -705,9 +705,9 @@
     },
     { 
       "id": 38,
-      "dateStartEvent": "2023-12-15",
+      "dateStartEvent": "2023-12-17",
       "hourStart": "00:17:00",
-      "dateFinishEvent": "2023-12-15",
+      "dateFinishEvent": "2023-12-17",
       "hourFinish": "02:21:00",
       "title": "Ejemplo de titulo 34",
       "description": "descripcion test 3",
@@ -724,9 +724,9 @@
     },
     { 
       "id": 39,
-      "dateStartEvent": "2023-12-15",
+      "dateStartEvent": "2023-12-18",
       "hourStart": "00:17:00",
-      "dateFinishEvent": "2023-12-15",
+      "dateFinishEvent": "2023-12-18",
       "hourFinish": "00:21:00",
       "title": "Ejemplo de titulo 35",
       "description": "descripcion test 4",
@@ -743,9 +743,9 @@
     },
     { 
       "id": 40,
-      "dateStartEvent": "2023-12-15",
+      "dateStartEvent": "2023-12-19",
       "hourStart": "00:17:00",
-      "dateFinishEvent": "2023-12-15",
+      "dateFinishEvent": "2023-12-19",
       "hourFinish": "03:21:00",
       "title": "Ejemplo de titulo 36",
       "description": "descripcion test 5",
@@ -757,6 +757,25 @@
       "typeInformation": {
         "type": "0001",
         "colorBackgroundType": "#FF9800",
+        "colorType": "white"
+      }
+    },
+    { 
+      "id": 41,
+      "dateStartEvent": "2024-11-19",
+      "hourStart": "00:17:00",
+      "dateFinishEvent": "2024-11-19",
+      "hourFinish": "03:21:00",
+      "title": "Ejemplo de titulo 37",
+      "description": "probando implementaciones nuevas",
+      "statusInformation": {
+        "statusCode": "001",
+        "status": "activo",
+        "colorStatus": "green"
+      },
+      "typeInformation": {
+        "type": "0001",
+        "colorBackgroundType": "#FF9899",
         "colorType": "white"
       }
     }
