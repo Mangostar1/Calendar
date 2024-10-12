@@ -13,13 +13,13 @@
     overflow: hidden;
     text-overflow: ellipsis;
 
-    position: relative;
+    /* position: relative; */
 }
 .btn-item:hover{
     /* background-color: var(--colorThree); */
     color: var(--color3C);
     box-shadow: 2px 2px 10px rgb(187, 187, 187);
-    filter: brightness(0.85);
+    /* filter: brightness(0.85); NO DESCOMENTAR YA QUE OCACIONA BUG AL QUERER VER LA VENTANA MODAL DEL EVENTO AGENDADO*/
 }
 
 .component-month{

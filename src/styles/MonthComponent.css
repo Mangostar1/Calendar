@@ -24,7 +24,7 @@
     position: relative;
 
     /* Añade overflow-y para el scroll vertical */
-    overflow-y: auto;
+    /* overflow-y: auto; */
 }
 
 .grid-item::-webkit-scrollbar {
