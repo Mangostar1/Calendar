@@ -6,12 +6,13 @@ export function datesFetch(fetchJSON, numFor, componentInfo) {
   let differenceInHours = 0;
   const event = fetchJSON.events[numFor];
 
-  let dateStartUTC = event.dateStartEvent.replace('Z', '');;
-  let dateFinishUTC = event.dateFinishEvent.replace('Z', '');;
-  
+  let dateStartUTC = event.dateStartEvent.replace('Z', '');
+  let dateFinishUTC = event.dateFinishEvent.replace('Z', '');
+
+
   const eventData = {
-    dateStart: new Date(dateStartUTC),
-    dateFinish: new Date(dateFinishUTC),
+    dateStart: new Date(`${dateStartUTC}T${event.hourStart}`),
+    dateFinish: new Date(`${dateFinishUTC}T${event.hourFinish}`),
     title: event.title,
     description: event.description,
     color: event.typeInformation.colorBackgroundType,
@@ -40,7 +41,7 @@ export function datesFetch(fetchJSON, numFor, componentInfo) {
       data-statusColor="${eventData.statusColor}" 
       data-color-event="${eventData.color}" 
       data-description="${eventData.description}">
-        ${eventData.title}
+        ${componentInfo == "month" ? event.hourStart + " " + eventData.title : eventData.title}
     </div>`;
 
   return {

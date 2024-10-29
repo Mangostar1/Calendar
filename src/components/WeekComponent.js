@@ -8,30 +8,30 @@ import URL from "../helpers/UrlToFetch.js";
 import languageHandler from "../i18n/en-es.js";
 
 const hourDayWeek = [
-  "00:00 hrs",
-  "01:00 hrs",
-  "02:00 hrs",
-  "03:00 hrs",
-  "04:00 hrs",
-  "05:00 hrs",
-  "06:00 hrs",
-  "07:00 hrs",
-  "08:00 hrs",
-  "09:00 hrs",
-  "10:00 hrs",
-  "11:00 hrs",
-  "12:00 hrs",
-  "13:00 hrs",
-  "14:00 hrs",
-  "15:00 hrs",
-  "16:00 hrs",
-  "17:00 hrs",
-  "18:00 hrs",
-  "19:00 hrs",
-  "20:00 hrs",
-  "21:00 hrs",
-  "22:00 hrs",
-  "23:00 hrs",
+  "00:00",
+  "01:00",
+  "02:00",
+  "03:00",
+  "04:00",
+  "05:00",
+  "06:00",
+  "07:00",
+  "08:00",
+  "09:00",
+  "10:00",
+  "11:00",
+  "12:00",
+  "13:00",
+  "14:00",
+  "15:00",
+  "16:00",
+  "17:00",
+  "18:00",
+  "19:00",
+  "20:00",
+  "21:00",
+  "22:00",
+  "23:00",
 ];
 
 // Cambia 'const' por 'let' para que pueda modificarse
@@ -181,7 +181,7 @@ export function hourWeekComponent(currentDate, getDay) {
 
     weekContentDiv.appendChild(lineaHora);
 
-    if (day === new Date().getDay() && currentDate.getMonth() === new Date().getMonth() && currentDate.getWeekNumber() === new Date().getWeekNumber() && currentDate.getFullYear() === new Date().getFullYear()) {
+    if (day === new Date().getDay() && new Date().getDate() === currentDate.getDate() && currentDate.getMonth() === new Date().getMonth() && currentDate.getWeekNumber() === new Date().getWeekNumber() && currentDate.getFullYear() === new Date().getFullYear()) {
       weekContentDiv.classList.add('week-today');
     }
 
