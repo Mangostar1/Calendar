@@ -59,7 +59,8 @@ export function DayComponent(element) {
               <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
           </div>
           <div id="container-Day-Hours">
-            <div id="lineaHora"></div>
+            ${new Date().getDate() === currentDate.getDate() ? `<div id="lineaHora"></div>` : `<div></div>`}
+            
           </div>
         </div>
         `;
@@ -113,7 +114,9 @@ export function hourDayComponent(currentDate) {
   inicioEventoDia();
 
   // Update the line when the page loads
-  actualizarLineaHora();
+  if (new Date().getDate() === currentDate.getDate()) {
+    actualizarLineaHora();
+  }
 
   // Update the line every minute
   setInterval(actualizarLineaHora, 60000);

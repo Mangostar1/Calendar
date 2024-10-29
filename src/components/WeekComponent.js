@@ -208,7 +208,7 @@ export function hourWeekComponent(currentDate, getDay) {
 
   for (let i = 0; i < daysOfWeek.length; i++) {
     
-    if (thisDate.getDay() === i) {
+    if (thisDate.getDay() === i && new Date().getDate() === currentDate.getDate()) {
       actualizarLineaHora(i, daysInDom[i]);
 
       // Update the line every minute
