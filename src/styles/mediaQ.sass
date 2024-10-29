@@ -27,7 +27,7 @@ $white: #fff
             position: absolute
             top: 4rem
             left: 2rem
-            z-index: 1
+            z-index: 10
             #btn-day, #btn-week, #btn-month, #btn-year
                 background-color: $white
                 color: var(--colorOne)
@@ -72,6 +72,8 @@ $white: #fff
         text-align: center
     .day-week
         font-size: 15px
+    #blanck-space-week-componenet
+        height: 1.5rem
 
     /*-----------------*/
     /* month component */
@@ -115,7 +117,7 @@ $white: #fff
         border-radius: 10px
         border: 1px solid #cfcfcf
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5)
-        position: absolute
+        position: fixed
         bottom: 2rem
         right: 1rem
         z-index: 2
@@ -143,3 +145,7 @@ $white: #fff
                 padding: 5px 5px
             #timeInput
                 padding: 5px 5px
+
+@media screen and (max-width: 575px)
+    #blanck-space-week-componenet
+        height: 3.1rem

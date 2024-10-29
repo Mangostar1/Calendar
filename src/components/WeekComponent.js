@@ -7,6 +7,45 @@ import URL from "../helpers/UrlToFetch.js";
 //language
 import languageHandler from "../i18n/en-es.js";
 
+const hourDayWeek = [
+  "00:00 hrs",
+  "01:00 hrs",
+  "02:00 hrs",
+  "03:00 hrs",
+  "04:00 hrs",
+  "05:00 hrs",
+  "06:00 hrs",
+  "07:00 hrs",
+  "08:00 hrs",
+  "09:00 hrs",
+  "10:00 hrs",
+  "11:00 hrs",
+  "12:00 hrs",
+  "13:00 hrs",
+  "14:00 hrs",
+  "15:00 hrs",
+  "16:00 hrs",
+  "17:00 hrs",
+  "18:00 hrs",
+  "19:00 hrs",
+  "20:00 hrs",
+  "21:00 hrs",
+  "22:00 hrs",
+  "23:00 hrs",
+];
+
+// Cambia 'const' por 'let' para que pueda modificarse
+let HOUR_DIV = "";
+
+hourDayWeek.forEach((item) => {
+  HOUR_DIV += `
+    <div class="hour-content">
+      <p class="hour-week">${item}</p>
+    </div>
+  `;
+});
+
+
 let daysOnWeek = "";
 
 languageHandler.es.dayNameShort.forEach((item) => {
@@ -36,7 +75,16 @@ export function WeekComponent(element) {//<-- Create the <article>, in this elem
       </div>
     </div>
     <div id="days-of-week">
-        ${daysOnWeek}
+        <div id="week-content-acc" class="">
+          <div id="blanck-space-week-componenet"></div>
+          <div id="week-content-hours-content">
+            ${HOUR_DIV}
+          </div>
+        </div>
+        <div id="week-content-days-main">
+          <div class="week-content-dates-content">${daysOnWeek}</div>
+          <div id="week-content-days-content"></div>
+        </div>
     </div>
     <div class="content-loader">
         <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
@@ -46,34 +94,8 @@ export function WeekComponent(element) {//<-- Create the <article>, in this elem
 }
 
 export function hourWeekComponent(currentDate, getDay) {
-  const $weekContent = document.getElementById("days-of-week");
+  const $weekContent = document.getElementById("week-content-days-content");
   const $weekDays = document.getElementsByClassName("daysNumber");
-  const hourDayWeek = [
-    "00:00 hrs",
-    "01:00 hrs",
-    "02:00 hrs",
-    "03:00 hrs",
-    "04:00 hrs",
-    "05:00 hrs",
-    "06:00 hrs",
-    "07:00 hrs",
-    "08:00 hrs",
-    "09:00 hrs",
-    "10:00 hrs",
-    "11:00 hrs",
-    "12:00 hrs",
-    "13:00 hrs",
-    "14:00 hrs",
-    "15:00 hrs",
-    "16:00 hrs",
-    "17:00 hrs",
-    "18:00 hrs",
-    "19:00 hrs",
-    "20:00 hrs",
-    "21:00 hrs",
-    "22:00 hrs",
-    "23:00 hrs",
-  ];
 
   let days = [
     new Date(
@@ -168,7 +190,6 @@ export function hourWeekComponent(currentDate, getDay) {
       const hourWeekContentDiv = document.createElement('div');
       hourWeekContentDiv.id = 'hour-week-content-div';
       hourWeekContentDiv.classList.add('hour-week-content-div');
-      hourWeekContentDiv.innerHTML += hourDayWeek[h];
       hourWeekContentDiv.setAttribute("data-day", days[day].getDate());
       const hourWithoutHrs = hourDayWeek[h].replace(':00 hrs', ''); // Removes 'hrs' from the end
       const hourWithoutHrsComplete = hourDayWeek[h].replace('hrs', ''); // Removes 'hrs' from the end
