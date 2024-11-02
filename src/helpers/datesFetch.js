@@ -27,21 +27,23 @@ export function datesFetch(fetchJSON, numFor, componentInfo) {
   }
 
   let $btns = `
-    <div 
-      id="event-Modal" 
-      class="btn-item component-${componentInfo} ${componentInfo}-event-hours-duration-${differenceInHours}" 
-      style="background-color: ${eventData.color};"
-      data-date-start=${eventData.dateStart.toLocaleDateString()} 
-      data-date-finish=${eventData.dateFinish.toLocaleDateString()} 
-      data-hour-start="${eventData.dateStart.toLocaleTimeString()}" 
-      data-hour-finish="${eventData.dateFinish.toLocaleTimeString()}" 
-      data-title="${eventData.title}" 
-      data-creator="${eventData.creator}"
-      data-statusText="${eventData.statusText}" 
-      data-statusColor="${eventData.statusColor}" 
-      data-color-event="${eventData.color}" 
-      data-description="${eventData.description}">
-        ${componentInfo == "month" ? event.hourStart + " " + eventData.title : eventData.title}
+    <div class="btn-item-contnt">
+      <div class="line-btn-event" style="background-color: ${eventData.color || "#500859"};"></div>
+      <div 
+        id="event-Modal" 
+        class="btn-item component-${componentInfo} ${componentInfo}-event-hours-duration-${differenceInHours}" 
+        data-date-start=${eventData.dateStart.toLocaleDateString()} 
+        data-date-finish=${eventData.dateFinish.toLocaleDateString()} 
+        data-hour-start="${eventData.dateStart.toLocaleTimeString()}" 
+        data-hour-finish="${eventData.dateFinish.toLocaleTimeString()}" 
+        data-title="${eventData.title}" 
+        data-creator="${eventData.creator}"
+        data-statusText="${eventData.statusText}" 
+        data-statusColor="${eventData.statusColor}" 
+        data-color-event="${eventData.color}" 
+        data-description="${eventData.description}">
+          ${eventData.title}
+      </div>
     </div>`;
 
   return {
@@ -50,3 +52,6 @@ export function datesFetch(fetchJSON, numFor, componentInfo) {
     differenceInHours
   };
 }
+
+
+/* ${componentInfo == "month" ? event.hourStart + " " + eventData.title : eventData.title} */

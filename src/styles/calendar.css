@@ -1,15 +1,17 @@
 :root{
   /* neutral colors */
-  --neutralGray: gray;
-  --neutralWhite: white;
-  --neutralActive: rgb(241, 241, 241);
-  --neutralBlack: black;
+  --neutralGray: #808080;
+  --neutralWhite: #ffffff;
+  --neutralActive: #f1f1f1;
+  --neutralBlack: #000000;
+  --neutralBlackGray: #333333;
   --transparent: transparent;
 
   /* paleta de colores claros */
-  --color1C: rgb(244, 243, 243);
-  --color2C: rgb(223, 223, 223);
-  --color3C: rgb(165, 165, 165);
+  --color1C: #f4f3f3;
+  --color2C: #dfdfdf;
+  --color3C: #a5a5a5;
+  --color4C: #e2e6ee;
 
   /* colores definitivos */
   --colorOne: #81298C; /* color de todo */

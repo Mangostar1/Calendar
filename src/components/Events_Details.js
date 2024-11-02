@@ -13,6 +13,20 @@ export function handlerBtnMobile() {
 
 
 function ModalEventWeek(element, button) {
+  
+  // Split the string to obtain day, month, and year
+  let [day, month, year] = button.dataset.dateStart.split('-').map(Number);
+
+  // Get the browser's language or use 'es-ES' as the default
+  let language = navigator.language || 'es-ES';
+
+  // Create a new Date object (month in JavaScript is 0-indexed)
+  let date = new Date(year, month - 1, day).toLocaleDateString(language, {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long'
+  });
+
   const $newDiv = document.createElement("div");
 
   $newDiv.classList.add("modal-add-event-calendar", "modal-view-event-calendar");
@@ -30,11 +44,7 @@ function ModalEventWeek(element, button) {
         <div id="modal-details-first-content">
           <div class="modal-details-content-info">
             <p id="" class="color-text text-bold">Fecha: </p>
-            <p id="" class="color-text text-detail">${button.dataset.dateStart} - ${button.dataset.dateFinish}</p>
-          </div>
-          <div class="modal-details-content-info">
-            <p id="" class="color-text text-bold">Hora: </p>
-            <p id="" class="color-text text-detail">${button.dataset.hourStart} - ${button.dataset.hourFinish}</p>
+            <p id="" class="color-text text-detail">${date} ⋅ ${button.dataset.hourStart} - ${button.dataset.hourFinish}</p>
           </div>
         </div>
 

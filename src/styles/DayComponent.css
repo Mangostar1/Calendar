@@ -63,6 +63,7 @@
 
 .hora{
     text-align: left;
+    font-size: 14px;
     margin-left: 10px;
     color: var(--neutralGray);
     padding: .5rem 0 .5rem 0;
@@ -72,7 +73,7 @@
 .diario{
     display: flex;
     height: 3.5rem;
-    border-top: 1px solid var(--neutralGray);
+    border-top: 1px solid var(--color3C);
     /* border-left: 1px solid var(--neutralGray);
     border-right: 1px solid var(--neutralGray); */
 }
@@ -98,6 +99,11 @@
     flex-wrap: nowrap;
     overflow: auto;
     height: 100%;
+}
+
+
+.eventDay .btn-item{
+    border-radius: 0px;
 }
 
 #container-Day ul li .btn-item{
