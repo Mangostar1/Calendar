@@ -1,7 +1,7 @@
-import { getTotalDays, startDayYear, currentDate } from "../index.js";
+import { getTotalDays, startDayYear, currentDate } from "../../index.js";
 
 //language
-import languageHandler from "../i18n/en-es.js";
+import languageHandler from "../../i18n/en-es.js";
 
 let monthsOfYear = "";
 //* Don't change ".es." in "languageHandler.es.monthNamesShort[m]" on lines 14 and 15 because that class name is used in CSS styles.

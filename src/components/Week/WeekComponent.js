@@ -1,11 +1,11 @@
-import { currentDate, addDays } from "../index.js";
-import { datesFetch } from "../helpers/datesFetch.js";
+import { currentDate, addDays } from "../../index.js";
+import { datesFetch } from "../../helpers/datesFetch.js";
 
 //url fetch
-import URL from "../helpers/UrlToFetch.js";
+import URL from "../../helpers/UrlToFetch.js";
 
 //language
-import languageHandler from "../i18n/en-es.js";
+import languageHandler from "../../i18n/en-es.js";
 
 const hourDayWeek = [
   "00:00",

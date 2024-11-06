@@ -1,11 +1,11 @@
-import { getTotalDays, startDay, currentDate } from "../index.js";
-import { datesFetch } from "../helpers/datesFetch.js";
+import { getTotalDays, startDay, currentDate } from "../../index.js";
+import { datesFetch } from "../../helpers/datesFetch.js";
 
 //url fetch
-import URL from "../helpers/UrlToFetch.js";
+import URL from "../../helpers/UrlToFetch.js";
 
 //language
-import languageHandler from "../i18n/en-es.js";
+import languageHandler from "../../i18n/en-es.js";
 
 export function MonthComponent(element) {
   //<-- Create the <article>, in this element will be print all info related be month.

@@ -1,12 +1,12 @@
 //Components
-import { DayComponent, hourDayComponent } from "./components/DayComponent.js";
-import { WeekComponent, hourWeekComponent } from "./components/WeekComponent.js";
-import { MonthComponent, DaysOfMonth } from "./components/MonthComponent.js";
-import { YearComponent, writeYear, DaysOFYear } from "./components/YearComponent.js";
+import { DayComponent, hourDayComponent } from "./components/Day/DayComponent.js";
+import { WeekComponent, hourWeekComponent } from "./components/Week/WeekComponent.js";
+import { MonthComponent, DaysOfMonth } from "./components/Month/MonthComponent.js";
+import { YearComponent, writeYear, DaysOFYear } from "./components/Year/YearComponent.js";
 
 //Modals
-import { NewModalEvent, closeModal } from "./components/Add_Event.js";
-import { handlerBtn, handlerBtnMobile } from "./components/Events_Details.js";
+import { NewModalEvent, closeModal } from "./components/ModalEvent/Add_Event.js";
+import { handlerBtn, handlerBtnMobile } from "./components/ModalEvent/Events_Details.js";
 
 //Scripts
 import { dragModal } from "./scripts/dragModal.js";

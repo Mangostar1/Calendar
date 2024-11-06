@@ -1,7 +1,7 @@
-import { currentDate } from "../index.js";
-import languageHandler from "../i18n/en-es.js";
-import { MonthComponent, DaysOfMonth } from "./MonthComponent.js";
-import URL from "../helpers/UrlToFetch.js";
+import { currentDate } from "../../index.js";
+import languageHandler from "../../i18n/en-es.js";
+import { MonthComponent, DaysOfMonth } from "../Month/MonthComponent.js";
+import URL from "../../helpers/UrlToFetch.js";
 //This modal event has the function of entering an event into a database
 
 export async function NewModalEvent(element) {

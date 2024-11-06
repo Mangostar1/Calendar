@@ -1,13 +1,13 @@
-import { currentDate, getTotalDays, startDay } from "../index.js";
+import { currentDate, getTotalDays, startDay } from "../../index.js";
 
 //button with fetch dates
-import { datesFetch } from "../helpers/datesFetch.js";
+import { datesFetch } from "../../helpers/datesFetch.js";
 
 //url fetch
-import URL from "../helpers/UrlToFetch.js";
+import URL from "../../helpers/UrlToFetch.js";
 
 //language
-import languageHandler from "../i18n/en-es.js";
+import languageHandler from "../../i18n/en-es.js";
 
 export function DayComponent(element) {
   const $DayContent = document.createElement("article");
