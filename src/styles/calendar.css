@@ -46,9 +46,9 @@
 }
 
 .grid-days { /* week and month */
-  background-color: var(--colorOne);
-  color: var(--neutralWhite);
-
+  background-color: var(--neutralWhite);
+  color: var(--colorOne);
+  
   font-size: 20px;
   text-align: right;
 
@@ -75,7 +75,7 @@
 }
 
 .header-date-details-text{
-  color: var(--neutralBlack);
+  color: var(--colorOne);
   font-size: 1.2rem;
 }
 
@@ -104,12 +104,15 @@
   border: none;
   cursor: pointer;
   font-weight: 700;
+  background-color: var(--neutralWhite);
 }
 .prev:hover, .next:hover{
-  background-color: rgb(218, 216, 216);
+  background-color: var(--neutralWhite);
+  color: var(--colorOne);
 }
 .prev:active, .next:active{
-  background-color: rgb(196, 196, 196);
+  background-color: var(--neutralWhite);
+  color: var(--colorOne);
 }
 
 .fecha{

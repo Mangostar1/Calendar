@@ -20,8 +20,8 @@
 }
 .tittle{
     text-align: center;
-    background-color: var(--colorOne);
-    color: var(--neutralWhite);
+    background-color: var(--neutralWhite);
+    color: var(--colorOne);
     margin-top: 0px;
     margin-bottom: 15px;
     border-top-left-radius: 4px;

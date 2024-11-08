@@ -120,7 +120,7 @@
 }
 
 .day-content-today{
-    color: var(--colorOne);
+    color: var(--red);
 }
 
 #container-Day-Hours{
