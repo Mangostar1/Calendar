@@ -14,8 +14,13 @@ export function handlerBtnMobile() {
 
 function ModalEventWeek(element, button) {
   
-  // Split the string to obtain day, month, and year
-  let [day, month, year] = button.dataset.dateStart.split('-').map(Number);
+  let dateString = button.dataset.dateStart;
+
+  // Check the separator (it could be '/' or '-')
+  let separator = dateString.includes('/') ? '/' : '-';
+
+  // Split the date string using the appropriate separator and convert each part to a number
+  let [day, month, year] = dateString.split(separator).map(Number);
 
   // Get the browser's language or use 'es-ES' as the default
   let language = navigator.language || 'es-ES';
