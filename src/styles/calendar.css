@@ -14,6 +14,7 @@
   --color4C: #e2e6ee;
 
   /* colores definitivos */
+  --colorZero: #fde4ff;
   --colorOne: #81298C; /* color de todo */
   --colorTwo: #542C59; /* color de botones */
   --colorThree: #551B5C;
@@ -140,9 +141,9 @@
   padding: 10px;
 }
 
-#btn-day, #btn-week, #btn-month, #btn-year, #btnToday{
-  background-color: var(--colorTwo);
-  color: var(--neutralWhite);
+#btn-day, #btn-week, #btn-month, #btn-year{
+  background-color: var(--color1C);
+  color: var(--neutralBlackGray);
 
   padding: 6px 20px;
   border: 0px;
@@ -152,22 +153,32 @@
   font-weight: 600;
 }
 
-#btn-day:hover, #btn-week:hover, #btn-month:hover, #btn-year:hover, #btnToday:hover{
-  background-color: var(--color3C);
-  color: var(--colorTwo);
+#btn-day:hover, #btn-week:hover, #btn-month:hover, #btn-year:hover{
+  background-color: var(--colorZero);
+  color: var(--colorThree);
 }
 
 #btnToday{
   margin: 0 .5rem;
-  border-radius: 10px;
+  border-radius: 8px;
+  padding: 6px 25px;
+  cursor: pointer;
+  border: 1px solid var(--color3C);
+  background-color: var(--color1C);
+}
+
+#btnToday:hover{
+  color: var(--colorThree);
+  background-color: var(--colorZero);
+  border: 1px solid var(--neutralGray);
 }
 
 #radio-day:checked + label,
 #radio-week:checked + label,
 #radio-month:checked + label,
 #radio-year:checked + label{
-  background-color: var(--neutralActive);
-  color: var(--colorTwo);
+  background-color: var(--colorOne);
+  color: var(--neutralActive);
 }
 
 .buttons input[type="radio"]{
