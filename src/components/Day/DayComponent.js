@@ -129,21 +129,25 @@ function IsLoaded() {
 
 // Line that shows the current time
 function actualizarLineaHora() {
-  const contenedorHoras = document.getElementById('container-Day-Hours');
-  const lineaHora = document.getElementById('lineaHora');
-
-  // Gets the current hour and minutes
-  const horaActual = new Date().getHours();
-  const minutosActual = new Date().getMinutes();
-
-  // Calculates the percentage based on the current hour and minutes (considering 24 hours and 60 minutes as 100%)
-  const porcentaje = ((horaActual * 60 + minutosActual) / (24 * 60)) * 100;
-
-  // Calculates the new position in pixels
-  const nuevaPosicion = (porcentaje / 100) * contenedorHoras.offsetHeight;
-
-  // Updates the position of the line
-  lineaHora.style.top = `${nuevaPosicion}px`;
+  if (document.getElementById("container-Day-Hours")) {
+    console.log("Se actualizacion de linea hora en componente dia");
+    
+    const contenedorHoras = document.getElementById('container-Day-Hours');
+    const lineaHora = document.getElementById('lineaHora');
+  
+    // Gets the current hour and minutes
+    const horaActual = new Date().getHours();
+    const minutosActual = new Date().getMinutes();
+  
+    // Calculates the percentage based on the current hour and minutes (considering 24 hours and 60 minutes as 100%)
+    const porcentaje = ((horaActual * 60 + minutosActual) / (24 * 60)) * 100;
+  
+    // Calculates the new position in pixels
+    const nuevaPosicion = (porcentaje / 100) * contenedorHoras.offsetHeight;
+  
+    // Updates the position of the line
+    lineaHora.style.top = `${nuevaPosicion}px`;
+  }
 }
 
 // Prints the buttons/divs of the events on the calendar
