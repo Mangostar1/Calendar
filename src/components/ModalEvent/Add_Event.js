@@ -52,7 +52,7 @@ export async function NewModalEvent(element) {
       <div class="form-group row">
         <label for="dateInput" class="col-sm-3 col-form-label">Fecha de inicio</label>
         <div class="col-sm-9">
-          <input type='datetime-local' class="form-control date-input-add-event" id="dateInput" name="dateInput" value="${`${formattedDate}`}">
+          <input type='datetime-local' class="form-control date-input-add-event" id="dateInput" name="dateInput" value="${`${formattedDate}`}" step="900">
         </div>
       </div>
 

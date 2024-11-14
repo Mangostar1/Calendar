@@ -1,5 +1,5 @@
 import { getTotalDays, startDay, currentDate } from "../../index.js";
-import { datesFetch } from "../../helpers/datesFetch.js";
+import { datesFetch } from "../Button/datesFetch.js";
 
 //url fetch
 import URL from "../../helpers/UrlToFetch.js";
