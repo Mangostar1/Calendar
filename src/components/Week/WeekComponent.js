@@ -68,7 +68,7 @@ export function WeekComponent(element) {//<-- Create the <article>, in this elem
       <div id="" class="header-date-details">
         <p id="date-week" class="header-date-details-text"></p>
       </div>
-      <div>
+      <div class="today-control-content">
         <button id="prev-week" class="prev"> &#10094; </button>
         <button id="btnToday">Hoy</button>
         <button id="next-week" class="next"> &#10095; </button>
@@ -254,8 +254,12 @@ async function eventsWeek() {
     const basicWeekJSON = await basicWeek.json();
 
     const eventWekk = document.querySelectorAll(".hour-week-content-div");
+
+    // Objeto para almacenar la cantidad de eventos por día, mes, año y hora
+    const eventCount = {};
+
     if (basicWeekJSON.events.length !== 0) {
-      for (let e = 0; e < basicWeekJSON.events.length; e++) {
+      /* for (let e = 0; e < basicWeekJSON.events.length; e++) {
         let eventData = datesFetch(basicWeekJSON, e).eventData;
 
         for (const ele of eventWekk) {
@@ -272,9 +276,9 @@ async function eventsWeek() {
             eventData.dateStart.getWeekNumber() === currentDate.getWeekNumber()
           ) {
             
-            ele.innerHTML += datesFetch(basicWeekJSON, e, "week").btns;
+            ele.innerHTML += datesFetch(basicWeekJSON, e, "week").btns;//<-- ESTE
 
-          } else if (eventData.dateStart.getDate() < eventData.dateFinish.getDate()) {
+          } else if (eventData.dateStart.getDate() < eventData.dateFinish.getDate()) {//<-- Para casos de eventos que duren mas de una hora
             
             for (let i = eventData.dateStart; i <= eventData.dateFinish; i = new Date(i.getTime() + 1000 * 60 * 60 * 24)) {
               if (
@@ -291,7 +295,82 @@ async function eventsWeek() {
 
           }
         }
-      }
+      } */
+        for (let e = 0; e < basicWeekJSON.events.length; e++) {
+          let eventData = datesFetch(basicWeekJSON, e).eventData;
+  
+          for (const ele of eventWekk) {
+            let dataHourEle = parseInt(ele.getAttribute('data-hour'));
+            let dayDayEle = parseInt(ele.getAttribute('data-week-day'));
+  
+            if (
+              dataHourEle >= eventData.dateStart.getHours() &&
+              dataHourEle <= eventData.dateFinish.getHours() &&
+              eventData.dateStart.getDay() === dayDayEle &&
+              eventData.dateStart.getMonth() === currentDate.getMonth() &&
+              eventData.dateStart.getFullYear() === currentDate.getFullYear() &&
+              eventData.dateStart.getWeekNumber() === currentDate.getWeekNumber()
+            ) {
+              // Generar clave única para agrupar eventos
+              let key = `${eventData.dateStart.getFullYear()}-${eventData.dateStart.getMonth()}-${eventData.dateStart.getDate()}-${dataHourEle}`;
+  
+              // Si la clave no existe, inicializarla
+              if (!eventCount[key]) {
+                eventCount[key] = { count: 0, buttons: [] };
+              }
+  
+              // Contar cuántos eventos hay en esa combinación de fecha y hora
+              eventCount[key].count++;
+  
+              // Guardar el botón en el array
+              eventCount[key].buttons.push(datesFetch(basicWeekJSON, e, "week", "more-one-event").btns);
+            }
+          }
+        }
+  
+        // Segunda iteración para imprimir los botones según la cantidad de eventos
+        for (const ele of eventWekk) {
+          let dataHourEle = parseInt(ele.getAttribute('data-hour'));
+          let dayDayEle = parseInt(ele.getAttribute('data-week-day'));
+  
+          for (let e = 0; e < basicWeekJSON.events.length; e++) {
+            let eventData = datesFetch(basicWeekJSON, e).eventData;
+  
+            if (
+              dataHourEle >= eventData.dateStart.getHours() &&
+              dataHourEle <= eventData.dateFinish.getHours() &&
+              eventData.dateStart.getDay() === dayDayEle &&
+              eventData.dateStart.getMonth() === currentDate.getMonth() &&
+              eventData.dateStart.getFullYear() === currentDate.getFullYear() &&
+              eventData.dateStart.getWeekNumber() === currentDate.getWeekNumber()
+            ) {
+              let key = `${eventData.dateStart.getFullYear()}-${eventData.dateStart.getMonth()}-${eventData.dateStart.getDate()}-${dataHourEle}`;
+  
+              if (eventCount[key].count === 1) {
+                // Si solo hay un evento, imprimir el botón normalmente
+                ele.innerHTML += eventCount[key].buttons[0];
+              } else if (eventCount[key].count > 1 && ele.getAttribute("data-group") !== key) {
+                // Si hay más de un evento, crear un div con un botón que abra un modal
+                ele.setAttribute("data-group", key);
+                let modalID = `modal-${key.replace(/-/g, "")}`;
+  
+                let modalTrigger = `<button class="btn-more-than-one-event" onclick="openModalBtn('${modalID}')">Ver ${eventCount[key].count} eventos</button>`;
+                let modalContent = `
+                  <div id="${modalID}" class="modalEvents hidden">
+                    <div class="modal-content">
+                      <div class="modal-content-close">
+                        <button class="close-modal" onclick="closeModalBtn('${modalID}')">&times;</button>
+                      </div>
+                      ${eventCount[key].buttons.join("")}
+                    </div>
+                  </div>`;
+  
+                ele.innerHTML += modalTrigger + modalContent;
+              }
+            }
+          }
+        }
+        
     }
   } catch (err) {
     console.error(err);

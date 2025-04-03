@@ -18,13 +18,16 @@ import languageHandler from "./i18n/en-es.js";
 /*--Useful Variables--*/
 /*--------------------*/
 
+/* const opportunities = await fetch('../src/app/services/calendarService.php?getOpportunities=true'); // <-- For production
+const opportunitiesJSON = await opportunities.json(); */
+
 const $calendarContainer = document.getElementsByClassName("calendar-container")[0]; //<-- Represents the <section> in index.html where the calendar will be printed.
 
 let isVisible = false; //<-- Used to controls wodal window. Prevents more than one from being opened at the same time.
 
-/*------------------------------------*/
-/*--Date used throughout the project--*/
-/*------------------------------------*/
+/*-------*/
+/* Dates */
+/*-------*/
 export let currentDate = new Date();
 
 /*-------------------------------*/
@@ -93,10 +96,10 @@ export function startDayYear(month) {
 function comeToday() {
   currentDate = new Date();
 
-  // Get the ID of the selected radio button
+  // Obtén el ID del radio seleccionado
   const selectedRadio = document.querySelector('input[name="btn"]:checked').id;
 
-  // Execute different code based on the selected radio button
+  // Ejecuta diferentes códigos según el radio seleccionado
   switch (selectedRadio) {
     case 'radio-day':
       $calendarContainer.lastChild.remove();
@@ -167,7 +170,6 @@ window.goToDayClick = goToDayClick;
 /*------------------------*/
   MonthComponent($calendarContainer);
   DaysOfMonth(currentDate.getMonth(), currentDate);
-  document.getElementById("dates-control-month").style = "display: flex";
   document.getElementById("date-month").innerHTML =
     languageHandler.es.monthNames[currentDate.getMonth()] +
     ` ` +
@@ -177,45 +179,45 @@ window.goToDayClick = goToDayClick;
 /*----Event Listeners----*/
 /*-----------------------*/
 document.addEventListener("click", ({ target }) => {
-  if (target.matches(".menu-img")) {
+  /* if (target.matches(".menu-img")) {
     //<-- Mobile components control
     document.querySelector(".buttons").classList.toggle("active");
-  }
+  } */
 
   if (target.matches("#btnToday")) {
     comeToday();
   }
   
   /*--Modal Window--*/
-  if (target.matches(".grid-item") && screen.width > 768 && isVisible === false) {
-    NewModalEvent(target);
+  /* if (target.matches(".grid-item") && screen.width > 768 && isVisible === false) {
+    NewModalEvent(target); //opportunitiesJSON
     isVisible = true;
     dragModal();
-  }
-  if (target.matches(".hour-week-content-div") && screen.width > 768 && isVisible === false) {//.eventWeek
-    NewModalEvent(target);
+  } */
+  /* if (target.matches(".hour-week-content-div") && screen.width > 768 && isVisible === false) {
+    NewModalEvent(target); //opportunitiesJSON
     isVisible = true;
     dragModal();
-  }
-  if (target.matches(".eventDay") && screen.width > 768 && isVisible === false) {
-    NewModalEvent(target);
+  } */
+  /* if (target.matches(".eventDay") && screen.width > 768 && isVisible === false) {
+    NewModalEvent(target); //opportunitiesJSON
     isVisible = true;
     dragModal();
-  }
-  if (target.matches("#new-event") && isVisible === false) {
-    NewModalEvent(document.querySelector(".contaienr"));
+  } */
+  /* if (target.matches("#new-event") && isVisible === false) {
+    NewModalEvent(document.querySelector(".contaienr")); //opportunitiesJSON
     isVisible = true;
-  }
+  } */
   if (target.matches("#closeModal-ID") && isVisible === true) {
     closeModal();
     isVisible = false;
   }
   if (target.matches(".btn-item") && isVisible === false) {
     // #event-Modal
-    if (screen.width < 768) {
-      handlerBtnMobile();
+    if (screen.width < 768) {//<-- Responsive design 
+      handlerBtn(target);
       isVisible = true;
-    } else {
+    } else {//<-- Desktop mode
       handlerBtn(target);
       isVisible = true;
       dragModal();
@@ -283,7 +285,6 @@ document.addEventListener("click", ({ target }) => {
     $calendarContainer.lastChild.remove();
     MonthComponent($calendarContainer);
     DaysOfMonth(currentDate.getMonth(), currentDate);
-    document.getElementById("dates-control-month").style = "display: flex";
     document.getElementById("date-month").innerHTML =
       languageHandler.es.monthNames[currentDate.getMonth()] +
       ` ` +
@@ -310,6 +311,11 @@ document.addEventListener("click", ({ target }) => {
 /*-------------*/
 function prevDay() {
   lessDays(currentDate, 1);
+  /* currentDate.setFullYear(
+    currentDate.getFullYear(),
+    currentDate.getMonth(),
+    currentDate.getDate()
+  ); */
 
   $calendarContainer.lastChild.remove();
   DayComponent($calendarContainer);
@@ -324,6 +330,11 @@ function prevDay() {
 
 function nextDay() {
   addDays(currentDate, 1);
+  /* currentDate.setFullYear(
+    currentDate.getFullYear(),
+    currentDate.getMonth(),
+    currentDate.getDate()
+  ); */
 
   $calendarContainer.lastChild.remove();
   DayComponent($calendarContainer);

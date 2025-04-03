@@ -1,6 +1,6 @@
 #days-of-month{
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, minmax(0, 1fr));
     background-color: transparent;
     grid-column-end: 9;
     gap: 0px;
@@ -24,7 +24,7 @@
     position: relative;
 
     /* Añade overflow-y para el scroll vertical */
-    /* overflow-y: auto; */
+    overflow-y: auto;
 }
 
 .grid-item::-webkit-scrollbar {
@@ -40,9 +40,9 @@
     background-color: var(--neutralActive); /* Color del track (el fondo del scrollbar) */
 }
 
-#days-of-month .grid-item:nth-child(7n+1){
-    border-left: 1px solid var(--neutralGray);
-}
+/* #days-of-month .grid-item:nth-child(7n+1){
+    border-left: 1px solid var(--neutralGray); DEPRECADO
+} */
 
 #days-of-month .grid-item:nth-child(7n+14), #days-of-month .grid-item:nth-child(7n+14) .day-number{
     background-color: var(--neutralActive);
@@ -85,7 +85,7 @@
 }
 
 .day-month-active{
-    border: 2px solid var(--colorOne);
+    border: 2px solid var(--red);
 }
 .day-month-number-active{
     color: var(--colorOne);

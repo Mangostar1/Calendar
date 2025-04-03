@@ -16,6 +16,11 @@ export function DayComponent(element) {
   $DayContent.innerHTML = `
         <aside id="month-calendar-day-component" class="month-calendar-day-component">
           <div id="dates-info">
+            <div class="form-group" style="display: none;">
+                <label>Usuario</label>
+                <select class="form-control" id="users-organization">
+                </select>
+            </div>
             <h2 id="day-component-current-date"></h2>
             <p id="day-component-current-month-year"></p>
           </div>
@@ -48,7 +53,7 @@ export function DayComponent(element) {
               <div id="" class="header-date-details">
                 <p id="header-date-details-text" class="header-date-details-text"></p>
               </div>
-              <div>
+              <div class="today-control-content">
                 <button id="prev-day" class="prev"> &#10094; </button>
                 <button id="btnToday">Hoy</button>
                 <button id="next-day" class="next"> &#10095; </button>
@@ -116,10 +121,16 @@ export function hourDayComponent(currentDate) {
   // Update the line when the page loads
   if (new Date().getDate() === currentDate.getDate()) {
     actualizarLineaHora();
-  }
 
-  // Update the line every minute
-  setInterval(actualizarLineaHora, 60000);
+    // Update the line every minute
+    let intervalo = setInterval(() => {
+      if (document.getElementById("container-Day-Hours")) {
+        actualizarLineaHora();
+      } else {
+        clearInterval(intervalo); // Detiene el intervalo si el elemento no está en el DOM
+      }
+    }, 60000);
+  }
 }
 
 // Remove the loader
@@ -130,7 +141,6 @@ function IsLoaded() {
 // Line that shows the current time
 function actualizarLineaHora() {
   if (document.getElementById("container-Day-Hours")) {
-    console.log("Se actualizacion de linea hora en componente dia");
     
     const contenedorHoras = document.getElementById('container-Day-Hours');
     const lineaHora = document.getElementById('lineaHora');
@@ -152,56 +162,160 @@ function actualizarLineaHora() {
 
 // Prints the buttons/divs of the events on the calendar
 async function inicioEventoDia() {
-  try {
+  let organizationId = document.getElementById('organization').value;
+  let selectUserOrganization = document.getElementById('users-organization');
+  let users;
+  let selectedUserId;
+
+  $.post("../src/app/services/userService.php", {
+    organizationId: organizationId,
+    getUsersByOrganization: true
+  }).done(function(response){
+    let responseJSON = JSON.parse(response);
+    users = responseJSON.users;
+    for (let i = 0; i < users.length; i++) {
+      let name = users[i].first_name + " " + users[i].last_name;
+      let isSelected = users[i].user_id === localStorage.getItem('userId') ? 'selected' : '';
+
+      // Crea un nuevo elemento <option>
+      let newOption = document.createElement('option');
+      newOption.value = users[i].user_id;
+      newOption.text = name;
+      newOption.selected = isSelected;
+      
+      // Agrega la nueva opción al elemento <select>
+      selectUserOrganization.add(newOption);
+    }
+
     const $eventLi = document.getElementsByClassName("eventDay");
-    const basicStruc = await fetch(URL);
-    const primerEvento = await basicStruc.json();
+    const params = {
+      dayContentEvents: true,
+      userEvent: selectUserOrganization.value,
+    };
 
-    if (primerEvento.events.length !== 0) {
-      for (let e = 0; e < primerEvento.events.length; e++) {
-        let eventData = datesFetch(primerEvento, e).eventData;
-        let hourStart = eventData.dateStart.getHours();
-        let hourFinish = eventData.dateFinish.getHours();
-
-        // Check if the event lasts more than one day
-        if (
-          eventData.dateStart.toDateString() !==
-          eventData.dateFinish.toDateString()
-        ) {
-          const eventDuration =
-            (eventData.dateFinish - eventData.dateStart) /
-            (1000 * 60 * 60 * 24);
-
-          for (let i = 0; i <= eventDuration; i++) {
-            const currentDateCopy = new Date(eventData.dateStart.getTime());
-            currentDateCopy.setDate(currentDateCopy.getDate() + i);
-            if (
-              currentDateCopy.getDate() === currentDate.getDate() &&
-              currentDateCopy.getMonth() === currentDate.getMonth() &&
-              currentDateCopy.getFullYear() === currentDate.getFullYear()
-            ) {
+    $.ajax({
+      url: `${URL}`,
+      type: 'GET',
+      data: params,
+      dataType: 'json',
+      success: function (primerEvento) {
+        // Manejar la respuesta exitosa aquí
+        if (primerEvento.length !== 0) {
+          for (let e = 0; e < primerEvento.events.length; e++) {
+            let eventData = datesFetch(primerEvento, e).eventData;
+            let hourStart = eventData.dateStart.getHours();
+            let hourFinish = eventData.dateFinish.getHours();
+    
+            // Check if the event lasts more than one day
+            if (eventData.dateStart.toDateString() !== eventData.dateFinish.toDateString()) {
+              const eventDuration =
+                (eventData.dateFinish - eventData.dateStart) /
+                (1000 * 60 * 60 * 24);
+    
+              for (let i = 0; i <= eventDuration; i++) {
+                const currentDateCopy = new Date(eventData.dateStart.getTime());
+                currentDateCopy.setDate(currentDateCopy.getDate() + i);
+                if (
+                  currentDateCopy.getDate() === currentDate.getDate() &&
+                  currentDateCopy.getMonth() === currentDate.getMonth() &&
+                  currentDateCopy.getFullYear() === currentDate.getFullYear()
+                ) {
+                  for (let h = hourStart; h <= hourFinish; h++) {
+                    $eventLi[h].innerHTML += datesFetch(primerEvento, e, "day").btns;
+                  }
+                }
+              }
+            } else {
               for (let h = hourStart; h <= hourFinish; h++) {
-                $eventLi[h].innerHTML += datesFetch(primerEvento, e).btns;
+                if (
+                  eventData.dateStart.getDay() === currentDate.getDay() &&
+                  eventData.dateStart.getDate() === currentDate.getDate() &&
+                  eventData.dateStart.getMonth() === currentDate.getMonth() &&
+                  eventData.dateStart.getFullYear() === currentDate.getFullYear()
+                ) {
+                  $eventLi[h].innerHTML += datesFetch(primerEvento, e, "day").btns;
+                }
               }
             }
           }
-        } else {
-          for (let h = hourStart; h <= hourFinish; h++) {
-            if (
-              eventData.dateStart.getDay() === currentDate.getDay() &&
-              eventData.dateStart.getDate() === currentDate.getDate() &&
-              eventData.dateStart.getMonth() === currentDate.getMonth() &&
-              eventData.dateStart.getFullYear() === currentDate.getFullYear()
-            ) {
-              $eventLi[h].innerHTML += datesFetch(primerEvento, e).btns;
+        }
+      },
+      error: function (error) {
+        // Manejar errores aquí
+        console.error('Error en la solicitud:', error);
+      }
+    });
+
+    
+  })
+
+  //Select que permite elegir los eventos del usuario seleccionado
+  selectUserOrganization.addEventListener('change', function() {
+    selectedUserId = selectUserOrganization.value;
+
+    const $eventLi = document.getElementsByClassName("eventDay");
+
+    for (let h = 0; h < $eventLi.length; h++) {
+      $eventLi[h].innerHTML = "";
+    }
+
+    const params = {
+      dayContentEvents: true,
+      userEvent: selectedUserId,
+    };
+
+    $.ajax({
+      url: `${URL}`,
+      type: 'GET',
+      data: params,
+      dataType: 'json',
+      success: function (primerEvento) {
+        // Manejar la respuesta exitosa aquí
+        if (primerEvento.length !== 0) {
+          for (let e = 0; e < primerEvento.events.length; e++) {
+            let eventData = datesFetch(primerEvento, e).eventData;
+            let hourStart = eventData.dateStart.getHours();
+            let hourFinish = eventData.dateFinish.getHours();
+    
+            // Check if the event lasts more than one day
+            if (eventData.dateStart.toDateString() !== eventData.dateFinish.toDateString()) {
+              const eventDuration =
+                (eventData.dateFinish - eventData.dateStart) /
+                (1000 * 60 * 60 * 24);
+    
+              for (let i = 0; i <= eventDuration; i++) {
+                const currentDateCopy = new Date(eventData.dateStart.getTime());
+                currentDateCopy.setDate(currentDateCopy.getDate() + i);
+                if (
+                  currentDateCopy.getDate() === currentDate.getDate() &&
+                  currentDateCopy.getMonth() === currentDate.getMonth() &&
+                  currentDateCopy.getFullYear() === currentDate.getFullYear()
+                ) {
+                  for (let h = hourStart; h <= hourFinish; h++) {
+                    $eventLi[h].innerHTML += datesFetch(primerEvento, e, "day").btns;
+                  }
+                }
+              }
+            } else {
+              for (let h = hourStart; h <= hourFinish; h++) {
+                if (
+                  eventData.dateStart.getDay() === currentDate.getDay() &&
+                  eventData.dateStart.getDate() === currentDate.getDate() &&
+                  eventData.dateStart.getMonth() === currentDate.getMonth() &&
+                  eventData.dateStart.getFullYear() === currentDate.getFullYear()
+                ) {
+                  $eventLi[h].innerHTML += datesFetch(primerEvento, e, "day").btns;
+                }
+              }
             }
           }
         }
+        IsLoaded();
+      },
+      error: function (error) {
+        // Manejar errores aquí
+        console.error('Error en la solicitud:', error);
       }
-    }
-  } catch (err) {
-    console.error(err);
-  } finally {
-    IsLoaded();
-  }
+    });
+  });
 }

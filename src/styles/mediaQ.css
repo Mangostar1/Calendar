@@ -1,10 +1,22 @@
 @media screen and (max-width: 768px) {
   .container {
     position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1em;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  #btnToday {
+    padding: 6px 8px;
   }
   /*------------------*/
   /* Dates Components */
   /*------------------*/
+  .today-control-content {
+    display: flex;
+    flex-wrap: nowrap;
+  }
   .calendar-container {
     position: relative;
     overflow: hidden;
@@ -16,38 +28,40 @@
     height: auto;
   }
   .calendar-container .buttons {
-    display: none;
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
     width: 100%;
-    height: 190px;
-    padding: 15px;
+    padding: 15px 0px 15px 0px;
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-    position: absolute;
-    top: 4rem;
-    left: 2rem;
-    z-index: 10;
   }
   .calendar-container .buttons #btn-day, .calendar-container .buttons #btn-week, .calendar-container .buttons #btn-month, .calendar-container .buttons #btn-year {
-    background-color: #fff;
-    color: var(--colorOne);
-    padding: 10px 30px;
+    background-color: var(--color1C);
+    color: var(--neutralBlackGray);
+    padding: 5px 20px;
     width: 250px;
     margin: 0 auto;
     border: 0px;
     font-weight: 600;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     text-align: center;
     border-radius: 0px;
+  }
+  .calendar-container .buttons #btn-day {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+  .calendar-container .buttons #btn-month {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
   }
   .calendar-container .buttons #btn-day:hover, .calendar-container .buttons #btn-week:hover, .calendar-container .buttons #btn-month:hover, .calendar-container .buttons #btn-year:hover {
     background-color: #fff;
     color: var(--colorTwo);
   }
-  .calendar-container .active {
-    display: flex;
+  .calendar-container .buttons #radio-day:checked + label, .calendar-container .buttons #radio-week:checked + label, .calendar-container .buttons #radio-month:checked + label, .calendar-container .buttons #radio-year:checked + label {
+    background-color: var(--colorOne) !important;
+    color: var(--neutralActive) !important;
   }
   /*---------------*/
   /* dates control */
@@ -56,7 +70,7 @@
     display: flex;
     align-items: center;
     margin: 0px;
-    width: 21rem;
+    width: 100%;
     height: 4em;
     padding-left: 0.5em;
     border-radius: 10px;
@@ -68,10 +82,69 @@
     width: 260px;
   }
   /*-----------------*/
+  /* Day Component */
+  /*-----------------*/
+  #month-calendar-day-component {
+    display: none;
+    flex-direction: column;
+    border: solid 1px var(--color3C);
+    border-radius: 8px;
+    padding: 0.8rem;
+  }
+  #container-Day-content {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 10px 0 10px 0;
+  }
+  #container-Day {
+    grid-template-columns: auto;
+    grid-template-rows: repeat(24, auto);
+    width: 100%;
+    border: solid 1px var(--color3C);
+    border-radius: 8px;
+  }
+  #container-Day .btn-item {
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+    margin: 0 0 0 0px;
+    padding: 0px 0px;
+    border: 1px solid var(--color2C);
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #container-Day .header-date-details-text {
+    color: var(--colorOne);
+    font-size: 0.9rem;
+  }
+  /*-----------------*/
   /* Week Component */
   /*-----------------*/
-  #days-of-week .grid-days {
+  .hour-week-content-div {
+    flex-wrap: wrap;
+  }
+  #container-week {
     flex-flow: row wrap;
+    margin: 15px 0px 15px 0px;
+    border: 1px solid var(--color3C);
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+  }
+  .hour-content {
+    display: flex;
+    align-items: flex-start;
+    font-size: 10px;
+    width: 100%;
+    height: 100%;
+    padding: 0 0.5rem 0 0.5rem;
+    border-top: 1px solid var(--color3C);
+  }
+  #days-of-week .grid-days {
+    flex-flow: column wrap;
     justify-content: center;
     align-items: center;
   }
@@ -84,46 +157,85 @@
     font-size: 15px;
   }
   #blanck-space-week-componenet {
-    height: 1.5rem;
+    height: 1.9rem;
+  }
+  #days-of-week .grid-days .daysNumber {
+    margin-right: 0px;
+  }
+  #days-of-week .grid-days p {
+    margin-left: 0px;
+  }
+  #container-week .grid-days {
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid var(--color3C);
   }
   /*-----------------*/
   /* month component */
   /*-----------------*/
+  #container-month {
+    margin: 0px;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--color3C);
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+  }
+  #container-month #dates-control-month {
+    display: flex;
+  }
   .grid-item {
     border-width: 0.5px;
     border-radius: 0px;
+    overflow: hidden;
     font-size: 15px;
     text-align: center;
     padding: 5px;
-    min-height: 48px;
-    max-height: 48px;
+    min-height: 90px;
+    max-height: 90px;
     width: 100%;
+    overflow: auto;
   }
   .grid-item .day-number {
-    text-align: right;
+    text-align: center;
     margin-top: 0px;
     margin-right: 0px;
+    padding: 0px 0px 4px 0px;
   }
   .grid-days {
     width: 100%;
-    font-size: 18px;
+    font-size: 15px;
     text-align: right;
     padding: auto;
     box-sizing: border-box;
   }
   /* btn evento in month */
   .btn-item {
-    width: 40px;
+    width: 100%;
+    min-width: 100%;
     height: 20px;
-    margin: 0 0 0 -10px;
-    border-style: none;
-    font-size: 15px;
-    padding: 4px 4px;
-    border-radius: 6.5px;
+    margin: 0 0 0 0px;
+    padding: 0px 0px;
+    border: 1px solid var(--color2C);
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   /*---------------------------*/
   /* Modal Event in mobile mode*/
   /*---------------------------*/
+  .new-tittle-location {
+    display: none;
+  }
+  .modal-tittle {
+    display: block;
+    margin: 1.5rem 0 0rem 0;
+    padding: 0 0 2rem 0;
+    border-bottom: 1px solid var(--neutralGray);
+    white-space: wrap;
+  }
   .new-event {
     display: inline-block;
     width: 60px;
@@ -166,10 +278,90 @@
   .modal .inputs-content #timeInput {
     padding: 5px 5px;
   }
+  .modal-add-event-calendar {
+    width: 100%;
+    background-color: white;
+    border-radius: 0px;
+    box-shadow: 0px 0px 0px 0px rgba(71, 71, 71, 0.507);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1010;
+  }
+  .modal-add-event-calendar .modal-close-content {
+    background-color: var(--colorOne);
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    width: 100%;
+    height: 35px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    cursor: move;
+  }
+  .modal-add-event-calendar #modal-details-first-content {
+    border-bottom: 1px solid var(--neutralGray);
+    padding: 0rem 0 2rem 0;
+    margin: 2rem 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: 1.2rem;
+  }
+  .modal-add-event-calendar #modal-details-second-content {
+    padding: 1.4rem 0 1rem 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+  .modal-view-event-calendar {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 0px;
+    box-shadow: 0px 0px 0px 0px rgba(71, 71, 71, 0.507);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1010;
+  }
+  .modal-view-event-calendar .modal-close-content {
+    background-color: var(--colorOne);
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    width: 100%;
+    height: 35px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: move;
+  }
+  .modalEvents {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    transform: translate(0%, 0%);
+    width: 100%;
+    background: white;
+    padding: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    z-index: 1010;
+  }
+  .modalEvents .btn-item-contnt {
+    height: 40px !important;
+    text-align: justify !important;
+    border-radius: 0px !important;
+  }
 }
 @media screen and (max-width: 575px) {
   #blanck-space-week-componenet {
-    height: 3.1rem;
+    height: 3.7rem;
   }
 }
 

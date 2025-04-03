@@ -38,6 +38,8 @@
   display: flex;
   flex-flow: row wrap;
   gap: 1em;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .calendar-container{
@@ -190,7 +192,7 @@
   border-bottom-left-radius: 8px;
 }
 
-#btn-year{
+#btn-month, #btn-year{
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
 }
@@ -299,3 +301,54 @@
     margin-top: 0;
     margin-bottom: 0;
 }
+
+/* modal */
+.btn-more-than-one-event{
+  width: 100%;
+  border-top: none;
+  border-left: 5px solid #f27474;
+  border-right: none;
+  border-bottom: none;
+  background-color: var(--color1C);
+}
+
+.hidden {
+  display: none;
+}
+
+.modalEvents {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  background: white;
+  padding: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  z-index: 1010;
+}
+
+.modal-content {
+  text-align: center;
+}
+
+.close-modal {
+  padding: 0.0rem 0.5rem;
+  font-size: 1.3rem;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  cursor: pointer;
+  border: 1px solid var(--color2C);
+  border-radius: 8px;
+  transition: all 0.4s ease;
+}
+.close-modal:hover{
+  transform: scale(1.1);
+}
+
+/* .modal-content-close{
+  display: flex;
+  justify-content: flex-end;
+} */

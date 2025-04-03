@@ -17,7 +17,7 @@ export function MonthComponent(element) {
               <div id="" class="header-date-details">
                 <p id="date-month" class="header-date-details-text"></p>
               </div>
-              <div>
+              <div class="today-control-content">
                 <button id="prev-month" class="prev"> &#10094; </button>
                 <button id="btnToday">Hoy</button>
                 <button id="next-month" class="next"> &#10095; </button>
@@ -38,7 +38,7 @@ export function DaysOfMonth(month, currentDate) {
     $wrapper.innerHTML += `<div class="grid-days"> ${item.day} </div>`;
   });
 
-  for (let i = startDay(); i > 0; i--) {// <-- Prints the days before the first day of the month (in case the 1st falls on a Tuesday or another day onwards)
+  for (let i = startDay(); i > 0; i--) {//<-- Imprime los dias anteriores al primer dia del mes (por si el 1 cae martes u otro dia en adelante)
     $wrapper.innerHTML += `<div class="grid-item"><p class="day-number lastMonth"> ${
       getTotalDays(currentDate.getMonth() - 1) - (i - 1)
     } </p>
@@ -46,8 +46,8 @@ export function DaysOfMonth(month, currentDate) {
             </div>`;
   }
 
-  for (let i = 1; i <= getTotalDays(month); i++) {// <-- Prints the days of the month
-    if (i == new Date().getDate() && month == new Date().getMonth() && new Date().getFullYear() == currentDate.getFullYear()) {
+  for (let i = 1; i <= getTotalDays(month); i++) {//<-- Imprime los dias del mes
+    if (i == new Date().getDate() && month == new Date().getMonth()) {
       $wrapper.innerHTML += 
                 `<div class="grid-item day-month-active" data-month="${month}" data-day="${i}" data-year="${currentDate.getFullYear()}">
                     <p class="day-number day-month-number-active"> ${i} </p>
@@ -61,26 +61,23 @@ export function DaysOfMonth(month, currentDate) {
                 </div>`;
     }
   }
-  if (screen.width < 768) {
-    eventoMonthMobile();
-  } else {
-    eventoMonth();
-  }
+  
+  eventoMonth();
 }
 
 function IsLoaded() {
   document.querySelector(".content-loader").style.display = "none";
 }
 
-// Events of the month
+//Eventos del mes
 async function eventoMonth() {
   try {
     const basicMonth = await fetch(URL);
     const basicMonthJson = await basicMonth.json();
 
-    if (basicMonthJson.events.length !== 0) {
-      let totalInnerHtmlExecutions = 0; // Counter to count the executions of innerHTML
-      
+    if (basicMonthJson.length !== 0) {
+      let totalInnerHtmlExecutions = 0; // Contador para contar las ejecuciones de innerHTML
+
       for (let d = 0; d < basicMonthJson.events.length; d++) {
         let eventData = datesFetch(basicMonthJson, d).eventData;
 
@@ -95,7 +92,7 @@ async function eventoMonth() {
               eventData.dateStart.getFullYear() === currentDate.getFullYear()
             ) {
               $eventMonth.innerHTML += datesFetch(basicMonthJson, d, "month").btns;
-              totalInnerHtmlExecutions++; // Increments the counter
+              totalInnerHtmlExecutions++; // Incrementa el contador
             }
           }
         }
@@ -108,15 +105,15 @@ async function eventoMonth() {
   }
 }
 
-// Button in mobile format
+//btn en formato movil
 async function eventoMonthMobile() {
   const basicMonth = await fetch(URL); // <-- For production
   const basicMonthJson = await basicMonth.json();
 
   if (basicMonthJson.length !== 0) {
-    // <-- If there are events on a day of the week, this loops through all the scheduled events for that day
+    // <-- Si dentro de un dia de la semana hay eventos, este recorre todos los eventos agendados en el dia
     for (let d = 0; d < basicMonthJson.length; d++) {
-      // <-- With this for loop, I iterate through all the events of the specified day
+      // <-- Con este for recorro todos los eventos del dia en cuestion
       let datesJSON = basicMonthJson[d].dateStartEvent;
 
       const datesSplit = datesJSON.split("-");

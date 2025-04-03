@@ -29,11 +29,11 @@
 </head>
 
 <body>
-  <main class="contaienr">
+  <main class="contaienr" id="calendar-actividades">
 
-    <button class="new-event" id="new-event">+</button>
+    <!-- <button class="new-event" id="new-event">+</button> -->
     <section class="calendar-container">
-      <img class="menu-img" src="./src/assets/icons/menu-svgrepo-com.svg" alt="menu-img">
+      <!-- <img class="menu-img" src="./src/assets/icons/menu-svgrepo-com.svg" alt="menu-img"> -->
       <article id="buttons" class="buttons">
         <input type="radio" name="btn" id="radio-day">
         <label for="radio-day" id="btn-day">Día</label>
@@ -41,8 +41,8 @@
         <label for="radio-week" id="btn-week">Semana</label>
         <input type="radio" name="btn" id="radio-month" checked>
         <label for="radio-month" id="btn-month">Mes</label>
-        <input type="radio" name="btn" id="radio-year">
-        <label for="radio-year" id="btn-year">Año</label>
+        <!-- <input type="radio" name="btn" id="radio-year">
+        <label for="radio-year" id="btn-year">Año</label> -->
       </article>
     </section>
 
@@ -83,7 +83,7 @@
   <script src="./src/components/Year/YearComponent.js" type="module"></script>
   <script src="./src/components/ModalEvent/Events_Details.js" type="module"></script>
   <script src="./src/helpers/UrlToFetch.js" type="module"></script>
-  <script src="./src/helpers/datesFetch.js" type="module"></script>
+  <script src="./src/components/Button/datesFetch.js" type="module"></script>
   <script src="./src/scripts/dragModal.js" type="module"></script>
 </body>
 

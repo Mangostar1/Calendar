@@ -28,7 +28,7 @@ export function YearComponent(element) {
           <div id="" class="header-date-details">
             <p id="date-year" class="header-date-details-text"></p>
           </div>
-          <div>
+          <div class="today-control-content">
             <button id="prev-year" class="prev"> &#10094; </button>
             <button id="btnToday">Hoy</button>
             <button id="next-year" class="next"> &#10095; </button>

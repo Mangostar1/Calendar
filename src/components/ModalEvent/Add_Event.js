@@ -1,33 +1,29 @@
 import { currentDate } from "../../index.js";
 import languageHandler from "../../i18n/en-es.js";
 import { MonthComponent, DaysOfMonth } from "../Month/MonthComponent.js";
-import URL from "../../helpers/UrlToFetch.js";
-//This modal event has the function of entering an event into a database
+//Este evento modal tiene la funcion de ingresar a una base de datos un evento
 
-export async function NewModalEvent(element) {
+export async function NewModalEvent(element, opportunities) {
+
+  /* let options;
+  for (let i = 0; i < opportunities.length; i++) {
+    options += `<option value="${opportunities[i].opportunity_id}">${opportunities[i].opportunity_name}</option>`;
+  } */
 
   let year = parseInt(element.dataset.year);
   let month = parseInt(element.dataset.month);
   let day = parseInt(element.dataset.day);
-  let hourElement;
-  let newDate;
+  let hourElement = element.dataset.hour || '00:00';
 
-  if (element.dataset.hourComplete || element.dataset.hour) {
-    hourElement = element.dataset.hourComplete || element.dataset.hour;
-    let [hourStr, minuteStr] = hourElement.split(':');
+  let [hourStr, minuteStr] = hourElement.split(':');
 
-    let hour = parseInt(hourStr, 10);
-    let minute = parseInt(minuteStr, 10);
+  let hour = parseInt(hourStr, 10);
+  let minute = parseInt(minuteStr, 10);
 
-    newDate = new Date(year, month, day, hour, minute);
-  } else {
-    newDate = new Date(year, month, day);
-  }
-
-  
-  //Gets the dates and times of the scheduling form
+  let newDate = new Date(year, month, day, hour, minute);
+  // Obtener los componentes de la fecha y hora
   let yearFormatted = newDate.getFullYear().toString().padStart(4, '0');
-  let monthFormatted = (newDate.getMonth() + 1).toString().padStart(2, '0'); // Add 1 because months are indexed from 0
+  let monthFormatted = (newDate.getMonth() + 1).toString().padStart(2, '0'); // Sumar 1 porque los meses se indexan desde 0
   let dayFormatted= newDate.getDate().toString().padStart(2, '0');
   let hourFormatted = newDate.getHours().toString().padStart(2, '0');
   let minuteFormatted = newDate.getMinutes().toString().padStart(2, '0');
@@ -41,10 +37,10 @@ export async function NewModalEvent(element) {
 
   $newDiv.innerHTML = `
     <div class="modal-close-content" id="closeModalID">
+        <h4 class="text-white" style="margin-top: 15px; text-align: left; padding-left: 1rem;">Agregar Evento</h4>
         <button class="btn-close-modal" id="btn-close-modal-ID">
-            <img src="../../src/assets/icons/close-svgrepo-com.svg" class="closeModal" id="closeModal-ID">
+            <img src="../calendar/assets/icons/close-svgrepo-com.svg" class="closeModal" id="closeModal-ID">
         </button>
-        <h4 class="text-white" style="text-align: left; padding-left: 1rem; color: #fff;">Agregar Evento</h4>
     </div>
     <form class="modal-content-info" id="enviarActividad">
 
@@ -52,28 +48,42 @@ export async function NewModalEvent(element) {
       <div class="form-group row">
         <label for="dateInput" class="col-sm-3 col-form-label">Fecha de inicio</label>
         <div class="col-sm-9">
-          <input type='datetime-local' class="form-control date-input-add-event" id="dateInput" name="dateInput" value="${`${formattedDate}`}" step="900">
+          <input type='datetime-local' class="form-control" id="dateInput" name="dateInput" value="${`${formattedDate}`}">
         </div>
       </div>
 
       <div class="form-group row">
         <label for="dateInputEnd" class="col-sm-3 col-form-label">Fecha de termino</label>
         <div class="col-sm-9">
-          <input type='datetime-local' class="form-control date-input-add-event" id="dateInputEnd" name="dateInputEnd" value="${`${formattedDate}`}">
+          <input type='datetime-local' class="form-control" id="dateInputEnd" name="dateInputEnd" value="${`${formattedDate}`}">
         </div>
       </div>
 
       <div class="form-group row">
         <label for="titleEvent" class="col-sm-3 col-form-label">Titulo</label>
         <div class="col-sm-9">
-          <input type='text' class="form-control text-input-add-event" id='titleEvent' name="titleEvent" placeholder="Añade un titulo">
+          <input type='text' class="form-control" id='titleEvent' name="titleEvent" placeholder="Añade un titulo">
         </div>
       </div>
 
       <div class="form-group row">
         <label for="descriptionEvent" class="col-sm-3 col-form-label">Comentario</label>
         <div class="col-sm-9">
-          <textarea id='descriptionEvent' name="descriptionEvent" class="form-control text-input-add-event" placeholder="Añade un comentario" ></textarea>
+          <textarea id='descriptionEvent' name="descriptionEvent" class="form-control" placeholder="Añade un comentario" ></textarea>
+        </div>
+      </div>
+
+      <div class="" id="radio-content">
+        <label style="font-size: 1rem;margin: auto;">¿Quiere notificar al cliente?</label>
+        <div class="" id="radio-opcions">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="noti-client" id="inlineRadio1" value="1" checked>
+            <label class="form-check-label" for="inlineRadio1" style="font-size: 1rem;">Si</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="noti-client" id="inlineRadio2" value="0">
+            <label class="form-check-label" for="inlineRadio2" style="font-size: 1rem;">No</label>
+          </div>
         </div>
       </div>
 
@@ -93,100 +103,56 @@ export function closeModal() {
   }
 }
 
-/*------------*/
-/* Fetch data */
-/*------------*/
+/*------------------*/
+/* Datos formulario */
+/*------------------*/
 
 document.addEventListener("click", async (e) => {
   if (e.target.matches("#buttonModalID") === true) {
     e.preventDefault();
+    
+    const $notiClient = document.querySelector('input[name="noti-client"]:checked').value;
 
-    let send = false;
-
+    const $oportunidad = document.getElementById("opportunity_id").value;
     const $title = document.getElementById("titleEvent").value;
     const $description = document.getElementById("descriptionEvent").value;
     const $date = document.getElementById("dateInput").value;
     const $dateFinish = document.getElementById("dateInputEnd").value;
 
-    const timeDateStart = $date.split("T")[1];
-    const timeDateFinish = $dateFinish.split("T")[1];
-
-    
-    if ($date < $dateFinish) {//<-- Prevents the user from scheduling an event with an end date less than the start date when scheduling the event
-      send = true;
-    } else {
-      send = false;
-    }
-
-    if (send) {
-      
-      fetch(URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          "dateStartEvent": $date,
-          "hourStart": timeDateStart,
-          "dateFinishEvent": $dateFinish,
-          "hourFinish": timeDateFinish,
-          "title": $title,
-          "description": $description,
-          "statusInformation": {
-            "statusCode": 1,
-            "status": "activo",
-            "colorStatus": "green"
-          },
-          "typeInformation": {
-            "type": 1,
-            "colorBackgroundType": "#0096a6",
-            "colorType": "white"
-          }
-          // userId: userId,
-          // sendCreateActivity: true
-        })
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Error en la solicitud');
-        }
-        return response.json();
-      })
-      .then(response => {
-        console.log('Respuesta exitosa:', response);
+    $.ajax({
+      url: './../../src/app/services/calendarService.php',
+      method: 'POST',
+      data: {
+        opportunity_id: $oportunidad,
+        titleEvent: $title,
+        descriptionEvent: $description,
+        dateInput: $date,
+        dateInputEnd: $dateFinish,
+        notiClient: $notiClient,
+        userId: userId,
+        sendCreateActivity: true
+      },
+      dataType: 'json', // Especifica el tipo de datos que esperas recibir del servidor
+      success: function (response) {
         Swal.fire({
           title: "Listo",
           text: "El evento fue ingresado con éxito",
           icon: "success"
         }).then(function(){
+            //window.location.reload();
             document.getElementsByClassName("calendar-container")[0].lastChild.remove();
             MonthComponent(document.getElementsByClassName("calendar-container")[0]);
             DaysOfMonth(currentDate.getMonth(), currentDate);
-            document.getElementById("dates-control-month").style = "display: flex";
             document.getElementById("date-month").innerHTML =
               languageHandler.es.monthNames[currentDate.getMonth()] +
               ` ` +
               currentDate.getFullYear();
         });
-      })
-      .catch(error => {
+      },
+      error: function (error) {
         console.error('Error en la solicitud:', error);
-        Swal.fire({
-          title: "Error",
-          text: "Problemas al crear un agendamiento: " + error,
-          icon: "error"
-        });
-      });
-
-    } else {
-      Swal.fire({
-        title: "Error",
-        text: "La fecha y hora de inicio debe ser menor a la fecha de término",
-        icon: "error"
-      });
-    }
-
-
+      }
+    });
   }
 });
 
@@ -198,3 +164,14 @@ let btnMobile = document.querySelector(".new-event");
         btnMobile.style.cssText = 'position: absolute; bottom: 2rem; right: 1rem;';
     }
 }, 1000); */
+
+
+
+{/* <div class="form-group row">
+        <label for="opportunity_id" class="col-sm-3 col-form-label">Oportunidad</label>
+        <div class="col-sm-9">
+          <select name="opportunity_id" id="opportunity_id" class="form-control" style="color: black;">
+            ${options}
+          </select>
+        </div>
+      </div> */}
